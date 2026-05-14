@@ -1,0 +1,23 @@
+{
+  "name": "votes-yayarea-news",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static Next.js site for votes.yayarea.news.",
+  "packageManager": "pnpm@11.1.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.0.0"
+  }
+}
