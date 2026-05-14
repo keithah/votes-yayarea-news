@@ -1,0 +1,80 @@
+{
+  "race": {
+    "id": "race-mayor",
+    "slug": "mayor",
+    "title": "San Francisco Mayor",
+    "kind": "local-executive",
+    "status": "draft",
+    "publicationStatus": "hidden",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "San Francisco",
+    "entityIds": ["ent-sample-candidate-a", "ent-sample-candidate-b"],
+    "sourceIds": ["src-sf-chronicle", "src-growsf"],
+    "sampleFixture": true,
+    "positions": [
+      {
+        "id": "pos-chronicle-candidate-a",
+        "raceId": "race-mayor",
+        "sourceId": "src-sf-chronicle",
+        "entityId": "ent-sample-candidate-a",
+        "kind": "endorse",
+        "status": "reviewed",
+        "publicationStatus": "public",
+        "label": "Sample endorsement for Candidate A",
+        "rationale": "Invented fixture rationale used only to validate evidence-backed visible positions.",
+        "evidenceIds": ["ev-chronicle-candidate-a"],
+        "evidence": [
+          {
+            "id": "ev-chronicle-candidate-a",
+            "sourceId": "src-sf-chronicle",
+            "entityId": "ent-sample-candidate-a",
+            "raceId": "race-mayor",
+            "url": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
+            "kind": "quote",
+            "quote": "Sample fixture quote: Candidate A is listed here only to exercise the data contract.",
+            "capturedAt": "2026-01-15"
+          }
+        ]
+      },
+      {
+        "id": "pos-growsf-candidate-b",
+        "raceId": "race-mayor",
+        "sourceId": "src-growsf",
+        "entityId": "ent-sample-candidate-b",
+        "kind": "endorse",
+        "status": "reviewed",
+        "publicationStatus": "public",
+        "label": "Sample endorsement for Candidate B",
+        "rationale": "Invented fixture rationale used only to validate source/entity references.",
+        "evidenceIds": ["ev-growsf-candidate-b"],
+        "evidence": [
+          {
+            "id": "ev-growsf-candidate-b",
+            "sourceId": "src-growsf",
+            "entityId": "ent-sample-candidate-b",
+            "raceId": "race-mayor",
+            "url": "https://growsf.org/voter-guide/sample-2026/mayor",
+            "kind": "snippet",
+            "quote": "Sample fixture snippet: Candidate B is included for schema validation, not as a real recommendation.",
+            "capturedAt": "2026-01-16"
+          }
+        ]
+      }
+    ],
+    "themes": [
+      {
+        "id": "theme-sample-housing",
+        "label": "Sample housing policy signal",
+        "sentiment": "neutral",
+        "evidenceIds": ["ev-chronicle-candidate-a", "ev-growsf-candidate-b"]
+      }
+    ],
+    "summary": {
+      "id": "sum-mayor-sample",
+      "status": "draft",
+      "publicationStatus": "hidden",
+      "text": "Sample summary for validating static data loading; not a public 2026 election claim.",
+      "evidenceIds": ["ev-chronicle-candidate-a", "ev-growsf-candidate-b"]
+    }
+  }
+}

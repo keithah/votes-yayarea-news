@@ -1,0 +1,28 @@
+{
+  "sources": [
+    {
+      "id": "src-sf-chronicle",
+      "slug": "san-francisco-chronicle-editorial-board",
+      "name": "San Francisco Chronicle Editorial Board",
+      "category": "Media / Editorial",
+      "sourceType": "editorial endorsements",
+      "status": "pending",
+      "homepageUrl": "https://www.sfchronicle.com/",
+      "guideUrl": "https://www.sfchronicle.com/projects/2026/sample-voter-guide",
+      "notes": "Sample fixture URL and details for schema validation only; not an official 2026 endorsement claim.",
+      "sampleFixture": true
+    },
+    {
+      "id": "src-growsf",
+      "slug": "growsf-voter-guide",
+      "name": "GrowSF Voter Guide",
+      "category": "Civic / Nonpartisan",
+      "sourceType": "civic voter guide / recommendations",
+      "status": "pending",
+      "homepageUrl": "https://growsf.org/",
+      "guideUrl": "https://growsf.org/voter-guide/sample-2026",
+      "notes": "Sample fixture URL and details for schema validation only; not an official 2026 recommendation claim.",
+      "sampleFixture": true
+    }
+  ]
+}

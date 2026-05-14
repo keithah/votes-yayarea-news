@@ -1,0 +1,13 @@
+{
+  "collections": [
+    {
+      "id": "col-launch-races",
+      "slug": "launch-races",
+      "title": "Launch races",
+      "kind": "race",
+      "status": "draft",
+      "description": "Initial static-export race collection for v1 launch validation.",
+      "raceIds": ["race-mayor"]
+    }
+  ]
+}

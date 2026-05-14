@@ -1,0 +1,22 @@
+{
+  "entities": [
+    {
+      "id": "ent-sample-candidate-a",
+      "slug": "sample-candidate-a",
+      "name": "Sample Candidate A",
+      "kind": "candidate",
+      "status": "draft",
+      "description": "Invented fixture candidate for validating the public data contract; not an official 2026 candidate claim.",
+      "sampleFixture": true
+    },
+    {
+      "id": "ent-sample-candidate-b",
+      "slug": "sample-candidate-b",
+      "name": "Sample Candidate B",
+      "kind": "candidate",
+      "status": "draft",
+      "description": "Invented fixture candidate for validating the public data contract; not an official 2026 candidate claim.",
+      "sampleFixture": true
+    }
+  ]
+}
