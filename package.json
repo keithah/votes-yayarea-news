@@ -9,7 +9,7 @@
     "build": "next build",
     "typecheck": "tsc --noEmit",
     "validate-data": "tsx scripts/validate-data.ts",
-    "test:data": "node --import tsx --test tests/data/validate-data.test.ts"
+    "test:data": "node --import tsx --test tests/data/*.test.ts"
   },
   "dependencies": {
     "next": "^16.0.0",

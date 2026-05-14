@@ -1,0 +1,13 @@
+{
+  "race": {
+    "positions": [
+      {
+        "id": "pos-chronicle-candidate-a",
+        "label": "Sample display label override for Candidate A"
+      }
+    ],
+    "summary": {
+      "text": "Sample summary after local manual review override; still not a public 2026 election claim."
+    }
+  }
+}
