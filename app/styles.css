@@ -81,3 +81,83 @@ code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-weight: 700;
 }
+
+.debug-shell {
+  max-width: 64rem;
+  padding: clamp(2rem, 6vw, 5rem);
+}
+
+.debug-header {
+  max-width: 48rem;
+  margin-bottom: 2rem;
+}
+
+.debug-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+}
+
+.debug-facts div,
+.debug-card {
+  border: 1px solid #d7cec1;
+  border-radius: 1rem;
+  background: #fffaf2;
+}
+
+.debug-facts div {
+  padding: 0.85rem;
+}
+
+.debug-facts dt {
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.debug-facts dd {
+  margin: 0.25rem 0 0;
+  font-weight: 800;
+}
+
+.debug-card {
+  margin-top: 1rem;
+  padding: 1.25rem;
+}
+
+.debug-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.debug-table th,
+.debug-table td {
+  padding: 0.65rem 0;
+  border-top: 1px solid #eadfce;
+  text-align: left;
+}
+
+.debug-table td {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.debug-list {
+  padding-left: 1.25rem;
+}
+
+.debug-list li + li {
+  margin-top: 0.7rem;
+}
+
+.evidence-list p {
+  margin: 0.35rem 0;
+}
+
+.evidence-list a {
+  color: #9a3412;
+  overflow-wrap: anywhere;
+}
