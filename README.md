@@ -20,10 +20,22 @@ Current scripts:
 | Command | Purpose |
 |---|---|
 | `pnpm dev` | Start the local Next.js development server. |
+| `pnpm validate-data` | Validate committed public data and local manual overrides, printing checked files and deterministic collection counts. |
+| `pnpm test:data` | Run data contract, loader, and debug-route tests. |
 | `pnpm typecheck` | Run TypeScript without emitting build output. |
 | `pnpm build` | Build the static Next.js export. |
+| `pnpm verify:s02` | Run the full S02 data skeleton verification, including static export checks for the sample mayor debug route. |
 
-Future slices are expected to add validation, lint, test, data, language-guard, and deploy checks. When those scripts exist, task close-out should include the relevant checks before launch claims.
+## S02 data skeleton
+
+The current data boundary is committed, local, and build-time only:
+
+- `data/public/` contains canonical public JSON fixtures for sources, entities, collections, and race data.
+- `manual/overrides/` contains local manual-review overrides that are merged after canonical validation.
+- `lib/data/` contains the typed data contract, validator, and static loaders used by tests and routes.
+- `pnpm validate-data` validates canonical fixtures and merged override output, printing checked paths plus source/entity/collection/race/position/evidence counts.
+- `pnpm test:data` runs the data validator, loader, and debug-route tests.
+- After `pnpm build`, `/debug/races/mayor/` is exported to `out/debug/races/mayor/index.html` as the sample race data debug page.
 
 ## Static-export constraints
 
