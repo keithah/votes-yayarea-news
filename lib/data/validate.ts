@@ -214,6 +214,9 @@ function validatePosition(position: Position, basePath: string, race: Race, sour
   if (isPubliclyVisible(position) && (position.evidence?.length ?? 0) === 0) {
     addIssue(issues, `${basePath}.evidence`, "missing_evidence", "Visible positions must include at least one evidence record");
   }
+  if (isPubliclyVisible(position)) {
+    position.evidence?.forEach((evidence, evidenceIndex) => validatePublicEvidenceProvenance(evidence, `${basePath}.evidence[${evidenceIndex}]`, issues));
+  }
 }
 
 function validateEvidence(evidence: Evidence, basePath: string, raceIds: Set<string>, sourceIds: Set<string>, entityIds: Set<string>, issues: ValidationIssue[]): void {
@@ -221,9 +224,21 @@ function validateEvidence(evidence: Evidence, basePath: string, raceIds: Set<str
   requireReference(evidence.sourceId, `${basePath}.sourceId`, sourceIds, "Source", issues);
   if (evidence.entityId !== undefined) requireReference(evidence.entityId, `${basePath}.entityId`, entityIds, "Entity", issues);
   if (evidence.raceId !== undefined) requireReference(evidence.raceId, `${basePath}.raceId`, raceIds, "Race", issues);
+  if (evidence.artifactId !== undefined) requireKebab(evidence.artifactId, `${basePath}.artifactId`, issues);
+  if (evidence.chunkId !== undefined) requireKebab(evidence.chunkId, `${basePath}.chunkId`, issues);
   requireString(evidence.quote, `${basePath}.quote`, issues);
   requireEnum(evidence.kind, EVIDENCE_KINDS, `${basePath}.kind`, issues);
   validateUrl(evidence.url, `${basePath}.url`, issues);
+}
+
+function validatePublicEvidenceProvenance(evidence: Evidence, basePath: string, issues: ValidationIssue[]): void {
+  if (evidence.artifactId === undefined && evidence.chunkId === undefined) return;
+  if (evidence.artifactId === undefined) {
+    addIssue(issues, `${basePath}.artifactId`, "missing_provenance", "Public extraction evidence with chunk provenance must include artifactId");
+  }
+  if (evidence.chunkId === undefined) {
+    addIssue(issues, `${basePath}.chunkId`, "missing_provenance", "Public extraction evidence with artifact provenance must include chunkId");
+  }
 }
 
 function validateDuplicates<T extends object>(items: T[], basePath: string, key: string, issues: ValidationIssue[]): void {

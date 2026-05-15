@@ -268,7 +268,7 @@ function toPublicPosition(position: ReviewedPosition): Position {
     label: position.label,
     ...(position.rationale ? { rationale: position.rationale } : {}),
     evidenceIds: position.evidenceIds,
-    evidence: position.evidence.map(({ positionId: _positionId, chunkId: _chunkId, ...evidence }) => evidence),
+    evidence: position.evidence.map(({ positionId: _positionId, ...evidence }) => evidence),
   };
 }
 

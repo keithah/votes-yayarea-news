@@ -24,3 +24,21 @@
 ## Review and publication rules
 
 Production records must be source-backed and reviewed before public display. A position, summary, or race may be present as `draft`, but anything publicly visible must be reviewed/verified/published and include source-backed evidence. Sample fixture records in this repository are explicitly marked with `sampleFixture: true` and are not official 2026 election claims.
+
+## S04 extraction provenance and loader gating
+
+LLM-generated extraction output is never a public loader input. Generated drafts live under `data/extracted/`, local review state lives under `manual/reviews/`, and the static public loaders read only canonical `data/public/` plus reviewed records copied into `manual/overrides/` by the review publish workflow.
+
+Public loader visibility requires both gates:
+
+- `status` is `verified` or `published`.
+- `publicationStatus` is `public`.
+
+Records that are only `reviewed`, still `draft`, or `verified` but `hidden` are filtered before public output. Summary and theme `evidenceIds` are also trimmed to evidence attached to positions that survived the public filter.
+
+Evidence produced by the extraction review workflow carries optional provenance fields:
+
+- `artifactId` — source artifact used during extraction.
+- `chunkId` — source chunk containing the quoted evidence.
+
+Canonical hand-authored evidence can omit those fields for compatibility. If public evidence includes either provenance field, validation requires both fields to be present and kebab-case so malformed or partially copied extraction evidence fails during the `merged` or `public-filter` loader phase instead of leaking downstream.

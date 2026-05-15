@@ -100,6 +100,7 @@ export interface Evidence {
   entityId?: string;
   raceId?: string;
   artifactId?: string;
+  chunkId?: string;
   url: string;
   kind: EvidenceKind;
   quote: string;

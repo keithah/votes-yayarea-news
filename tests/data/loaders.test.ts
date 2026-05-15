@@ -38,7 +38,7 @@ test("missing override file is allowed", async () => {
   assert.equal(loaded.race.positions[0].label, "Sample endorsement for Candidate A");
 });
 
-test("public race loader filters hidden draft and merely reviewed records", async () => {
+test("public race loader filters hidden draft, reviewed, and verified-hidden records", async () => {
   const fixture = await createFixture();
   await writeOverride(fixture.overridesDir, {
     race: {
@@ -55,10 +55,39 @@ test("public race loader filters hidden draft and merely reviewed records", asyn
           status: "reviewed",
           publicationStatus: "public",
         },
+        {
+          id: "pos-hidden-verified-candidate-b",
+          raceId: "race-mayor",
+          sourceId: "src-growsf",
+          entityId: "ent-sample-candidate-b",
+          kind: "endorse",
+          status: "verified",
+          publicationStatus: "hidden",
+          label: "Hidden verified generated draft",
+          evidenceIds: ["ev-hidden-verified-candidate-b"],
+          evidence: [
+            {
+              id: "ev-hidden-verified-candidate-b",
+              sourceId: "src-growsf",
+              entityId: "ent-sample-candidate-b",
+              raceId: "race-mayor",
+              url: "https://growsf.org/voter-guide/sample-2026/mayor",
+              kind: "quote",
+              quote: "Hidden verified fixture evidence must not become public.",
+            },
+          ],
+        },
+      ],
+      themes: [
+        {
+          id: "theme-sample-housing",
+          evidenceIds: ["ev-chronicle-candidate-a", "ev-growsf-candidate-b", "ev-hidden-verified-candidate-b"],
+        },
       ],
       summary: {
         status: "verified",
         publicationStatus: "public",
+        evidenceIds: ["ev-chronicle-candidate-a", "ev-growsf-candidate-b", "ev-hidden-verified-candidate-b"],
       },
     },
   });
@@ -69,6 +98,7 @@ test("public race loader filters hidden draft and merely reviewed records", asyn
   assert.equal(loaded.race.status, "verified");
   assert.equal(loaded.race.publicationStatus, "public");
   assert.deepEqual(loaded.race.positions.map((position) => position.id), ["pos-chronicle-candidate-a"]);
+  assert.deepEqual(loaded.race.themes?.[0]?.evidenceIds, ["ev-chronicle-candidate-a"]);
   assert.deepEqual(loaded.race.summary?.evidenceIds, ["ev-chronicle-candidate-a"]);
 });
 

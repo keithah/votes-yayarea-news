@@ -96,14 +96,18 @@ function filterPublicRace(race: Race): Race {
 
 function filterPublicThemes(themes: Theme[] | undefined, publicEvidenceIds: Set<string>): Theme[] {
   return (themes ?? [])
-    .map((theme) => ({ ...theme, evidenceIds: theme.evidenceIds.filter((evidenceId) => publicEvidenceIds.has(evidenceId)) }))
+    .map((theme) => ({ ...theme, evidenceIds: uniquePublicEvidenceIds(theme.evidenceIds, publicEvidenceIds) }))
     .filter((theme) => theme.evidenceIds.length > 0);
 }
 
 function filterPublicSummary(summary: Summary | undefined, publicEvidenceIds: Set<string>): Summary | undefined {
   if (!summary || !isPublicRecord(summary)) return undefined;
-  const evidenceIds = summary.evidenceIds.filter((evidenceId) => publicEvidenceIds.has(evidenceId));
+  const evidenceIds = uniquePublicEvidenceIds(summary.evidenceIds, publicEvidenceIds);
   return evidenceIds.length > 0 ? { ...summary, evidenceIds } : undefined;
+}
+
+function uniquePublicEvidenceIds(evidenceIds: string[], publicEvidenceIds: Set<string>): string[] {
+  return [...new Set(evidenceIds.filter((evidenceId) => publicEvidenceIds.has(evidenceId)))];
 }
 
 function isPublicRecord(record: { status: ReviewStatus; publicationStatus?: string }): boolean {
