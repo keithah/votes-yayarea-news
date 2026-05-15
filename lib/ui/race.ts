@@ -27,6 +27,107 @@ export interface RaceUiModel {
   placeholders: PlaceholderReadiness;
 }
 
+export type RecommendationMatrixCellState = "position" | "no-public-position";
+export type RecommendationMatrixFilterPositionKind = PositionKind | "no-public-position";
+
+export interface RecommendationMatrixModel {
+  raceId: string;
+  raceSlug: string;
+  candidates: RecommendationMatrixCandidate[];
+  sources: RecommendationMatrixSource[];
+  groups: RecommendationMatrixSourceGroup[];
+  cells: Record<string, RecommendationMatrixCell>;
+  defaultSort: RecommendationMatrixSortMetadata;
+  defaultGrouping: RecommendationMatrixGroupingMetadata;
+  filters: RecommendationMatrixFilterMetadata;
+  empty: boolean;
+}
+
+export interface RecommendationMatrixCandidate {
+  id: string;
+  slug: string;
+  name: string;
+  positionCount: number;
+  evidenceCount: number;
+}
+
+export interface RecommendationMatrixSource {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  sourceType: string;
+  positionCount: number;
+  evidenceCount: number;
+}
+
+export interface RecommendationMatrixSourceGroup {
+  id: string;
+  sourceType: string;
+  label: string;
+  sourceIds: string[];
+  sourceCount: number;
+  positionCount: number;
+  evidenceCount: number;
+}
+
+export interface RecommendationMatrixCell {
+  id: string;
+  key: string;
+  sourceId: string;
+  entityId: string;
+  state: RecommendationMatrixCellState;
+  positionKind?: PositionKind;
+  positionKindLabel: string;
+  label: string;
+  positionIds: string[];
+  evidenceCount: number;
+  evidenceIds: string[];
+  evidence: RecommendationMatrixEvidence[];
+}
+
+export interface RecommendationMatrixEvidence {
+  id: string;
+  sourceId: string;
+  entityId?: string;
+  raceId?: string;
+  artifactId?: string;
+  chunkId?: string;
+  url: string;
+  kind: Evidence["kind"];
+  quote: string;
+  capturedAt?: string;
+}
+
+export interface RecommendationMatrixSortMetadata {
+  key: "source-type-then-name";
+  label: string;
+  description: string;
+}
+
+export interface RecommendationMatrixGroupingMetadata {
+  key: "sourceType";
+  label: string;
+}
+
+export interface RecommendationMatrixFilterMetadata {
+  sourceTypes: RecommendationMatrixSourceTypeFilterOption[];
+  positionKinds: RecommendationMatrixPositionKindFilterOption[];
+}
+
+export interface RecommendationMatrixSourceTypeFilterOption {
+  value: string;
+  label: string;
+  sourceCount: number;
+  cellCount: number;
+}
+
+export interface RecommendationMatrixPositionKindFilterOption {
+  value: RecommendationMatrixFilterPositionKind;
+  label: string;
+  cellCount: number;
+}
+
 export interface RaceEntityCard {
   id: string;
   slug: string;
@@ -106,6 +207,16 @@ export interface PlaceholderReadiness {
 
 const POSITION_KINDS: PositionKind[] = ["endorse", "oppose", "rank", "no-position", "informational"];
 const CONSENSUS_KIND: PositionKind = "endorse";
+const NO_PUBLIC_POSITION_KIND = "no-public-position" as const;
+
+const POSITION_KIND_LABELS: Record<RecommendationMatrixFilterPositionKind, string> = {
+  endorse: "Endorse",
+  oppose: "Oppose",
+  rank: "Ranked choice",
+  "no-position": "No position",
+  informational: "Informational",
+  "no-public-position": "No public position",
+};
 
 export function buildRaceUiModel(input: PublicRaceUiInput): RaceUiModel {
   const race = input.race;
@@ -161,6 +272,187 @@ export function buildRaceUiModel(input: PublicRaceUiInput): RaceUiModel {
       drilldownReady: candidates.length > 0 || sources.length > 0,
     },
   };
+}
+
+export function buildRecommendationMatrixModel(ui: RaceUiModel): RecommendationMatrixModel {
+  const candidates = ui.candidates
+    .map((candidate) => ({
+      id: candidate.id,
+      slug: candidate.slug,
+      name: candidate.name,
+      positionCount: candidate.positionCount,
+      evidenceCount: candidate.evidenceCount,
+    }))
+    .sort(compareByNameThenId);
+
+  const sources = ui.sources
+    .map((source) => ({
+      id: source.id,
+      slug: source.slug,
+      name: source.name,
+      category: source.category,
+      sourceType: source.sourceType,
+      positionCount: source.positionCount,
+      evidenceCount: source.evidenceCount,
+    }))
+    .sort(compareSourcesForMatrix);
+
+  const positionsByCellKey = groupPositionsByCellKey(ui.positions);
+  const cells: Record<string, RecommendationMatrixCell> = {};
+
+  sources.forEach((source) => {
+    candidates.forEach((candidate) => {
+      const key = matrixCellKey(source.id, candidate.id);
+      const positions = positionsByCellKey.get(key) ?? [];
+      cells[key] = buildRecommendationMatrixCell(source.id, candidate.id, positions);
+    });
+  });
+
+  return {
+    raceId: ui.race.id,
+    raceSlug: ui.race.slug,
+    candidates,
+    sources,
+    groups: buildRecommendationMatrixGroups(sources),
+    cells,
+    defaultSort: {
+      key: "source-type-then-name",
+      label: "Source type, then source name",
+      description: "Groups rows by source type and sorts sources alphabetically within each group.",
+    },
+    defaultGrouping: {
+      key: "sourceType",
+      label: "Source type",
+    },
+    filters: buildRecommendationMatrixFilters(sources, candidates, cells),
+    empty: candidates.length === 0 || sources.length === 0,
+  };
+}
+
+function groupPositionsByCellKey(positions: RacePositionCard[]): Map<string, RacePositionCard[]> {
+  return positions.reduce<Map<string, RacePositionCard[]>>((groups, position) => {
+    const key = matrixCellKey(position.sourceId, position.entityId);
+    const group = groups.get(key) ?? [];
+    group.push(position);
+    group.sort((left, right) => left.id.localeCompare(right.id));
+    groups.set(key, group);
+    return groups;
+  }, new Map());
+}
+
+function buildRecommendationMatrixCell(sourceId: string, entityId: string, positions: RacePositionCard[]): RecommendationMatrixCell {
+  const key = matrixCellKey(sourceId, entityId);
+  if (positions.length === 0) {
+    return {
+      id: `cell:${key}`,
+      key,
+      sourceId,
+      entityId,
+      state: "no-public-position",
+      positionKindLabel: POSITION_KIND_LABELS[NO_PUBLIC_POSITION_KIND],
+      label: POSITION_KIND_LABELS[NO_PUBLIC_POSITION_KIND],
+      positionIds: [],
+      evidenceCount: 0,
+      evidenceIds: [],
+      evidence: [],
+    };
+  }
+
+  const primaryPosition = positions[0];
+  const evidence = positions.flatMap((position) => position.evidence).map((item) => ({ ...item }));
+
+  return {
+    id: `cell:${key}`,
+    key,
+    sourceId,
+    entityId,
+    state: "position",
+    positionKind: primaryPosition.kind,
+    positionKindLabel: POSITION_KIND_LABELS[primaryPosition.kind],
+    label: primaryPosition.label,
+    positionIds: positions.map((position) => position.id),
+    evidenceCount: evidence.length,
+    evidenceIds: evidence.map((item) => item.id),
+    evidence,
+  };
+}
+
+function buildRecommendationMatrixGroups(sources: RecommendationMatrixSource[]): RecommendationMatrixSourceGroup[] {
+  const bySourceType = sources.reduce<Map<string, RecommendationMatrixSourceGroup>>((groups, source) => {
+    const existing = groups.get(source.sourceType) ?? {
+      id: `source-type:${slugifyMatrixId(source.sourceType)}`,
+      sourceType: source.sourceType,
+      label: source.sourceType,
+      sourceIds: [],
+      sourceCount: 0,
+      positionCount: 0,
+      evidenceCount: 0,
+    };
+    existing.sourceIds.push(source.id);
+    existing.sourceCount += 1;
+    existing.positionCount += source.positionCount;
+    existing.evidenceCount += source.evidenceCount;
+    groups.set(source.sourceType, existing);
+    return groups;
+  }, new Map());
+
+  return Array.from(bySourceType.values()).sort((left, right) => left.sourceType.localeCompare(right.sourceType));
+}
+
+function buildRecommendationMatrixFilters(
+  sources: RecommendationMatrixSource[],
+  candidates: RecommendationMatrixCandidate[],
+  cells: Record<string, RecommendationMatrixCell>,
+): RecommendationMatrixFilterMetadata {
+  const sourceTypes = buildSourceTypeFilterOptions(sources, candidates.length);
+  const positionKindCounts = new Map<RecommendationMatrixFilterPositionKind, number>();
+
+  Object.values(cells).forEach((cell) => {
+    const kind = cell.positionKind ?? NO_PUBLIC_POSITION_KIND;
+    positionKindCounts.set(kind, (positionKindCounts.get(kind) ?? 0) + 1);
+  });
+
+  const positionKinds = ([...POSITION_KINDS, NO_PUBLIC_POSITION_KIND] as RecommendationMatrixFilterPositionKind[])
+    .filter((value) => positionKindCounts.has(value))
+    .map((value) => ({ value, label: POSITION_KIND_LABELS[value], cellCount: positionKindCounts.get(value) ?? 0 }));
+
+  return { sourceTypes, positionKinds };
+}
+
+function buildSourceTypeFilterOptions(sources: RecommendationMatrixSource[], candidateCount: number): RecommendationMatrixSourceTypeFilterOption[] {
+  const bySourceType = sources.reduce<Map<string, RecommendationMatrixSourceTypeFilterOption>>((options, source) => {
+    const existing = options.get(source.sourceType) ?? {
+      value: source.sourceType,
+      label: source.sourceType,
+      sourceCount: 0,
+      cellCount: 0,
+    };
+    existing.sourceCount += 1;
+    existing.cellCount += candidateCount;
+    options.set(source.sourceType, existing);
+    return options;
+  }, new Map());
+
+  return Array.from(bySourceType.values()).sort((left, right) => left.label.localeCompare(right.label));
+}
+
+function matrixCellKey(sourceId: string, entityId: string): string {
+  return `${sourceId}::${entityId}`;
+}
+
+function compareByNameThenId<T extends { id: string; name: string }>(left: T, right: T): number {
+  return left.name.localeCompare(right.name) || left.id.localeCompare(right.id);
+}
+
+function compareSourcesForMatrix(left: RecommendationMatrixSource, right: RecommendationMatrixSource): number {
+  return left.sourceType.localeCompare(right.sourceType) || compareByNameThenId(left, right);
+}
+
+function slugifyMatrixId(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function buildEntityCard(entity: Entity, positions: Position[]): RaceEntityCard {
