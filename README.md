@@ -36,6 +36,7 @@ Current scripts:
 | `pnpm verify:s03` | Run the full S03 ingestion verification: ingestion tests, representative fixture ingestion, ingestion validation, public data validation, typecheck, static build, and generated diagnostics checks. |
 | `pnpm verify:s04` | Run the full S04 extraction/review/publication verification: deterministic extraction, validation, review publish, public data validation, extraction/loader tests, typecheck, static build, and artifact coherence checks. |
 | `pnpm verify:s05` | Run the full S05 public static UI verification: public data validation, data/UI route tests, typecheck, static build, and homepage-to-mayor export smoke checks. |
+| `pnpm verify:s06` | Run the full S06 recommendation matrix verification: public data validation, matrix model and route tests, typecheck, static build, and mayor matrix HTML assertions. |
 
 ## S02 data skeleton
 
@@ -135,6 +136,25 @@ Expected browser smoke path after `pnpm build` or `pnpm verify:s05`:
 3. Confirm the race page shows the race header, consensus snapshot, source-type breakdown, candidate/source modules, light/dark theme styling, and placeholders for comparison matrix, receipts drawer, AI disclosure, and future drill-down pages.
 
 These S05 placeholders are intentional. They prove data is available for later slices without claiming the S06 matrix, S07 receipts, AI disclosure page, or entity/source drill-down pages are complete.
+
+### S06 recommendation matrix
+
+S06 replaces the S05 comparison-matrix placeholder with a static-export-compatible recommendation matrix. The closeout command is:
+
+```bash
+pnpm verify:s06
+```
+
+`pnpm verify:s06` is local, credential-free, and network-free. It prints each verification phase before running it, stops at the first failing phase, and runs public data validation, data/model/route tests, TypeScript typecheck, the static Next.js build, and `scripts/assert-s06-export.mjs` against the exported mayor race page.
+
+The export assertions intentionally check the user-visible and diagnostic contract rather than implementation internals: the matrix heading, desktop table and caption, presentation controls, mobile recommendation card labels, source-type grouping, neutral `No public position` missing-cell copy, evidence count text, stable matrix cell attributes, and absence of the old S05 placeholder copy.
+
+Expected browser smoke path after `pnpm build` or `pnpm verify:s06`:
+
+1. Open `/races/mayor/`.
+2. Confirm the recommendation matrix shows the source-by-candidate heading and presentation controls for source type, candidate focus, position focus, sorting, and grouping.
+3. On desktop width, confirm the table groups rows by source type and includes explicit neutral cells for source/candidate pairs with no public position.
+4. On mobile width, confirm candidate cards stack source cards with source labels, position badges, and evidence counts.
 
 ## Static-export constraints
 
