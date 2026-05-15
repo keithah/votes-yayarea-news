@@ -1,0 +1,157 @@
+{
+  "id": "run-20260515021235",
+  "status": "complete",
+  "startedAt": "2026-05-15T02:12:35.906Z",
+  "completedAt": "2026-05-15T02:12:35.914Z",
+  "phases": [
+    {
+      "phase": "manifest",
+      "status": "running",
+      "message": "Loading ingestion manifest."
+    },
+    {
+      "phase": "manifest",
+      "status": "complete",
+      "message": "Loaded 2 targets."
+    },
+    {
+      "phase": "fetch",
+      "status": "complete",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "message": "Captured src-sf-chronicle."
+    },
+    {
+      "phase": "clean",
+      "status": "complete",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "message": "Cleaned src-sf-chronicle."
+    },
+    {
+      "phase": "chunk",
+      "status": "complete",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "message": "Created 1 chunks for src-sf-chronicle."
+    },
+    {
+      "phase": "write",
+      "status": "complete",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "message": "Wrote ingestion artifacts for src-sf-chronicle."
+    },
+    {
+      "phase": "fetch",
+      "status": "complete",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-mayor-sample",
+      "message": "Captured src-growsf."
+    },
+    {
+      "phase": "clean",
+      "status": "complete",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-mayor-sample",
+      "message": "Cleaned src-growsf."
+    },
+    {
+      "phase": "chunk",
+      "status": "complete",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-mayor-sample",
+      "message": "Created 1 chunks for src-growsf."
+    },
+    {
+      "phase": "write",
+      "status": "complete",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-mayor-sample",
+      "message": "Wrote ingestion artifacts for src-growsf."
+    }
+  ],
+  "targets": [
+    {
+      "targetId": "fixture-sf-chronicle-mayor-sample",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "fetchStatus": "skipped",
+      "importStatus": "imported",
+      "rawPath": "data/ingested/raw/src-sf-chronicle-mayor-sample.html",
+      "cleanPath": "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
+      "chunkPath": "data/ingested/chunks/src-sf-chronicle-mayor-sample.json"
+    },
+    {
+      "targetId": "fixture-growsf-mayor-sample",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-mayor-sample",
+      "fetchStatus": "skipped",
+      "importStatus": "imported",
+      "rawPath": "data/ingested/raw/src-growsf-mayor-sample.html",
+      "cleanPath": "data/ingested/artifacts/src-growsf-mayor-sample.json",
+      "chunkPath": "data/ingested/chunks/src-growsf-mayor-sample.json"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "art-sf-chronicle-mayor-sample",
+      "sourceId": "src-sf-chronicle",
+      "targetId": "fixture-sf-chronicle-mayor-sample",
+      "title": "San Francisco Chronicle mayor guide sample",
+      "url": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
+      "status": "chunked",
+      "inputKind": "html",
+      "capturedAt": "2026-05-15T02:12:35.912Z",
+      "rawPath": "data/ingested/raw/src-sf-chronicle-mayor-sample.html",
+      "cleanPath": "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
+      "chunkPath": "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",
+      "text": "Sample Chronicle Mayor Guide\nSample voter guide: San Francisco mayor\nSample fixture notice: this page is representative test content only and is not an official 2026 endorsement.\nThe editorial board describes the mayoral contest as a choice about housing, transit reliability, public safety, and downtown recovery.\nWhat voters should compare\nCandidate A is described in this sample as emphasizing faster housing approvals and clear performance goals for city departments.\nCandidate B is described in this sample as emphasizing neighborhood services, small-business support, and budget oversight.\nThe sample article asks readers to verify claims against official filings, candidate questionnaires, and public debate transcripts before making a decision.",
+      "metadata": {
+        "inputKind": "html",
+        "originalLength": 1537,
+        "normalizedLength": 752,
+        "removedScriptLikeBlocks": 1,
+        "removedStyleLikeBlocks": 1,
+        "removedBoilerplateBlocks": 3,
+        "headingCount": 2,
+        "lowText": false
+      },
+      "issues": []
+    },
+    {
+      "id": "art-growsf-mayor-sample",
+      "sourceId": "src-growsf",
+      "targetId": "fixture-growsf-mayor-sample",
+      "title": "GrowSF mayor guide sample",
+      "url": "https://growsf.org/voter-guide/sample-2026/mayor",
+      "status": "chunked",
+      "inputKind": "html",
+      "capturedAt": "2026-05-15T02:12:35.913Z",
+      "rawPath": "data/ingested/raw/src-growsf-mayor-sample.html",
+      "cleanPath": "data/ingested/artifacts/src-growsf-mayor-sample.json",
+      "chunkPath": "data/ingested/chunks/src-growsf-mayor-sample.json",
+      "text": "Sample GrowSF Mayor Guide\nSample San Francisco mayor recommendations\nThis committed fixture is representative only. It is not a real 2026 recommendation, rating, or voter-guide claim.\nSample priorities\nThe guide text highlights housing abundance, safer streets, reliable public transportation, accountable city operations, and transparent budgeting.\nIn this sample, Candidate A receives a placeholder positive description for permitting reform and public dashboard commitments.\nIn this sample, Candidate B receives a placeholder mixed description for fiscal oversight and a slower approach to housing production.\nReaders are instructed to compare official voter pamphlet statements, candidate websites, public finance records, and debate transcripts.",
+      "metadata": {
+        "inputKind": "html",
+        "originalLength": 1323,
+        "normalizedLength": 750,
+        "removedScriptLikeBlocks": 1,
+        "removedStyleLikeBlocks": 1,
+        "removedBoilerplateBlocks": 2,
+        "headingCount": 2,
+        "lowText": false
+      },
+      "issues": []
+    }
+  ],
+  "counts": {
+    "targets": 2,
+    "artifacts": 2,
+    "chunks": 2,
+    "issues": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "issues": []
+}

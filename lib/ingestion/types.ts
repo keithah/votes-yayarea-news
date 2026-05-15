@@ -14,6 +14,8 @@ export interface IngestionManifest {
   targets: IngestionTarget[];
 }
 
+export type IngestionTargetMode = "fixture" | "url";
+
 export interface IngestionTarget {
   id: KebabCaseId;
   sourceId: KebabCaseId;
@@ -23,6 +25,7 @@ export interface IngestionTarget {
   fixturePath: string;
   canonicalUrl: string;
   sampleFixture: boolean;
+  mode?: IngestionTargetMode;
   notes?: string;
 }
 

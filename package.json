@@ -9,7 +9,9 @@
     "build": "next build",
     "typecheck": "tsc --noEmit",
     "validate-data": "tsx scripts/validate-data.ts",
+    "ingest:sources": "tsx scripts/ingest-sources.ts",
     "test:data": "node --import tsx --test tests/data/*.test.ts",
+    "test:ingestion": "node --import tsx --test tests/ingestion/*.test.ts",
     "verify:s02": "bash scripts/verify-s02.sh"
   },
   "dependencies": {

@@ -1,0 +1,25 @@
+{
+  "id": "art-sf-chronicle-mayor-sample",
+  "sourceId": "src-sf-chronicle",
+  "targetId": "fixture-sf-chronicle-mayor-sample",
+  "title": "San Francisco Chronicle mayor guide sample",
+  "url": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
+  "status": "chunked",
+  "inputKind": "html",
+  "capturedAt": "2026-05-15T02:12:35.912Z",
+  "rawPath": "data/ingested/raw/src-sf-chronicle-mayor-sample.html",
+  "cleanPath": "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
+  "chunkPath": "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",
+  "text": "Sample Chronicle Mayor Guide\nSample voter guide: San Francisco mayor\nSample fixture notice: this page is representative test content only and is not an official 2026 endorsement.\nThe editorial board describes the mayoral contest as a choice about housing, transit reliability, public safety, and downtown recovery.\nWhat voters should compare\nCandidate A is described in this sample as emphasizing faster housing approvals and clear performance goals for city departments.\nCandidate B is described in this sample as emphasizing neighborhood services, small-business support, and budget oversight.\nThe sample article asks readers to verify claims against official filings, candidate questionnaires, and public debate transcripts before making a decision.",
+  "metadata": {
+    "inputKind": "html",
+    "originalLength": 1537,
+    "normalizedLength": 752,
+    "removedScriptLikeBlocks": 1,
+    "removedStyleLikeBlocks": 1,
+    "removedBoilerplateBlocks": 3,
+    "headingCount": 2,
+    "lowText": false
+  },
+  "issues": []
+}
