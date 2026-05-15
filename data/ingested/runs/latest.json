@@ -1,8 +1,8 @@
 {
-  "id": "run-20260515075106",
+  "id": "run-20260515075459",
   "status": "complete",
-  "startedAt": "2026-05-15T07:51:06.520Z",
-  "completedAt": "2026-05-15T07:51:06.526Z",
+  "startedAt": "2026-05-15T07:54:59.001Z",
+  "completedAt": "2026-05-15T07:54:59.008Z",
   "phases": [
     {
       "phase": "manifest",
@@ -64,7 +64,7 @@
       "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
       "status": "chunked",
       "inputKind": "text",
-      "capturedAt": "2026-05-15T07:51:06.525Z",
+      "capturedAt": "2026-05-15T07:54:59.007Z",
       "rawPath": "data/ingested/raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt",
       "cleanPath": "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
       "chunkPath": "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json",

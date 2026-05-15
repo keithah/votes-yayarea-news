@@ -141,11 +141,63 @@ test("CLI writes deterministic coverage report and exits nonzero on coverage err
   const failFixture = await writeFixture({ coverage: coverage([{ sourceId: "src-alpha", status: "pending" }]) });
   const fail = spawnSync(
     process.execPath,
-    ["--import", "tsx", "scripts/report-source-coverage.ts", "--public-sources", failFixture.options.publicSourcesPath, "--manifest", failFixture.options.manifestPath, "--coverage", failFixture.options.coveragePath, "--run", failFixture.options.runPath],
+    [
+      "--import",
+      "tsx",
+      "scripts/report-source-coverage.ts",
+      "--public-sources",
+      failFixture.options.publicSourcesPath,
+      "--manifest",
+      failFixture.options.manifestPath,
+      "--coverage",
+      failFixture.options.coveragePath,
+      "--run",
+      failFixture.options.runPath,
+      "--report",
+      path.join(failFixture.dir, "coverage/fail-latest.json"),
+    ],
     { encoding: "utf8" },
   );
   assert.equal(fail.status, 1);
   assert.match(fail.stderr, /ERROR missing_source_coverage/);
+});
+
+test("canonical S02 manifests and generated diagnostics account for every source without legacy Mayor sample targets", async () => {
+  const [publicSources, manifest, coverage, run, validation, generatedCoverage] = await Promise.all([
+    readJson<{ sources: Array<{ id: string }> }>("data/public/sources.json"),
+    readJson<{ targets: Array<{ id: string; sourceId: string; sampleFixture?: boolean }> }>("data/ingestion/manifest.json"),
+    readJson<{ sources: Array<{ sourceId: string; status: string; targetId?: string }> }>("data/ingestion/source-coverage.json"),
+    readJson<{ targets: Array<{ targetId: string; sourceId: string }> }>("data/ingested/runs/latest.json"),
+    readJson<{ ok: boolean }>("data/ingested/validation/latest.json"),
+    readJson<{ ok: boolean; sources: Array<{ sourceId: string; status: string; runtimeStatus: string; targetId?: string }> }>("data/ingested/coverage/latest.json"),
+  ]);
+
+  const publicSourceIds = publicSources.sources.map((source) => source.id).sort();
+  const coverageSourceIds = coverage.sources.map((source) => source.sourceId).sort();
+  const generatedCoverageSourceIds = generatedCoverage.sources.map((source) => source.sourceId).sort();
+  assert.deepEqual(coverageSourceIds, publicSourceIds, "source-coverage.json must have exactly one row for every public source");
+  assert.deepEqual(generatedCoverageSourceIds, publicSourceIds, "generated coverage/latest.json must account for every public source");
+
+  assert.equal(validation.ok, true, "generated ingestion validation must be passing");
+  assert.equal(generatedCoverage.ok, true, "generated source coverage diagnostics must be passing");
+  assert.equal(manifest.targets.every((target) => target.sampleFixture === false), true, "launch manifest targets must be non-sample");
+
+  const manifestTargetIds = new Set(manifest.targets.map((target) => target.id));
+  for (const row of coverage.sources) {
+    if (row.status === "captured") {
+      assert.ok(row.targetId, `captured coverage row ${row.sourceId} must name a targetId`);
+      assert.equal(manifestTargetIds.has(row.targetId), true, `captured coverage row ${row.sourceId} references unknown target ${row.targetId}`);
+    }
+  }
+
+  const runTargetIds = run.targets.map((target) => target.targetId).sort();
+  assert.deepEqual(runTargetIds, manifest.targets.map((target) => target.id).sort(), "latest run targets must match the launch manifest targets");
+
+  assertNoLegacyMayorSampleLeak("data/ingestion/manifest.json", manifest);
+  assertNoLegacyMayorSampleLeak("data/ingestion/source-coverage.json", coverage);
+  assertNoLegacyMayorSampleLeak("data/ingested/runs/latest.json", run);
+  assertNoLegacyMayorSampleLeak("data/ingested/validation/latest.json", validation);
+  assertNoLegacyMayorSampleLeak("data/ingested/coverage/latest.json", generatedCoverage);
 });
 
 interface FixtureInput {
@@ -227,6 +279,19 @@ function runSummary(targets: IngestionRunSummary["targets"]): IngestionRunSummar
 
 async function writeJson(filePath: string, value: unknown): Promise<void> {
   await writeFileWithParents(filePath, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+async function readJson<T>(filePath: string): Promise<T> {
+  return JSON.parse(await readFile(filePath, "utf8")) as T;
+}
+
+function assertNoLegacyMayorSampleLeak(label: string, value: unknown): void {
+  const serialized = JSON.stringify(value);
+  assert.doesNotMatch(
+    serialized,
+    /fixture-sf-chronicle-mayor-sample|fixture-growsf-mayor-sample|src-sf-chronicle-mayor-sample|src-growsf-mayor-sample|mayor-sample|sample-voter-guide|sample-2026|race-mayor|ent-sample-candidate/i,
+    `${label} references legacy Mayor sample fixture content`,
+  );
 }
 
 async function writeFileWithParents(filePath: string, body: string): Promise<void> {
