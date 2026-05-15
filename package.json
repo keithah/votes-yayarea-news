@@ -19,7 +19,8 @@
     "test:extraction": "node --import tsx --test tests/extraction/*.test.ts",
     "verify:s02": "bash scripts/verify-s02.sh",
     "verify:s03": "bash scripts/verify-s03.sh",
-    "verify:s04": "bash scripts/verify-s04.sh"
+    "verify:s04": "bash scripts/verify-s04.sh",
+    "verify:s05": "bash scripts/verify-s05.sh"
   },
   "dependencies": {
     "next": "^16.0.0",

@@ -35,6 +35,7 @@ Current scripts:
 | `pnpm verify:s02` | Run the full S02 data skeleton verification, including static export checks for the sample mayor debug route. |
 | `pnpm verify:s03` | Run the full S03 ingestion verification: ingestion tests, representative fixture ingestion, ingestion validation, public data validation, typecheck, static build, and generated diagnostics checks. |
 | `pnpm verify:s04` | Run the full S04 extraction/review/publication verification: deterministic extraction, validation, review publish, public data validation, extraction/loader tests, typecheck, static build, and artifact coherence checks. |
+| `pnpm verify:s05` | Run the full S05 public static UI verification: public data validation, data/UI route tests, typecheck, static build, and homepage-to-mayor export smoke checks. |
 
 ## S02 data skeleton
 
@@ -116,6 +117,24 @@ Common failure modes:
 - Publication validation failures: inspect `pnpm review:positions publish --race-slug mayor` output and `manual/reviews/races/mayor.json` before changing overrides directly.
 
 S05 should consume only the validated public-loader surface (`data/public/` plus `manual/overrides/`), not hidden extraction drafts or review staging files.
+
+### S05 public static UI
+
+S05 renders the first public-facing static UI layer: the homepage, public race route shell, visible consensus/source-type counts, theme-aware styling, and clearly labeled placeholders for later matrix, receipts, AI disclosure, and drill-down surfaces. The closeout command is:
+
+```bash
+pnpm verify:s05
+```
+
+`pnpm verify:s05` is local, credential-free, and network-free. It validates public data, runs the data and public route model tests (including unknown slug and zero-position boundaries), typechecks, builds the static export, and asserts that both `out/index.html` and `out/races/mayor/index.html` contain the expected public UI shell text.
+
+Expected browser smoke path after `pnpm build` or `pnpm verify:s05`:
+
+1. Open `/` and confirm the homepage lists the San Francisco Mayor public race card with source/evidence/candidate counts.
+2. Follow the Mayor card to `/races/mayor/`.
+3. Confirm the race page shows the race header, consensus snapshot, source-type breakdown, candidate/source modules, light/dark theme styling, and placeholders for comparison matrix, receipts drawer, AI disclosure, and future drill-down pages.
+
+These S05 placeholders are intentional. They prove data is available for later slices without claiming the S06 matrix, S07 receipts, AI disclosure page, or entity/source drill-down pages are complete.
 
 ## Static-export constraints
 
