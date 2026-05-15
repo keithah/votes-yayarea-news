@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "runId": "run-20260515024247",
+  "provider": {
+    "provider": "fixture",
+    "model": "fixture-v1"
+  },
+  "positions": [
+    {
+      "id": "pos-sf-chronicle-sample-candidate-a-1",
+      "raceId": "race-mayor",
+      "sourceId": "src-sf-chronicle",
+      "entityId": "ent-sample-candidate-a",
+      "kind": "endorse",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft extracted positive signal for Candidate A",
+      "rationale": "The sample text describes Candidate A with a positive policy emphasis.",
+      "evidenceIds": [
+        "ev-sf-chronicle-sample-candidate-a-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T02:42:47.680Z"
+    },
+    {
+      "id": "pos-growsf-sample-candidate-b-1",
+      "raceId": "race-mayor",
+      "sourceId": "src-growsf",
+      "entityId": "ent-sample-candidate-b",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft extracted mixed signal for Candidate B",
+      "rationale": "The sample text describes Candidate B with a mixed placeholder description.",
+      "evidenceIds": [
+        "ev-growsf-sample-candidate-b-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T02:42:47.680Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-sf-chronicle-sample-candidate-a-1-1",
+      "positionId": "pos-sf-chronicle-sample-candidate-a-1",
+      "raceId": "race-mayor",
+      "sourceId": "src-sf-chronicle",
+      "entityId": "ent-sample-candidate-a",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "chunkId": "art-sf-chronicle-mayor-sample-chunk-001",
+      "url": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
+      "kind": "quote",
+      "quote": "Candidate A is described in this sample as emphasizing faster housing approvals and clear performance goals for city departments."
+    },
+    {
+      "id": "ev-growsf-sample-candidate-b-1-1",
+      "positionId": "pos-growsf-sample-candidate-b-1",
+      "raceId": "race-mayor",
+      "sourceId": "src-growsf",
+      "entityId": "ent-sample-candidate-b",
+      "artifactId": "art-growsf-mayor-sample",
+      "chunkId": "art-growsf-mayor-sample-chunk-001",
+      "url": "https://growsf.org/voter-guide/sample-2026/mayor",
+      "kind": "quote",
+      "quote": "In this sample, Candidate B receives a placeholder mixed description for fiscal oversight and a slower approach to housing production."
+    }
+  ]
+}

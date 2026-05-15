@@ -1,0 +1,57 @@
+{
+  "id": "run-20260515024247",
+  "status": "complete",
+  "provider": {
+    "provider": "fixture",
+    "model": "fixture-v1"
+  },
+  "promptVersion": "position-extraction-v1",
+  "startedAt": "2026-05-15T02:42:47.680Z",
+  "completedAt": "2026-05-15T02:42:47.690Z",
+  "durationMs": 10,
+  "inputs": [
+    {
+      "id": "input-mayor-src-sf-chronicle",
+      "raceId": "race-mayor",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "chunkIds": [
+        "art-sf-chronicle-mayor-sample-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-mayor-src-growsf",
+      "raceId": "race-mayor",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-mayor-sample",
+      "chunkIds": [
+        "art-growsf-mayor-sample-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    }
+  ],
+  "counts": {
+    "inputs": 2,
+    "positions": 2,
+    "evidence": 2,
+    "issues": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "outputPath": "data/extracted/drafts/latest.json",
+  "validationPath": "data/extracted/validation/latest.json",
+  "issues": [],
+  "phases": [
+    {
+      "inputId": "input-mayor-src-sf-chronicle",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-mayor-src-growsf",
+      "status": "complete",
+      "issueCodes": []
+    }
+  ]
+}

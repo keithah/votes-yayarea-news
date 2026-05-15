@@ -11,6 +11,8 @@
     "validate-data": "tsx scripts/validate-data.ts",
     "validate-ingestion": "tsx scripts/validate-ingestion.ts",
     "ingest:sources": "tsx scripts/ingest-sources.ts",
+    "extract:positions": "tsx scripts/extract-positions.ts",
+    "validate-extraction": "tsx scripts/validate-extraction.ts",
     "test:data": "node --import tsx --test tests/data/*.test.ts",
     "test:ingestion": "node --import tsx --test tests/ingestion/*.test.ts",
     "test:extraction": "node --import tsx --test tests/extraction/*.test.ts",
