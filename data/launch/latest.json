@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "slice": "S09",
   "generatedBy": "scripts/record-s09-launch-gates.mjs",
-  "buildTimestamp": "2026-05-15T04:48:03.714Z",
+  "buildTimestamp": "2026-05-15T04:54:29.285Z",
   "overallStatus": "pass",
   "checkedRoutes": [
     {
@@ -34,7 +34,7 @@
           "route": "/",
           "exportPath": "out/index.html",
           "status": "pass",
-          "htmlBytes": 20621,
+          "htmlBytes": 20664,
           "hasTitle": true,
           "hasCanonical": true
         },
@@ -66,7 +66,7 @@
           "route": "/sources/san-francisco-chronicle-editorial-board/",
           "exportPath": "out/sources/san-francisco-chronicle-editorial-board/index.html",
           "status": "pass",
-          "htmlBytes": 26574,
+          "htmlBytes": 26531,
           "hasTitle": true,
           "hasCanonical": true
         }

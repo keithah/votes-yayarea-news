@@ -17,8 +17,9 @@ run_phase_capture() {
   shift
   echo "==> S09 phase: ${phase}"
   local output
-  if ! output=$("$@"); then
-    local exit_code=$?
+  local exit_code=0
+  output=$("$@") || exit_code=$?
+  if [ "$exit_code" -ne 0 ]; then
     printf '%s\n' "$output" >&2
     echo "S09 verification failed during phase: ${phase}" >&2
     exit "$exit_code"
