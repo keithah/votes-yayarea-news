@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { listRaceSlugs, loadPublicRaceContext, type LoadedPublicRaceContext, type LoaderOptions } from "../../../lib/data/loaders";
+import { buildSourceShareMetadata } from "../../../lib/share/metadata";
 import { buildSourceDrilldownModel, type DrilldownPositionGroup, type SourceDrilldownModel } from "../../../lib/ui/drilldowns";
 
 export const dynamic = "force-static";
@@ -21,6 +23,12 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
     }
   }
   return [...slugs].sort().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const model = await buildSourcePageModel(slug);
+  return buildSourceShareMetadata(model, `/sources/${slug}/`);
 }
 
 export async function buildSourcePageModel(slug: string, options: LoaderOptions = {}): Promise<SourcePageModel | null> {

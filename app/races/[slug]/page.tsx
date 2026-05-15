@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { listRaceSlugs, loadPublicRaceContext, type LoadedPublicRaceContext, type LoaderOptions } from "../../../lib/data/loaders";
+import { buildRaceShareMetadata } from "../../../lib/share/metadata";
 import {
   buildRaceReceiptsModel,
   buildRaceReviewedSummaryModel,
@@ -47,6 +49,12 @@ export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
     .filter((context): context is LoadedPublicRaceContext => context !== null)
     .map((context) => ({ slug: context.race.slug }))
     .sort((left, right) => left.slug.localeCompare(right.slug));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const model = await buildRacePageModel(slug);
+  return buildRaceShareMetadata(model?.ui, `/races/${slug}/`);
 }
 
 export async function buildRacePageModel(slug: string, options: LoaderOptions = {}): Promise<RacePageModel | null> {

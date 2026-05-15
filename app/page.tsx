@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { listRaceSlugs, loadPublicRaceContext } from "../lib/data/loaders";
+import { buildHomeShareMetadata } from "../lib/share/metadata";
 import { buildRaceUiModel, type RaceUiModel } from "../lib/ui/race";
 
 export const dynamic = "force-static";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const races = await loadPublicRaceModels();
+  const totals = summarizeRaces(races);
+  return buildHomeShareMetadata(totals);
+}
 
 export default async function Home() {
   const races = await loadPublicRaceModels();

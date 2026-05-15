@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildSiteShareMetadata } from "../lib/share/metadata";
 import "./styles.css";
 
-export const metadata: Metadata = {
-  title: {
-    default: "votes.yayarea.news · San Francisco election guide",
-    template: "%s · votes.yayarea.news",
-  },
-  description:
-    "Static public race discovery for San Francisco election endorsements, source counts, evidence, and reviewed public race shells.",
-};
+export const metadata: Metadata = buildSiteShareMetadata();
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

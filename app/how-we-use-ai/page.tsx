@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
+import { buildDisclosureShareMetadata } from "../../lib/share/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
-  title: "How we use AI",
-  description:
-    "A public disclosure of how votes.yayarea.news uses AI assistance, human review, evidence, and publication gates.",
-};
+export const metadata: Metadata = buildDisclosureShareMetadata();
 
 const disclosureSections = [
   {
