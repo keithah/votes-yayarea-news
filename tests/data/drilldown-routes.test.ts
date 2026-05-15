@@ -14,7 +14,11 @@ test("entity and source routes statically generate public recommendation slugs o
   assert.equal(entityParams.length, 61);
   assert.ok(entityParams.some((param) => param.slug === "california-governor-akinyemi-agbede"));
   assert.equal(entityParams.some((param) => param.slug === "sample-candidate-a"), false);
-  assert.deepEqual(await generateSourceStaticParams(), [{ slug: "california-secretary-of-state" }]);
+  const sourceParams = await generateSourceStaticParams();
+  assert.deepEqual(sourceParams, [{ slug: "california-secretary-of-state" }]);
+  assert.equal(sourceParams.some((param) => param.slug === "san-francisco-department-of-elections"), false);
+  assert.equal(sourceParams.some((param) => param.slug === "mission-local"), false);
+  assert.equal(sourceParams.some((param) => param.slug === "san-francisco-standard"), false);
 });
 
 test("entity page model exposes public recommendation receipts, diagnostics, and related links", async () => {
@@ -68,9 +72,13 @@ test("source page model exposes public recommendation receipts, diagnostics, and
   assert.equal(model.checkedFiles.some((file) => GSD_PATH.test(file)), false);
 });
 
-test("entity and source page models return null for unknown or non-public slugs", async () => {
+test("entity and source page models return null for unknown, hidden-race, pending-only, and registry-only slugs", async () => {
   assert.equal(await buildEntityPageModel("missing-candidate"), null);
   assert.equal(await buildSourcePageModel("missing-source"), null);
+  assert.equal(await buildEntityPageModel("california-lieutenant-governor-josh-fryday"), null);
+  assert.equal(await buildSourcePageModel("san-francisco-department-of-elections"), null);
+  assert.equal(await buildSourcePageModel("mission-local"), null);
+  assert.equal(await buildSourcePageModel("san-francisco-standard"), null);
 
   const fixture = await createFixture();
   await writeOverride(fixture.overridesDir, {
@@ -94,7 +102,7 @@ test("race page model still marks drill-down readiness and page source links to 
   assert.equal(pageSource.includes("title=\"Entity pages\""), false);
 });
 
-test("entity and source route components expose drill-down diagnostic attributes", async () => {
+test("entity and source route components expose drill-down diagnostic attributes and public receipt copy", async () => {
   const entitySource = await fs.readFile(path.join(process.cwd(), "app", "entities", "[slug]", "page.tsx"), "utf8");
   const sourceSource = await fs.readFile(path.join(process.cwd(), "app", "sources", "[slug]", "page.tsx"), "utf8");
 
@@ -107,7 +115,15 @@ test("entity and source route components expose drill-down diagnostic attributes
     assert.equal(routeSource.includes("data-drilldown-evidence-id"), true);
     assert.equal(routeSource.includes("data-drilldown-evidence-source-url"), true);
     assert.equal(routeSource.includes("data-drilldown-evidence-publication-status"), true);
+    assert.equal(routeSource.includes("data-drilldown-evidence-status=\"unavailable\""), true);
+    assert.equal(routeSource.includes("Public evidence details are not available for this reviewed position yet."), true);
+    assert.equal(routeSource.includes("Source URL"), false);
+    assert.equal(routeSource.includes("Published position receipts"), true);
+    assert.equal(routeSource.includes("Source:"), true);
   }
+
+  assert.equal(entitySource.includes("Entity drill-down"), false);
+  assert.equal(sourceSource.includes("Source drill-down"), false);
 });
 
 async function createFixture(): Promise<{ publicDir: string; overridesDir: string }> {

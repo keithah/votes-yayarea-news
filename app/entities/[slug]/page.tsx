@@ -76,10 +76,10 @@ export default async function EntityPage({ params }: { params: Promise<{ slug: s
 
       <section className="race-hero" aria-labelledby="entity-title">
         <div className="race-hero-copy">
-          <p className="eyebrow">Entity drill-down</p>
+          <p className="eyebrow">Candidate and measure trail</p>
           <h1 id="entity-title">{entity.name}</h1>
           <p className="lede">
-            Public, verified recommendation receipts for this {entity.kind}, collected from published race pages only.
+            Public receipts for this {entity.kind}, collected from published race pages and attributed source records.
           </p>
           {entity.description ? <p className="muted-copy">{entity.description}</p> : null}
           {entity.officialUrl ? <a className="drilldown-primary-link" href={entity.officialUrl}>Official website</a> : null}
@@ -87,7 +87,7 @@ export default async function EntityPage({ params }: { params: Promise<{ slug: s
 
         <aside className="consensus-panel" aria-labelledby="entity-counts-title">
           <p className="panel-kicker">Published recommendation trail</p>
-          <h2 id="entity-counts-title">{counts.publicPositionCount} recommendations</h2>
+          <h2 id="entity-counts-title">{formatCount(counts.publicPositionCount, "published position")}</h2>
           <dl className="race-meta" aria-label="Entity recommendation counts">
             <div>
               <dt>Related races</dt>
@@ -158,7 +158,7 @@ function PositionReceipts({ positions }: { positions: DrilldownPositionGroup[] }
     <section className="section-shell" aria-labelledby="entity-receipts-title">
       <div className="section-heading">
         <p className="eyebrow">Receipts</p>
-        <h2 id="entity-receipts-title">Verified public recommendations</h2>
+        <h2 id="entity-receipts-title">Published position receipts</h2>
       </div>
       <div className="drilldown-receipt-list">
         {positions.map((group) => (
@@ -173,7 +173,7 @@ function PositionReceipts({ positions }: { positions: DrilldownPositionGroup[] }
             <p className="eyebrow">{group.position.kind}</p>
             <h3>{group.position.label}</h3>
             <p className="muted-copy">
-              <a href={`/races/${group.race.slug}/`}>{group.race.title}</a> · <a href={`/sources/${group.source.slug}/`}>{group.source.name}</a>
+              Source: <a href={`/sources/${group.source.slug}/`}>{group.source.name}</a> · <a href={`/races/${group.race.slug}/`}>{group.race.title}</a> · {group.entity.name}
             </p>
             {group.position.rationale ? <p>{group.position.rationale}</p> : null}
             <EvidenceList positionId={group.position.id} evidence={group.evidence} />
@@ -185,8 +185,16 @@ function PositionReceipts({ positions }: { positions: DrilldownPositionGroup[] }
 }
 
 function EvidenceList({ positionId, evidence }: { positionId: string; evidence: DrilldownPositionGroup["evidence"] }) {
+  if (evidence.length === 0) {
+    return (
+      <p className="muted-copy" data-drilldown-evidence-position-id={positionId} data-drilldown-evidence-status="unavailable">
+        Public evidence details are not available for this reviewed position yet.
+      </p>
+    );
+  }
+
   return (
-    <ul className="receipt-evidence-list">
+    <ul className="receipt-evidence-list" aria-label="Public evidence links">
       {evidence.map((item) => (
         <li
           className="receipt-evidence-card"
@@ -200,7 +208,11 @@ function EvidenceList({ positionId, evidence }: { positionId: string; evidence: 
           <blockquote>“{item.quote}”</blockquote>
           <dl>
             <div>
-              <dt>Source URL</dt>
+              <dt>Source</dt>
+              <dd>{item.source.label}</dd>
+            </div>
+            <div>
+              <dt>Evidence URL</dt>
               <dd><a href={item.url}>{item.url}</a></dd>
             </div>
             <div>
@@ -226,6 +238,10 @@ async function loadPublicRaceContexts(options: LoaderOptions = {}): Promise<Load
 
 function uniqueSorted(items: string[]): string[] {
   return [...new Set(items)].sort();
+}
+
+function formatCount(count: number, singular: string): string {
+  return `${count} ${singular}${count === 1 ? "" : "s"}`;
 }
 
 function formatDate(value: string): string {
