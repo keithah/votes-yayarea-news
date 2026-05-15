@@ -22,9 +22,13 @@ Current scripts:
 | `pnpm dev` | Start the local Next.js development server. |
 | `pnpm validate-data` | Validate committed public data and local manual overrides, printing checked files and deterministic collection counts. |
 | `pnpm test:data` | Run data contract, loader, and debug-route tests. |
+| `pnpm test:ingestion` | Run source-ingestion cleaner, chunker, runner, and validation tests. |
+| `pnpm ingest:sources -- --manifest data/ingestion/manifest.json --out data/ingested` | Import representative fixture sources into raw captures, normalized artifacts, chunks, and run diagnostics. |
+| `pnpm validate-ingestion` | Validate generated ingestion outputs and write `data/ingested/validation/latest.json`. |
 | `pnpm typecheck` | Run TypeScript without emitting build output. |
 | `pnpm build` | Build the static Next.js export. |
 | `pnpm verify:s02` | Run the full S02 data skeleton verification, including static export checks for the sample mayor debug route. |
+| `pnpm verify:s03` | Run the full S03 ingestion verification: ingestion tests, representative fixture ingestion, ingestion validation, public data validation, typecheck, static build, and generated diagnostics checks. |
 
 ## S02 data skeleton
 
@@ -36,6 +40,37 @@ The current data boundary is committed, local, and build-time only:
 - `pnpm validate-data` validates canonical fixtures and merged override output, printing checked paths plus source/entity/collection/race/position/evidence counts.
 - `pnpm test:data` runs the data validator, loader, and debug-route tests.
 - After `pnpm build`, `/debug/races/mayor/` is exported to `out/debug/races/mayor/index.html` as the sample race data debug page.
+
+## S03 source ingestion
+
+S03 adds a deterministic, auditable ingestion boundary before extraction. The representative source import is fixture-backed by default and does not require network access:
+
+```bash
+pnpm test:ingestion
+pnpm ingest:sources -- --manifest data/ingestion/manifest.json --out data/ingested
+pnpm validate-ingestion
+pnpm verify:s03
+```
+
+Generated ingestion output lives under `data/ingested/`:
+
+- `raw/*.html` preserves the original fixture or fetched body for audit and manual fallback.
+- `artifacts/*.json` stores normalized clean text plus source, artifact, raw, and chunk references.
+- `chunks/*.json` stores deterministic extraction units with stable chunk IDs and source/artifact references.
+- `runs/latest.json` records the latest ingestion run with phase, status, source, artifact, count, and issue diagnostics.
+- `validation/latest.json` records checked files, deterministic counts, and path-qualified validation issues.
+
+The fixtures in `data/ingestion/fixtures/` are representative samples only. They are committed to keep tests and `pnpm verify:s03` repeatable; they are not official 2026 election claims or endorsements. URL ingestion is opt-in with `--allow-network`, and fetched output should be treated as volatile until `pnpm validate-ingestion` passes and the diagnostics are reviewed.
+
+### S04 extraction handoff
+
+S04 extraction should read the normalized boundary produced by S03:
+
+- read source-level clean text from `data/ingested/artifacts/*.json`;
+- read extraction units from `data/ingested/chunks/*.json`;
+- use `data/ingested/raw/*.html` only for audit, debugging, or manual fallback.
+
+Extraction must not scrape raw external pages at runtime or bypass the generated artifact/chunk contract. Before S04 starts, run `pnpm verify:s03` or at minimum `pnpm validate-ingestion` and proceed only when `data/ingested/validation/latest.json` reports `ok: true` and `counts.errors: 0`.
 
 ## Static-export constraints
 

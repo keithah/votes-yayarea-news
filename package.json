@@ -13,7 +13,8 @@
     "ingest:sources": "tsx scripts/ingest-sources.ts",
     "test:data": "node --import tsx --test tests/data/*.test.ts",
     "test:ingestion": "node --import tsx --test tests/ingestion/*.test.ts",
-    "verify:s02": "bash scripts/verify-s02.sh"
+    "verify:s02": "bash scripts/verify-s02.sh",
+    "verify:s03": "bash scripts/verify-s03.sh"
   },
   "dependencies": {
     "next": "^16.0.0",
