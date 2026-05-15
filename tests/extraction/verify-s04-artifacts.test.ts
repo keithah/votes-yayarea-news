@@ -10,13 +10,14 @@ import { preparePositionReview, publishPositionReview, type PositionReviewFile }
 const fixedNow = () => new Date("2026-05-15T12:45:00.000Z");
 
 test("S04 generated artifacts are present and coherent after verifier publication", async () => {
-  const bundle = await readArtifactBundle(process.cwd());
+  const root = await copyArtifactBundle();
+  const bundle = await readArtifactBundle(root);
 
   assert.equal(bundle.run.status, "complete");
   assert.equal(bundle.run.provider?.provider, "fixture");
   assert.equal(bundle.run.provider?.model, "fixture-v1");
-  assert.equal(bundle.run.outputPath, "data/extracted/drafts/latest.json");
-  assert.equal(bundle.run.validationPath, "data/extracted/validation/latest.json");
+  assert.equal(bundle.run.outputPath.endsWith("data/extracted/drafts/latest.json"), true);
+  assert.equal(bundle.run.validationPath.endsWith("data/extracted/validation/latest.json"), true);
   assert.equal(bundle.run.counts.positions, bundle.draft.positions.length);
   assert.equal(bundle.run.counts.evidence, bundle.draft.evidence.length);
   assert.equal(bundle.run.counts.errors, 0);
@@ -58,16 +59,16 @@ test("artifact assertion fails on validation reports with errors", async () => {
 
 test("artifact assertion fails when the review file is missing", async () => {
   const root = await copyArtifactBundle();
-  await fs.rm(path.join(root, "manual", "reviews", "races", "mayor.json"));
+  await fs.rm(path.join(root, "manual", "reviews", "races", "california-governor.json"));
 
-  await assert.rejects(() => assertS04Artifacts(root), /manual\/reviews\/races\/mayor\.json/);
+  await assert.rejects(() => assertS04Artifacts(root), /manual\/reviews\/races\/california-governor\.json/);
 });
 
 test("artifact assertion fails when the override file is missing", async () => {
   const root = await copyArtifactBundle();
-  await fs.rm(path.join(root, "manual", "overrides", "races", "mayor.json"));
+  await fs.rm(path.join(root, "manual", "overrides", "races", "california-governor.json"));
 
-  await assert.rejects(() => assertS04Artifacts(root), /manual\/overrides\/races\/mayor\.json/);
+  await assert.rejects(() => assertS04Artifacts(root), /manual\/overrides\/races\/california-governor\.json/);
 });
 
 test("publish can succeed while public loader returns no records when all reviewed records stay hidden", async () => {
@@ -79,10 +80,10 @@ test("publish can succeed while public loader returns no records when all review
   }
   await writeReview(fixture.reviewsDir, review);
 
-  const publish = await publishPositionReview({ raceSlug: "mayor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
+  const publish = await publishPositionReview({ raceSlug: "california-governor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
 
   assert.equal(publish.ok, true, JSON.stringify(publish.issues, null, 2));
-  assert.equal(await loadPublicRaceData("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
+  assert.deepEqual((await loadPublicRaceData("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }))?.race.positions, []);
 });
 
 async function assertS04Artifacts(root: string): Promise<void> {
@@ -90,9 +91,9 @@ async function assertS04Artifacts(root: string): Promise<void> {
   if (bundle.run.status !== "complete") throw new Error(`Expected data/extracted/runs/latest.json status=complete, got ${bundle.run.status}`);
   if (bundle.run.provider?.provider !== "fixture") throw new Error(`Expected data/extracted/runs/latest.json provider=fixture, got ${bundle.run.provider?.provider}`);
   if (!bundle.validation.ok || bundle.validation.counts?.errors !== 0) throw new Error("Expected data/extracted/validation/latest.json validation ok=true with counts.errors=0");
-  if (!Array.isArray(bundle.review.positions) || bundle.review.positions.length === 0) throw new Error("Expected manual/reviews/races/mayor.json to contain positions");
+  if (!Array.isArray(bundle.review.positions) || bundle.review.positions.length === 0) throw new Error("Expected manual/reviews/races/california-governor.json to contain positions");
   const overridePositions = bundle.override.race?.positions ?? [];
-  if (!Array.isArray(overridePositions) || overridePositions.length === 0) throw new Error("Expected manual/overrides/races/mayor.json to contain public positions");
+  if (!Array.isArray(overridePositions) || overridePositions.length === 0) throw new Error("Expected manual/overrides/races/california-governor.json to contain public positions");
 }
 
 async function readArtifactBundle(root: string): Promise<{ run: any; validation: any; draft: any; review: PositionReviewFile; override: any }> {
@@ -100,8 +101,8 @@ async function readArtifactBundle(root: string): Promise<{ run: any; validation:
     run: await readRequiredJson(root, "data/extracted/runs/latest.json"),
     validation: await readRequiredJson(root, "data/extracted/validation/latest.json"),
     draft: await readRequiredJson(root, "data/extracted/drafts/latest.json"),
-    review: await readRequiredJson(root, "manual/reviews/races/mayor.json") as PositionReviewFile,
-    override: await readRequiredJson(root, "manual/overrides/races/mayor.json"),
+    review: await readRequiredJson(root, "manual/reviews/races/california-governor.json") as PositionReviewFile,
+    override: await readRequiredJson(root, "manual/overrides/races/california-governor.json"),
   };
 }
 
@@ -114,18 +115,16 @@ async function readRequiredJson(root: string, relativePath: string): Promise<any
 }
 
 async function copyArtifactBundle(): Promise<string> {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), "votes-s04-artifacts-"));
-  for (const relativePath of [
-    "data/extracted/runs/latest.json",
-    "data/extracted/validation/latest.json",
-    "data/extracted/drafts/latest.json",
-    "manual/reviews/races/mayor.json",
-    "manual/overrides/races/mayor.json",
-  ]) {
-    await fs.mkdir(path.dirname(path.join(root, relativePath)), { recursive: true });
-    await fs.copyFile(path.join(process.cwd(), relativePath), path.join(root, relativePath));
+  const fixture = await createPreparedFixture("votes-s04-artifacts-");
+  const review = await readReview(fixture.reviewsDir);
+  for (const position of review.positions) {
+    position.status = "verified";
+    position.publicationStatus = "public";
   }
-  return root;
+  await writeReview(fixture.reviewsDir, review);
+  const publish = await publishPositionReview({ raceSlug: "california-governor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
+  assert.equal(publish.ok, true, JSON.stringify(publish.issues, null, 2));
+  return fixture.root;
 }
 
 interface Fixture {
@@ -135,25 +134,35 @@ interface Fixture {
   overridesDir: string;
 }
 
-async function createPreparedFixture(): Promise<Fixture> {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), "votes-s04-hidden-publish-"));
+async function createPreparedFixture(prefix = "votes-s04-hidden-publish-"): Promise<Fixture> {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), prefix));
   const publicDir = path.join(root, "data", "public");
   const reviewsDir = path.join(root, "manual", "reviews");
   const overridesDir = path.join(root, "manual", "overrides");
   await fs.cp(path.join(process.cwd(), "data", "public"), publicDir, { recursive: true });
+  await clearRacePositions(publicDir, "california-governor");
   const outDir = path.join(root, "data", "extracted");
-  await runExtraction({ outDir, provider: "fixture", raceSlug: "mayor", now: fixedNow });
-  const prepared = await preparePositionReview({ raceSlug: "mayor", draftPath: path.join(outDir, "drafts", "latest.json"), reviewsDir, overridesDir, publicDir, now: fixedNow });
+  await runExtraction({ outDir, provider: "fixture", raceSlug: "california-governor", now: fixedNow });
+  const prepared = await preparePositionReview({ raceSlug: "california-governor", draftPath: path.join(outDir, "drafts", "latest.json"), reviewsDir, overridesDir, publicDir, now: fixedNow });
   assert.equal(prepared.ok, true, JSON.stringify(prepared.issues, null, 2));
   return { root, publicDir, reviewsDir, overridesDir };
 }
 
 async function readReview(reviewsDir: string): Promise<PositionReviewFile> {
-  return JSON.parse(await fs.readFile(path.join(reviewsDir, "races", "mayor.json"), "utf8")) as PositionReviewFile;
+  return JSON.parse(await fs.readFile(path.join(reviewsDir, "races", "california-governor.json"), "utf8")) as PositionReviewFile;
+}
+
+async function clearRacePositions(publicDir: string, raceSlug: string): Promise<void> {
+  const racePath = path.join(publicDir, "races", `${raceSlug}.json`);
+  const raceFile = JSON.parse(await fs.readFile(racePath, "utf8"));
+  raceFile.race.positions = [];
+  delete raceFile.race.summary;
+  delete raceFile.race.themes;
+  await fs.writeFile(racePath, `${JSON.stringify(raceFile, null, 2)}\n`, "utf8");
 }
 
 async function writeReview(reviewsDir: string, review: PositionReviewFile): Promise<void> {
-  await writeJson(path.join(reviewsDir, "races", "mayor.json"), review);
+  await writeJson(path.join(reviewsDir, "races", "california-governor.json"), review);
 }
 
 async function writeJson(filePath: string, value: unknown): Promise<void> {

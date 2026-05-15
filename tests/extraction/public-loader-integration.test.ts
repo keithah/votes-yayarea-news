@@ -16,35 +16,38 @@ test("reviewed extraction outputs become public only after verified publication 
     ...review.positions[0],
     status: "verified",
     publicationStatus: "public",
-    label: "Reviewed extraction override for Candidate A",
+    label: "Reviewed extraction override for Governor fixture candidate",
     rationale: "Human-reviewed extraction rationale wins over canonical fixture text.",
   };
-  review.positions[1] = {
-    ...review.positions[1],
-    status: "reviewed",
-    publicationStatus: "public",
+  const reviewedOnly = {
+    ...review.positions[0],
+    id: `${review.positions[0].id}-reviewed-only`,
+    draftPositionId: `${review.positions[0].draftPositionId}-reviewed-only`,
+    status: "reviewed" as const,
+    publicationStatus: "public" as const,
     label: "Reviewed but not verified should stay private",
   };
+  review.positions.push(reviewedOnly);
   await writeReview(fixture.reviewsDir, review);
 
-  const publish = await publishPositionReview({ raceSlug: "mayor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
+  const publish = await publishPositionReview({ raceSlug: "california-governor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
 
   assert.equal(publish.ok, false, "reviewed public records must not publish without verification");
-  assert.equal(await loadPublicRaceData("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
+  assert.deepEqual((await loadPublicRaceData("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }))?.race.positions, []);
 
   review.positions[1].publicationStatus = "hidden";
   await writeReview(fixture.reviewsDir, review);
-  const republish = await publishPositionReview({ raceSlug: "mayor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
+  const republish = await publishPositionReview({ raceSlug: "california-governor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
   assert.equal(republish.ok, true, JSON.stringify(republish.issues, null, 2));
 
-  const allRace = await loadRaceData("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir });
+  const allRace = await loadRaceData("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir });
   assert.ok(allRace);
   assert.equal(allRace.race.positions.some((position) => position.id === review.positions[1].id), false, "hidden reviewed extraction records are not copied into public overrides");
 
-  const publicRace = await loadPublicRaceData("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir });
+  const publicRace = await loadPublicRaceData("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir });
   assert.ok(publicRace);
   assert.deepEqual(publicRace.race.positions.map((position) => position.id), [review.positions[0].id]);
-  assert.equal(publicRace.race.positions[0].label, "Reviewed extraction override for Candidate A");
+  assert.equal(publicRace.race.positions[0].label, "Reviewed extraction override for Governor fixture candidate");
   assert.equal(publicRace.race.positions[0].rationale, "Human-reviewed extraction rationale wins over canonical fixture text.");
   assert.equal(publicRace.race.positions[0].evidence[0].artifactId, review.positions[0].evidence[0].artifactId);
   assert.equal(publicRace.race.positions[0].evidence[0].chunkId, review.positions[0].evidence[0].chunkId);
@@ -58,16 +61,16 @@ test("public loader rejects published extraction evidence missing required chunk
   review.positions[0].publicationStatus = "public";
   await writeReview(fixture.reviewsDir, review);
 
-  const publish = await publishPositionReview({ raceSlug: "mayor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
+  const publish = await publishPositionReview({ raceSlug: "california-governor", reviewsDir: fixture.reviewsDir, overridesDir: fixture.overridesDir, publicDir: fixture.publicDir, now: fixedNow });
   assert.equal(publish.ok, true, JSON.stringify(publish.issues, null, 2));
 
-  const overridePath = path.join(fixture.overridesDir, "races", "mayor.json");
+  const overridePath = path.join(fixture.overridesDir, "races", "california-governor.json");
   const override = JSON.parse(await fs.readFile(overridePath, "utf8"));
   delete override.race.positions[0].evidence[0].chunkId;
   await fs.writeFile(overridePath, `${JSON.stringify(override, null, 2)}\n`, "utf8");
 
   await assert.rejects(
-    () => loadRaceData("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }),
+    () => loadRaceData("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }),
     (error: unknown) => {
       assert.ok(error instanceof DataLoadError);
       assert.equal(error.phase, "merged");
@@ -90,17 +93,27 @@ async function createPreparedFixture(): Promise<Fixture> {
   const reviewsDir = path.join(root, "manual", "reviews");
   const overridesDir = path.join(root, "manual", "overrides");
   await fs.cp(path.join(process.cwd(), "data", "public"), publicDir, { recursive: true });
+  await clearRacePositions(publicDir, "california-governor");
   const outDir = path.join(root, "data", "extracted");
-  await runExtraction({ outDir, provider: "fixture", raceSlug: "mayor", now: fixedNow });
-  const prepared = await preparePositionReview({ raceSlug: "mayor", draftPath: path.join(outDir, "drafts", "latest.json"), reviewsDir, overridesDir, publicDir, now: fixedNow });
+  await runExtraction({ outDir, provider: "fixture", raceSlug: "california-governor", now: fixedNow });
+  const prepared = await preparePositionReview({ raceSlug: "california-governor", draftPath: path.join(outDir, "drafts", "latest.json"), reviewsDir, overridesDir, publicDir, now: fixedNow });
   assert.equal(prepared.ok, true, JSON.stringify(prepared.issues, null, 2));
   return { root, publicDir, reviewsDir, overridesDir };
 }
 
 async function readReview(reviewsDir: string): Promise<PositionReviewFile> {
-  return JSON.parse(await fs.readFile(path.join(reviewsDir, "races", "mayor.json"), "utf8")) as PositionReviewFile;
+  return JSON.parse(await fs.readFile(path.join(reviewsDir, "races", "california-governor.json"), "utf8")) as PositionReviewFile;
+}
+
+async function clearRacePositions(publicDir: string, raceSlug: string): Promise<void> {
+  const racePath = path.join(publicDir, "races", `${raceSlug}.json`);
+  const raceFile = JSON.parse(await fs.readFile(racePath, "utf8"));
+  raceFile.race.positions = [];
+  delete raceFile.race.summary;
+  delete raceFile.race.themes;
+  await fs.writeFile(racePath, `${JSON.stringify(raceFile, null, 2)}\n`, "utf8");
 }
 
 async function writeReview(reviewsDir: string, review: PositionReviewFile): Promise<void> {
-  await fs.writeFile(path.join(reviewsDir, "races", "mayor.json"), `${JSON.stringify(review, null, 2)}\n`, "utf8");
+  await fs.writeFile(path.join(reviewsDir, "races", "california-governor.json"), `${JSON.stringify(review, null, 2)}\n`, "utf8");
 }

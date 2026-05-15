@@ -116,11 +116,22 @@ function inferFixtureResponse(prompt: string): ProviderResponse {
   if (prompt.includes("ent-sample-candidate-b") && prompt.includes("Candidate B receives a placeholder mixed description")) {
     positions.push({ entityId: "ent-sample-candidate-b", kind: "informational", label: "Draft extracted mixed signal for Candidate B", rationale: "The sample text describes Candidate B with a mixed placeholder description.", evidence: [{ chunkId: firstChunkId(prompt), kind: "quote", quote: "In this sample, Candidate B receives a placeholder mixed description for fiscal oversight and a slower approach to housing production." }] });
   }
+  if (prompt.includes("src-ca-secretary-of-state") && prompt.includes("Tracked M002 contests covered by this official candidate-list source:")) {
+    const entity = firstAllowedEntity(prompt);
+    if (entity) {
+      positions.push({ entityId: entity.id, kind: "informational", label: `Draft official candidate-list record for ${entity.name}`, rationale: "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.", evidence: [{ chunkId: firstChunkId(prompt), kind: "quote", quote: "Tracked M002 contests covered by this official candidate-list source:" }] });
+    }
+  }
   return { positions };
 }
 
 function firstChunkId(prompt: string): string {
   return /^CHUNK\s+(\S+)/m.exec(prompt)?.[1] ?? "missing-chunk";
+}
+
+function firstAllowedEntity(prompt: string): { id: string; name: string } | undefined {
+  const match = /Allowed entities:\s*(ent-[a-z0-9-]+) \(([^)]+)\)/.exec(prompt);
+  return match ? { id: match[1], name: match[2] } : undefined;
 }
 
 function isAbort(error: unknown): boolean {

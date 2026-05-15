@@ -11,12 +11,12 @@ const fixedNow = () => new Date("2026-05-15T12:00:00.000Z");
 
 test("fixture extraction writes validated draft, run, and validation diagnostics", async () => {
   const outDir = await tempOutDir();
-  const result = await runExtraction({ outDir, provider: "fixture", raceSlug: "mayor", now: fixedNow });
+  const result = await runExtraction({ outDir, provider: "fixture", raceSlug: "california-governor", now: fixedNow });
 
   assert.equal(result.run.status, "complete");
   assert.equal(result.validation.ok, true);
-  assert.equal(result.draft.positions.length, 2);
-  assert.equal(result.draft.evidence.length, 2);
+  assert.equal(result.draft.positions.length, 1);
+  assert.equal(result.draft.evidence.length, 1);
   assert.equal(result.draft.positions.every((position) => position.reviewStatus === "generated" && position.publicationStatus === "hidden"), true);
   assert.equal(result.run.provider.provider, "fixture");
   assert.equal(result.run.promptVersion, "position-extraction-v1");
@@ -25,7 +25,7 @@ test("fixture extraction writes validated draft, run, and validation diagnostics
   const persistedRun = JSON.parse(await fs.readFile(path.join(outDir, "runs", "latest.json"), "utf8"));
   const persistedValidation = JSON.parse(await fs.readFile(path.join(outDir, "validation", "latest.json"), "utf8"));
   assert.equal(persistedDraft.runId, "run-20260515120000");
-  assert.equal(persistedRun.counts.positions, 2);
+  assert.equal(persistedRun.counts.positions, 1);
   assert.equal(persistedValidation.ok, true);
 });
 
@@ -37,6 +37,10 @@ test("dry run and prompt preview do not call providers but persist diagnostics",
 
   assert.equal(result.run.status, "complete");
   assert.equal(result.draft.positions.length, 0);
+  assert.equal(result.run.inputs.length, 13);
+  assert.equal(new Set(result.run.inputs.map((input) => input.raceId)).size, 13);
+  assert.equal(result.run.issues.filter((issue) => issue.code === "low_text_chunk").length, 1);
+  assert.ok(result.run.inputs.some((input) => input.raceId === "race-california-governor"));
   assert.ok(result.run.promptPreviews?.[0]?.prompt.includes("Clean chunks (raw HTML omitted):"));
   assert.equal(result.run.phases.every((phase) => phase.status === "dry-run"), true);
 });
@@ -93,7 +97,7 @@ test("hallucinated entity and missing chunk references are validation failures",
     },
   };
 
-  const result = await runExtraction({ outDir, provider: "fixture", providerImpl: provider, raceSlug: "mayor", now: fixedNow });
+  const result = await runExtraction({ outDir, provider: "fixture", providerImpl: provider, raceSlug: "california-governor", now: fixedNow });
 
   assert.equal(result.run.status, "failed");
   assertIssue(result.validation.issues, "unknown_entity_id");
@@ -103,9 +107,9 @@ test("hallucinated entity and missing chunk references are validation failures",
 test("missing ingestion files identify exact paths", async () => {
   const outDir = await tempOutDir();
   const manifestPath = path.join(outDir, "manifest.json");
-  await fs.writeFile(manifestPath, JSON.stringify({ version: 1, description: "missing files", targets: [{ id: "fixture-missing", sourceId: "src-growsf", artifactId: "art-does-not-exist", title: "Missing", inputKind: "html", fixturePath: "missing.html", canonicalUrl: "https://example.test/missing", sampleFixture: true }] }, null, 2));
+  await fs.writeFile(manifestPath, JSON.stringify({ version: 1, description: "missing files", targets: [{ id: "fixture-missing", sourceId: "src-ca-secretary-of-state", artifactId: "art-does-not-exist", title: "Missing", inputKind: "html", fixturePath: "missing.html", canonicalUrl: "https://example.test/missing", sampleFixture: true }] }, null, 2));
 
-  const result = await runExtraction({ outDir, manifestPath, provider: "fixture", raceSlug: "mayor", now: fixedNow });
+  const result = await runExtraction({ outDir, manifestPath, provider: "fixture", raceSlug: "california-governor", now: fixedNow });
 
   assert.equal(result.run.status, "failed");
   assertIssue(result.run.issues, "missing_input_file");
@@ -116,7 +120,7 @@ test("oversized chunks are rejected before provider calls", async () => {
   const outDir = await tempOutDir();
   const explodingProvider: ExtractionProvider = { name: "test", async complete() { throw new Error("provider should not be called for oversized chunks"); } };
 
-  const result = await runExtraction({ outDir, provider: "fixture", providerImpl: explodingProvider, raceSlug: "mayor", maxChunkChars: 10, now: fixedNow });
+  const result = await runExtraction({ outDir, provider: "fixture", providerImpl: explodingProvider, raceSlug: "california-governor", maxChunkChars: 10, now: fixedNow });
 
   assert.equal(result.run.status, "failed");
   assertIssue(result.run.issues, "oversized_chunk");
@@ -125,12 +129,12 @@ test("oversized chunks are rejected before provider calls", async () => {
 
 test("validatePersistedExtraction writes validation report for persisted drafts", async () => {
   const outDir = await tempOutDir();
-  await runExtraction({ outDir, provider: "fixture", raceSlug: "mayor", now: fixedNow });
+  await runExtraction({ outDir, provider: "fixture", raceSlug: "california-governor", now: fixedNow });
 
-  const report = await validatePersistedExtraction({ draftPath: path.join(outDir, "drafts", "latest.json"), validationPath: path.join(outDir, "validation", "latest.json"), raceSlug: "mayor" });
+  const report = await validatePersistedExtraction({ draftPath: path.join(outDir, "drafts", "latest.json"), validationPath: path.join(outDir, "validation", "latest.json"), raceSlug: "california-governor" });
 
   assert.equal(report.ok, true);
-  assert.equal(report.counts.positions, 2);
+  assert.equal(report.counts.positions, 1);
 });
 
 test("CLI help documents live extraction flags", () => {

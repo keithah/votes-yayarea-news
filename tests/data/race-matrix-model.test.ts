@@ -54,6 +54,33 @@ test("emits neutral cells for missing source-candidate pairs without inferring r
   assert.equal(matrix.cells["src-two::ent-a"].state, "no-public-position");
 });
 
+test("distinguishes explicit no-position records from empty no-public-position matrix cells", () => {
+  const ui = buildRaceUiModel({
+    race: publicRace({
+      sourceIds: ["src-one"],
+      entityIds: ["ent-a", "ent-b"],
+      positions: [position("pos-no-position", "src-one", "ent-a", "no-position", ["ev-no-position"])],
+    }),
+    sources: [source("src-one", "Guide", "voter guides")],
+    entities: [entity("ent-a", "Alice"), entity("ent-b", "Bob")],
+  });
+
+  const matrix = buildRecommendationMatrixModel(ui);
+  const explicitNoPosition = matrix.cells["src-one::ent-a"];
+  const emptyPlaceholder = matrix.cells["src-one::ent-b"];
+
+  assert.equal(explicitNoPosition.state, "position");
+  assert.equal(explicitNoPosition.positionKind, "no-position");
+  assert.equal(explicitNoPosition.positionKindLabel, "No position");
+  assert.deepEqual(explicitNoPosition.positionIds, ["pos-no-position"]);
+  assert.deepEqual(explicitNoPosition.evidenceIds, ["ev-no-position"]);
+  assert.equal(emptyPlaceholder.state, "no-public-position");
+  assert.equal(emptyPlaceholder.positionKind, undefined);
+  assert.deepEqual(emptyPlaceholder.positionIds, []);
+  assert.deepEqual(emptyPlaceholder.evidenceIds, []);
+  assert.deepEqual(emptyPlaceholder.evidence, []);
+});
+
 test("builds source-type and position-kind filter metadata from visible cells", () => {
   const ui = buildRaceUiModel({
     race: publicRace({

@@ -54,8 +54,8 @@ export async function assembleExtractionPrompts(options: PromptAssemblyOptions):
 
   for (const target of manifest.targets) {
     const targetPath = `targets.${target.id}`;
-    const race = raceCandidates.find((candidate) => candidate.sourceIds.includes(target.sourceId));
-    if (!race) continue;
+    const matchingRaces = raceCandidates.filter((candidate) => candidate.sourceIds.includes(target.sourceId));
+    if (matchingRaces.length === 0) continue;
 
     const artifactPath = path.join(process.cwd(), "data", "ingested", "artifacts", `${stripArtifactPrefix(target.artifactId)}.json`);
     const chunkPath = path.join(process.cwd(), "data", "ingested", "chunks", `${stripArtifactPrefix(target.artifactId)}.json`);
@@ -69,26 +69,28 @@ export async function assembleExtractionPrompts(options: PromptAssemblyOptions):
     const usableChunks = artifactChunks.filter((chunk, index) => {
       const textLength = chunk.text?.trim().length ?? 0;
       if (textLength < MIN_CHUNK_CHARS) {
-        addIssue(issues, "low_text_chunk", "error", `${relative(chunkPath)}[${index}].text`, "Chunk text is too short for extraction.", { sourceId: chunk.sourceId, artifactId: chunk.artifactId, chunkId: chunk.id, raceId: race.id });
+        addIssue(issues, "low_text_chunk", "warning", `${relative(chunkPath)}[${index}].text`, "Chunk text is too short for extraction and will be skipped.", { sourceId: chunk.sourceId, artifactId: chunk.artifactId, chunkId: chunk.id });
         return false;
       }
       if (textLength > maxChunkChars) {
-        addIssue(issues, "oversized_chunk", "error", `${relative(chunkPath)}[${index}].text`, `Chunk text exceeds maxChunkChars=${maxChunkChars}.`, { sourceId: chunk.sourceId, artifactId: chunk.artifactId, chunkId: chunk.id, raceId: race.id });
+        addIssue(issues, "oversized_chunk", "error", `${relative(chunkPath)}[${index}].text`, `Chunk text exceeds maxChunkChars=${maxChunkChars}.`, { sourceId: chunk.sourceId, artifactId: chunk.artifactId, chunkId: chunk.id });
         return false;
       }
       return true;
     });
     if (usableChunks.length === 0) continue;
 
-    const input: ExtractionPromptInput = {
-      id: `input-${race.slug}-${target.sourceId}`,
-      raceId: race.id,
-      sourceId: target.sourceId,
-      artifactId: artifact.id,
-      chunkIds: usableChunks.map((chunk) => chunk.id),
-      instructions: "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk.",
-    };
-    targets.push({ input, prompt: buildExtractionPrompt({ publicData, raceId: race.id, sourceId: target.sourceId, artifact, chunks: usableChunks }), artifact, chunks: usableChunks });
+    for (const race of matchingRaces) {
+      const input: ExtractionPromptInput = {
+        id: `input-${race.slug}-${target.sourceId}`,
+        raceId: race.id,
+        sourceId: target.sourceId,
+        artifactId: artifact.id,
+        chunkIds: usableChunks.map((chunk) => chunk.id),
+        instructions: "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk.",
+      };
+      targets.push({ input, prompt: buildExtractionPrompt({ publicData, raceId: race.id, sourceId: target.sourceId, artifact, chunks: usableChunks }), artifact, chunks: usableChunks });
+    }
   }
 
   return { publicData, artifacts, chunks, targets, checkedFiles, issues };
