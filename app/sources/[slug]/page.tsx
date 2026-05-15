@@ -53,7 +53,7 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
 
   if (!model) notFound();
 
-  const { source, counts, diagnostics, relatedRaces, relatedEntities, positions, checkedFiles } = model;
+  const { source, counts, diagnostics, relatedRaces, relatedEntities, positions } = model;
   if (!source) notFound();
 
   const externalHref = source.guideUrl ?? source.homepageUrl;
@@ -111,50 +111,13 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
         </aside>
       </section>
 
-      <DiagnosticsPanel diagnostics={diagnostics} />
-
       <section className="drilldown-grid" aria-label="Related public records">
         <RelatedRaces races={relatedRaces} />
         <RelatedEntities entities={relatedEntities} />
       </section>
 
       <PositionReceipts positions={positions} />
-
-      <CheckedFiles files={checkedFiles} />
     </main>
-  );
-}
-
-function DiagnosticsPanel({ diagnostics }: { diagnostics: SourcePageModel["diagnostics"] }) {
-  return (
-    <section className="route-diagnostics" aria-labelledby="source-diagnostics-title">
-      <div className="section-heading">
-        <p className="eyebrow">Visible diagnostics</p>
-        <h2 id="source-diagnostics-title">What reached the static source route</h2>
-      </div>
-      <dl className="metric-grid">
-        <div>
-          <dt>Slug</dt>
-          <dd>{diagnostics.requestedSlug}</dd>
-        </div>
-        <div>
-          <dt>Recommendations</dt>
-          <dd>{diagnostics.publicPositionCount}</dd>
-        </div>
-        <div>
-          <dt>Related races</dt>
-          <dd>{diagnostics.relatedRaceCount}</dd>
-        </div>
-        <div>
-          <dt>Evidence</dt>
-          <dd>{diagnostics.evidenceCount}</dd>
-        </div>
-        <div>
-          <dt>Checked files</dt>
-          <dd>{diagnostics.checkedFileCount}</dd>
-        </div>
-      </dl>
-    </section>
   );
 }
 
@@ -254,23 +217,6 @@ function EvidenceList({ positionId, evidence }: { positionId: string; evidence: 
         </li>
       ))}
     </ul>
-  );
-}
-
-function CheckedFiles({ files }: { files: string[] }) {
-  return (
-    <section className="route-card" aria-labelledby="source-checked-files-title">
-      <p className="eyebrow">Checked files</p>
-      <h2 id="source-checked-files-title">Public data inspected</h2>
-      <details className="checked-files" open>
-        <summary>{files.length} public data files</summary>
-        <ul>
-          {files.map((file) => (
-            <li key={file}><code>{file}</code></li>
-          ))}
-        </ul>
-      </details>
-    </section>
   );
 }
 

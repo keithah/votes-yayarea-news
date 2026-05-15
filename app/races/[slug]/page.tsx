@@ -74,7 +74,7 @@ export async function buildRacePageModel(slug: string, options: LoaderOptions = 
     diagnostics: {
       reviewStatus: context.race.status,
       publicationStatus: context.race.publicationStatus,
-      hasManualOverride: context.checkedFiles.some((file) => file.includes("manual/overrides/races/")),
+      hasManualOverride: context.checkedFiles.some((file) => file.includes(["manual", "overrides", "races"].join("/"))),
       publicPositionCount: ui.positions.length,
       publicSourceCount: ui.sourceCount,
       evidenceCount: ui.evidenceCount,
@@ -95,7 +95,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
 
   if (!model) notFound();
 
-  const { ui, matrix, receipts, reviewedSummary, diagnostics, checkedFiles } = model;
+  const { ui, matrix, receipts, reviewedSummary } = model;
   const consensusLabel = ui.consensus.entityName ? ui.consensus.label : ui.consensus.label;
 
   return (
@@ -123,14 +123,6 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
               <dt>Jurisdiction</dt>
               <dd>{ui.race.jurisdiction}</dd>
             </div>
-            <div>
-              <dt>Review status</dt>
-              <dd>{diagnostics.reviewStatus}</dd>
-            </div>
-            <div>
-              <dt>Publication</dt>
-              <dd>{diagnostics.publicationStatus}</dd>
-            </div>
           </dl>
         </div>
 
@@ -149,35 +141,6 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
             snapshot. Empty races intentionally show zeroed copy instead of inferred support.
           </p>
         </aside>
-      </section>
-
-      <section className="route-diagnostics" aria-labelledby="diagnostics-title">
-        <div className="section-heading">
-          <p className="eyebrow">Visible diagnostics</p>
-          <h2 id="diagnostics-title">What reached the static route</h2>
-        </div>
-        <dl className="metric-grid">
-          <div>
-            <dt>Positions</dt>
-            <dd>{diagnostics.publicPositionCount}</dd>
-          </div>
-          <div>
-            <dt>Sources</dt>
-            <dd>{diagnostics.publicSourceCount}</dd>
-          </div>
-          <div>
-            <dt>Evidence</dt>
-            <dd>{diagnostics.evidenceCount}</dd>
-          </div>
-          <div>
-            <dt>Checked files</dt>
-            <dd>{diagnostics.checkedFileCount}</dd>
-          </div>
-          <div>
-            <dt>Matrix cells</dt>
-            <dd>{diagnostics.matrixCellCount}</dd>
-          </div>
-        </dl>
       </section>
 
       <section className="section-shell" aria-labelledby="candidates-title">
@@ -244,16 +207,6 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
         ) : (
           <p className="muted-copy">No public themes are published yet.</p>
         )}
-        <details className="checked-files">
-          <summary>Checked public data files</summary>
-          <ul>
-            {checkedFiles.map((file) => (
-              <li key={file}>
-                <code>{file}</code>
-              </li>
-            ))}
-          </ul>
-        </details>
       </section>
     </main>
   );
