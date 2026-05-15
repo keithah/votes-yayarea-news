@@ -1,24 +1,50 @@
 {
   "version": 1,
-  "description": "M002/S02 source availability ledger. Each public source appears exactly once; sample fixtures do not count as launch coverage.",
+  "description": "M002/S02 source availability ledger. Each public source appears exactly once; captured rows link only to non-sample launch manifest targets.",
   "sources": [
     {
       "sourceId": "src-ca-secretary-of-state",
-      "status": "pending",
+      "status": "captured",
+      "targetId": "fixture-ca-secretary-of-state-2026-primary-certified-candidates",
       "guideUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "relevantRaceSlugs": [
+        "california-governor",
+        "california-lieutenant-governor",
+        "california-secretary-of-state",
+        "california-controller",
+        "california-treasurer",
+        "california-attorney-general",
+        "california-insurance-commissioner",
+        "california-superintendent-public-instruction",
+        "board-of-equalization-district-2",
+        "us-house-district-11",
+        "us-house-district-15",
+        "state-assembly-district-17",
+        "state-assembly-district-19"
+      ],
+      "reason": "Official public certified candidate list is captured as a deterministic non-sample text fixture for offline ingestion.",
       "notes": "Official Certified List of Candidates for the June 2, 2026 Statewide Direct Primary Election, dated 2026-03-26. Used for statewide, federal, BOE, and Assembly candidate entities only; not a recommendation source."
     },
     {
       "sourceId": "src-sf-department-of-elections",
       "status": "manual-only",
-      "reason": "Manual capture required until a stable public June 2026 local election data URL is available.",
+      "ballotUniverseGaps": [
+        "supervisor-district-2",
+        "supervisor-district-4",
+        "sfusd-board-of-education",
+        "superior-court-judge-seat-16",
+        "san-francisco-prop-a",
+        "san-francisco-prop-b",
+        "san-francisco-prop-c",
+        "san-francisco-prop-d"
+      ],
+      "reason": "Manual capture required until a stable public June 2026 San Francisco local candidate and measure data URL is available.",
       "notes": "Tracked as the official local authority for San Francisco contests and measures. A confirmed June 2, 2026 local candidate/measure data URL was not located in repo evidence during T01, so affected contests remain hidden/documented until filled."
     },
     {
       "sourceId": "src-sf-chronicle",
       "status": "unavailable",
-      "reason": "No public June 2026 endorsement guide URL is available in repo evidence; do not use sample fixture targets as launch coverage.",
+      "reason": "No public June 2026 endorsement guide URL is available in repo evidence; legacy Mayor sample fixture targets are excluded from launch coverage.",
       "notes": "pending 2026 voter-guide or endorsement URL; include if public June 2026 endorsement pages are available."
     },
     {

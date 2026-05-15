@@ -17,9 +17,9 @@ test("validateIngestion accepts representative generated fixtures", async () => 
   const result = await validateIngestion({ manifestPath: DEFAULT_MANIFEST, outDir, publicSourcesPath: DEFAULT_PUBLIC_SOURCES });
 
   assert.equal(result.ok, true);
-  assert.equal(result.counts.targets, 2);
-  assert.equal(result.counts.artifacts, 2);
-  assert.equal(result.counts.chunks, 2);
+  assert.equal(result.counts.targets, 1);
+  assert.equal(result.counts.artifacts, 1);
+  assert.ok(result.counts.chunks >= 1);
   assert.equal(result.counts.errors, 0);
   assert.equal(result.checkedFiles.some((file) => file.endsWith("runs/latest.json")), true);
 });
@@ -43,20 +43,20 @@ test("CLI writes path-qualified validation report", async () => {
 
 test("missing raw capture is a path-qualified validation issue", async () => {
   const outDir = await generatedOutDir();
-  await rm(path.join(outDir, "raw/src-sf-chronicle-mayor-sample.html"));
+  await rm(path.join(outDir, "raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt"));
 
   const result = await validateIngestion({ manifestPath: DEFAULT_MANIFEST, outDir, publicSourcesPath: DEFAULT_PUBLIC_SOURCES });
 
-  assertIssue(result, "missing_raw_capture", "raw/src-sf-chronicle-mayor-sample.html");
+  assertIssue(result, "missing_raw_capture", "raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt");
 });
 
 test("missing artifact file and stale manifest target are validation issues", async () => {
   const outDir = await generatedOutDir();
-  await rm(path.join(outDir, "artifacts/src-growsf-mayor-sample.json"));
+  await rm(path.join(outDir, "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json"));
   const manifestPath = await writeManifest({
     version: 1,
     description: "stale target test",
-    targets: [target({ sourceId: "src-sf-chronicle", artifactId: "art-sf-chronicle-mayor-sample" }), target({ id: "fixture-stale", sourceId: "src-growsf", artifactId: "art-stale" })],
+    targets: [target({ sourceId: "src-ca-secretary-of-state", artifactId: "art-ca-secretary-of-state-2026-primary-certified-candidates" }), target({ id: "fixture-stale", sourceId: "src-ca-secretary-of-state", artifactId: "art-stale" })],
   });
 
   const result = await validateIngestion({ manifestPath, outDir, publicSourcesPath: DEFAULT_PUBLIC_SOURCES });
@@ -67,38 +67,38 @@ test("missing artifact file and stale manifest target are validation issues", as
 
 test("chunk referencing a missing artifact is rejected", async () => {
   const outDir = await generatedOutDir();
-  const chunkPath = path.join(outDir, "chunks/src-sf-chronicle-mayor-sample.json");
+  const chunkPath = path.join(outDir, "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json");
   const chunks = (await readJson<ArtifactChunk[]>(chunkPath)).map((chunk) => ({ ...chunk, artifactId: "art-missing" }));
   await writeJson(chunkPath, chunks);
 
   const result = await validateIngestion({ manifestPath: DEFAULT_MANIFEST, outDir, publicSourcesPath: DEFAULT_PUBLIC_SOURCES });
 
-  assertIssue(result, "chunk_artifact_mismatch", "chunks/src-sf-chronicle-mayor-sample.json[0].artifactId");
+  assertIssue(result, "chunk_artifact_mismatch", "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json[0].artifactId");
 });
 
 test("duplicate chunk id and order are rejected", async () => {
   const outDir = await generatedOutDir();
-  const chunkPath = path.join(outDir, "chunks/src-growsf-mayor-sample.json");
+  const chunkPath = path.join(outDir, "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json");
   const chunks = await readJson<ArtifactChunk[]>(chunkPath);
   chunks.push({ ...chunks[0] });
   await writeJson(chunkPath, chunks);
 
   const result = await validateIngestion({ manifestPath: DEFAULT_MANIFEST, outDir, publicSourcesPath: DEFAULT_PUBLIC_SOURCES });
 
-  assertIssue(result, "duplicate_chunk_id", "chunks/src-growsf-mayor-sample.json[1].id");
-  assertIssue(result, "duplicate_chunk_order", "chunks/src-growsf-mayor-sample.json[1].order");
+  assertIssue(result, "duplicate_chunk_id", "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json[2].id");
+  assertIssue(result, "duplicate_chunk_order", "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json[2].order");
 });
 
 test("empty and low clean text are rejected", async () => {
   const outDir = await generatedOutDir();
-  const artifactPath = path.join(outDir, "artifacts/src-sf-chronicle-mayor-sample.json");
+  const artifactPath = path.join(outDir, "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json");
   const artifact = await readJson<IngestedArtifact>(artifactPath);
   await writeJson(artifactPath, { ...artifact, text: "   ", metadata: { ...artifact.metadata, lowText: true } });
 
   const result = await validateIngestion({ manifestPath: DEFAULT_MANIFEST, outDir, publicSourcesPath: DEFAULT_PUBLIC_SOURCES });
 
-  assertIssue(result, "empty_clean_text", "artifacts/src-sf-chronicle-mayor-sample.json.text");
-  assertIssue(result, "low_clean_text", "artifacts/src-sf-chronicle-mayor-sample.json.metadata.lowText");
+  assertIssue(result, "empty_clean_text", "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json.text");
+  assertIssue(result, "low_clean_text", "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json.metadata.lowText");
 });
 
 test("unknown sourceId is rejected from manifest and artifact", async () => {
@@ -106,9 +106,9 @@ test("unknown sourceId is rejected from manifest and artifact", async () => {
   const manifestPath = await writeManifest({
     version: 1,
     description: "unknown source test",
-    targets: [target({ sourceId: "src-unknown", artifactId: "art-sf-chronicle-mayor-sample" })],
+    targets: [target({ sourceId: "src-unknown", artifactId: "art-ca-secretary-of-state-2026-primary-certified-candidates" })],
   });
-  const artifactPath = path.join(outDir, "artifacts/src-sf-chronicle-mayor-sample.json");
+  const artifactPath = path.join(outDir, "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json");
   const artifact = await readJson<IngestedArtifact>(artifactPath);
   await writeJson(artifactPath, { ...artifact, sourceId: "src-unknown" });
 
@@ -119,11 +119,11 @@ test("unknown sourceId is rejected from manifest and artifact", async () => {
 
 test("malformed JSON in generated files is reported", async () => {
   const outDir = await generatedOutDir();
-  await writeFile(path.join(outDir, "chunks/src-growsf-mayor-sample.json"), "{not-json", "utf8");
+  await writeFile(path.join(outDir, "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json"), "{not-json", "utf8");
 
   const result = await validateIngestion({ manifestPath: DEFAULT_MANIFEST, outDir, publicSourcesPath: DEFAULT_PUBLIC_SOURCES });
 
-  assertIssue(result, "chunk_json_malformed", "chunks/src-growsf-mayor-sample.json");
+  assertIssue(result, "chunk_json_malformed", "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json");
 });
 
 test("failed run diagnostics and malformed run summary are rejected", async () => {
@@ -134,7 +134,7 @@ test("failed run diagnostics and malformed run summary are rejected", async () =
     ...run,
     status: "failed",
     counts: { ...run.counts, errors: 1 },
-    phases: [...run.phases, { phase: "fetch", status: "failed", sourceId: "src-growsf", artifactId: "art-growsf-mayor-sample", message: "boom" }],
+    phases: [...run.phases, { phase: "fetch", status: "failed", sourceId: "src-ca-secretary-of-state", artifactId: "art-ca-secretary-of-state-2026-primary-certified-candidates", message: "boom" }],
     targets: [{ ...run.targets[0], importStatus: "failed" }, ...run.targets.slice(1)],
     issues: [{ code: "target_ingest_failed", severity: "error", path: "targets.fixture", message: "boom" }],
   });
@@ -178,14 +178,14 @@ async function writeJson(filePath: string, value: unknown): Promise<void> {
 
 function target(overrides: Partial<IngestionManifest["targets"][number]> = {}): IngestionManifest["targets"][number] {
   return {
-    id: "fixture-sf-chronicle-mayor-sample",
-    sourceId: "src-sf-chronicle",
-    artifactId: "art-sf-chronicle-mayor-sample",
-    title: "San Francisco Chronicle mayor guide sample",
-    inputKind: "html",
-    fixturePath: "sf-chronicle-mayor-sample.html",
-    canonicalUrl: "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
-    sampleFixture: true,
+    id: "fixture-ca-secretary-of-state-2026-primary-certified-candidates",
+    sourceId: "src-ca-secretary-of-state",
+    artifactId: "art-ca-secretary-of-state-2026-primary-certified-candidates",
+    title: "California Secretary of State certified candidate list",
+    inputKind: "text",
+    fixturePath: "ca-secretary-of-state-2026-primary-certified-candidates.txt",
+    canonicalUrl: "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+    sampleFixture: false,
     ...overrides,
   };
 }

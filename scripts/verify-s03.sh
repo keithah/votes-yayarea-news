@@ -17,12 +17,9 @@ required_paths=(
   "$manifest_path"
   "$run_path"
   "$validation_path"
-  "$ingested_dir/raw/src-sf-chronicle-mayor-sample.html"
-  "$ingested_dir/raw/src-growsf-mayor-sample.html"
-  "$ingested_dir/artifacts/src-sf-chronicle-mayor-sample.json"
-  "$ingested_dir/artifacts/src-growsf-mayor-sample.json"
-  "$ingested_dir/chunks/src-sf-chronicle-mayor-sample.json"
-  "$ingested_dir/chunks/src-growsf-mayor-sample.json"
+  "$ingested_dir/raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt"
+  "$ingested_dir/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json"
+  "$ingested_dir/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json"
 )
 
 for path in "${required_paths[@]}"; do
@@ -51,8 +48,7 @@ if (!validation.ok || validation.counts?.errors !== 0) {
 }
 
 const expectedArtifacts = new Set([
-  'art-sf-chronicle-mayor-sample',
-  'art-growsf-mayor-sample',
+  'art-ca-secretary-of-state-2026-primary-certified-candidates',
 ]);
 for (const target of run.targets ?? []) {
   expectedArtifacts.delete(target.artifactId);

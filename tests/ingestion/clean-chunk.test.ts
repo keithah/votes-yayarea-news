@@ -7,10 +7,10 @@ import type { IngestionManifest } from "../../lib/ingestion/types";
 
 const MANIFEST_PATH = "data/ingestion/manifest.json";
 
-test("committed sample fixtures clean into readable text and stable chunks", async () => {
+test("committed real-source fixtures clean into readable text and stable chunks", async () => {
   const manifest = await readManifest();
   assert.equal(manifest.version, 1);
-  assert.equal(manifest.targets.length, 2);
+  assert.equal(manifest.targets.length, 1);
 
   for (const target of manifest.targets) {
     const fixturePath = normalizeFixturePath(target.fixturePath);
@@ -18,11 +18,11 @@ test("committed sample fixtures clean into readable text and stable chunks", asy
     const cleaned = cleanReadableText(html, { inputKind: target.inputKind, path: fixturePath });
 
     assert.equal(cleaned.issues.some((issue) => issue.severity === "error"), false, target.id);
-    assert.equal(cleaned.metadata.removedScriptLikeBlocks, 1, target.id);
-    assert.equal(cleaned.metadata.removedStyleLikeBlocks, 1, target.id);
-    assert.ok(cleaned.metadata.removedBoilerplateBlocks >= 1, target.id);
-    assert.match(cleaned.text, /sample/i);
-    assert.doesNotMatch(cleaned.text, /analyticsQueue|font-family|Subscribe \| News|Donate \| Volunteer/);
+    assert.equal(cleaned.metadata.removedScriptLikeBlocks, 0, target.id);
+    assert.equal(cleaned.metadata.removedStyleLikeBlocks, 0, target.id);
+    assert.equal(cleaned.metadata.removedBoilerplateBlocks, 0, target.id);
+    assert.match(cleaned.text, /Certified List of Candidates/i);
+    assert.doesNotMatch(cleaned.text, /mayor-sample|fixture-sf-chronicle-mayor-sample|fixture-growsf-mayor-sample/i);
 
     const chunks = chunkArtifactText({
       sourceId: target.sourceId,
@@ -89,8 +89,8 @@ test("empty and boilerplate-only html produce validation failures", () => {
 test("chunker splits oversized single paragraphs without empty chunks", () => {
   const text = "A".repeat(95) + " " + "B".repeat(95) + " " + "C".repeat(95);
   const chunks = chunkArtifactText({
-    sourceId: "src-sf-chronicle",
-    artifactId: "art-sf-chronicle-mayor-sample",
+    sourceId: "src-ca-secretary-of-state",
+    artifactId: "art-ca-secretary-of-state-2026-primary-certified-candidates",
     text,
     maxChars: 100,
     minChars: 60,
@@ -98,9 +98,9 @@ test("chunker splits oversized single paragraphs without empty chunks", () => {
 
   assert.equal(chunks.length, 3);
   assert.deepEqual(chunks.map((chunk) => chunk.id), [
-    "art-sf-chronicle-mayor-sample-chunk-001",
-    "art-sf-chronicle-mayor-sample-chunk-002",
-    "art-sf-chronicle-mayor-sample-chunk-003",
+    "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+    "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-002",
+    "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-003",
   ]);
   assert.equal(chunks.every((chunk) => chunk.text.length > 0), true);
   assert.equal(chunks.every((chunk) => chunk.text.length <= 100), true);
@@ -120,8 +120,8 @@ test("invalid IDs are rejected before chunk creation", () => {
 
 test("fixture path normalization rejects traversal and absolute paths", () => {
   assert.equal(
-    normalizeFixturePath("sf-chronicle-mayor-sample.html"),
-    "data/ingestion/fixtures/sf-chronicle-mayor-sample.html",
+    normalizeFixturePath("ca-secretary-of-state-2026-primary-certified-candidates.txt"),
+    "data/ingestion/fixtures/ca-secretary-of-state-2026-primary-certified-candidates.txt",
   );
   assert.throws(() => normalizeFixturePath("../public/sources.json"), /escapes/);
   assert.throws(() => normalizeFixturePath("/tmp/source.html"), /relative/);

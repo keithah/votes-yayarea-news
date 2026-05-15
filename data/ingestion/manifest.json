@@ -1,28 +1,18 @@
 {
   "version": 1,
-  "description": "Sample fixture manifest for deterministic ingestion tests. Entries are representative only and are not official 2026 election claims.",
+  "description": "Real-source launch ingestion manifest for deterministic M002/S02 source capture. Targets must be public, non-sample, and safe to ingest without network access by default.",
   "targets": [
     {
-      "id": "fixture-sf-chronicle-mayor-sample",
-      "sourceId": "src-sf-chronicle",
-      "artifactId": "art-sf-chronicle-mayor-sample",
-      "title": "San Francisco Chronicle mayor guide sample",
-      "inputKind": "html",
-      "fixturePath": "sf-chronicle-mayor-sample.html",
-      "canonicalUrl": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
-      "sampleFixture": true,
-      "notes": "Representative fixture for ingestion tests only; not an official 2026 endorsement claim."
-    },
-    {
-      "id": "fixture-growsf-mayor-sample",
-      "sourceId": "src-growsf",
-      "artifactId": "art-growsf-mayor-sample",
-      "title": "GrowSF mayor guide sample",
-      "inputKind": "html",
-      "fixturePath": "growsf-mayor-sample.html",
-      "canonicalUrl": "https://growsf.org/voter-guide/sample-2026/mayor",
-      "sampleFixture": true,
-      "notes": "Representative fixture for ingestion tests only; not an official 2026 recommendation claim."
+      "id": "fixture-ca-secretary-of-state-2026-primary-certified-candidates",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "title": "California Secretary of State certified candidate list for the June 2, 2026 primary",
+      "inputKind": "text",
+      "fixturePath": "ca-secretary-of-state-2026-primary-certified-candidates.txt",
+      "canonicalUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "Deterministic text capture of the official certified candidate list source URL used for M002 statewide, federal, BOE, and Assembly candidate entities. Not an endorsement source."
     }
   ]
 }

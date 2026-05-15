@@ -22,18 +22,15 @@ test("runIngestion writes stable raw artifacts chunks and run diagnostics", asyn
 
   assert.equal(first.ok, true);
   assert.equal(first.summary.status, "complete");
-  assert.equal(first.summary.counts.targets, 2);
-  assert.equal(first.summary.counts.artifacts, 2);
-  assert.ok(first.summary.counts.chunks >= 2);
+  assert.equal(first.summary.counts.targets, 1);
+  assert.equal(first.summary.counts.artifacts, 1);
+  assert.ok(first.summary.counts.chunks >= 1);
   assert.equal(first.summary.counts.errors, 0);
 
   const expectedFiles = [
-    "raw/src-sf-chronicle-mayor-sample.html",
-    "raw/src-growsf-mayor-sample.html",
-    "artifacts/src-sf-chronicle-mayor-sample.json",
-    "artifacts/src-growsf-mayor-sample.json",
-    "chunks/src-sf-chronicle-mayor-sample.json",
-    "chunks/src-growsf-mayor-sample.json",
+    "raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt",
+    "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
     "runs/latest.json",
   ];
 
@@ -41,23 +38,24 @@ test("runIngestion writes stable raw artifacts chunks and run diagnostics", asyn
     assert.equal(existsSync(path.join(outDir, relative)), true, relative);
   }
 
-  const artifact = JSON.parse(await readFile(path.join(outDir, "artifacts/src-sf-chronicle-mayor-sample.json"), "utf8"));
-  assert.equal(artifact.sourceId, "src-sf-chronicle");
-  assert.equal(artifact.id, "art-sf-chronicle-mayor-sample");
+  const artifact = JSON.parse(await readFile(path.join(outDir, "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json"), "utf8"));
+  assert.equal(artifact.sourceId, "src-ca-secretary-of-state");
+  assert.equal(artifact.id, "art-ca-secretary-of-state-2026-primary-certified-candidates");
   assert.equal(artifact.status, "chunked");
-  assert.match(artifact.text, /sample/i);
+  assert.match(artifact.text, /Certified List of Candidates/i);
+  assert.doesNotMatch(artifact.text, /mayor-sample|fixture-sf-chronicle-mayor-sample|fixture-growsf-mayor-sample/i);
 
-  const chunks = JSON.parse(await readFile(path.join(outDir, "chunks/src-sf-chronicle-mayor-sample.json"), "utf8"));
+  const chunks = JSON.parse(await readFile(path.join(outDir, "chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json"), "utf8"));
   assert.ok(Array.isArray(chunks));
-  assert.equal(chunks.every((chunk: { sourceId: string }) => chunk.sourceId === "src-sf-chronicle"), true);
+  assert.equal(chunks.every((chunk: { sourceId: string }) => chunk.sourceId === "src-ca-secretary-of-state"), true);
 
-  const rawBefore = await readFile(path.join(outDir, "raw/src-sf-chronicle-mayor-sample.html"), "utf8");
+  const rawBefore = await readFile(path.join(outDir, "raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt"), "utf8");
   const second = await runIngestion({
     manifestPath: DEFAULT_MANIFEST,
     outDir,
     now: fixedClock(),
   });
-  const rawAfter = await readFile(path.join(outDir, "raw/src-sf-chronicle-mayor-sample.html"), "utf8");
+  const rawAfter = await readFile(path.join(outDir, "raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt"), "utf8");
 
   assert.equal(second.ok, true);
   assert.equal(first.runPath, second.runPath);
@@ -68,14 +66,14 @@ test("CLI supports --only-source and writes non-secret summary output", async ()
   const outDir = await temporaryDirectory();
   const result = spawnSync(
     process.execPath,
-    ["--import", "tsx", "scripts/ingest-sources.ts", "--manifest", DEFAULT_MANIFEST, "--out", outDir, "--only-source", "src-growsf"],
+    ["--import", "tsx", "scripts/ingest-sources.ts", "--manifest", DEFAULT_MANIFEST, "--out", outDir, "--only-source", "src-ca-secretary-of-state"],
     { encoding: "utf8" },
   );
 
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /src-growsf/);
-  assert.doesNotMatch(result.stdout, /sf-chronicle.*IMPORTED/);
-  assert.equal(existsSync(path.join(outDir, "artifacts/src-growsf-mayor-sample.json")), true);
+  assert.match(result.stdout, /src-ca-secretary-of-state/);
+  assert.doesNotMatch(result.stdout, /mayor-sample/);
+  assert.equal(existsSync(path.join(outDir, "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json")), true);
   assert.equal(existsSync(path.join(outDir, "artifacts/src-sf-chronicle-mayor-sample.json")), false);
 });
 
@@ -181,14 +179,14 @@ function fixedClock(): () => Date {
 
 function target(overrides: Partial<IngestionManifest["targets"][number]> = {}): IngestionManifest["targets"][number] {
   return {
-    id: "fixture-sf-chronicle-mayor-sample",
-    sourceId: "src-sf-chronicle",
-    artifactId: "art-sf-chronicle-mayor-sample",
-    title: "San Francisco Chronicle mayor guide sample",
-    inputKind: "html",
-    fixturePath: "sf-chronicle-mayor-sample.html",
-    canonicalUrl: "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
-    sampleFixture: true,
+    id: "fixture-ca-secretary-of-state-2026-primary-certified-candidates",
+    sourceId: "src-ca-secretary-of-state",
+    artifactId: "art-ca-secretary-of-state-2026-primary-certified-candidates",
+    title: "California Secretary of State certified candidate list",
+    inputKind: "text",
+    fixturePath: "ca-secretary-of-state-2026-primary-certified-candidates.txt",
+    canonicalUrl: "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+    sampleFixture: false,
     ...overrides,
   };
 }

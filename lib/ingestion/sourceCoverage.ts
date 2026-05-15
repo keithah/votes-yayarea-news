@@ -23,6 +23,8 @@ export interface SourceCoverageEntry {
   status: SourceCoverageStatus;
   targetId?: KebabCaseId;
   guideUrl?: string;
+  relevantRaceSlugs?: string[];
+  ballotUniverseGaps?: string[];
   reason?: string;
   notes?: string;
 }
@@ -59,6 +61,8 @@ export interface SourceCoverageSourceReport {
   artifactId?: KebabCaseId;
   guideUrl?: string;
   homepageUrl?: string;
+  relevantRaceSlugs?: string[];
+  ballotUniverseGaps?: string[];
   reason?: string;
   notes?: string;
 }
@@ -146,6 +150,8 @@ export async function buildSourceCoverageReport(options: BuildSourceCoverageOpti
       artifactId: target?.artifactId,
       guideUrl: coverage.guideUrl ?? stringValue(source.guideUrl),
       homepageUrl: stringValue(source.homepageUrl),
+      relevantRaceSlugs: normalizeStringArray(coverage.relevantRaceSlugs),
+      ballotUniverseGaps: normalizeStringArray(coverage.ballotUniverseGaps),
       reason: coverage.reason,
       notes: coverage.notes,
     });
@@ -401,6 +407,14 @@ function splitJsonPath(issuePath: string): [string, string] {
     return [issuePath, ""];
   }
   return [issuePath.slice(0, jsonMarker), issuePath.slice(jsonMarker)];
+}
+
+function normalizeStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+  const items = value.filter((item): item is string => typeof item === "string" && item.trim().length > 0).map((item) => item.trim());
+  return items.length > 0 ? items : undefined;
 }
 
 function stringValue(value: unknown): string | undefined {

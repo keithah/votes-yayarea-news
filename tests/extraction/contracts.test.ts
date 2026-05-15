@@ -4,14 +4,14 @@ import sourcesFile from "../../data/public/sources.json" with { type: "json" };
 import entitiesFile from "../../data/public/entities.json" with { type: "json" };
 import collectionsFile from "../../data/public/collections.json" with { type: "json" };
 import governorRaceFile from "../../data/public/races/california-governor.json" with { type: "json" };
-import artifact from "../../data/ingested/artifacts/src-sf-chronicle-mayor-sample.json" with { type: "json" };
-import chunks from "../../data/ingested/chunks/src-sf-chronicle-mayor-sample.json" with { type: "json" };
+import artifact from "../../data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json" with { type: "json" };
+import chunks from "../../data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json" with { type: "json" };
 import { validateExtractionDraft } from "../../lib/extraction/validate";
 import type { PublicDataRepository } from "../../lib/data/types";
 import type { ArtifactChunk, IngestedArtifact } from "../../lib/ingestion/types";
 import type { ExtractionDraft, ExtractionValidationContext } from "../../lib/extraction/types";
 
-const quote = "Candidate A is described in this sample as emphasizing faster housing approvals and clear performance goals for city departments.";
+const quote = "Tracked M002 contests covered by this official candidate-list source:";
 
 test("valid extraction draft bridges public race data to ingested artifact chunks", () => {
   const result = validateExtractionDraft(validDraft(), validationContext());
@@ -148,8 +148,8 @@ function validDraft(): ExtractionDraft {
         raceId: "race-california-governor",
         sourceId: "src-ca-secretary-of-state",
         entityId: "ent-california-governor-akinyemi-agbede",
-        artifactId: "art-sf-chronicle-mayor-sample",
-        chunkId: "art-sf-chronicle-mayor-sample-chunk-001",
+        artifactId: "art-ca-secretary-of-state-2026-primary-certified-candidates",
+        chunkId: "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
         url: "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
         kind: "quote",
         quote,
@@ -170,8 +170,8 @@ function validationContext(): ExtractionValidationContext {
     chunks: chunks as ArtifactChunk[],
     checkedFiles: [
       "data/public/races/california-governor.json",
-      "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
-      "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",
+      "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+      "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
     ],
   };
 }

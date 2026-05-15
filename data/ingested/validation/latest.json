@@ -1,19 +1,16 @@
 {
   "ok": true,
   "checkedFiles": [
-    "data/ingested/artifacts/src-growsf-mayor-sample.json",
-    "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
-    "data/ingested/chunks/src-growsf-mayor-sample.json",
-    "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",
-    "data/ingested/raw/src-growsf-mayor-sample.html",
-    "data/ingested/raw/src-sf-chronicle-mayor-sample.html",
+    "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt",
     "data/ingested/runs/latest.json",
     "data/ingestion/manifest.json",
     "data/public/sources.json"
   ],
   "counts": {
-    "targets": 2,
-    "artifacts": 2,
+    "targets": 1,
+    "artifacts": 1,
     "chunks": 2,
     "issues": 0,
     "errors": 0,
