@@ -25,6 +25,9 @@ test("public race page model exposes mayor route content and placeholders", asyn
   assert.equal(model.diagnostics.publicSourceCount, 2);
   assert.equal(model.diagnostics.publicPositionCount, 2);
   assert.equal(model.diagnostics.evidenceCount, 2);
+  assert.equal(model.diagnostics.matrixCandidateCount, 2);
+  assert.equal(model.diagnostics.matrixSourceCount, 2);
+  assert.equal(model.diagnostics.matrixCellCount, 4);
   assert.equal(model.ui.consensus.entityName, "Sample Candidate A");
   assert.equal(model.ui.consensus.percentage, 50);
   assert.deepEqual(
@@ -32,9 +35,30 @@ test("public race page model exposes mayor route content and placeholders", asyn
     ["civic voter guide / recommendations", "editorial endorsements"],
   );
   assert.equal(model.ui.placeholders.matrixReady, true);
+  assert.equal(model.matrix.empty, false);
+  assert.equal(model.matrix.raceSlug, "mayor");
+  assert.deepEqual(
+    model.matrix.candidates.map((candidate) => candidate.name),
+    ["Sample Candidate A", "Sample Candidate B"],
+  );
+  assert.deepEqual(
+    model.matrix.groups.map((group) => group.sourceType),
+    ["civic voter guide / recommendations", "editorial endorsements"],
+  );
+  assert.equal(model.matrix.cells["src-growsf::ent-sample-candidate-b"].id, "cell:src-growsf::ent-sample-candidate-b");
+  assert.equal(model.matrix.cells["src-growsf::ent-sample-candidate-b"].positionKindLabel, "Informational");
+  assert.equal(model.matrix.cells["src-sf-chronicle::ent-sample-candidate-b"].positionKindLabel, "No public position");
   assert.equal(model.ui.placeholders.receiptsReady, true);
   assert.equal(model.ui.placeholders.aiDisclosureReady, true);
   assert.equal(model.ui.placeholders.drilldownReady, true);
+});
+
+test("race page source no longer exposes comparison matrix placeholder copy", async () => {
+  const pageSource = await fs.readFile(path.join(process.cwd(), "app", "races", "[slug]", "page.tsx"), "utf8");
+
+  assert.equal(pageSource.includes("Static candidate-by-source matrix placeholder"), false);
+  assert.equal(pageSource.includes("before matrix work ships"), false);
+  assert.equal(pageSource.includes("title=\"Comparison matrix\""), false);
 });
 
 test("public race page model returns null for unknown or non-public slugs", async () => {

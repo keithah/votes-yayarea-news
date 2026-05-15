@@ -737,6 +737,166 @@ code {
   margin-top: 0.45rem;
 }
 
+.recommendation-matrix-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.matrix-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  box-shadow: var(--shadow);
+}
+
+.matrix-controls label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.matrix-controls select {
+  width: 100%;
+  min-height: 2.7rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.85rem;
+  background: var(--bg-elevated);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 750;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.matrix-desktop {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  box-shadow: var(--shadow);
+}
+
+.recommendation-table {
+  width: 100%;
+  min-width: 46rem;
+  border-collapse: collapse;
+}
+
+.recommendation-table caption {
+  padding: 1rem;
+  color: var(--text-muted);
+  font-weight: 850;
+  text-align: left;
+}
+
+.recommendation-table th,
+.recommendation-table td {
+  padding: 0.85rem;
+  border-block-start: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.recommendation-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-elevated);
+}
+
+.recommendation-table th:first-child {
+  inline-size: 16rem;
+}
+
+.recommendation-table th span,
+.recommendation-table th small,
+.recommendation-table td strong,
+.recommendation-table td small {
+  display: block;
+}
+
+.recommendation-table small,
+.matrix-source-card p,
+.matrix-candidate-card > p {
+  color: var(--text-muted);
+}
+
+.matrix-group-row th {
+  background: color-mix(in srgb, var(--accent-soft) 52%, transparent);
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.matrix-group-row span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: none;
+}
+
+.position-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin-block-end: 0.45rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 950;
+}
+
+.position-badge.has-position {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+}
+
+.position-badge.no-position {
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+}
+
+.matrix-mobile {
+  display: none;
+}
+
+.matrix-candidate-card,
+.matrix-source-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, transparent);
+  box-shadow: var(--shadow);
+}
+
+.matrix-candidate-card {
+  padding: 1rem;
+}
+
+.matrix-source-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.matrix-source-card {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.85rem;
+}
+
+.matrix-source-card h4,
+.matrix-source-card p {
+  margin: 0;
+}
+
 @media (max-width: 760px) {
   .site-header,
   .hero-grid {
@@ -769,5 +929,14 @@ code {
   .source-list li,
   .theme-list li {
     display: grid;
+  }
+
+  .matrix-desktop {
+    display: none;
+  }
+
+  .matrix-mobile {
+    display: grid;
+    gap: 1rem;
   }
 }

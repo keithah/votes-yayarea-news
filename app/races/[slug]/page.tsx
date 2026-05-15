@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import { listRaceSlugs, loadPublicRaceContext, type LoadedPublicRaceContext, type LoaderOptions } from "../../../lib/data/loaders";
-import { buildRaceUiModel, type RaceEntityCard, type RaceSourceCard, type RaceUiModel } from "../../../lib/ui/race";
+import { buildRaceUiModel, buildRecommendationMatrixModel, type RaceEntityCard, type RaceSourceCard, type RaceUiModel, type RecommendationMatrixModel } from "../../../lib/ui/race";
+import { RecommendationMatrix } from "./recommendation-matrix";
 
 export const dynamic = "force-static";
 
 export interface RacePageModel {
   ui: RaceUiModel;
+  matrix: RecommendationMatrixModel;
   checkedFiles: string[];
   diagnostics: {
     reviewStatus: string;
@@ -15,6 +17,9 @@ export interface RacePageModel {
     publicSourceCount: number;
     evidenceCount: number;
     checkedFileCount: number;
+    matrixCandidateCount: number;
+    matrixSourceCount: number;
+    matrixCellCount: number;
   };
 }
 
@@ -32,8 +37,10 @@ export async function buildRacePageModel(slug: string, options: LoaderOptions = 
   if (!context) return null;
 
   const ui = buildRaceUiModel(context);
+  const matrix = buildRecommendationMatrixModel(ui);
   return {
     ui,
+    matrix,
     checkedFiles: context.checkedFiles,
     diagnostics: {
       reviewStatus: context.race.status,
@@ -43,6 +50,9 @@ export async function buildRacePageModel(slug: string, options: LoaderOptions = 
       publicSourceCount: ui.sourceCount,
       evidenceCount: ui.evidenceCount,
       checkedFileCount: context.checkedFiles.length,
+      matrixCandidateCount: matrix.candidates.length,
+      matrixSourceCount: matrix.sources.length,
+      matrixCellCount: Object.keys(matrix.cells).length,
     },
   };
 }
@@ -53,7 +63,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
 
   if (!model) notFound();
 
-  const { ui, diagnostics, checkedFiles } = model;
+  const { ui, matrix, diagnostics, checkedFiles } = model;
   const consensusLabel = ui.consensus.entityName ? ui.consensus.label : ui.consensus.label;
 
   return (
@@ -69,8 +79,8 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           <p className="eyebrow">Public race shell</p>
           <h1 id="race-title">{ui.race.title}</h1>
           <p className="lede">
-            Reviewed public positions for {ui.race.jurisdiction}, with source counts and explicit
-            placeholders for matrix, receipts, AI disclosure, and drill-down pages.
+            Reviewed public positions for {ui.race.jurisdiction}, with source counts, a source-by-candidate
+            recommendation matrix, and explicit placeholders for receipts, AI disclosure, and drill-down pages.
           </p>
           <dl className="race-meta" aria-label="Race metadata">
             <div>
@@ -131,6 +141,10 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
             <dt>Checked files</dt>
             <dd>{diagnostics.checkedFileCount}</dd>
           </div>
+          <div>
+            <dt>Matrix cells</dt>
+            <dd>{diagnostics.matrixCellCount}</dd>
+          </div>
         </dl>
       </section>
 
@@ -138,7 +152,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
         <div className="section-heading">
           <p className="eyebrow">Candidate snapshot</p>
           <h2 id="candidates-title">Public candidate cards</h2>
-          <p>Counts are grouped by candidate so sparse public records are visible before matrix work ships.</p>
+          <p>Counts are grouped by candidate so sparse public records are visible alongside the recommendation matrix.</p>
         </div>
         <div className="candidate-grid">
           {ui.candidates.map((candidate) => (
@@ -146,6 +160,8 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           ))}
         </div>
       </section>
+
+      <RecommendationMatrix matrix={matrix} />
 
       <section className="breakdown-grid" aria-label="Source type and source list">
         <article className="route-card" aria-labelledby="source-types-title">
@@ -193,11 +209,6 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
       </section>
 
       <section className="placeholder-grid" aria-label="Deferred public modules">
-        <PlaceholderCard
-          title="Comparison matrix"
-          ready={ui.placeholders.matrixReady}
-          body="Static candidate-by-source matrix placeholder. S06 can hydrate this from the public positions already counted above."
-        />
         <PlaceholderCard
           title="Receipts drawer"
           ready={ui.placeholders.receiptsReady}
