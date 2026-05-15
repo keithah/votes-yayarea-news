@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "description": "M002/S02 source availability ledger. Each public source appears exactly once; sample fixtures do not count as launch coverage.",
+  "sources": [
+    {
+      "sourceId": "src-ca-secretary-of-state",
+      "status": "pending",
+      "guideUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "Official Certified List of Candidates for the June 2, 2026 Statewide Direct Primary Election, dated 2026-03-26. Used for statewide, federal, BOE, and Assembly candidate entities only; not a recommendation source."
+    },
+    {
+      "sourceId": "src-sf-department-of-elections",
+      "status": "manual-only",
+      "reason": "Manual capture required until a stable public June 2026 local election data URL is available.",
+      "notes": "Tracked as the official local authority for San Francisco contests and measures. A confirmed June 2, 2026 local candidate/measure data URL was not located in repo evidence during T01, so affected contests remain hidden/documented until filled."
+    },
+    {
+      "sourceId": "src-sf-chronicle",
+      "status": "unavailable",
+      "reason": "No public June 2026 endorsement guide URL is available in repo evidence; do not use sample fixture targets as launch coverage.",
+      "notes": "pending 2026 voter-guide or endorsement URL; include if public June 2026 endorsement pages are available."
+    },
+    {
+      "sourceId": "src-mission-local",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide or election coverage URL; keep source-notes-only until a usable artifact exists."
+    },
+    {
+      "sourceId": "src-sf-standard",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide or election coverage URL; document as pending until public recommendations or a structured guide exists."
+    },
+    {
+      "sourceId": "src-lwv-sf-voters-edge",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 San Francisco election guide URL; nonpartisan/informational records should not be forced into endorsement semantics."
+    },
+    {
+      "sourceId": "src-spur",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide URL; include for measure and policy recommendations if published."
+    },
+    {
+      "sourceId": "src-growsf",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide URL; recognizable local guide with broad race/measure coverage."
+    },
+    {
+      "sourceId": "src-sf-democratic-party",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include official Democratic Party recommendations where public."
+    },
+    {
+      "sourceId": "src-sf-republican-party",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; useful institutional contrast if public recommendations are available."
+    },
+    {
+      "sourceId": "src-harvey-milk-lgbtq-democratic-club",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include if public slate is available."
+    },
+    {
+      "sourceId": "src-alice-b-toklas-lgbtq-democratic-club",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include if public slate is available."
+    },
+    {
+      "sourceId": "src-sf-berniecrats",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include as progressive Democratic club source if public slate is available."
+    },
+    {
+      "sourceId": "src-united-democratic-club",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include if public slate is available."
+    },
+    {
+      "sourceId": "src-sf-labor-council",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; primary labor umbrella source if public recommendations are available."
+    },
+    {
+      "sourceId": "src-seiu-local-1021",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include if public local/state recommendations are available."
+    },
+    {
+      "sourceId": "src-united-educators-of-san-francisco",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include especially for education/local races and measures."
+    },
+    {
+      "sourceId": "src-yimby-action-sf-yimby",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include for housing/urbanism signal if public slate is available."
+    },
+    {
+      "sourceId": "src-sf-tenants-union",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide or endorsement URL; include if public recommendations are available."
+    },
+    {
+      "sourceId": "src-housing-action-coalition",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include if public candidate/measure recommendations are available."
+    },
+    {
+      "sourceId": "src-sierra-club-bay-chapter",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 endorsement URL; include for environmental recommendations if public and SF-relevant."
+    },
+    {
+      "sourceId": "src-sf-bicycle-coalition",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide or endorsement URL; include for transportation/street-safety signal if public recommendations are available."
+    },
+    {
+      "sourceId": "src-togethersf-action",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide or endorsement URL; include if public recommendations are available."
+    },
+    {
+      "sourceId": "src-aclu-norcal",
+      "status": "pending",
+      "reason": "Pending public June 2026 guide or measure URL and real ingestion target.",
+      "notes": "pending 2026 voter-guide or measure-guide URL; keep pending because coverage may be issue-specific."
+    }
+  ]
+}

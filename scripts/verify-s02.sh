@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-html_path="out/debug/races/mayor/index.html"
+html_path="out/debug/races/california-governor/__next._full.txt"
 
 pnpm validate-data
 pnpm test:data
+node --import tsx --test tests/ingestion/m002-s02-source-coverage.test.ts
+pnpm report:source-coverage
 pnpm typecheck
 pnpm build
 
@@ -22,12 +24,15 @@ assert_contains() {
 }
 
 assert_contains "Data debug"
-assert_contains "San Francisco Mayor"
-assert_contains "mayor"
-assert_contains '<th scope="row">Sources</th><td>2</td>'
-assert_contains '<th scope="row">Evidence</th><td>2</td>'
+assert_contains "California Governor"
+assert_contains "california-governor"
+assert_contains '"children":"Sources"'
+assert_contains '"children":1'
+assert_contains '"children":"Evidence"'
+assert_contains '"children":61'
 assert_contains "Manual override"
-assert_contains "present"
-assert_contains "manual/overrides/races/mayor.json"
+assert_contains "absent"
+assert_contains "data/public/races/california-governor.json"
+assert_contains "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
 
-echo "S02 verification passed: data validation, loader tests, typecheck, static export, and mayor debug route markers."
+echo "S02 verification passed: data validation, loader tests, source coverage diagnostics, typecheck, static export, and California Governor debug route markers."
