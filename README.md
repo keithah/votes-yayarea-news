@@ -37,6 +37,7 @@ Current scripts:
 | `pnpm verify:s04` | Run the full S04 extraction/review/publication verification: deterministic extraction, validation, review publish, public data validation, extraction/loader tests, typecheck, static build, and artifact coherence checks. |
 | `pnpm verify:s05` | Run the full S05 public static UI verification: public data validation, data/UI route tests, typecheck, static build, and homepage-to-mayor export smoke checks. |
 | `pnpm verify:s06` | Run the full S06 recommendation matrix verification: public data validation, matrix model and route tests, typecheck, static build, and mayor matrix HTML assertions. |
+| `pnpm verify:s07` | Run the full S07 receipts, reviewed-summary, and AI disclosure verification: public data validation, data/model/route tests, typecheck, static build, and exported HTML assertions for receipt readiness, reviewed summary evidence, and footer disclosure reachability. |
 
 ## S02 data skeleton
 
@@ -155,6 +156,25 @@ Expected browser smoke path after `pnpm build` or `pnpm verify:s06`:
 2. Confirm the recommendation matrix shows the source-by-candidate heading and presentation controls for source type, candidate focus, position focus, sorting, and grouping.
 3. On desktop width, confirm the table groups rows by source type and includes explicit neutral cells for source/candidate pairs with no public position.
 4. On mobile width, confirm candidate cards stack source cards with source labels, position badges, and evidence counts.
+
+### S07 receipts, reviewed summary, and AI disclosure
+
+S07 adds public, static-export-compatible evidence receipts, reviewed AI summary support, and the `/how-we-use-ai` disclosure route. The closeout command is:
+
+```bash
+pnpm verify:s07
+```
+
+`pnpm verify:s07` is local, credential-free, and network-free. It prints each verification phase before running it, stops at the first failing phase, and runs public data validation, data/model/route tests, TypeScript typecheck, the static Next.js build, and `scripts/assert-s07-export.mjs` against the exported mayor race page plus AI disclosure page.
+
+The export assertions intentionally check both inclusions and exclusions. They verify receipt readiness diagnostics on matrix cells (`data-receipt-status`, receipt counts, selected-cell default, empty reasons, and public source links), reviewed summary expansion/supporting evidence diagnostics (`data-summary-*` attributes, quotes, source/status metadata, and supporting-source links), footer reachability for `/how-we-use-ai/`, the disclosure route marker and sections, absence of old receipt/summary/disclosure placeholder copy, and absence of `.gsd` private path leakage.
+
+Expected browser smoke path after `pnpm build` or `pnpm verify:s07`:
+
+1. Open `/races/mayor/` and click a matrix cell that says it can open an evidence receipt.
+2. Confirm the receipt drawer shows the candidate, source, position, status, quote, source link, and review/publication status.
+3. Expand the reviewed AI summary and confirm supporting evidence quotes and links are visible.
+4. Use the footer link to open `/how-we-use-ai/` and confirm the AI assistance, human review, automation boundary, evidence, publication gate, limitations, and corrections sections are present.
 
 ## Static-export constraints
 

@@ -104,7 +104,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           <h1 id="race-title">{ui.race.title}</h1>
           <p className="lede">
             Reviewed public positions for {ui.race.jurisdiction}, with source counts, a source-by-candidate
-            recommendation matrix, and explicit placeholders for receipts, AI disclosure, and drill-down pages.
+            recommendation matrix, evidence receipts, reviewed AI summary support, and disclosure links.
           </p>
           <dl className="race-meta" aria-label="Race metadata">
             <div>
