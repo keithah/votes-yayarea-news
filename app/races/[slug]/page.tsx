@@ -1,13 +1,27 @@
 import { notFound } from "next/navigation";
 import { listRaceSlugs, loadPublicRaceContext, type LoadedPublicRaceContext, type LoaderOptions } from "../../../lib/data/loaders";
-import { buildRaceUiModel, buildRecommendationMatrixModel, type RaceEntityCard, type RaceSourceCard, type RaceUiModel, type RecommendationMatrixModel } from "../../../lib/ui/race";
+import {
+  buildRaceReceiptsModel,
+  buildRaceReviewedSummaryModel,
+  buildRaceUiModel,
+  buildRecommendationMatrixModel,
+  type RaceEntityCard,
+  type RaceReceiptCollectionModel,
+  type RaceSourceCard,
+  type RaceUiModel,
+  type RecommendationMatrixModel,
+  type ReviewedSummaryEvidenceModel,
+} from "../../../lib/ui/race";
 import { RecommendationMatrix } from "./recommendation-matrix";
+import { ReviewedSummary } from "./reviewed-summary";
 
 export const dynamic = "force-static";
 
 export interface RacePageModel {
   ui: RaceUiModel;
   matrix: RecommendationMatrixModel;
+  receipts: RaceReceiptCollectionModel;
+  reviewedSummary: ReviewedSummaryEvidenceModel;
   checkedFiles: string[];
   diagnostics: {
     reviewStatus: string;
@@ -20,6 +34,9 @@ export interface RacePageModel {
     matrixCandidateCount: number;
     matrixSourceCount: number;
     matrixCellCount: number;
+    receiptCount: number;
+    availableReceiptCount: number;
+    reviewedSummaryEvidenceCount: number;
   };
 }
 
@@ -38,9 +55,13 @@ export async function buildRacePageModel(slug: string, options: LoaderOptions = 
 
   const ui = buildRaceUiModel(context);
   const matrix = buildRecommendationMatrixModel(ui);
+  const receipts = buildRaceReceiptsModel(ui, matrix);
+  const reviewedSummary = buildRaceReviewedSummaryModel(ui);
   return {
     ui,
     matrix,
+    receipts,
+    reviewedSummary,
     checkedFiles: context.checkedFiles,
     diagnostics: {
       reviewStatus: context.race.status,
@@ -53,6 +74,9 @@ export async function buildRacePageModel(slug: string, options: LoaderOptions = 
       matrixCandidateCount: matrix.candidates.length,
       matrixSourceCount: matrix.sources.length,
       matrixCellCount: Object.keys(matrix.cells).length,
+      receiptCount: receipts.receiptCount,
+      availableReceiptCount: receipts.availableCount,
+      reviewedSummaryEvidenceCount: reviewedSummary.evidenceCount,
     },
   };
 }
@@ -63,7 +87,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
 
   if (!model) notFound();
 
-  const { ui, matrix, diagnostics, checkedFiles } = model;
+  const { ui, matrix, receipts, reviewedSummary, diagnostics, checkedFiles } = model;
   const consensusLabel = ui.consensus.entityName ? ui.consensus.label : ui.consensus.label;
 
   return (
@@ -161,7 +185,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
         </div>
       </section>
 
-      <RecommendationMatrix matrix={matrix} />
+      <RecommendationMatrix matrix={matrix} receipts={receipts} />
 
       <section className="breakdown-grid" aria-label="Source type and source list">
         <article className="route-card" aria-labelledby="source-types-title">
@@ -194,25 +218,13 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
         </article>
       </section>
 
-      <section className="route-card" aria-labelledby="summary-title">
-        <p className="eyebrow">Reviewed AI summary</p>
-        <h2 id="summary-title">Disclosure-ready summary module</h2>
-        {ui.summary.visible ? (
-          <p>{ui.summary.text}</p>
-        ) : (
-          <p className="muted-copy">
-            No reviewed public AI-assisted summary is published for this race yet. Later slices can
-            fill this section only after evidence-backed review passes publication gates.
-          </p>
-        )}
-        <p className="module-count">{ui.summary.evidenceCount} public evidence references</p>
-      </section>
+      <ReviewedSummary summary={reviewedSummary} />
 
       <section className="placeholder-grid" aria-label="Deferred public modules">
         <PlaceholderCard
-          title="Receipts drawer"
-          ready={ui.placeholders.receiptsReady}
-          body="Evidence quote and URL receipts are present in the model; the drawer interaction is intentionally deferred."
+          title="Entity pages"
+          ready={ui.placeholders.drilldownReady}
+          body="Candidate drill-down paths will use trailing-slash routes such as /entities/candidate-slug/ once entity pages ship."
         />
         <PlaceholderCard
           title="Entity pages"

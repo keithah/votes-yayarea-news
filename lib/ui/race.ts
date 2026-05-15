@@ -459,7 +459,7 @@ export function buildRaceReceiptsModel(ui: RaceUiModel, matrix: RecommendationMa
 }
 
 export function buildRaceReviewedSummaryModel(ui: RaceUiModel): ReviewedSummaryEvidenceModel {
-  if (!ui.summary.visible || ui.summary.status !== "reviewed" || ui.summary.publicationStatus !== "public") {
+  if (!ui.summary.visible || !isReviewedStatus(ui.summary.status) || ui.summary.publicationStatus !== "public") {
     return {
       visible: false,
       status: "unavailable",
@@ -483,6 +483,10 @@ export function buildRaceReviewedSummaryModel(ui: RaceUiModel): ReviewedSummaryE
     evidenceCount: evidence.length,
     evidence,
   };
+}
+
+function isReviewedStatus(status: Summary["status"] | undefined): boolean {
+  return status === "reviewed" || status === "verified" || status === "published";
 }
 
 function buildPublicReceiptEvidenceById(ui: RaceUiModel): Map<string, PublicReceiptEvidence> {

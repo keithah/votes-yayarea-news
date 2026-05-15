@@ -28,6 +28,9 @@ test("public race page model exposes mayor route content and placeholders", asyn
   assert.equal(model.diagnostics.matrixCandidateCount, 2);
   assert.equal(model.diagnostics.matrixSourceCount, 2);
   assert.equal(model.diagnostics.matrixCellCount, 4);
+  assert.equal(model.diagnostics.receiptCount, 4);
+  assert.equal(model.diagnostics.availableReceiptCount, 2);
+  assert.equal(model.diagnostics.reviewedSummaryEvidenceCount, 2);
   assert.equal(model.ui.consensus.entityName, "Sample Candidate A");
   assert.equal(model.ui.consensus.percentage, 50);
   assert.deepEqual(
@@ -51,14 +54,43 @@ test("public race page model exposes mayor route content and placeholders", asyn
   assert.equal(model.ui.placeholders.receiptsReady, true);
   assert.equal(model.ui.placeholders.aiDisclosureReady, true);
   assert.equal(model.ui.placeholders.drilldownReady, true);
+  assert.equal(model.receipts.receiptCount, 4);
+  assert.equal(model.receipts.availableCount, 2);
+  assert.equal(model.receipts.byCellId["cell:src-growsf::ent-sample-candidate-b"].status, "available");
+  assert.equal(model.receipts.byCellId["cell:src-growsf::ent-sample-candidate-b"].evidence[0].publicationStatus, "public");
+  assert.equal(model.receipts.byCellId["cell:src-sf-chronicle::ent-sample-candidate-b"].status, "unavailable");
+  assert.equal(model.receipts.byCellId["cell:src-sf-chronicle::ent-sample-candidate-b"].emptyReason, "no-public-position");
+  assert.deepEqual(model.receipts.byCellId["cell:src-sf-chronicle::ent-sample-candidate-b"].evidence, []);
+  assert.equal(model.reviewedSummary.visible, true);
+  assert.equal(model.reviewedSummary.status, "available");
+  assert.equal(model.reviewedSummary.evidenceCount, 2);
+  assert.deepEqual(model.reviewedSummary.evidenceIds, ["ev-sf-chronicle-sample-candidate-a-1-1", "ev-growsf-sample-candidate-b-1-1"]);
 });
 
-test("race page source no longer exposes comparison matrix placeholder copy", async () => {
+test("race page source no longer exposes comparison matrix, receipt, or summary placeholder copy", async () => {
   const pageSource = await fs.readFile(path.join(process.cwd(), "app", "races", "[slug]", "page.tsx"), "utf8");
 
   assert.equal(pageSource.includes("Static candidate-by-source matrix placeholder"), false);
   assert.equal(pageSource.includes("before matrix work ships"), false);
   assert.equal(pageSource.includes("title=\"Comparison matrix\""), false);
+  assert.equal(pageSource.includes("drawer interaction is intentionally deferred"), false);
+  assert.equal(pageSource.includes("Later slices can"), false);
+});
+
+test("race route components expose receipt and summary diagnostic data attributes", async () => {
+  const matrixSource = await fs.readFile(path.join(process.cwd(), "app", "races", "[slug]", "recommendation-matrix.tsx"), "utf8");
+  const drawerSource = await fs.readFile(path.join(process.cwd(), "app", "races", "[slug]", "receipt-drawer.tsx"), "utf8");
+  const summarySource = await fs.readFile(path.join(process.cwd(), "app", "races", "[slug]", "reviewed-summary.tsx"), "utf8");
+
+  assert.equal(matrixSource.includes("data-selected-cell-id"), true);
+  assert.equal(matrixSource.includes("data-receipt-status"), true);
+  assert.equal(matrixSource.includes("data-receipt-empty-reason"), true);
+  assert.equal(drawerSource.includes("data-receipt-selected-cell-id"), true);
+  assert.equal(drawerSource.includes("data-receipt-evidence-id"), true);
+  assert.equal(drawerSource.includes("data-receipt-publication-status"), true);
+  assert.equal(summarySource.includes("data-summary-evidence-count"), true);
+  assert.equal(summarySource.includes("data-summary-evidence-id"), true);
+  assert.equal(summarySource.includes("data-summary-empty-reason"), true);
 });
 
 test("public race page model returns null for unknown or non-public slugs", async () => {

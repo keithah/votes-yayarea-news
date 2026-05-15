@@ -2,14 +2,18 @@
 
 import { useMemo, useState } from "react";
 import type {
+  RaceReceiptCollectionModel,
+  RaceReceiptModel,
   RecommendationMatrixCell,
   RecommendationMatrixFilterPositionKind,
   RecommendationMatrixModel,
   RecommendationMatrixSource,
 } from "../../../lib/ui/race";
+import { ReceiptDrawer } from "./receipt-drawer";
 
 interface RecommendationMatrixProps {
   matrix: RecommendationMatrixModel;
+  receipts: RaceReceiptCollectionModel;
 }
 
 type SourceTypeFilter = "all" | string;
@@ -20,17 +24,20 @@ type GroupingMode = "sourceType" | "none";
 
 const ALL = "all" as const;
 
-export function RecommendationMatrix({ matrix }: RecommendationMatrixProps) {
+export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixProps) {
   const [sourceType, setSourceType] = useState<SourceTypeFilter>(ALL);
   const [candidateId, setCandidateId] = useState<CandidateFilter>(ALL);
   const [positionKind, setPositionKind] = useState<PositionKindFilter>(ALL);
   const [sortOrder, setSortOrder] = useState<SortOrder>(matrix.defaultSort.key);
   const [grouping, setGrouping] = useState<GroupingMode>(matrix.defaultGrouping.key);
+  const [selectedCellId, setSelectedCellId] = useState<string | null>(null);
 
   const view = useMemo(
     () => buildMatrixView(matrix, { sourceType, candidateId, positionKind, sortOrder, grouping }),
     [matrix, sourceType, candidateId, positionKind, sortOrder, grouping],
   );
+
+  const selectedReceipt = selectedCellId ? receipts.byCellId[selectedCellId] : undefined;
 
   if (matrix.empty) {
     return (
@@ -50,6 +57,9 @@ export function RecommendationMatrix({ matrix }: RecommendationMatrixProps) {
       data-matrix-candidate-count={matrix.candidates.length}
       data-matrix-source-count={matrix.sources.length}
       data-matrix-cell-count={Object.keys(matrix.cells).length}
+      data-receipt-count={receipts.receiptCount}
+      data-receipt-available-count={receipts.availableCount}
+      data-selected-cell-id={selectedCellId ?? "none"}
     >
       <div className="section-heading">
         <p className="eyebrow">Recommendation matrix</p>
@@ -148,7 +158,16 @@ export function RecommendationMatrix({ matrix }: RecommendationMatrixProps) {
                   </th>
                   {view.candidates.map((candidate) => {
                     const cell = matrix.cells[cellKey(source.id, candidate.id)];
-                    return <MatrixTableCell key={cell.id} cell={cell} sourceName={source.name} candidateName={candidate.name} />;
+                    return (
+                      <MatrixTableCell
+                        key={cell.id}
+                        cell={cell}
+                        receipt={receipts.byCellId[cell.id]}
+                        sourceName={source.name}
+                        candidateName={candidate.name}
+                        onSelect={setSelectedCellId}
+                      />
+                    );
                   })}
                 </tr>
               ))}
@@ -165,18 +184,33 @@ export function RecommendationMatrix({ matrix }: RecommendationMatrixProps) {
             <div className="matrix-source-stack">
               {view.sources.map((source) => {
                 const cell = matrix.cells[cellKey(source.id, candidate.id)];
-                return <MatrixMobileCell key={cell.id} cell={cell} source={source} candidateName={candidate.name} />;
+                return <MatrixMobileCell key={cell.id} cell={cell} receipt={receipts.byCellId[cell.id]} source={source} candidateName={candidate.name} onSelect={setSelectedCellId} />;
               })}
             </div>
           </article>
         ))}
       </div>
+      <ReceiptDrawer receipt={selectedReceipt} onClose={() => setSelectedCellId(null)} />
     </section>
   );
 }
 
-function MatrixTableCell({ cell, sourceName, candidateName }: { cell: RecommendationMatrixCell; sourceName: string; candidateName: string }) {
+function MatrixTableCell({
+  cell,
+  receipt,
+  sourceName,
+  candidateName,
+  onSelect,
+}: {
+  cell: RecommendationMatrixCell;
+  receipt?: RaceReceiptModel;
+  sourceName: string;
+  candidateName: string;
+  onSelect: (cellId: string) => void;
+}) {
   const accessibleLabel = `${candidateName} from ${sourceName}: ${cell.positionKindLabel}, ${cell.evidenceCount} evidence references`;
+  const receiptStatus = receipt?.status ?? "unavailable";
+  const canOpenReceipt = receiptStatus === "available";
   return (
     <td
       id={domCellId(cell)}
@@ -185,17 +219,40 @@ function MatrixTableCell({ cell, sourceName, candidateName }: { cell: Recommenda
       data-source-id={cell.sourceId}
       data-candidate-id={cell.entityId}
       data-position-kind={cell.positionKind ?? "no-public-position"}
+      data-receipt-status={receiptStatus}
+      data-receipt-evidence-count={receipt?.evidenceCount ?? 0}
       aria-label={accessibleLabel}
     >
-      <span className={`position-badge ${cell.state === "position" ? "has-position" : "no-position"}`}>{cell.positionKindLabel}</span>
-      <strong>{cell.label}</strong>
-      <small>{cell.evidenceCount} evidence</small>
+      {canOpenReceipt ? (
+        <button className="matrix-cell-button" type="button" onClick={() => onSelect(cell.id)} aria-label={`${accessibleLabel}. Open evidence receipt.`}>
+          <MatrixCellContent cell={cell} />
+        </button>
+      ) : (
+        <div className="matrix-cell-unavailable" data-receipt-empty-reason={receipt?.emptyReason ?? "no-public-evidence"}>
+          <MatrixCellContent cell={cell} />
+          <span className="matrix-cell-note">No public receipt available</span>
+        </div>
+      )}
     </td>
   );
 }
 
-function MatrixMobileCell({ cell, source, candidateName }: { cell: RecommendationMatrixCell; source: RecommendationMatrixSource; candidateName: string }) {
+function MatrixMobileCell({
+  cell,
+  receipt,
+  source,
+  candidateName,
+  onSelect,
+}: {
+  cell: RecommendationMatrixCell;
+  receipt?: RaceReceiptModel;
+  source: RecommendationMatrixSource;
+  candidateName: string;
+  onSelect: (cellId: string) => void;
+}) {
   const accessibleLabel = `${candidateName}, ${source.name}: ${cell.positionKindLabel}, ${cell.evidenceCount} evidence references`;
+  const receiptStatus = receipt?.status ?? "unavailable";
+  const canOpenReceipt = receiptStatus === "available";
   return (
     <article
       className="matrix-source-card"
@@ -205,16 +262,35 @@ function MatrixMobileCell({ cell, source, candidateName }: { cell: Recommendatio
       data-source-id={cell.sourceId}
       data-candidate-id={cell.entityId}
       data-position-kind={cell.positionKind ?? "no-public-position"}
+      data-receipt-status={receiptStatus}
+      data-receipt-evidence-count={receipt?.evidenceCount ?? 0}
       aria-label={accessibleLabel}
     >
       <div>
         <h4>{source.name}</h4>
         <p>{source.sourceType}</p>
       </div>
-      <span className={`position-badge ${cell.state === "position" ? "has-position" : "no-position"}`}>{cell.positionKindLabel}</span>
-      <p>{cell.label}</p>
-      <p className="module-count">{cell.evidenceCount} evidence references</p>
+      {canOpenReceipt ? (
+        <button className="matrix-cell-button" type="button" onClick={() => onSelect(cell.id)} aria-label={`${accessibleLabel}. Open evidence receipt.`}>
+          <MatrixCellContent cell={cell} />
+        </button>
+      ) : (
+        <div className="matrix-cell-unavailable" data-receipt-empty-reason={receipt?.emptyReason ?? "no-public-evidence"}>
+          <MatrixCellContent cell={cell} />
+          <span className="matrix-cell-note">No public receipt available</span>
+        </div>
+      )}
     </article>
+  );
+}
+
+function MatrixCellContent({ cell }: { cell: RecommendationMatrixCell }) {
+  return (
+    <>
+      <span className={`position-badge ${cell.state === "position" ? "has-position" : "no-position"}`}>{cell.positionKindLabel}</span>
+      <strong>{cell.label}</strong>
+      <small>{cell.evidenceCount} evidence</small>
+    </>
   );
 }
 

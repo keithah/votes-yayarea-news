@@ -1091,3 +1091,219 @@ code {
     font-size: 0.76rem;
   }
 }
+
+
+.matrix-cell-button,
+.matrix-cell-unavailable {
+  display: grid;
+  width: 100%;
+  gap: 0.24rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.matrix-cell-button {
+  cursor: pointer;
+  border-radius: 0.85rem;
+}
+
+.matrix-cell-button:hover .position-badge {
+  border-color: var(--accent-strong);
+}
+
+.matrix-cell-button strong,
+.matrix-cell-button small,
+.matrix-cell-unavailable strong,
+.matrix-cell-unavailable small,
+.matrix-cell-note {
+  display: block;
+}
+
+.matrix-cell-note {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.receipt-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: flex-end;
+  background: rgb(10 13 22 / 58%);
+  padding: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.receipt-drawer {
+  display: grid;
+  width: min(100%, 42rem);
+  max-height: 100%;
+  gap: 1rem;
+  overflow: auto;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+.receipt-drawer-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.receipt-close-button {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 70%, var(--bg-elevated));
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.receipt-facts,
+.receipt-evidence-card dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: 0.7rem;
+}
+
+.receipt-facts div,
+.receipt-evidence-card dl div {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--bg) 64%, transparent);
+}
+
+.receipt-facts dd,
+.receipt-evidence-card dd {
+  overflow-wrap: anywhere;
+}
+
+.receipt-evidence-list,
+.summary-evidence-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.receipt-evidence-card,
+.summary-evidence-list li {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--bg) 56%, var(--bg-elevated));
+}
+
+.receipt-evidence-card blockquote,
+.summary-evidence-list blockquote {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.receipt-evidence-card a,
+.summary-evidence-list a {
+  color: var(--accent-strong);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.receipt-empty-state,
+.reviewed-summary-empty {
+  padding: 1rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--bg) 58%, var(--bg-elevated));
+}
+
+.reviewed-summary-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--accent-soft) 24%, var(--bg-elevated));
+  color: var(--text);
+  font-weight: 950;
+}
+
+.reviewed-summary-details summary small {
+  color: var(--text-muted);
+  font-weight: 850;
+}
+
+.reviewed-summary-details summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.reviewed-summary-body {
+  display: grid;
+  gap: 1rem;
+  padding-block-start: 1rem;
+}
+
+.summary-evidence-list p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .matrix-cell-button,
+  .receipt-close-button,
+  .reviewed-summary-details summary {
+    transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+  }
+
+  .matrix-cell-button:hover,
+  .receipt-close-button:hover,
+  .reviewed-summary-details summary:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 760px) {
+  .receipt-drawer-backdrop {
+    align-items: flex-end;
+    padding: 0.5rem;
+  }
+
+  .receipt-drawer {
+    width: 100%;
+    max-height: 88vh;
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+  }
+
+  .reviewed-summary-details summary {
+    display: grid;
+  }
+}

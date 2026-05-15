@@ -29,7 +29,10 @@ test("builds sample mayor race model from public loader output only", async () =
   assert.equal(model.consensus.count, 1);
   assert.equal(model.consensus.sourceCount, 2);
   assert.equal(model.consensus.percentage, 50);
-  assert.equal(model.summary.visible, false, "hidden draft summaries must not surface in the public UI model");
+  assert.equal(model.summary.visible, true);
+  assert.equal(model.summary.status, "verified");
+  assert.equal(model.summary.publicationStatus, "public");
+  assert.equal(model.summary.evidenceCount, 2);
   assert.equal(model.placeholders.matrixReady, true);
   assert.equal(model.placeholders.receiptsReady, true);
   assert.equal(model.placeholders.aiDisclosureReady, true);

@@ -61,15 +61,21 @@
       }
     ],
     "summary": {
-      "text": "Sample summary after local manual review override; still not a public 2026 election claim."
+      "status": "verified",
+      "publicationStatus": "public",
+      "text": "Sample summary after local manual review override; still not a public 2026 election claim.",
+      "evidenceIds": [
+        "ev-sf-chronicle-sample-candidate-a-1-1",
+        "ev-growsf-sample-candidate-b-1-1"
+      ]
     },
     "status": "verified",
     "publicationStatus": "public",
     "extractionReview": {
       "sourceDraftPath": "data/extracted/drafts/latest.json",
       "reviewPath": "manual/reviews/races/mayor.json",
-      "runId": "run-20260515030212",
-      "publishedAt": "2026-05-15T03:02:13.410Z"
+      "runId": "run-20260515030550",
+      "publishedAt": "2026-05-15T03:05:51.738Z"
     }
   }
 }
