@@ -105,6 +105,30 @@ test("route model diagnostics stay available for agents even when launch pages h
   assert.ok(raceModel.diagnostics.receiptCount > 0);
 });
 
+test("S04 verifier targets real public route exports instead of stale sample publication", async () => {
+  const verifier = await fs.readFile(path.join(process.cwd(), "scripts", "verify-s04.sh"), "utf8");
+  const assertionScript = await fs.readFile(path.join(process.cwd(), "scripts", "assert-s04-public-routes.mjs"), "utf8");
+
+  assert.equal(verifier.includes("node scripts/assert-s04-public-routes.mjs"), true);
+  assert.equal(verifier.includes("pnpm validate-data"), true);
+  assert.equal(verifier.includes("pnpm review:coverage"), true);
+  assert.equal(verifier.includes("pnpm test:data"), true);
+  assert.equal(verifier.includes("pnpm test:extraction"), true);
+  assert.equal(verifier.includes("pnpm typecheck"), true);
+  assert.equal(verifier.includes("pnpm build"), true);
+  assert.equal(verifier.includes("review:positions publish"), false);
+  assert.equal(verifier.includes("manual/reviews/races/mayor.json"), false);
+  assert.equal(verifier.includes("sample-voter-guide"), false);
+  assert.equal(verifier.includes("--race-slug mayor"), false);
+  assert.equal(assertionScript.includes("/races/california-governor/"), true);
+  assert.equal(assertionScript.includes("/how-we-use-ai/"), true);
+  assert.equal(assertionScript.includes("Sample Candidate"), true);
+  assert.equal(assertionScript.includes("sample-voter-guide"), true);
+  assert.equal(assertionScript.includes("Visible diagnostics"), true);
+  assert.equal(assertionScript.includes("Checked public data files"), true);
+  assert.equal(assertionScript.includes("vote\\s+for"), true);
+});
+
 test("public route component source hides launch-inappropriate diagnostic headings and checked-file disclosure widgets", async () => {
   for (const routePath of [
     path.join("app", "page.tsx"),
