@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "slice": "S05",
   "generatedBy": "scripts/assert-s05-launch-export.mjs",
-  "generatedAt": "2026-05-15T08:55:04.849Z",
+  "generatedAt": "2026-05-15T16:41:55.848Z",
   "status": "pass",
   "origin": "https://votes.yayarea.news",
   "counts": {
@@ -155,7 +155,7 @@
       "className": "race",
       "exportPath": "out/races/state-assembly-district-17/index.html",
       "status": "pass",
-      "htmlBytes": 32091,
+      "htmlBytes": 32048,
       "hasTitle": true,
       "hasCanonical": true,
       "missingText": []

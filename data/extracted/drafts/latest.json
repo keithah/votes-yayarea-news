@@ -1,74 +1,415 @@
 {
   "version": 1,
-  "runId": "run-20260515030550",
+  "runId": "run-20260515082215",
   "provider": {
     "provider": "fixture",
     "model": "fixture-v1"
   },
   "positions": [
     {
-      "id": "pos-sf-chronicle-sample-candidate-a-1",
-      "raceId": "race-mayor",
-      "sourceId": "src-sf-chronicle",
-      "entityId": "ent-sample-candidate-a",
-      "kind": "endorse",
-      "reviewStatus": "generated",
-      "publicationStatus": "hidden",
-      "label": "Draft extracted positive signal for Candidate A",
-      "rationale": "The sample text describes Candidate A with a positive policy emphasis.",
-      "evidenceIds": [
-        "ev-sf-chronicle-sample-candidate-a-1-1"
-      ],
-      "generatedBy": {
-        "provider": "fixture",
-        "model": "fixture-v1"
-      },
-      "generatedAt": "2026-05-15T03:05:50.621Z"
-    },
-    {
-      "id": "pos-growsf-sample-candidate-b-1",
-      "raceId": "race-mayor",
-      "sourceId": "src-growsf",
-      "entityId": "ent-sample-candidate-b",
+      "id": "pos-ca-secretary-of-state-board-of-equalization-district-2-sally-j-lieber-1",
+      "raceId": "race-board-of-equalization-district-2",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-board-of-equalization-district-2-sally-j-lieber",
       "kind": "informational",
       "reviewStatus": "generated",
       "publicationStatus": "hidden",
-      "label": "Draft extracted mixed signal for Candidate B",
-      "rationale": "The sample text describes Candidate B with a mixed placeholder description.",
+      "label": "Draft official candidate-list record for Sally J. Lieber",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
       "evidenceIds": [
-        "ev-growsf-sample-candidate-b-1-1"
+        "ev-ca-secretary-of-state-board-of-equalization-district-2-sally-j-lieber-1-1"
       ],
       "generatedBy": {
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T03:05:50.621Z"
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-attorney-general-rob-bonta-1",
+      "raceId": "race-california-attorney-general",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-attorney-general-rob-bonta",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Rob Bonta",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-attorney-general-rob-bonta-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-controller-malia-m-cohen-1",
+      "raceId": "race-california-controller",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-controller-malia-m-cohen",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Malia M. Cohen",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-controller-malia-m-cohen-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-governor-akinyemi-agbede-1",
+      "raceId": "race-california-governor",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-governor-akinyemi-agbede",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Akinyemi Agbede",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-governor-akinyemi-agbede-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-insurance-commissioner-ben-allen-1",
+      "raceId": "race-california-insurance-commissioner",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-insurance-commissioner-ben-allen",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Ben Allen",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-insurance-commissioner-ben-allen-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-lieutenant-governor-josh-fryday-1",
+      "raceId": "race-california-lieutenant-governor",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-lieutenant-governor-josh-fryday",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Josh Fryday",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-lieutenant-governor-josh-fryday-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-secretary-of-state-shirley-n-weber-1",
+      "raceId": "race-california-secretary-of-state",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-secretary-of-state-shirley-n-weber",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Shirley N. Weber",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-secretary-of-state-shirley-n-weber-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-superintendent-public-instruction-richard-barrera-1",
+      "raceId": "race-california-superintendent-public-instruction",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-superintendent-public-instruction-richard-barrera",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Richard Barrera",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-superintendent-public-instruction-richard-barrera-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-california-treasurer-anna-m-caballero-1",
+      "raceId": "race-california-treasurer",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-treasurer-anna-m-caballero",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Anna M. Caballero",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-california-treasurer-anna-m-caballero-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-state-assembly-district-17-matt-haney-1",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Matt Haney",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-state-assembly-district-17-matt-haney-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-state-assembly-district-19-catherine-stefani-1",
+      "raceId": "race-state-assembly-district-19",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-19-catherine-stefani",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Catherine Stefani",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-state-assembly-district-19-catherine-stefani-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-us-house-district-11-john-gus-buffler-1",
+      "raceId": "race-us-house-district-11",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-us-house-district-11-john-gus-buffler",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for John Gus Buffler",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-us-house-district-11-john-gus-buffler-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
+    },
+    {
+      "id": "pos-ca-secretary-of-state-us-house-district-15-anthony-van-dang-1",
+      "raceId": "race-us-house-district-15",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-us-house-district-15-anthony-van-dang",
+      "kind": "informational",
+      "reviewStatus": "generated",
+      "publicationStatus": "hidden",
+      "label": "Draft official candidate-list record for Anthony Van Dang",
+      "rationale": "The source identifies the race as covered by the official certified candidate list; this is informational source coverage, not an endorsement.",
+      "evidenceIds": [
+        "ev-ca-secretary-of-state-us-house-district-15-anthony-van-dang-1-1"
+      ],
+      "generatedBy": {
+        "provider": "fixture",
+        "model": "fixture-v1"
+      },
+      "generatedAt": "2026-05-15T08:22:15.915Z"
     }
   ],
   "evidence": [
     {
-      "id": "ev-sf-chronicle-sample-candidate-a-1-1",
-      "positionId": "pos-sf-chronicle-sample-candidate-a-1",
-      "raceId": "race-mayor",
-      "sourceId": "src-sf-chronicle",
-      "entityId": "ent-sample-candidate-a",
-      "artifactId": "art-sf-chronicle-mayor-sample",
-      "chunkId": "art-sf-chronicle-mayor-sample-chunk-001",
-      "url": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
+      "id": "ev-ca-secretary-of-state-board-of-equalization-district-2-sally-j-lieber-1-1",
+      "positionId": "pos-ca-secretary-of-state-board-of-equalization-district-2-sally-j-lieber-1",
+      "raceId": "race-board-of-equalization-district-2",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-board-of-equalization-district-2-sally-j-lieber",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
       "kind": "quote",
-      "quote": "Candidate A is described in this sample as emphasizing faster housing approvals and clear performance goals for city departments."
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
     },
     {
-      "id": "ev-growsf-sample-candidate-b-1-1",
-      "positionId": "pos-growsf-sample-candidate-b-1",
-      "raceId": "race-mayor",
-      "sourceId": "src-growsf",
-      "entityId": "ent-sample-candidate-b",
-      "artifactId": "art-growsf-mayor-sample",
-      "chunkId": "art-growsf-mayor-sample-chunk-001",
-      "url": "https://growsf.org/voter-guide/sample-2026/mayor",
+      "id": "ev-ca-secretary-of-state-california-attorney-general-rob-bonta-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-attorney-general-rob-bonta-1",
+      "raceId": "race-california-attorney-general",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-attorney-general-rob-bonta",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
       "kind": "quote",
-      "quote": "In this sample, Candidate B receives a placeholder mixed description for fiscal oversight and a slower approach to housing production."
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-california-controller-malia-m-cohen-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-controller-malia-m-cohen-1",
+      "raceId": "race-california-controller",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-controller-malia-m-cohen",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-california-governor-akinyemi-agbede-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-governor-akinyemi-agbede-1",
+      "raceId": "race-california-governor",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-governor-akinyemi-agbede",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-california-insurance-commissioner-ben-allen-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-insurance-commissioner-ben-allen-1",
+      "raceId": "race-california-insurance-commissioner",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-insurance-commissioner-ben-allen",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-california-lieutenant-governor-josh-fryday-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-lieutenant-governor-josh-fryday-1",
+      "raceId": "race-california-lieutenant-governor",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-lieutenant-governor-josh-fryday",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-california-secretary-of-state-shirley-n-weber-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-secretary-of-state-shirley-n-weber-1",
+      "raceId": "race-california-secretary-of-state",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-secretary-of-state-shirley-n-weber",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-california-superintendent-public-instruction-richard-barrera-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-superintendent-public-instruction-richard-barrera-1",
+      "raceId": "race-california-superintendent-public-instruction",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-superintendent-public-instruction-richard-barrera",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-california-treasurer-anna-m-caballero-1-1",
+      "positionId": "pos-ca-secretary-of-state-california-treasurer-anna-m-caballero-1",
+      "raceId": "race-california-treasurer",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-california-treasurer-anna-m-caballero",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-state-assembly-district-17-matt-haney-1-1",
+      "positionId": "pos-ca-secretary-of-state-state-assembly-district-17-matt-haney-1",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-state-assembly-district-19-catherine-stefani-1-1",
+      "positionId": "pos-ca-secretary-of-state-state-assembly-district-19-catherine-stefani-1",
+      "raceId": "race-state-assembly-district-19",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-19-catherine-stefani",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-us-house-district-11-john-gus-buffler-1-1",
+      "positionId": "pos-ca-secretary-of-state-us-house-district-11-john-gus-buffler-1",
+      "raceId": "race-us-house-district-11",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-us-house-district-11-john-gus-buffler",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
+    },
+    {
+      "id": "ev-ca-secretary-of-state-us-house-district-15-anthony-van-dang-1-1",
+      "positionId": "pos-ca-secretary-of-state-us-house-district-15-anthony-van-dang-1",
+      "raceId": "race-us-house-district-15",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-us-house-district-15-anthony-van-dang",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "Tracked M002 contests covered by this official candidate-list source:"
     }
   ]
 }

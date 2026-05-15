@@ -3,8 +3,8 @@
   "slice": "S05",
   "generatedBy": "scripts/smoke-s05-static-export.mjs",
   "status": "pass",
-  "startedAt": "2026-05-15T09:13:05.429Z",
-  "origin": "http://127.0.0.1:38233",
+  "startedAt": "2026-05-15T16:41:55.900Z",
+  "origin": "http://127.0.0.1:45543",
   "checkedRoutes": [
     {
       "route": "/",
@@ -159,7 +159,7 @@
       "className": "race",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 60184,
+      "bytes": 60227,
       "assets": [
         "/_next/static/chunks/0.-tokwbih8zx.js",
         "/_next/static/chunks/03~yq9q893hmn.js",
@@ -412,5 +412,5 @@
       "path": "data/launch/s05-static-smoke.json"
     }
   },
-  "completedAt": "2026-05-15T09:13:05.582Z"
+  "completedAt": "2026-05-15T16:41:55.973Z"
 }
