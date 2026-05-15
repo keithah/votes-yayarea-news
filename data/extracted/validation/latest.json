@@ -6,19 +6,47 @@
     "data/public/sources.json",
     "data/public/entities.json",
     "data/public/collections.json",
-    "data/public/races/mayor.json",
-    "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
-    "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",
-    "data/ingested/artifacts/src-growsf-mayor-sample.json",
-    "data/ingested/chunks/src-growsf-mayor-sample.json"
+    "data/public/races/board-of-equalization-district-2.json",
+    "data/public/races/california-attorney-general.json",
+    "data/public/races/california-controller.json",
+    "data/public/races/california-governor.json",
+    "data/public/races/california-insurance-commissioner.json",
+    "data/public/races/california-lieutenant-governor.json",
+    "data/public/races/california-secretary-of-state.json",
+    "data/public/races/california-superintendent-public-instruction.json",
+    "data/public/races/california-treasurer.json",
+    "data/public/races/san-francisco-prop-a.json",
+    "data/public/races/san-francisco-prop-b.json",
+    "data/public/races/san-francisco-prop-c.json",
+    "data/public/races/san-francisco-prop-d.json",
+    "data/public/races/sfusd-board-of-education.json",
+    "data/public/races/state-assembly-district-17.json",
+    "data/public/races/state-assembly-district-19.json",
+    "data/public/races/superior-court-judge-seat-16.json",
+    "data/public/races/supervisor-district-2.json",
+    "data/public/races/supervisor-district-4.json",
+    "data/public/races/us-house-district-11.json",
+    "data/public/races/us-house-district-15.json",
+    "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json"
   ],
   "counts": {
     "inputs": 0,
-    "positions": 2,
-    "evidence": 2,
-    "issues": 0,
+    "positions": 13,
+    "evidence": 13,
+    "issues": 1,
     "errors": 0,
-    "warnings": 0
+    "warnings": 1
   },
-  "issues": []
+  "issues": [
+    {
+      "code": "low_text_chunk",
+      "severity": "warning",
+      "path": "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json[1].text",
+      "message": "Chunk text is too short for extraction and will be skipped.",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-002"
+    }
+  ]
 }

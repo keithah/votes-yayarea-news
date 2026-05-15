@@ -1,55 +1,230 @@
 {
-  "id": "run-20260515030550",
+  "id": "run-20260515081953",
   "status": "complete",
   "provider": {
     "provider": "fixture",
     "model": "fixture-v1"
   },
   "promptVersion": "position-extraction-v1",
-  "startedAt": "2026-05-15T03:05:50.621Z",
-  "completedAt": "2026-05-15T03:05:50.626Z",
-  "durationMs": 5,
+  "startedAt": "2026-05-15T08:19:53.526Z",
+  "completedAt": "2026-05-15T08:19:53.537Z",
+  "durationMs": 11,
   "inputs": [
     {
-      "id": "input-mayor-src-sf-chronicle",
-      "raceId": "race-mayor",
-      "sourceId": "src-sf-chronicle",
-      "artifactId": "art-sf-chronicle-mayor-sample",
+      "id": "input-board-of-equalization-district-2-src-ca-secretary-of-state",
+      "raceId": "race-board-of-equalization-district-2",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
       "chunkIds": [
-        "art-sf-chronicle-mayor-sample-chunk-001"
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
       ],
       "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
     },
     {
-      "id": "input-mayor-src-growsf",
-      "raceId": "race-mayor",
-      "sourceId": "src-growsf",
-      "artifactId": "art-growsf-mayor-sample",
+      "id": "input-california-attorney-general-src-ca-secretary-of-state",
+      "raceId": "race-california-attorney-general",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
       "chunkIds": [
-        "art-growsf-mayor-sample-chunk-001"
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-california-controller-src-ca-secretary-of-state",
+      "raceId": "race-california-controller",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-california-governor-src-ca-secretary-of-state",
+      "raceId": "race-california-governor",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-california-insurance-commissioner-src-ca-secretary-of-state",
+      "raceId": "race-california-insurance-commissioner",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-california-lieutenant-governor-src-ca-secretary-of-state",
+      "raceId": "race-california-lieutenant-governor",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-california-secretary-of-state-src-ca-secretary-of-state",
+      "raceId": "race-california-secretary-of-state",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-california-superintendent-public-instruction-src-ca-secretary-of-state",
+      "raceId": "race-california-superintendent-public-instruction",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-california-treasurer-src-ca-secretary-of-state",
+      "raceId": "race-california-treasurer",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-state-assembly-district-17-src-ca-secretary-of-state",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-state-assembly-district-19-src-ca-secretary-of-state",
+      "raceId": "race-state-assembly-district-19",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-us-house-district-11-src-ca-secretary-of-state",
+      "raceId": "race-us-house-district-11",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
+      ],
+      "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
+    },
+    {
+      "id": "input-us-house-district-15-src-ca-secretary-of-state",
+      "raceId": "race-us-house-district-15",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkIds": [
+        "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001"
       ],
       "instructions": "Return strict JSON only. Do not infer facts without an exact quote from a provided chunk."
     }
   ],
   "counts": {
-    "inputs": 2,
-    "positions": 2,
-    "evidence": 2,
-    "issues": 0,
+    "inputs": 13,
+    "positions": 13,
+    "evidence": 13,
+    "issues": 1,
     "errors": 0,
-    "warnings": 0
+    "warnings": 1
   },
   "outputPath": "data/extracted/drafts/latest.json",
   "validationPath": "data/extracted/validation/latest.json",
-  "issues": [],
+  "issues": [
+    {
+      "code": "low_text_chunk",
+      "severity": "warning",
+      "path": "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json[1].text",
+      "message": "Chunk text is too short for extraction and will be skipped.",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-002"
+    }
+  ],
   "phases": [
     {
-      "inputId": "input-mayor-src-sf-chronicle",
+      "inputId": "input-board-of-equalization-district-2-src-ca-secretary-of-state",
       "status": "complete",
       "issueCodes": []
     },
     {
-      "inputId": "input-mayor-src-growsf",
+      "inputId": "input-california-attorney-general-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-california-controller-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-california-governor-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-california-insurance-commissioner-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-california-lieutenant-governor-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-california-secretary-of-state-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-california-superintendent-public-instruction-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-california-treasurer-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-state-assembly-district-17-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-state-assembly-district-19-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-us-house-district-11-src-ca-secretary-of-state",
+      "status": "complete",
+      "issueCodes": []
+    },
+    {
+      "inputId": "input-us-house-district-15-src-ca-secretary-of-state",
       "status": "complete",
       "issueCodes": []
     }
