@@ -1,0 +1,23 @@
+{
+  "race": {
+    "id": "race-us-house-district-15",
+    "slug": "us-house-district-15",
+    "title": "U.S. House District 15",
+    "kind": "federal-legislative",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California Congressional District 15",
+    "entityIds": [
+      "ent-us-house-district-15-anthony-van-dang",
+      "ent-us-house-district-15-mantosh-kumar",
+      "ent-us-house-district-15-kevin-mullin",
+      "ent-us-house-district-15-charles-hoelter",
+      "ent-us-house-district-15-jim-garrity"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

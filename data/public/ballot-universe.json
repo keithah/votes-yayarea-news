@@ -1,0 +1,367 @@
+{
+  "election": {
+    "id": "election-2026-06-02-san-francisco-primary",
+    "name": "June 2, 2026 San Francisco Consolidated Statewide Direct Primary Election",
+    "date": "2026-06-02",
+    "jurisdiction": "California / San Francisco",
+    "notes": "Machine-readable tracked contest universe for M002/S01. It replaces the former public Mayor fixture with real 2026 contests and documents official-data gaps instead of inventing candidates, options, endorsements, or URLs."
+  },
+  "provenance": {
+    "createdBy": "M002/S01/T01",
+    "officialCandidateSourceUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+    "officialLocalSourceUrl": "https://www.sf.gov/departments/department-elections",
+    "notes": "California statewide, congressional, BOE, and Assembly candidate entities are sourced from the California Secretary of State certified candidate list. San Francisco-only contests and measures are tracked but hidden until durable official local records are imported."
+  },
+  "trackedRaces": [
+    {
+      "raceId": "race-california-governor",
+      "slug": "california-governor",
+      "title": "California Governor",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26. Public informational records cite the official listing only and are not endorsements or recommendations.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 61,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-california-lieutenant-governor",
+      "slug": "california-lieutenant-governor",
+      "title": "California Lieutenant Governor",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 16,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-california-secretary-of-state",
+      "slug": "california-secretary-of-state",
+      "title": "California Secretary of State",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 4,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-california-controller",
+      "slug": "california-controller",
+      "title": "California Controller",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 3,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-california-treasurer",
+      "slug": "california-treasurer",
+      "title": "California Treasurer",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 6,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-california-attorney-general",
+      "slug": "california-attorney-general",
+      "title": "California Attorney General",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 3,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-california-insurance-commissioner",
+      "slug": "california-insurance-commissioner",
+      "title": "California Insurance Commissioner",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 11,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-california-superintendent-public-instruction",
+      "slug": "california-superintendent-public-instruction",
+      "title": "California Superintendent of Public Instruction",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 10,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-board-of-equalization-district-2",
+      "slug": "board-of-equalization-district-2",
+      "title": "Board of Equalization District 2",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 6,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-us-house-district-11",
+      "slug": "us-house-district-11",
+      "title": "U.S. House District 11",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 11,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-us-house-district-15",
+      "slug": "us-house-district-15",
+      "title": "U.S. House District 15",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 5,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-state-assembly-district-17",
+      "slug": "state-assembly-district-17",
+      "title": "State Assembly District 17",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 1,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-state-assembly-district-19",
+      "slug": "state-assembly-district-19",
+      "title": "State Assembly District 19",
+      "publicationStatus": "public",
+      "officialDataStatus": "official-candidate-list-imported",
+      "officialDataNotes": "Candidate list imported from California Secretary of State certified candidate list dated 2026-03-26; source positions remain empty until guide evidence is reviewed.",
+      "officialSourceIds": [
+        "src-ca-secretary-of-state"
+      ],
+      "entityCount": 2,
+      "sourceIds": [
+        "src-ca-secretary-of-state"
+      ]
+    },
+    {
+      "raceId": "race-supervisor-district-2",
+      "slug": "supervisor-district-2",
+      "title": "Supervisor District 2",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official candidate list was not confirmed from a durable SF Department of Elections URL during T01; route remains hidden to avoid inventing candidates.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    },
+    {
+      "raceId": "race-supervisor-district-4",
+      "slug": "supervisor-district-4",
+      "title": "Supervisor District 4",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official candidate list was not confirmed from a durable SF Department of Elections URL during T01; route remains hidden to avoid inventing candidates.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    },
+    {
+      "raceId": "race-sfusd-board-of-education",
+      "slug": "sfusd-board-of-education",
+      "title": "SFUSD Board of Education",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official candidate list was not confirmed from a durable SF Department of Elections URL during T01; route remains hidden to avoid inventing candidates.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    },
+    {
+      "raceId": "race-superior-court-judge-seat-16",
+      "slug": "superior-court-judge-seat-16",
+      "title": "Superior Court Judge Seat 16",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official candidate list was not confirmed from a durable SF Department of Elections URL during T01; route remains hidden to avoid inventing candidates.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    },
+    {
+      "raceId": "race-san-francisco-prop-a",
+      "slug": "san-francisco-prop-a",
+      "title": "San Francisco Proposition A",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official title/options were described in milestone context but not confirmed from a durable SF Department of Elections URL during T01; route remains hidden until the official measure record is imported.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    },
+    {
+      "raceId": "race-san-francisco-prop-b",
+      "slug": "san-francisco-prop-b",
+      "title": "San Francisco Proposition B",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official title/options were described in milestone context but not confirmed from a durable SF Department of Elections URL during T01; route remains hidden until the official measure record is imported.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    },
+    {
+      "raceId": "race-san-francisco-prop-c",
+      "slug": "san-francisco-prop-c",
+      "title": "San Francisco Proposition C",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official title/options were described in milestone context but not confirmed from a durable SF Department of Elections URL during T01; route remains hidden until the official measure record is imported.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    },
+    {
+      "raceId": "race-san-francisco-prop-d",
+      "slug": "san-francisco-prop-d",
+      "title": "San Francisco Proposition D",
+      "publicationStatus": "hidden",
+      "officialDataStatus": "official-data-gap",
+      "officialDataNotes": "Official title/options were described in milestone context but not confirmed from a durable SF Department of Elections URL during T01; route remains hidden until the official measure record is imported.",
+      "officialSourceIds": [
+        "src-sf-department-of-elections"
+      ],
+      "entityCount": 0,
+      "sourceIds": [
+        "src-sf-department-of-elections"
+      ]
+    }
+  ],
+  "sourceRegistry": {
+    "officialSourceIds": [
+      "src-ca-secretary-of-state",
+      "src-sf-department-of-elections"
+    ],
+    "mdListedSourceIds": [
+      "src-sf-chronicle",
+      "src-mission-local",
+      "src-sf-standard",
+      "src-lwv-sf-voters-edge",
+      "src-spur",
+      "src-growsf",
+      "src-sf-democratic-party",
+      "src-sf-republican-party",
+      "src-harvey-milk-lgbtq-democratic-club",
+      "src-alice-b-toklas-lgbtq-democratic-club",
+      "src-sf-berniecrats",
+      "src-united-democratic-club",
+      "src-sf-labor-council",
+      "src-seiu-local-1021",
+      "src-united-educators-of-san-francisco",
+      "src-yimby-action-sf-yimby",
+      "src-sf-tenants-union",
+      "src-housing-action-coalition",
+      "src-sierra-club-bay-chapter",
+      "src-sf-bicycle-coalition",
+      "src-togethersf-action",
+      "src-aclu-norcal"
+    ],
+    "notes": "MD-listed source records are represented as source registry entries with pending/manual notes when 2026 guide URLs are not yet confirmed. They are not used as public recommendation evidence until guide artifacts are reviewed."
+  },
+  "sampleRemoval": {
+    "removedPublicRaceSlug": "mayor",
+    "notes": "No public launch collection references the former Mayor fixture; tests scan canonical public data for legacy candidate names, fixture flags, and guide URLs."
+  }
+}

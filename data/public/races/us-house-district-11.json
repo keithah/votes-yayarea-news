@@ -1,0 +1,29 @@
+{
+  "race": {
+    "id": "race-us-house-district-11",
+    "slug": "us-house-district-11",
+    "title": "U.S. House District 11",
+    "kind": "federal-legislative",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California Congressional District 11",
+    "entityIds": [
+      "ent-us-house-district-11-john-gus-buffler",
+      "ent-us-house-district-11-saikat-chakrabarti",
+      "ent-us-house-district-11-connie-chan",
+      "ent-us-house-district-11-keith-freedman",
+      "ent-us-house-district-11-omed-hamid",
+      "ent-us-house-district-11-gregory-m-haynes",
+      "ent-us-house-district-11-marie-hurabiell",
+      "ent-us-house-district-11-scott-wiener",
+      "ent-us-house-district-11-david-ganezer",
+      "ent-us-house-district-11-jingchao-xiong",
+      "ent-us-house-district-11-nathan-deer"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

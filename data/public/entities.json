@@ -1,22 +1,1255 @@
 {
   "entities": [
     {
-      "id": "ent-sample-candidate-a",
-      "slug": "sample-candidate-a",
-      "name": "Sample Candidate A",
+      "id": "ent-california-governor-akinyemi-agbede",
+      "slug": "california-governor-akinyemi-agbede",
+      "name": "Akinyemi Agbede",
       "kind": "candidate",
-      "status": "draft",
-      "description": "Invented fixture candidate for validating the public data contract; not an official 2026 candidate claim.",
-      "sampleFixture": true
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Mathematician.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
     },
     {
-      "id": "ent-sample-candidate-b",
-      "slug": "sample-candidate-b",
-      "name": "Sample Candidate B",
+      "id": "ent-california-governor-mohammad-arif",
+      "slug": "california-governor-mohammad-arif",
+      "name": "Mohammad Arif",
       "kind": "candidate",
-      "status": "draft",
-      "description": "Invented fixture candidate for validating the public data contract; not an official 2026 candidate claim.",
-      "sampleFixture": true
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Immigrants Organizer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-larry-azevedo",
+      "slug": "california-governor-larry-azevedo",
+      "name": "Larry Azevedo",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Businessman.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-xavier-becerra",
+      "slug": "california-governor-xavier-becerra",
+      "name": "Xavier Becerra",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Voting Rights Attorney.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-carolina-buhler",
+      "slug": "california-governor-carolina-buhler",
+      "name": "Carolina Buhler",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Civil Rights Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-louis-a-de-barraicua",
+      "slug": "california-governor-louis-a-de-barraicua",
+      "name": "Louis A. De Barraicua",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Teacher/Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-sophia-edum-a-sam",
+      "slug": "california-governor-sophia-edum-a-sam",
+      "name": "Sophia Edum-a-Sam",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Project Manager.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-derek-grasty",
+      "slug": "california-governor-derek-grasty",
+      "name": "Derek Grasty",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: District Trustee/Educator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-joel-e-jacob",
+      "slug": "california-governor-joel-e-jacob",
+      "name": "Joel E. Jacob",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner/Entrepreneur.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-gary-howard-kidgell",
+      "slug": "california-governor-gary-howard-kidgell",
+      "name": "Gary Howard Kidgell",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Building Consultant.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-matthew-chase-levy",
+      "slug": "california-governor-matthew-chase-levy",
+      "name": "Matthew Chase Levy",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Entrepreneur/Physicist.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-matt-mahan",
+      "slug": "california-governor-matt-mahan",
+      "name": "Matt Mahan",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Mayor, San Jose.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-barack-d-obama-shaw",
+      "slug": "california-governor-barack-d-obama-shaw",
+      "name": "Barack D. Obama Shaw",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-thunder-parley",
+      "slug": "california-governor-thunder-parley",
+      "name": "Thunder Parley",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Market Analyst.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-katie-porter",
+      "slug": "california-governor-katie-porter",
+      "name": "Katie Porter",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Consumer Protection Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-raji-rab",
+      "slug": "california-governor-raji-rab",
+      "name": "Raji Rab",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Aviator/Educator/Entrepreneur.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-satish-rao",
+      "slug": "california-governor-satish-rao",
+      "name": "Satish Rao",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Professor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-scott-p-shields",
+      "slug": "california-governor-scott-p-shields",
+      "name": "Scott P Shields",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Chief Executive Officer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-tom-steyer",
+      "slug": "california-governor-tom-steyer",
+      "name": "Tom Steyer",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Climate Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-eric-swalwell",
+      "slug": "california-governor-eric-swalwell",
+      "name": "Eric Swalwell",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: U.S. Representative.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-tony-k-thurmond",
+      "slug": "california-governor-tony-k-thurmond",
+      "name": "Tony K. Thurmond",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: California State Superintendent of Public Instruction.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-antonio-villaraigosa",
+      "slug": "california-governor-antonio-villaraigosa",
+      "name": "Antonio Villaraigosa",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Housing Affordability Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-betty-t-yee",
+      "slug": "california-governor-betty-t-yee",
+      "name": "Betty T. Yee",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Family Care Navigator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-erin-zez-zezulak",
+      "slug": "california-governor-erin-zez-zezulak",
+      "name": "Erin Zez Zezulak",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Consultant/Nurse/Businesswoman.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-james-athans-jr",
+      "slug": "california-governor-james-athans-jr",
+      "name": "James Athans Jr.",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Agent.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-chad-bianco",
+      "slug": "california-governor-chad-bianco",
+      "name": "Chad Bianco",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Riverside County Sheriff.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-patricia-de-luca-basualdo",
+      "slug": "california-governor-patricia-de-luca-basualdo",
+      "name": "Patricia De Luca Basualdo",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Broker.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-randeep-s-dhillon",
+      "slug": "california-governor-randeep-s-dhillon",
+      "name": "Randeep S. Dhillon",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Economist/Farmer/Businessman.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-rafael-m-hernandez",
+      "slug": "california-governor-rafael-m-hernandez",
+      "name": "Rafael M. Hernandez",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Businessman/Songwriter/Author.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-steve-hilton",
+      "slug": "california-governor-steve-hilton",
+      "name": "Steve Hilton",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Small Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-alicia-olivia-lapp",
+      "slug": "california-governor-alicia-olivia-lapp",
+      "name": "Alicia Olivia Lapp",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: No Ballot Designation.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-leo-naranjo-iv",
+      "slug": "california-governor-leo-naranjo-iv",
+      "name": "Leo Naranjo IV",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Retired Military Sergeant.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-tim-nelson",
+      "slug": "california-governor-tim-nelson",
+      "name": "Tim Nelson",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Diplomat/Rights Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-gretha-solorzano",
+      "slug": "california-governor-gretha-solorzano",
+      "name": "Gretha Solorzano",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Retired Nuclear Engineer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-leo-samuel-zacky",
+      "slug": "california-governor-leo-samuel-zacky",
+      "name": "Leo Samuel Zacky",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Farmer/Businessman/Broadcaster.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-david-zickefoose",
+      "slug": "california-governor-david-zickefoose",
+      "name": "David Zickefoose",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Investor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-tom-woodard",
+      "slug": "california-governor-tom-woodard",
+      "name": "Tom Woodard",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Libertarian candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Retired CEO.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-ramsey-robinson",
+      "slug": "california-governor-ramsey-robinson",
+      "name": "Ramsey Robinson",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Peace and Freedom candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: School Social Worker.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-naomi-bar-lev",
+      "slug": "california-governor-naomi-bar-lev",
+      "name": "Naomi Bar-Lev",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Musician/Proprietor/Writer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-joseph-cabrera",
+      "slug": "california-governor-joseph-cabrera",
+      "name": "Joseph Cabrera",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Administrator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-elaine-culotti",
+      "slug": "california-governor-elaine-culotti",
+      "name": "Elaine Culotti",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Entrepreneur/Farmer/Developer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-livingforgod-andcountry-demott",
+      "slug": "california-governor-livingforgod-andcountry-demott",
+      "name": "LivingForGod AndCountry DeMott",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Logistical Professional/Chaplain.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-serge-fiankan",
+      "slug": "california-governor-serge-fiankan",
+      "name": "Serge Fiankan",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Broker.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-lukasz-adam-filinski",
+      "slug": "california-governor-lukasz-adam-filinski",
+      "name": "Lukasz Adam Filinski",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Father.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-max-fomin",
+      "slug": "california-governor-max-fomin",
+      "name": "Max Fomin",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner/Father.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-don-j-grundmann",
+      "slug": "california-governor-don-j-grundmann",
+      "name": "Don J. Grundmann",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Doctor of Chiropractic.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-jon-henderson",
+      "slug": "california-governor-jon-henderson",
+      "name": "Jon Henderson",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-lewis-herms",
+      "slug": "california-governor-lewis-herms",
+      "name": "Lewis Herms",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: No Ballot Designation.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-dawit-kellel",
+      "slug": "california-governor-dawit-kellel",
+      "name": "Dawit Kellel",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Father.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-anne-komarovsk",
+      "slug": "california-governor-anne-komarovsk",
+      "name": "Anne Komarovsk",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Communications Executive.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-duane-terrence-loynes-jr",
+      "slug": "california-governor-duane-terrence-loynes-jr",
+      "name": "Duane Terrence Loynes Jr.",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: No Ballot Designation.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-amanda-martin",
+      "slug": "california-governor-amanda-martin",
+      "name": "Amanda Martin",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Mother/Builder/Entrepreneur.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-brent-maupin",
+      "slug": "california-governor-brent-maupin",
+      "name": "Brent Maupin",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Civil Engineer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-daniel-mercuri",
+      "slug": "california-governor-daniel-mercuri",
+      "name": "Daniel Mercuri",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Father/Author/Businessman.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-mauro-alberto-orozco",
+      "slug": "california-governor-mauro-alberto-orozco",
+      "name": "Mauro Alberto Orozco",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Small Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-reza-safarnejad",
+      "slug": "california-governor-reza-safarnejad",
+      "name": "Reza Safarnejad",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Small Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-sam-sandak",
+      "slug": "california-governor-sam-sandak",
+      "name": "Sam Sandak",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Filmmaker.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-christine-r-sarmiento",
+      "slug": "california-governor-christine-r-sarmiento",
+      "name": "Christine R. Sarmiento",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Public Health Nurse.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-frederic-c-schultz",
+      "slug": "california-governor-frederic-c-schultz",
+      "name": "Frederic C. Schultz",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Human Rights Attorney.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-margaret-trowe",
+      "slug": "california-governor-margaret-trowe",
+      "name": "Margaret Trowe",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Hotel Worker.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-governor-nancy-d-young",
+      "slug": "california-governor-nancy-d-young",
+      "name": "Nancy D. Young",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: CEO/Businesswoman/Pastor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-josh-fryday",
+      "slug": "california-lieutenant-governor-josh-fryday",
+      "name": "Josh Fryday",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Governor's Cabinet Member.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-janelle-kellman",
+      "slug": "california-lieutenant-governor-janelle-kellman",
+      "name": "Janelle Kellman",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Climate Risk Executive.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-jeyson-lopez",
+      "slug": "california-lieutenant-governor-jeyson-lopez",
+      "name": "Jeyson Lopez",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Customer Experience Consultant.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-fiona-ma",
+      "slug": "california-lieutenant-governor-fiona-ma",
+      "name": "Fiona Ma",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: State Treasurer/CPA.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-oliver-ma",
+      "slug": "california-lieutenant-governor-oliver-ma",
+      "name": "Oliver Ma",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Civil Rights Lawyer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-tim-myers",
+      "slug": "california-lieutenant-governor-tim-myers",
+      "name": "Tim Myers",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Businessman/Musician/Producer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-abdur-rahman-sikder",
+      "slug": "california-lieutenant-governor-abdur-rahman-sikder",
+      "name": "Abdur Rahman Sikder",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Professor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-michael-tubbs",
+      "slug": "california-lieutenant-governor-michael-tubbs",
+      "name": "Michael Tubbs",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Anti-Poverty Non-Profit Director.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-ebie-lynch",
+      "slug": "california-lieutenant-governor-ebie-lynch",
+      "name": "Ebie Lynch",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Business Owner/Nurse.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-david-collenberg",
+      "slug": "california-lieutenant-governor-david-collenberg",
+      "name": "David Collenberg",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Farmer/Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-david-fennell",
+      "slug": "california-lieutenant-governor-david-fennell",
+      "name": "David Fennell",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Businessman.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-gloria-romero",
+      "slug": "california-lieutenant-governor-gloria-romero",
+      "name": "Gloria Romero",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Educator/Businesswoman.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-skip-shelton",
+      "slug": "california-lieutenant-governor-skip-shelton",
+      "name": "Skip Shelton",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Defense Technology Executive.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-alice-stek",
+      "slug": "california-lieutenant-governor-alice-stek",
+      "name": "Alice Stek",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Peace and Freedom candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Physician/OBGYN.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-rakesh-christian",
+      "slug": "california-lieutenant-governor-rakesh-christian",
+      "name": "Rakesh Christian",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-lieutenant-governor-sean-collinson",
+      "slug": "california-lieutenant-governor-sean-collinson",
+      "name": "Sean Collinson",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for California Lieutenant Governor in the official certified candidate list. Ballot designation: Mediator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-secretary-of-state-shirley-n-weber",
+      "slug": "california-secretary-of-state-shirley-n-weber",
+      "name": "Shirley N. Weber",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Secretary of State in the official certified candidate list. Ballot designation: California Secretary of State.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-secretary-of-state-donald-p-don-wagner",
+      "slug": "california-secretary-of-state-donald-p-don-wagner",
+      "name": "Donald P. Don Wagner",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Secretary of State in the official certified candidate list. Ballot designation: Orange County Supervisor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-secretary-of-state-gary-n-blenner",
+      "slug": "california-secretary-of-state-gary-n-blenner",
+      "name": "Gary N. Blenner",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Green candidate listed by the California Secretary of State for California Secretary of State in the official certified candidate list. Ballot designation: Teacher.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-secretary-of-state-michael-feinstein",
+      "slug": "california-secretary-of-state-michael-feinstein",
+      "name": "Michael Feinstein",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Green candidate listed by the California Secretary of State for California Secretary of State in the official certified candidate list. Ballot designation: Electoral Reform Consultant.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-controller-malia-m-cohen",
+      "slug": "california-controller-malia-m-cohen",
+      "name": "Malia M. Cohen",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Controller in the official certified candidate list. Ballot designation: State Controller/Mother.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-controller-herb-w-morgan",
+      "slug": "california-controller-herb-w-morgan",
+      "name": "Herb W Morgan",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Controller in the official certified candidate list. Ballot designation: Chief Investment Officer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-controller-meghann-adams",
+      "slug": "california-controller-meghann-adams",
+      "name": "Meghann Adams",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Peace and Freedom candidate listed by the California Secretary of State for California Controller in the official certified candidate list. Ballot designation: School Bus Driver.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-treasurer-anna-m-caballero",
+      "slug": "california-treasurer-anna-m-caballero",
+      "name": "Anna M. Caballero",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Treasurer in the official certified candidate list. Ballot designation: California State Senator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-treasurer-eleni-kounalakis",
+      "slug": "california-treasurer-eleni-kounalakis",
+      "name": "Eleni Kounalakis",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Treasurer in the official certified candidate list. Ballot designation: Lieutenant Governor of California.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-treasurer-tony-vazquez",
+      "slug": "california-treasurer-tony-vazquez",
+      "name": "Tony Vazquez",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Treasurer in the official certified candidate list. Ballot designation: Member, State Board of Equalization.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-treasurer-jennifer-hawks",
+      "slug": "california-treasurer-jennifer-hawks",
+      "name": "Jennifer Hawks",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Treasurer in the official certified candidate list. Ballot designation: Retired Businesswoman.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-treasurer-david-serpa",
+      "slug": "california-treasurer-david-serpa",
+      "name": "David Serpa",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Treasurer in the official certified candidate list. Ballot designation: Businessman/Author/Father.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-treasurer-glenn-turner",
+      "slug": "california-treasurer-glenn-turner",
+      "name": "Glenn Turner",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Green candidate listed by the California Secretary of State for California Treasurer in the official certified candidate list. Ballot designation: No Ballot Designation.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-attorney-general-rob-bonta",
+      "slug": "california-attorney-general-rob-bonta",
+      "name": "Rob Bonta",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Attorney General in the official certified candidate list. Ballot designation: Incumbent.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-attorney-general-michael-e-gates",
+      "slug": "california-attorney-general-michael-e-gates",
+      "name": "Michael E. Gates",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Attorney General in the official certified candidate list. Ballot designation: Deputy United States Attorney.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-attorney-general-marjorie-mikels",
+      "slug": "california-attorney-general-marjorie-mikels",
+      "name": "Marjorie Mikels",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Green candidate listed by the California Secretary of State for California Attorney General in the official certified candidate list. Ballot designation: Attorney/Justice Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-ben-allen",
+      "slug": "california-insurance-commissioner-ben-allen",
+      "name": "Ben Allen",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: California State Senator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-steven-craig-bradford",
+      "slug": "california-insurance-commissioner-steven-craig-bradford",
+      "name": "Steven Craig Bradford",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Education Organization Boardmember.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-jane-kim",
+      "slug": "california-insurance-commissioner-jane-kim",
+      "name": "Jane Kim",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Attorney/Consumer Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-patrick-wolff",
+      "slug": "california-insurance-commissioner-patrick-wolff",
+      "name": "Patrick Wolff",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Financial Analyst.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-eric-thor-aarnio",
+      "slug": "california-insurance-commissioner-eric-thor-aarnio",
+      "name": "Eric Thor Aarnio",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Contractor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-merritt-farren",
+      "slug": "california-insurance-commissioner-merritt-farren",
+      "name": "Merritt Farren",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Consumer Advocate/Attorney.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-robert-p-howell",
+      "slug": "california-insurance-commissioner-robert-p-howell",
+      "name": "Robert P Howell",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Cybersecurity Company CEO.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-stacy-a-korsgaden",
+      "slug": "california-insurance-commissioner-stacy-a-korsgaden",
+      "name": "Stacy A. Korsgaden",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Licensed Insurance Agent.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-sean-lee",
+      "slug": "california-insurance-commissioner-sean-lee",
+      "name": "Sean Lee",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Financial Services Executive.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-keith-w-davis",
+      "slug": "california-insurance-commissioner-keith-w-davis",
+      "name": "Keith W. Davis",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "American Independent candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Insurance Agent.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-insurance-commissioner-eduardo-lalo-vargas",
+      "slug": "california-insurance-commissioner-eduardo-lalo-vargas",
+      "name": "Eduardo Lalo Vargas",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Peace and Freedom candidate listed by the California Secretary of State for California Insurance Commissioner in the official certified candidate list. Ballot designation: Science Teacher.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-richard-barrera",
+      "slug": "california-superintendent-public-instruction-richard-barrera",
+      "name": "Richard Barrera",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: State Superintendent Advisor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-wendy-castaneda-leal",
+      "slug": "california-superintendent-public-instruction-wendy-castaneda-leal",
+      "name": "Wendy Castaneda Leal",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: School District Superintendent.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-nichelle-m-henderson",
+      "slug": "california-superintendent-public-instruction-nichelle-m-henderson",
+      "name": "Nichelle M. Henderson",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: College Trustee/Teacher.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-frank-lara",
+      "slug": "california-superintendent-public-instruction-frank-lara",
+      "name": "Frank Lara",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: Teacher/Union VP.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-ainye-long",
+      "slug": "california-superintendent-public-instruction-ainye-long",
+      "name": "Ainye Long",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: Public School Teacher.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-gus-mattammal",
+      "slug": "california-superintendent-public-instruction-gus-mattammal",
+      "name": "Gus Mattammal",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: Educator/Executive/Author.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-al-muratsuchi",
+      "slug": "california-superintendent-public-instruction-al-muratsuchi",
+      "name": "Al Muratsuchi",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: Assemblymember/Classroom Educator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-josh-newman",
+      "slug": "california-superintendent-public-instruction-josh-newman",
+      "name": "Josh Newman",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: Educator/Strategic Advisor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-anthony-rendon",
+      "slug": "california-superintendent-public-instruction-anthony-rendon",
+      "name": "Anthony Rendon",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: Democracy Advocate/Educator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-california-superintendent-public-instruction-sonja-shaw",
+      "slug": "california-superintendent-public-instruction-sonja-shaw",
+      "name": "Sonja Shaw",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Non-Partisan candidate listed by the California Secretary of State for California Superintendent of Public Instruction in the official certified candidate list. Ballot designation: School District President.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-board-of-equalization-district-2-sally-j-lieber",
+      "slug": "board-of-equalization-district-2-sally-j-lieber",
+      "name": "Sally J. Lieber",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for Board of Equalization District 2 in the official certified candidate list. Ballot designation: Member, State Board of Equalization.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-board-of-equalization-district-2-john-pimentel",
+      "slug": "board-of-equalization-district-2-john-pimentel",
+      "name": "John Pimentel",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for Board of Equalization District 2 in the official certified candidate list. Ballot designation: Member, Board of Trustees, San Mateo County Community College District.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-board-of-equalization-district-2-j-brett-marymee",
+      "slug": "board-of-equalization-district-2-j-brett-marymee",
+      "name": "J Brett Marymee",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for Board of Equalization District 2 in the official certified candidate list. Ballot designation: Small Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-board-of-equalization-district-2-mark-mccomas",
+      "slug": "board-of-equalization-district-2-mark-mccomas",
+      "name": "Mark McComas",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for Board of Equalization District 2 in the official certified candidate list. Ballot designation: Small Business Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-board-of-equalization-district-2-bill-shireman",
+      "slug": "board-of-equalization-district-2-bill-shireman",
+      "name": "Bill Shireman",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for Board of Equalization District 2 in the official certified candidate list. Ballot designation: Taxpayer Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-board-of-equalization-district-2-john-w-zaruka",
+      "slug": "board-of-equalization-district-2-john-w-zaruka",
+      "name": "John W. Zaruka",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for Board of Equalization District 2 in the official certified candidate list. Ballot designation: Retired Hospitality Executive.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-john-gus-buffler",
+      "slug": "us-house-district-11-john-gus-buffler",
+      "name": "John Gus Buffler",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Rocket Scientist.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-saikat-chakrabarti",
+      "slug": "us-house-district-11-saikat-chakrabarti",
+      "name": "Saikat Chakrabarti",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Economic Policy Director.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-connie-chan",
+      "slug": "us-house-district-11-connie-chan",
+      "name": "Connie Chan",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: San Francisco Supervisor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-keith-freedman",
+      "slug": "us-house-district-11-keith-freedman",
+      "name": "Keith Freedman",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Small Business Owner.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-omed-hamid",
+      "slug": "us-house-district-11-omed-hamid",
+      "name": "Omed Hamid",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Technology Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-gregory-m-haynes",
+      "slug": "us-house-district-11-gregory-m-haynes",
+      "name": "Gregory M Haynes",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Civil Rights Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-marie-hurabiell",
+      "slug": "us-house-district-11-marie-hurabiell",
+      "name": "Marie Hurabiell",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Attorney/Reform Advocate.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-scott-wiener",
+      "slug": "us-house-district-11-scott-wiener",
+      "name": "Scott Wiener",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: State Senator.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-david-ganezer",
+      "slug": "us-house-district-11-david-ganezer",
+      "name": "David Ganezer",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Local Newspaper Publisher.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-jingchao-xiong",
+      "slug": "us-house-district-11-jingchao-xiong",
+      "name": "Jingchao Xiong",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Social Management Scientist.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-11-nathan-deer",
+      "slug": "us-house-district-11-nathan-deer",
+      "name": "Nathan Deer",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for U.S. House District 11 in the official certified candidate list. Ballot designation: Homeowners Association Treasurer.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-15-anthony-van-dang",
+      "slug": "us-house-district-15-anthony-van-dang",
+      "name": "Anthony Van Dang",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 15 in the official certified candidate list. Ballot designation: Policy Analyst.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-15-mantosh-kumar",
+      "slug": "us-house-district-15-mantosh-kumar",
+      "name": "Mantosh Kumar",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 15 in the official certified candidate list. Ballot designation: Strategic Business Advisor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-15-kevin-mullin",
+      "slug": "us-house-district-15-kevin-mullin",
+      "name": "Kevin Mullin",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for U.S. House District 15 in the official certified candidate list. Ballot designation: U.S. Representative.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-15-charles-hoelter",
+      "slug": "us-house-district-15-charles-hoelter",
+      "name": "Charles Hoelter",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for U.S. House District 15 in the official certified candidate list. Ballot designation: Retired Training Supervisor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-us-house-district-15-jim-garrity",
+      "slug": "us-house-district-15-jim-garrity",
+      "name": "Jim Garrity",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "No Party Preference candidate listed by the California Secretary of State for U.S. House District 15 in the official certified candidate list. Ballot designation: Retired Police Inspector.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-state-assembly-district-17-matt-haney",
+      "slug": "state-assembly-district-17-matt-haney",
+      "name": "Matt Haney",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for State Assembly District 17 in the official certified candidate list. Ballot designation: Assemblymember.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-state-assembly-district-19-catherine-stefani",
+      "slug": "state-assembly-district-19-catherine-stefani",
+      "name": "Catherine Stefani",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Democratic candidate listed by the California Secretary of State for State Assembly District 19 in the official certified candidate list. Ballot designation: Assemblymember.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
+    },
+    {
+      "id": "ent-state-assembly-district-19-philip-louis-wing",
+      "slug": "state-assembly-district-19-philip-louis-wing",
+      "name": "Philip Louis Wing",
+      "kind": "candidate",
+      "status": "verified",
+      "description": "Republican candidate listed by the California Secretary of State for State Assembly District 19 in the official certified candidate list. Ballot designation: Retired Financial Advisor.",
+      "officialUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"
     }
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "race": {
+    "id": "race-state-assembly-district-17",
+    "slug": "state-assembly-district-17",
+    "title": "State Assembly District 17",
+    "kind": "local-legislative",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California Assembly District 17",
+    "entityIds": [
+      "ent-state-assembly-district-17-matt-haney"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

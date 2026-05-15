@@ -3,21 +3,21 @@
   "raceSlug": "mayor",
   "raceId": "race-mayor",
   "sourceDraftPath": "data/extracted/drafts/latest.json",
-  "runId": "run-20260515030212",
+  "runId": "run-20260515030550",
   "provider": {
     "provider": "fixture",
     "model": "fixture-v1"
   },
   "status": "published",
-  "updatedAt": "2026-05-15T03:02:14.530Z",
+  "updatedAt": "2026-05-15T03:05:52.841Z",
   "positions": [
     {
       "id": "pos-sf-chronicle-sample-candidate-a-1",
       "draftPositionId": "pos-sf-chronicle-sample-candidate-a-1",
       "sourceDraft": {
-        "runId": "run-20260515030212",
+        "runId": "run-20260515030550",
         "draftPath": "data/extracted/drafts/latest.json",
-        "generatedAt": "2026-05-15T03:02:12.232Z",
+        "generatedAt": "2026-05-15T03:05:50.621Z",
         "generatedBy": {
           "provider": "fixture",
           "model": "fixture-v1"
@@ -54,9 +54,9 @@
       "id": "pos-growsf-sample-candidate-b-1",
       "draftPositionId": "pos-growsf-sample-candidate-b-1",
       "sourceDraft": {
-        "runId": "run-20260515030212",
+        "runId": "run-20260515030550",
         "draftPath": "data/extracted/drafts/latest.json",
-        "generatedAt": "2026-05-15T03:02:12.232Z",
+        "generatedAt": "2026-05-15T03:05:50.621Z",
         "generatedBy": {
           "provider": "fixture",
           "model": "fixture-v1"

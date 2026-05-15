@@ -1,0 +1,24 @@
+{
+  "race": {
+    "id": "race-board-of-equalization-district-2",
+    "slug": "board-of-equalization-district-2",
+    "title": "Board of Equalization District 2",
+    "kind": "other",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California Board of Equalization District 2",
+    "entityIds": [
+      "ent-board-of-equalization-district-2-sally-j-lieber",
+      "ent-board-of-equalization-district-2-john-pimentel",
+      "ent-board-of-equalization-district-2-j-brett-marymee",
+      "ent-board-of-equalization-district-2-mark-mccomas",
+      "ent-board-of-equalization-district-2-bill-shireman",
+      "ent-board-of-equalization-district-2-john-w-zaruka"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

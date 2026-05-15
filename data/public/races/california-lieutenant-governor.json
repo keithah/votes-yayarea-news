@@ -1,0 +1,34 @@
+{
+  "race": {
+    "id": "race-california-lieutenant-governor",
+    "slug": "california-lieutenant-governor",
+    "title": "California Lieutenant Governor",
+    "kind": "statewide-executive",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California",
+    "entityIds": [
+      "ent-california-lieutenant-governor-josh-fryday",
+      "ent-california-lieutenant-governor-janelle-kellman",
+      "ent-california-lieutenant-governor-jeyson-lopez",
+      "ent-california-lieutenant-governor-fiona-ma",
+      "ent-california-lieutenant-governor-oliver-ma",
+      "ent-california-lieutenant-governor-tim-myers",
+      "ent-california-lieutenant-governor-abdur-rahman-sikder",
+      "ent-california-lieutenant-governor-michael-tubbs",
+      "ent-california-lieutenant-governor-ebie-lynch",
+      "ent-california-lieutenant-governor-david-collenberg",
+      "ent-california-lieutenant-governor-david-fennell",
+      "ent-california-lieutenant-governor-gloria-romero",
+      "ent-california-lieutenant-governor-skip-shelton",
+      "ent-california-lieutenant-governor-alice-stek",
+      "ent-california-lieutenant-governor-rakesh-christian",
+      "ent-california-lieutenant-governor-sean-collinson"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

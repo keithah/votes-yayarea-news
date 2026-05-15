@@ -1,0 +1,17 @@
+{
+  "race": {
+    "id": "race-supervisor-district-2",
+    "slug": "supervisor-district-2",
+    "title": "Supervisor District 2",
+    "kind": "local-legislative",
+    "status": "draft",
+    "publicationStatus": "hidden",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "San Francisco Supervisor District 2",
+    "entityIds": [],
+    "sourceIds": [
+      "src-sf-department-of-elections"
+    ],
+    "positions": []
+  }
+}

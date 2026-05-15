@@ -1,0 +1,28 @@
+{
+  "race": {
+    "id": "race-california-superintendent-public-instruction",
+    "slug": "california-superintendent-public-instruction",
+    "title": "California Superintendent of Public Instruction",
+    "kind": "statewide-executive",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California",
+    "entityIds": [
+      "ent-california-superintendent-public-instruction-richard-barrera",
+      "ent-california-superintendent-public-instruction-wendy-castaneda-leal",
+      "ent-california-superintendent-public-instruction-nichelle-m-henderson",
+      "ent-california-superintendent-public-instruction-frank-lara",
+      "ent-california-superintendent-public-instruction-ainye-long",
+      "ent-california-superintendent-public-instruction-gus-mattammal",
+      "ent-california-superintendent-public-instruction-al-muratsuchi",
+      "ent-california-superintendent-public-instruction-josh-newman",
+      "ent-california-superintendent-public-instruction-anthony-rendon",
+      "ent-california-superintendent-public-instruction-sonja-shaw"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

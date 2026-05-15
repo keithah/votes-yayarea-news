@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "runId": "run-20260515030212",
+  "runId": "run-20260515030550",
   "provider": {
     "provider": "fixture",
     "model": "fixture-v1"
@@ -23,7 +23,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T03:02:12.232Z"
+      "generatedAt": "2026-05-15T03:05:50.621Z"
     },
     {
       "id": "pos-growsf-sample-candidate-b-1",
@@ -42,7 +42,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T03:02:12.232Z"
+      "generatedAt": "2026-05-15T03:05:50.621Z"
     }
   ],
   "evidence": [

@@ -1,0 +1,24 @@
+{
+  "race": {
+    "id": "race-california-treasurer",
+    "slug": "california-treasurer",
+    "title": "California Treasurer",
+    "kind": "statewide-executive",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California",
+    "entityIds": [
+      "ent-california-treasurer-anna-m-caballero",
+      "ent-california-treasurer-eleni-kounalakis",
+      "ent-california-treasurer-tony-vazquez",
+      "ent-california-treasurer-jennifer-hawks",
+      "ent-california-treasurer-david-serpa",
+      "ent-california-treasurer-glenn-turner"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

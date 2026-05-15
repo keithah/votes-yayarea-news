@@ -1,0 +1,1666 @@
+{
+  "race": {
+    "id": "race-california-governor",
+    "slug": "california-governor",
+    "title": "California Governor",
+    "kind": "statewide-executive",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California",
+    "entityIds": [
+      "ent-california-governor-akinyemi-agbede",
+      "ent-california-governor-mohammad-arif",
+      "ent-california-governor-larry-azevedo",
+      "ent-california-governor-xavier-becerra",
+      "ent-california-governor-carolina-buhler",
+      "ent-california-governor-louis-a-de-barraicua",
+      "ent-california-governor-sophia-edum-a-sam",
+      "ent-california-governor-derek-grasty",
+      "ent-california-governor-joel-e-jacob",
+      "ent-california-governor-gary-howard-kidgell",
+      "ent-california-governor-matthew-chase-levy",
+      "ent-california-governor-matt-mahan",
+      "ent-california-governor-barack-d-obama-shaw",
+      "ent-california-governor-thunder-parley",
+      "ent-california-governor-katie-porter",
+      "ent-california-governor-raji-rab",
+      "ent-california-governor-satish-rao",
+      "ent-california-governor-scott-p-shields",
+      "ent-california-governor-tom-steyer",
+      "ent-california-governor-eric-swalwell",
+      "ent-california-governor-tony-k-thurmond",
+      "ent-california-governor-antonio-villaraigosa",
+      "ent-california-governor-betty-t-yee",
+      "ent-california-governor-erin-zez-zezulak",
+      "ent-california-governor-james-athans-jr",
+      "ent-california-governor-chad-bianco",
+      "ent-california-governor-patricia-de-luca-basualdo",
+      "ent-california-governor-randeep-s-dhillon",
+      "ent-california-governor-rafael-m-hernandez",
+      "ent-california-governor-steve-hilton",
+      "ent-california-governor-alicia-olivia-lapp",
+      "ent-california-governor-leo-naranjo-iv",
+      "ent-california-governor-tim-nelson",
+      "ent-california-governor-gretha-solorzano",
+      "ent-california-governor-leo-samuel-zacky",
+      "ent-california-governor-david-zickefoose",
+      "ent-california-governor-tom-woodard",
+      "ent-california-governor-ramsey-robinson",
+      "ent-california-governor-naomi-bar-lev",
+      "ent-california-governor-joseph-cabrera",
+      "ent-california-governor-elaine-culotti",
+      "ent-california-governor-livingforgod-andcountry-demott",
+      "ent-california-governor-serge-fiankan",
+      "ent-california-governor-lukasz-adam-filinski",
+      "ent-california-governor-max-fomin",
+      "ent-california-governor-don-j-grundmann",
+      "ent-california-governor-jon-henderson",
+      "ent-california-governor-lewis-herms",
+      "ent-california-governor-dawit-kellel",
+      "ent-california-governor-anne-komarovsk",
+      "ent-california-governor-duane-terrence-loynes-jr",
+      "ent-california-governor-amanda-martin",
+      "ent-california-governor-brent-maupin",
+      "ent-california-governor-daniel-mercuri",
+      "ent-california-governor-mauro-alberto-orozco",
+      "ent-california-governor-reza-safarnejad",
+      "ent-california-governor-sam-sandak",
+      "ent-california-governor-christine-r-sarmiento",
+      "ent-california-governor-frederic-c-schultz",
+      "ent-california-governor-margaret-trowe",
+      "ent-california-governor-nancy-d-young"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": [
+      {
+        "id": "pos-sos-governor-akinyemi-agbede",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-akinyemi-agbede",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-akinyemi-agbede"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-akinyemi-agbede",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-akinyemi-agbede",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Mathematician.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-mohammad-arif",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-mohammad-arif",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-mohammad-arif"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-mohammad-arif",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-mohammad-arif",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Immigrants Organizer.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-larry-azevedo",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-larry-azevedo",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-larry-azevedo"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-larry-azevedo",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-larry-azevedo",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Businessman.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-xavier-becerra",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-xavier-becerra",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-xavier-becerra"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-xavier-becerra",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-xavier-becerra",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Voting Rights Attorney.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-carolina-buhler",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-carolina-buhler",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-carolina-buhler"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-carolina-buhler",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-carolina-buhler",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Civil Rights Advocate.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-louis-a-de-barraicua",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-louis-a-de-barraicua",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-louis-a-de-barraicua"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-louis-a-de-barraicua",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-louis-a-de-barraicua",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Teacher/Business Owner.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-sophia-edum-a-sam",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-sophia-edum-a-sam",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-sophia-edum-a-sam"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-sophia-edum-a-sam",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-sophia-edum-a-sam",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Project Manager.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-derek-grasty",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-derek-grasty",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-derek-grasty"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-derek-grasty",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-derek-grasty",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: District Trustee/Educator.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-joel-e-jacob",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-joel-e-jacob",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-joel-e-jacob"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-joel-e-jacob",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-joel-e-jacob",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner/Entrepreneur.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-gary-howard-kidgell",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-gary-howard-kidgell",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-gary-howard-kidgell"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-gary-howard-kidgell",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-gary-howard-kidgell",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Building Consultant.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-matthew-chase-levy",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-matthew-chase-levy",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-matthew-chase-levy"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-matthew-chase-levy",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-matthew-chase-levy",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Entrepreneur/Physicist.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-matt-mahan",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-matt-mahan",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-matt-mahan"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-matt-mahan",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-matt-mahan",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Mayor, San Jose.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-barack-d-obama-shaw",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-barack-d-obama-shaw",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-barack-d-obama-shaw"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-barack-d-obama-shaw",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-barack-d-obama-shaw",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-thunder-parley",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-thunder-parley",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-thunder-parley"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-thunder-parley",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-thunder-parley",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Market Analyst.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-katie-porter",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-katie-porter",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-katie-porter"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-katie-porter",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-katie-porter",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Consumer Protection Advocate.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-raji-rab",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-raji-rab",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-raji-rab"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-raji-rab",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-raji-rab",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Aviator/Educator/Entrepreneur.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-satish-rao",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-satish-rao",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-satish-rao"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-satish-rao",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-satish-rao",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Professor.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-scott-p-shields",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-scott-p-shields",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-scott-p-shields"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-scott-p-shields",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-scott-p-shields",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Chief Executive Officer.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-tom-steyer",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-tom-steyer",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-tom-steyer"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-tom-steyer",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-tom-steyer",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Climate Advocate.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-eric-swalwell",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-eric-swalwell",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-eric-swalwell"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-eric-swalwell",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-eric-swalwell",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: U.S. Representative.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-tony-k-thurmond",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-tony-k-thurmond",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-tony-k-thurmond"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-tony-k-thurmond",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-tony-k-thurmond",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: California State Superintendent of Public Instruction.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-antonio-villaraigosa",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-antonio-villaraigosa",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-antonio-villaraigosa"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-antonio-villaraigosa",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-antonio-villaraigosa",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Housing Affordability Advocate.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-betty-t-yee",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-betty-t-yee",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-betty-t-yee"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-betty-t-yee",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-betty-t-yee",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Family Care Navigator.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-erin-zez-zezulak",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-erin-zez-zezulak",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-erin-zez-zezulak"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-erin-zez-zezulak",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-erin-zez-zezulak",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Consultant/Nurse/Businesswoman.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-james-athans-jr",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-james-athans-jr",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-james-athans-jr"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-james-athans-jr",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-james-athans-jr",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Agent.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-chad-bianco",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-chad-bianco",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-chad-bianco"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-chad-bianco",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-chad-bianco",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Riverside County Sheriff.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-patricia-de-luca-basualdo",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-patricia-de-luca-basualdo",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-patricia-de-luca-basualdo"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-patricia-de-luca-basualdo",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-patricia-de-luca-basualdo",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Broker.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-randeep-s-dhillon",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-randeep-s-dhillon",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-randeep-s-dhillon"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-randeep-s-dhillon",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-randeep-s-dhillon",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Economist/Farmer/Businessman.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-rafael-m-hernandez",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-rafael-m-hernandez",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-rafael-m-hernandez"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-rafael-m-hernandez",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-rafael-m-hernandez",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Businessman/Songwriter/Author.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-steve-hilton",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-steve-hilton",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-steve-hilton"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-steve-hilton",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-steve-hilton",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Small Business Owner.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-alicia-olivia-lapp",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-alicia-olivia-lapp",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-alicia-olivia-lapp"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-alicia-olivia-lapp",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-alicia-olivia-lapp",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: No Ballot Designation.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-leo-naranjo-iv",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-leo-naranjo-iv",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-leo-naranjo-iv"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-leo-naranjo-iv",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-leo-naranjo-iv",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Retired Military Sergeant.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-tim-nelson",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-tim-nelson",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-tim-nelson"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-tim-nelson",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-tim-nelson",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Diplomat/Rights Advocate.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-gretha-solorzano",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-gretha-solorzano",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-gretha-solorzano"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-gretha-solorzano",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-gretha-solorzano",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Retired Nuclear Engineer.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-leo-samuel-zacky",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-leo-samuel-zacky",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-leo-samuel-zacky"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-leo-samuel-zacky",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-leo-samuel-zacky",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Farmer/Businessman/Broadcaster.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-david-zickefoose",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-david-zickefoose",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-david-zickefoose"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-david-zickefoose",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-david-zickefoose",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Republican candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Investor.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-tom-woodard",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-tom-woodard",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-tom-woodard"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-tom-woodard",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-tom-woodard",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Libertarian candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Retired CEO.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-ramsey-robinson",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-ramsey-robinson",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-ramsey-robinson"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-ramsey-robinson",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-ramsey-robinson",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "Peace and Freedom candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: School Social Worker.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-naomi-bar-lev",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-naomi-bar-lev",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-naomi-bar-lev"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-naomi-bar-lev",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-naomi-bar-lev",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Musician/Proprietor/Writer.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-joseph-cabrera",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-joseph-cabrera",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-joseph-cabrera"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-joseph-cabrera",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-joseph-cabrera",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Administrator.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-elaine-culotti",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-elaine-culotti",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-elaine-culotti"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-elaine-culotti",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-elaine-culotti",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Entrepreneur/Farmer/Developer.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-livingforgod-andcountry-demott",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-livingforgod-andcountry-demott",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-livingforgod-andcountry-demott"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-livingforgod-andcountry-demott",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-livingforgod-andcountry-demott",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Logistical Professional/Chaplain.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-serge-fiankan",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-serge-fiankan",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-serge-fiankan"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-serge-fiankan",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-serge-fiankan",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Real Estate Broker.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-lukasz-adam-filinski",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-lukasz-adam-filinski",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-lukasz-adam-filinski"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-lukasz-adam-filinski",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-lukasz-adam-filinski",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Father.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-max-fomin",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-max-fomin",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-max-fomin"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-max-fomin",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-max-fomin",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner/Father.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-don-j-grundmann",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-don-j-grundmann",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-don-j-grundmann"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-don-j-grundmann",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-don-j-grundmann",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Doctor of Chiropractic.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-jon-henderson",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-jon-henderson",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-jon-henderson"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-jon-henderson",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-jon-henderson",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Business Owner.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-lewis-herms",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-lewis-herms",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-lewis-herms"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-lewis-herms",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-lewis-herms",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: No Ballot Designation.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-dawit-kellel",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-dawit-kellel",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-dawit-kellel"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-dawit-kellel",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-dawit-kellel",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Father.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-anne-komarovsk",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-anne-komarovsk",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-anne-komarovsk"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-anne-komarovsk",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-anne-komarovsk",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Communications Executive.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-duane-terrence-loynes-jr",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-duane-terrence-loynes-jr",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-duane-terrence-loynes-jr"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-duane-terrence-loynes-jr",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-duane-terrence-loynes-jr",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: No Ballot Designation.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-amanda-martin",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-amanda-martin",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-amanda-martin"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-amanda-martin",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-amanda-martin",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Mother/Builder/Entrepreneur.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-brent-maupin",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-brent-maupin",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-brent-maupin"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-brent-maupin",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-brent-maupin",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Civil Engineer.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-daniel-mercuri",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-daniel-mercuri",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-daniel-mercuri"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-daniel-mercuri",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-daniel-mercuri",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Father/Author/Businessman.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-mauro-alberto-orozco",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-mauro-alberto-orozco",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-mauro-alberto-orozco"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-mauro-alberto-orozco",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-mauro-alberto-orozco",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Small Business Owner.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-reza-safarnejad",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-reza-safarnejad",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-reza-safarnejad"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-reza-safarnejad",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-reza-safarnejad",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Small Business Owner.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-sam-sandak",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-sam-sandak",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-sam-sandak"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-sam-sandak",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-sam-sandak",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Filmmaker.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-christine-r-sarmiento",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-christine-r-sarmiento",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-christine-r-sarmiento"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-christine-r-sarmiento",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-christine-r-sarmiento",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Public Health Nurse.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-frederic-c-schultz",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-frederic-c-schultz",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-frederic-c-schultz"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-frederic-c-schultz",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-frederic-c-schultz",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Human Rights Attorney.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-margaret-trowe",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-margaret-trowe",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-margaret-trowe"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-margaret-trowe",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-margaret-trowe",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: Hotel Worker.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      },
+      {
+        "id": "pos-sos-governor-nancy-d-young",
+        "raceId": "race-california-governor",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-california-governor-nancy-d-young",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official certified candidate listing",
+        "rationale": "The California Secretary of State certified candidate list identifies this person as a candidate for California Governor. This is an informational ballot-listing record, not an endorsement or recommendation.",
+        "evidenceIds": [
+          "ev-sos-governor-nancy-d-young"
+        ],
+        "evidence": [
+          {
+            "id": "ev-sos-governor-nancy-d-young",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-california-governor-nancy-d-young",
+            "raceId": "race-california-governor",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "link",
+            "quote": "No Party Preference candidate listed by the California Secretary of State for California Governor in the official certified candidate list. Ballot designation: CEO/Businesswoman/Pastor.",
+            "capturedAt": "2026-03-26"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "race": {
+    "id": "race-state-assembly-district-19",
+    "slug": "state-assembly-district-19",
+    "title": "State Assembly District 19",
+    "kind": "local-legislative",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California Assembly District 19",
+    "entityIds": [
+      "ent-state-assembly-district-19-catherine-stefani",
+      "ent-state-assembly-district-19-philip-louis-wing"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

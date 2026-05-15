@@ -1,0 +1,21 @@
+{
+  "race": {
+    "id": "race-california-controller",
+    "slug": "california-controller",
+    "title": "California Controller",
+    "kind": "statewide-executive",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California",
+    "entityIds": [
+      "ent-california-controller-malia-m-cohen",
+      "ent-california-controller-herb-w-morgan",
+      "ent-california-controller-meghann-adams"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

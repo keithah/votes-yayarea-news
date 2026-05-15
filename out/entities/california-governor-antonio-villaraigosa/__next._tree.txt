@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/0p3d3~h.k5qx3.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"entities","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"california-governor-antonio-villaraigosa","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"lc_wdvUaQ-01lsLVM-N__"}

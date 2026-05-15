@@ -3,11 +3,80 @@
     {
       "id": "col-launch-races",
       "slug": "launch-races",
-      "title": "Launch races",
+      "title": "Tracked June 2026 races",
       "kind": "race",
+      "status": "verified",
+      "description": "Tracked California and San Francisco June 2, 2026 contests replacing the former hidden Mayor fixture.",
+      "raceIds": [
+        "race-california-governor",
+        "race-california-lieutenant-governor",
+        "race-california-secretary-of-state",
+        "race-california-controller",
+        "race-california-treasurer",
+        "race-california-attorney-general",
+        "race-california-insurance-commissioner",
+        "race-california-superintendent-public-instruction",
+        "race-board-of-equalization-district-2",
+        "race-us-house-district-11",
+        "race-us-house-district-15",
+        "race-state-assembly-district-17",
+        "race-state-assembly-district-19",
+        "race-supervisor-district-2",
+        "race-supervisor-district-4",
+        "race-sfusd-board-of-education",
+        "race-superior-court-judge-seat-16",
+        "race-san-francisco-prop-a",
+        "race-san-francisco-prop-b",
+        "race-san-francisco-prop-c",
+        "race-san-francisco-prop-d"
+      ]
+    },
+    {
+      "id": "col-statewide-offices",
+      "slug": "statewide-offices",
+      "title": "California statewide offices",
+      "kind": "office-group",
+      "status": "verified",
+      "description": "Statewide offices with candidate lists imported from the California Secretary of State certified list.",
+      "raceIds": [
+        "race-california-governor",
+        "race-california-lieutenant-governor",
+        "race-california-secretary-of-state",
+        "race-california-controller",
+        "race-california-treasurer",
+        "race-california-attorney-general",
+        "race-california-insurance-commissioner",
+        "race-california-superintendent-public-instruction",
+        "race-board-of-equalization-district-2"
+      ]
+    },
+    {
+      "id": "col-san-francisco-local",
+      "slug": "san-francisco-local",
+      "title": "San Francisco local contests",
+      "kind": "office-group",
       "status": "draft",
-      "description": "Initial static-export race collection for v1 launch validation.",
-      "raceIds": ["race-mayor"]
+      "description": "Tracked San Francisco local contests that remain hidden until official local candidate data is imported.",
+      "raceIds": [
+        "race-supervisor-district-2",
+        "race-supervisor-district-4",
+        "race-sfusd-board-of-education",
+        "race-superior-court-judge-seat-16"
+      ]
+    },
+    {
+      "id": "col-san-francisco-measures",
+      "slug": "san-francisco-measures",
+      "title": "San Francisco ballot measures",
+      "kind": "ballot-measure-collection",
+      "status": "draft",
+      "description": "Tracked San Francisco propositions A through D; hidden until official measure titles/options are imported from SF Department of Elections records.",
+      "raceIds": [
+        "race-san-francisco-prop-a",
+        "race-san-francisco-prop-b",
+        "race-san-francisco-prop-c",
+        "race-san-francisco-prop-d"
+      ]
     }
   ]
 }

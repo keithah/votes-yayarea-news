@@ -6,7 +6,7 @@
   "url": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
   "status": "chunked",
   "inputKind": "html",
-  "capturedAt": "2026-05-15T02:12:35.912Z",
+  "capturedAt": "2026-05-15T02:28:23.150Z",
   "rawPath": "data/ingested/raw/src-sf-chronicle-mayor-sample.html",
   "cleanPath": "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
   "chunkPath": "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",

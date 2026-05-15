@@ -1,0 +1,29 @@
+{
+  "race": {
+    "id": "race-california-insurance-commissioner",
+    "slug": "california-insurance-commissioner",
+    "title": "California Insurance Commissioner",
+    "kind": "statewide-executive",
+    "status": "verified",
+    "publicationStatus": "public",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "California",
+    "entityIds": [
+      "ent-california-insurance-commissioner-ben-allen",
+      "ent-california-insurance-commissioner-steven-craig-bradford",
+      "ent-california-insurance-commissioner-jane-kim",
+      "ent-california-insurance-commissioner-patrick-wolff",
+      "ent-california-insurance-commissioner-eric-thor-aarnio",
+      "ent-california-insurance-commissioner-merritt-farren",
+      "ent-california-insurance-commissioner-robert-p-howell",
+      "ent-california-insurance-commissioner-stacy-a-korsgaden",
+      "ent-california-insurance-commissioner-sean-lee",
+      "ent-california-insurance-commissioner-keith-w-davis",
+      "ent-california-insurance-commissioner-eduardo-lalo-vargas"
+    ],
+    "sourceIds": [
+      "src-ca-secretary-of-state"
+    ],
+    "positions": []
+  }
+}

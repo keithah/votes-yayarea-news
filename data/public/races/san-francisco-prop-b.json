@@ -1,0 +1,17 @@
+{
+  "race": {
+    "id": "race-san-francisco-prop-b",
+    "slug": "san-francisco-prop-b",
+    "title": "San Francisco Proposition B",
+    "kind": "ballot-measure",
+    "status": "draft",
+    "publicationStatus": "hidden",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "San Francisco",
+    "entityIds": [],
+    "sourceIds": [
+      "src-sf-department-of-elections"
+    ],
+    "positions": []
+  }
+}

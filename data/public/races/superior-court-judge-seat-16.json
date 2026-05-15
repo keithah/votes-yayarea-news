@@ -1,0 +1,17 @@
+{
+  "race": {
+    "id": "race-superior-court-judge-seat-16",
+    "slug": "superior-court-judge-seat-16",
+    "title": "Superior Court Judge Seat 16",
+    "kind": "other",
+    "status": "draft",
+    "publicationStatus": "hidden",
+    "electionDate": "2026-06-02",
+    "jurisdiction": "San Francisco",
+    "entityIds": [],
+    "sourceIds": [
+      "src-sf-department-of-elections"
+    ],
+    "positions": []
+  }
+}

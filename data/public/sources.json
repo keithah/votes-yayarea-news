@@ -1,6 +1,27 @@
 {
   "sources": [
     {
+      "id": "src-ca-secretary-of-state",
+      "slug": "california-secretary-of-state",
+      "name": "California Secretary of State",
+      "category": "Official election authority",
+      "sourceType": "official certified candidate list",
+      "status": "active",
+      "homepageUrl": "https://www.sos.ca.gov/elections/",
+      "guideUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "notes": "Official Certified List of Candidates for the June 2, 2026 Statewide Direct Primary Election, dated 2026-03-26. Used for statewide, federal, BOE, and Assembly candidate entities only; not a recommendation source."
+    },
+    {
+      "id": "src-sf-department-of-elections",
+      "slug": "san-francisco-department-of-elections",
+      "name": "San Francisco Department of Elections",
+      "category": "Official election authority",
+      "sourceType": "official local election information",
+      "status": "pending",
+      "homepageUrl": "https://www.sf.gov/departments/department-elections",
+      "notes": "Tracked as the official local authority for San Francisco contests and measures. A confirmed June 2, 2026 local candidate/measure data URL was not located in repo evidence during T01, so affected contests remain hidden/documented until filled."
+    },
+    {
       "id": "src-sf-chronicle",
       "slug": "san-francisco-chronicle-editorial-board",
       "name": "San Francisco Chronicle Editorial Board",
@@ -8,9 +29,47 @@
       "sourceType": "editorial endorsements",
       "status": "pending",
       "homepageUrl": "https://www.sfchronicle.com/",
-      "guideUrl": "https://www.sfchronicle.com/projects/2026/sample-voter-guide",
-      "notes": "Sample fixture URL and details for schema validation only; not an official 2026 endorsement claim.",
-      "sampleFixture": true
+      "notes": "pending 2026 voter-guide or endorsement URL; include if public June 2026 endorsement pages are available."
+    },
+    {
+      "id": "src-mission-local",
+      "slug": "mission-local",
+      "name": "Mission Local",
+      "category": "Media / Editorial",
+      "sourceType": "publication guide / election coverage",
+      "status": "pending",
+      "homepageUrl": "https://missionlocal.org/",
+      "notes": "pending 2026 voter-guide or election coverage URL; keep source-notes-only until a usable artifact exists."
+    },
+    {
+      "id": "src-sf-standard",
+      "slug": "san-francisco-standard",
+      "name": "San Francisco Standard",
+      "category": "Media / Editorial",
+      "sourceType": "publication guide / election coverage",
+      "status": "pending",
+      "homepageUrl": "https://sfstandard.com/",
+      "notes": "pending 2026 voter-guide or election coverage URL; document as pending until public recommendations or a structured guide exists."
+    },
+    {
+      "id": "src-lwv-sf-voters-edge",
+      "slug": "league-of-women-voters-san-francisco-voters-edge",
+      "name": "League of Women Voters of San Francisco / Voter's Edge",
+      "category": "Civic / Nonpartisan",
+      "sourceType": "nonpartisan voter guide",
+      "status": "pending",
+      "homepageUrl": "https://votersedge.org/ca",
+      "notes": "pending 2026 San Francisco election guide URL; nonpartisan/informational records should not be forced into endorsement semantics."
+    },
+    {
+      "id": "src-spur",
+      "slug": "spur-voter-guide",
+      "name": "SPUR Voter Guide",
+      "category": "Civic / Nonpartisan",
+      "sourceType": "civic voter guide",
+      "status": "pending",
+      "homepageUrl": "https://www.spur.org/voter-guide",
+      "notes": "pending 2026 voter-guide URL; include for measure and policy recommendations if published."
     },
     {
       "id": "src-growsf",
@@ -20,9 +79,167 @@
       "sourceType": "civic voter guide / recommendations",
       "status": "pending",
       "homepageUrl": "https://growsf.org/",
-      "guideUrl": "https://growsf.org/voter-guide/sample-2026",
-      "notes": "Sample fixture URL and details for schema validation only; not an official 2026 recommendation claim.",
-      "sampleFixture": true
+      "notes": "pending 2026 voter-guide URL; recognizable local guide with broad race/measure coverage."
+    },
+    {
+      "id": "src-sf-democratic-party",
+      "slug": "san-francisco-democratic-party",
+      "name": "San Francisco Democratic Party",
+      "category": "Party / Institutional",
+      "sourceType": "party endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.sfdemocrats.org/",
+      "notes": "pending 2026 endorsement URL; include official Democratic Party recommendations where public."
+    },
+    {
+      "id": "src-sf-republican-party",
+      "slug": "san-francisco-republican-party",
+      "name": "San Francisco Republican Party",
+      "category": "Party / Institutional",
+      "sourceType": "party endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.sfgop.org/",
+      "notes": "pending 2026 endorsement URL; useful institutional contrast if public recommendations are available."
+    },
+    {
+      "id": "src-harvey-milk-lgbtq-democratic-club",
+      "slug": "harvey-milk-lgbtq-democratic-club",
+      "name": "Harvey Milk LGBTQ Democratic Club",
+      "category": "Democratic Clubs",
+      "sourceType": "club endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.harveymilkclub.org/",
+      "notes": "pending 2026 endorsement URL; include if public slate is available."
+    },
+    {
+      "id": "src-alice-b-toklas-lgbtq-democratic-club",
+      "slug": "alice-b-toklas-lgbtq-democratic-club",
+      "name": "Alice B. Toklas LGBTQ Democratic Club",
+      "category": "Democratic Clubs",
+      "sourceType": "club endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.alicebtoklas.org/",
+      "notes": "pending 2026 endorsement URL; include if public slate is available."
+    },
+    {
+      "id": "src-sf-berniecrats",
+      "slug": "san-francisco-berniecrats",
+      "name": "San Francisco Berniecrats",
+      "category": "Democratic Clubs",
+      "sourceType": "club endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://sfberniecrats.com/",
+      "notes": "pending 2026 endorsement URL; include as progressive Democratic club source if public slate is available."
+    },
+    {
+      "id": "src-united-democratic-club",
+      "slug": "united-democratic-club",
+      "name": "United Democratic Club",
+      "category": "Democratic Clubs",
+      "sourceType": "club endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.uniteddems.org/",
+      "notes": "pending 2026 endorsement URL; include if public slate is available."
+    },
+    {
+      "id": "src-sf-labor-council",
+      "slug": "san-francisco-labor-council",
+      "name": "San Francisco Labor Council",
+      "category": "Labor",
+      "sourceType": "labor endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://sflaborcouncil.org/",
+      "notes": "pending 2026 endorsement URL; primary labor umbrella source if public recommendations are available."
+    },
+    {
+      "id": "src-seiu-local-1021",
+      "slug": "seiu-local-1021",
+      "name": "SEIU Local 1021",
+      "category": "Labor",
+      "sourceType": "union endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.seiu1021.org/",
+      "notes": "pending 2026 endorsement URL; include if public local/state recommendations are available."
+    },
+    {
+      "id": "src-united-educators-of-san-francisco",
+      "slug": "united-educators-of-san-francisco",
+      "name": "United Educators of San Francisco",
+      "category": "Labor",
+      "sourceType": "union endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.uesf.org/",
+      "notes": "pending 2026 endorsement URL; include especially for education/local races and measures."
+    },
+    {
+      "id": "src-yimby-action-sf-yimby",
+      "slug": "yimby-action-sf-yimby",
+      "name": "YIMBY Action / SF YIMBY",
+      "category": "Housing / Urbanism",
+      "sourceType": "advocacy endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://yimbyaction.org/",
+      "notes": "pending 2026 endorsement URL; include for housing/urbanism signal if public slate is available."
+    },
+    {
+      "id": "src-sf-tenants-union",
+      "slug": "sf-tenants-union",
+      "name": "SF Tenants Union",
+      "category": "Housing / Urbanism",
+      "sourceType": "advocacy voter guide",
+      "status": "pending",
+      "homepageUrl": "https://sftu.org/",
+      "notes": "pending 2026 voter-guide or endorsement URL; include if public recommendations are available."
+    },
+    {
+      "id": "src-housing-action-coalition",
+      "slug": "housing-action-coalition",
+      "name": "Housing Action Coalition",
+      "category": "Housing / Urbanism",
+      "sourceType": "advocacy endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://housingactioncoalition.org/",
+      "notes": "pending 2026 endorsement URL; include if public candidate/measure recommendations are available."
+    },
+    {
+      "id": "src-sierra-club-bay-chapter",
+      "slug": "sierra-club-bay-chapter",
+      "name": "Sierra Club Bay Chapter",
+      "category": "Advocacy / Issue Groups",
+      "sourceType": "issue-group endorsement slate",
+      "status": "pending",
+      "homepageUrl": "https://www.sierraclub.org/san-francisco-bay",
+      "notes": "pending 2026 endorsement URL; include for environmental recommendations if public and SF-relevant."
+    },
+    {
+      "id": "src-sf-bicycle-coalition",
+      "slug": "san-francisco-bicycle-coalition",
+      "name": "San Francisco Bicycle Coalition",
+      "category": "Advocacy / Issue Groups",
+      "sourceType": "issue-group voter guide",
+      "status": "pending",
+      "homepageUrl": "https://sfbike.org/",
+      "notes": "pending 2026 voter-guide or endorsement URL; include for transportation/street-safety signal if public recommendations are available."
+    },
+    {
+      "id": "src-togethersf-action",
+      "slug": "togethersf-action",
+      "name": "TogetherSF Action",
+      "category": "Advocacy / Issue Groups",
+      "sourceType": "advocacy recommendation slate",
+      "status": "pending",
+      "homepageUrl": "https://tsfaction.org/",
+      "notes": "pending 2026 voter-guide or endorsement URL; include if public recommendations are available."
+    },
+    {
+      "id": "src-aclu-norcal",
+      "slug": "aclu-of-northern-california",
+      "name": "ACLU of Northern California",
+      "category": "Advocacy / Issue Groups",
+      "sourceType": "issue guide / recommendations",
+      "status": "pending",
+      "homepageUrl": "https://www.aclunc.org/",
+      "notes": "pending 2026 voter-guide or measure-guide URL; keep pending because coverage may be issue-specific."
     }
   ]
 }
