@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { ANALYTICS_EVENTS, trackAnalyticsEvent } from "../../../lib/analytics/events";
 import type {
   RaceReceiptCollectionModel,
   RaceReceiptModel,
@@ -31,6 +32,30 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
   const [sortOrder, setSortOrder] = useState<SortOrder>(matrix.defaultSort.key);
   const [grouping, setGrouping] = useState<GroupingMode>(matrix.defaultGrouping.key);
   const [selectedCellId, setSelectedCellId] = useState<string | null>(null);
+  const matrixOpenTracked = useRef(false);
+
+  function trackMatrixOpen(sourceTypeValue: string = sourceType) {
+    if (matrixOpenTracked.current) return;
+    matrixOpenTracked.current = true;
+    trackAnalyticsEvent(ANALYTICS_EVENTS.recommendationMatrixOpen, {
+      routeKind: "race",
+      raceSlug: matrix.raceSlug,
+      sourceType: sourceTypeValue === ALL ? undefined : sourceTypeValue,
+    });
+  }
+
+  function selectReceiptCell(cell: RecommendationMatrixCell, source: RecommendationMatrixSource, candidateSlug: string, receipt?: RaceReceiptModel) {
+    trackMatrixOpen(source.sourceType);
+    trackAnalyticsEvent(ANALYTICS_EVENTS.receiptDrawerOpen, {
+      routeKind: "race",
+      raceSlug: matrix.raceSlug,
+      sourceType: source.sourceType,
+      sourceSlug: source.slug,
+      candidateSlug,
+      receiptAvailable: receipt?.status === "available",
+    });
+    setSelectedCellId(cell.id);
+  }
 
   const view = useMemo(
     () => buildMatrixView(matrix, { sourceType, candidateId, positionKind, sortOrder, grouping }),
@@ -73,7 +98,7 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
       <form className="matrix-controls" aria-label="Recommendation matrix presentation controls">
         <label>
           <span>Source type</span>
-          <select value={sourceType} onChange={(event) => setSourceType(event.currentTarget.value)}>
+          <select value={sourceType} onChange={(event) => { const nextValue = event.currentTarget.value; trackMatrixOpen(nextValue); setSourceType(nextValue); }} data-analytics-event={ANALYTICS_EVENTS.recommendationMatrixOpen}>
             <option value={ALL}>All source types</option>
             {matrix.filters.sourceTypes.map((option) => (
               <option key={option.value} value={option.value}>
@@ -85,7 +110,7 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
 
         <label>
           <span>Candidate focus</span>
-          <select value={candidateId} onChange={(event) => setCandidateId(event.currentTarget.value)}>
+          <select value={candidateId} onChange={(event) => { trackMatrixOpen(); setCandidateId(event.currentTarget.value); }} data-analytics-event={ANALYTICS_EVENTS.recommendationMatrixOpen}>
             <option value={ALL}>All candidates</option>
             {matrix.candidates.map((candidate) => (
               <option key={candidate.id} value={candidate.id}>
@@ -97,7 +122,7 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
 
         <label>
           <span>Position focus</span>
-          <select value={positionKind} onChange={(event) => setPositionKind(event.currentTarget.value as PositionKindFilter)}>
+          <select value={positionKind} onChange={(event) => { trackMatrixOpen(); setPositionKind(event.currentTarget.value as PositionKindFilter); }} data-analytics-event={ANALYTICS_EVENTS.recommendationMatrixOpen}>
             <option value={ALL}>All positions</option>
             {matrix.filters.positionKinds.map((option) => (
               <option key={option.value} value={option.value}>
@@ -109,7 +134,7 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
 
         <label>
           <span>Sort rows</span>
-          <select value={sortOrder} onChange={(event) => setSortOrder(normalizeSortOrder(event.currentTarget.value))}>
+          <select value={sortOrder} onChange={(event) => { trackMatrixOpen(); setSortOrder(normalizeSortOrder(event.currentTarget.value)); }} data-analytics-event={ANALYTICS_EVENTS.recommendationMatrixOpen}>
             <option value="source-type-then-name">Source type, then name</option>
             <option value="source-name">Source name</option>
             <option value="most-evidence">Most evidence</option>
@@ -118,7 +143,7 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
 
         <label>
           <span>Grouping</span>
-          <select value={grouping} onChange={(event) => setGrouping(normalizeGrouping(event.currentTarget.value))}>
+          <select value={grouping} onChange={(event) => { trackMatrixOpen(); setGrouping(normalizeGrouping(event.currentTarget.value)); }} data-analytics-event={ANALYTICS_EVENTS.recommendationMatrixOpen}>
             <option value="sourceType">Group by source type</option>
             <option value="none">Flat source list</option>
           </select>
@@ -163,9 +188,10 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
                         key={cell.id}
                         cell={cell}
                         receipt={receipts.byCellId[cell.id]}
-                        sourceName={source.name}
+                        source={source}
                         candidateName={candidate.name}
-                        onSelect={setSelectedCellId}
+                        candidateSlug={candidate.slug}
+                        onSelect={selectReceiptCell}
                       />
                     );
                   })}
@@ -184,7 +210,7 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
             <div className="matrix-source-stack">
               {view.sources.map((source) => {
                 const cell = matrix.cells[cellKey(source.id, candidate.id)];
-                return <MatrixMobileCell key={cell.id} cell={cell} receipt={receipts.byCellId[cell.id]} source={source} candidateName={candidate.name} onSelect={setSelectedCellId} />;
+                return <MatrixMobileCell key={cell.id} cell={cell} receipt={receipts.byCellId[cell.id]} source={source} candidateName={candidate.name} candidateSlug={candidate.slug} onSelect={selectReceiptCell} />;
               })}
             </div>
           </article>
@@ -198,17 +224,19 @@ export function RecommendationMatrix({ matrix, receipts }: RecommendationMatrixP
 function MatrixTableCell({
   cell,
   receipt,
-  sourceName,
+  source,
   candidateName,
+  candidateSlug,
   onSelect,
 }: {
   cell: RecommendationMatrixCell;
   receipt?: RaceReceiptModel;
-  sourceName: string;
+  source: RecommendationMatrixSource;
   candidateName: string;
-  onSelect: (cellId: string) => void;
+  candidateSlug: string;
+  onSelect: (cell: RecommendationMatrixCell, source: RecommendationMatrixSource, candidateSlug: string, receipt?: RaceReceiptModel) => void;
 }) {
-  const accessibleLabel = `${candidateName} from ${sourceName}: ${cell.positionKindLabel}, ${cell.evidenceCount} evidence references`;
+  const accessibleLabel = `${candidateName} from ${source.name}: ${cell.positionKindLabel}, ${cell.evidenceCount} evidence references`;
   const receiptStatus = receipt?.status ?? "unavailable";
   const canOpenReceipt = receiptStatus === "available";
   return (
@@ -224,7 +252,7 @@ function MatrixTableCell({
       aria-label={accessibleLabel}
     >
       {canOpenReceipt ? (
-        <button className="matrix-cell-button" type="button" onClick={() => onSelect(cell.id)} aria-label={`${accessibleLabel}. Open evidence receipt.`}>
+        <button className="matrix-cell-button" type="button" onClick={() => onSelect(cell, source, candidateSlug, receipt)} aria-label={`${accessibleLabel}. Open evidence receipt.`} data-analytics-event={ANALYTICS_EVENTS.receiptDrawerOpen}>
           <MatrixCellContent cell={cell} />
         </button>
       ) : (
@@ -242,13 +270,15 @@ function MatrixMobileCell({
   receipt,
   source,
   candidateName,
+  candidateSlug,
   onSelect,
 }: {
   cell: RecommendationMatrixCell;
   receipt?: RaceReceiptModel;
   source: RecommendationMatrixSource;
   candidateName: string;
-  onSelect: (cellId: string) => void;
+  candidateSlug: string;
+  onSelect: (cell: RecommendationMatrixCell, source: RecommendationMatrixSource, candidateSlug: string, receipt?: RaceReceiptModel) => void;
 }) {
   const accessibleLabel = `${candidateName}, ${source.name}: ${cell.positionKindLabel}, ${cell.evidenceCount} evidence references`;
   const receiptStatus = receipt?.status ?? "unavailable";
@@ -271,7 +301,7 @@ function MatrixMobileCell({
         <p>{source.sourceType}</p>
       </div>
       {canOpenReceipt ? (
-        <button className="matrix-cell-button" type="button" onClick={() => onSelect(cell.id)} aria-label={`${accessibleLabel}. Open evidence receipt.`}>
+        <button className="matrix-cell-button" type="button" onClick={() => onSelect(cell, source, candidateSlug, receipt)} aria-label={`${accessibleLabel}. Open evidence receipt.`} data-analytics-event={ANALYTICS_EVENTS.receiptDrawerOpen}>
           <MatrixCellContent cell={cell} />
         </button>
       ) : (

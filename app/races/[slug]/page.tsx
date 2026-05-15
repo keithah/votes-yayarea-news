@@ -99,7 +99,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
   const consensusLabel = ui.consensus.entityName ? ui.consensus.label : ui.consensus.label;
 
   return (
-    <main className="race-page-shell">
+    <main className="race-page-shell" data-analytics-event="race_page_view" data-analytics-route-kind="race" data-analytics-race-slug={ui.race.slug}>
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span aria-hidden="true">/</span>
@@ -226,7 +226,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
         </article>
       </section>
 
-      <ReviewedSummary summary={reviewedSummary} />
+      <ReviewedSummary summary={reviewedSummary} raceSlug={ui.race.slug} />
 
       <section className="route-card" aria-labelledby="themes-title">
         <p className="eyebrow">Themes and provenance</p>

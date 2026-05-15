@@ -1,10 +1,14 @@
+"use client";
+
+import { ANALYTICS_EVENTS, trackAnalyticsEvent } from "../../../lib/analytics/events";
 import type { ReviewedSummaryEvidenceModel } from "../../../lib/ui/race";
 
 interface ReviewedSummaryProps {
   summary: ReviewedSummaryEvidenceModel;
+  raceSlug: string;
 }
 
-export function ReviewedSummary({ summary }: ReviewedSummaryProps) {
+export function ReviewedSummary({ summary, raceSlug }: ReviewedSummaryProps) {
   const available = summary.visible && summary.status === "available";
 
   return (
@@ -20,7 +24,18 @@ export function ReviewedSummary({ summary }: ReviewedSummaryProps) {
       <h2 id="summary-title">Disclosure-ready summary module</h2>
 
       {available ? (
-        <details className="reviewed-summary-details" data-summary-expanded="native-details">
+        <details
+          className="reviewed-summary-details"
+          data-summary-expanded="native-details"
+          data-analytics-event={ANALYTICS_EVENTS.aiSummaryExpand}
+          onToggle={(event) => {
+            if (!event.currentTarget.open) return;
+            trackAnalyticsEvent(ANALYTICS_EVENTS.aiSummaryExpand, {
+              routeKind: "race",
+              raceSlug,
+            });
+          }}
+        >
           <summary>
             <span>Read reviewed summary and public evidence</span>
             <small>{summary.evidenceCount} public evidence references</small>

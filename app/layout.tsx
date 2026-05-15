@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AnalyticsProvider } from "./analytics-provider";
 import { buildSiteShareMetadata } from "../lib/share/metadata";
 import "./styles.css";
 
@@ -9,6 +10,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+        <AnalyticsProvider />
         <div className="site-frame">
           <header className="site-header" aria-label="Site header">
             <Link className="site-logo" href="/" aria-label="votes.yayarea.news home">

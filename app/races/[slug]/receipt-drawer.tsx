@@ -26,6 +26,7 @@ export function ReceiptDrawer({ receipt, onClose }: ReceiptDrawerProps) {
         data-receipt-cell-key={receipt.cellKey}
         data-receipt-status={receipt.status}
         data-receipt-evidence-count={receipt.evidenceCount}
+        data-analytics-event="receipt_drawer_open"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="receipt-drawer-header">
