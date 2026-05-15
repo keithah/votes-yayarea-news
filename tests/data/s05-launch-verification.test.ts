@@ -11,6 +11,14 @@ import {
   runS05LaunchExportAssertions,
   validateS05LaunchReport,
 } from "../../scripts/assert-s05-launch-export.mjs";
+import {
+  choosePort,
+  extractLocalAssetHrefs,
+  runS05StaticSmoke,
+  safeFilePath,
+  validateJsonOutPath,
+  validateS05StaticSmokeReport,
+} from "../../scripts/smoke-s05-static-export.mjs";
 
 test("S05 route discovery derives homepage, race, source, entity, and disclosure routes from public data", () => {
   const contracts = discoverRouteContractsFromData(fixturePublicData());
@@ -123,11 +131,7 @@ test("S05 assertion runner writes a redaction-safe launch report for a complete 
   const outDir = path.join(projectRoot, "out");
   const reportPath = path.join(projectRoot, "data", "launch", "s05-launch-export.json");
 
-  await writeHtml(outDir, "/", pageHtml("/", "votes.yayarea.news", [`<a href="/races/california-governor/">Race</a>`, `<a href="https://example.org/safe">Safe external</a>`]));
-  await writeHtml(outDir, "/races/california-governor/", pageHtml("/races/california-governor/", "California Governor", [`<a href="/sources/official-source/">Source</a>`, `<a href="/entities/candidate-one/">Entity</a>`]));
-  await writeHtml(outDir, "/sources/official-source/", pageHtml("/sources/official-source/", "Official Source Published position receipts", [`<a href="/races/california-governor/">Race</a>`]));
-  await writeHtml(outDir, "/entities/candidate-one/", pageHtml("/entities/candidate-one/", "Candidate One Published position receipts", [`<a href="/sources/official-source/">Source</a>`]));
-  await writeHtml(outDir, "/how-we-use-ai/", pageHtml("/how-we-use-ai/", "How we use AI", []));
+  await writeCompleteStaticExport(outDir);
 
   const report = runS05LaunchExportAssertions({ projectRoot, outDir, reportPath });
   const persisted = JSON.parse(await fs.readFile(reportPath, "utf8"));
@@ -137,6 +141,99 @@ test("S05 assertion runner writes a redaction-safe launch report for a complete 
   assert.equal(persisted.counts.htmlFiles, 5);
   assert.equal(persisted.counts.brokenLinks, 0);
   assert.equal(persisted.counts.leakFindings, 0);
+  assert.equal(JSON.stringify(persisted).includes("/home/"), false);
+  assert.equal(JSON.stringify(persisted).includes(".gsd"), false);
+});
+
+test("S05 static smoke rejects invalid ports, traversal paths, and malformed json-out targets", async () => {
+  assert.throws(() => choosePort({ S05_SMOKE_PORT: "abc" }), /invalid S05_SMOKE_PORT/);
+  assert.throws(() => choosePort({ S05_SMOKE_PORT: "80" }), /invalid S05_SMOKE_PORT/);
+
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "s05-smoke-paths-"));
+  const outDir = path.join(tempDir, "out");
+  await fs.mkdir(outDir, { recursive: true });
+
+  assert.equal(safeFilePath("/../secret.txt", outDir), null);
+  assert.equal(safeFilePath("/%2e%2e/secret.txt", outDir), null);
+  assert.throws(() => validateJsonOutPath("../s05-static-smoke.json", tempDir), /data\/launch/);
+  assert.throws(() => validateJsonOutPath("data/launch/../s05-static-smoke.json", tempDir), /escapes data\/launch/);
+});
+
+test("S05 static smoke report validation rejects malformed artifacts and private path leakage", () => {
+  const errors = validateS05StaticSmokeReport({
+    schemaVersion: 1,
+    slice: "S05",
+    generatedBy: "scripts/smoke-s05-static-export.mjs",
+    status: "pass",
+    startedAt: new Date().toISOString(),
+    completedAt: "not-a-date",
+    origin: "http://127.0.0.1:4321",
+    counts: { checkedRoutes: 1, redirectChecks: 0, assetChecks: 0 },
+    checkedRoutes: [{ route: "/", status: 200, contentType: "text/html", bytes: 10, note: "/home/keith/out/index.html" }],
+    redirectChecks: [],
+    assetChecks: [],
+  });
+
+  assert.match(errors.join("\n"), /completedAt/);
+  assert.match(errors.join("\n"), /absolute local path/);
+});
+
+test("S05 static smoke extracts only same-origin local JS, CSS, and image assets", () => {
+  const assets = extractLocalAssetHrefs(
+    `<link rel="stylesheet" href="/_next/static/app.css"><script src="/_next/static/app.js"></script><img src="/icon.png"><img srcset="/small.webp 1x, https://cdn.example.org/large.webp 2x"><img src="data:image/png;base64,abc">`,
+    "/",
+    "http://127.0.0.1:4321",
+  );
+
+  assert.deepEqual(assets, ["/_next/static/app.css", "/_next/static/app.js", "/icon.png", "/small.webp"]);
+});
+
+test("S05 static smoke fails cleanly when out directory is absent", async () => {
+  const projectRoot = await writeFixtureProject();
+
+  await assert.rejects(
+    () => runS05StaticSmoke({ projectRoot, outDir: path.join(projectRoot, "out"), port: 0 }),
+    /preflight: missing out\/ directory\. Run pnpm build before S05 static smoke\./,
+  );
+});
+
+test("S05 static smoke reports non-HTML route responses with phase diagnostics", async () => {
+  const projectRoot = await writeFixtureProject();
+  const outDir = path.join(projectRoot, "out");
+  await writeCompleteStaticExport(outDir);
+  await fs.writeFile(path.join(outDir, "how-we-use-ai", "index.html"), JSON.stringify({ ok: true }));
+
+  await assert.rejects(
+    () => runS05StaticSmoke({ projectRoot, outDir, port: 0 }),
+    (error: any) => {
+      assert.equal(error.phase, "content-type");
+      assert.match(error.message, /\/how-we-use-ai\/ returned text\/html headers but the body was not an HTML document/);
+      assert.equal(error.diagnostics.checkedRoutes.some((route: any) => route.route === "/how-we-use-ai/" && route.status === 200), true);
+      return true;
+    },
+  );
+});
+
+test("S05 static smoke writes a redaction-safe JSON report for the fixture export", async () => {
+  const projectRoot = await writeFixtureProject();
+  const outDir = path.join(projectRoot, "out");
+  const reportPath = validateJsonOutPath("data/launch/s05-static-smoke.json", projectRoot);
+
+  await writeCompleteStaticExport(outDir);
+
+  const report = await runS05StaticSmoke({ projectRoot, outDir, jsonOut: reportPath, port: 0 });
+  const persisted = JSON.parse(await fs.readFile(reportPath, "utf8"));
+
+  assert.equal(report.status, "pass");
+  assert.equal(persisted.status, "pass");
+  assert.equal(persisted.slice, "S05");
+  assert.equal(persisted.counts.checkedRoutes, 5);
+  assert.equal(persisted.counts.redirectChecks, 4);
+  assert.equal(persisted.counts.assetChecks >= 3, true);
+  assert.equal(persisted.checkedRoutes.every((route: any) => route.status === 200 && route.contentType.startsWith("text/html")), true);
+  assert.equal(persisted.redirectChecks.every((redirect: any) => redirect.status === 308 && redirect.location === redirect.expectedLocation), true);
+  assert.equal(persisted.assetChecks.every((asset: any) => asset.status !== 404 && asset.bytes > 0), true);
+  assert.deepEqual(validateS05StaticSmokeReport(persisted), []);
   assert.equal(JSON.stringify(persisted).includes("/home/"), false);
   assert.equal(JSON.stringify(persisted).includes(".gsd"), false);
 });
@@ -172,6 +269,28 @@ async function writeFixtureProject() {
   await fs.writeFile(path.join(projectRoot, "data", "public", "entities.json"), `${JSON.stringify(data.entities, null, 2)}\n`);
   await fs.writeFile(path.join(projectRoot, "data", "public", "races", "california-governor.json"), `${JSON.stringify(data.raceRecords[0], null, 2)}\n`);
   return projectRoot;
+}
+
+async function writeCompleteStaticExport(outDir: string) {
+  await writeHtml(
+    outDir,
+    "/",
+    pageHtml("/", "votes.yayarea.news", [
+      `<link rel="stylesheet" href="/_next/static/app.css">`,
+      `<script src="/_next/static/app.js"></script>`,
+      `<img src="/icon.png" alt="">`,
+      `<a href="/races/california-governor/">Race</a>`,
+      `<a href="https://example.org/safe">Safe external</a>`,
+    ]),
+  );
+  await writeHtml(outDir, "/races/california-governor/", pageHtml("/races/california-governor/", "California Governor", [`<a href="/sources/official-source/">Source</a>`, `<a href="/entities/candidate-one/">Entity</a>`]));
+  await writeHtml(outDir, "/sources/official-source/", pageHtml("/sources/official-source/", "Official Source Published position receipts", [`<a href="/races/california-governor/">Race</a>`]));
+  await writeHtml(outDir, "/entities/candidate-one/", pageHtml("/entities/candidate-one/", "Candidate One Published position receipts", [`<a href="/sources/official-source/">Source</a>`]));
+  await writeHtml(outDir, "/how-we-use-ai/", pageHtml("/how-we-use-ai/", "How we use AI", []));
+  await fs.mkdir(path.join(outDir, "_next", "static"), { recursive: true });
+  await fs.writeFile(path.join(outDir, "_next", "static", "app.css"), "body{color:#111}\n");
+  await fs.writeFile(path.join(outDir, "_next", "static", "app.js"), "console.log('fixture')\n");
+  await fs.writeFile(path.join(outDir, "icon.png"), Buffer.from([0x89, 0x50, 0x4e, 0x47]));
 }
 
 async function writeHtml(outDir: string, route: string, html: string) {

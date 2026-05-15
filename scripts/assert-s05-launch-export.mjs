@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { pathToFileURL } from "node:url";
 
 export const DEFAULT_ORIGIN = "https://votes.yayarea.news";
 export const DEFAULT_OUT_DIR = "out";
@@ -326,7 +326,7 @@ function phaseFromError(error) {
   return match?.[1] ?? "runtime";
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1] ? path.resolve(process.argv[1]) : fileURLToPath(import.meta.url)).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   try {
     const report = runS05LaunchExportAssertions();
     console.log(

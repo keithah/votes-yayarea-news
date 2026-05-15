@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 1,
+  "slice": "S05",
+  "generatedBy": "scripts/smoke-s05-static-export.mjs",
+  "status": "pass",
+  "startedAt": "2026-05-15T09:00:31.806Z",
+  "origin": "http://127.0.0.1:43163",
+  "checkedRoutes": [
+    {
+      "route": "/",
+      "className": "homepage",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 55446,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-governor/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 491861,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/sources/california-secretary-of-state/",
+      "className": "source",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 337788,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/entities/california-governor-akinyemi-agbede/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24087,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/how-we-use-ai/",
+      "className": "disclosure",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24269,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-lieutenant-governor/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 120832,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-secretary-of-state/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 50444,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-controller/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 43232,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-treasurer/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 60227,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-attorney-general/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 43859,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-insurance-commissioner/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 92923,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    },
+    {
+      "route": "/races/california-superintendent-public-instruction/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 90298,
+      "assets": [
+        "/_next/static/chunks/0.-tokwbih8zx.js",
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/04cx2cbzngwdb.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/turbopack-03q5pjr-axsw3.js"
+      ]
+    }
+  ],
+  "redirectChecks": [
+    {
+      "route": "/races/california-governor",
+      "status": 308,
+      "location": "/races/california-governor/",
+      "expectedLocation": "/races/california-governor/"
+    },
+    {
+      "route": "/sources/california-secretary-of-state",
+      "status": 308,
+      "location": "/sources/california-secretary-of-state/",
+      "expectedLocation": "/sources/california-secretary-of-state/"
+    },
+    {
+      "route": "/entities/california-governor-akinyemi-agbede",
+      "status": 308,
+      "location": "/entities/california-governor-akinyemi-agbede/",
+      "expectedLocation": "/entities/california-governor-akinyemi-agbede/"
+    },
+    {
+      "route": "/how-we-use-ai",
+      "status": 308,
+      "location": "/how-we-use-ai/",
+      "expectedLocation": "/how-we-use-ai/"
+    },
+    {
+      "route": "/races/california-lieutenant-governor",
+      "status": 308,
+      "location": "/races/california-lieutenant-governor/",
+      "expectedLocation": "/races/california-lieutenant-governor/"
+    },
+    {
+      "route": "/races/california-secretary-of-state",
+      "status": 308,
+      "location": "/races/california-secretary-of-state/",
+      "expectedLocation": "/races/california-secretary-of-state/"
+    },
+    {
+      "route": "/races/california-controller",
+      "status": 308,
+      "location": "/races/california-controller/",
+      "expectedLocation": "/races/california-controller/"
+    },
+    {
+      "route": "/races/california-treasurer",
+      "status": 308,
+      "location": "/races/california-treasurer/",
+      "expectedLocation": "/races/california-treasurer/"
+    },
+    {
+      "route": "/races/california-attorney-general",
+      "status": 308,
+      "location": "/races/california-attorney-general/",
+      "expectedLocation": "/races/california-attorney-general/"
+    },
+    {
+      "route": "/races/california-insurance-commissioner",
+      "status": 308,
+      "location": "/races/california-insurance-commissioner/",
+      "expectedLocation": "/races/california-insurance-commissioner/"
+    },
+    {
+      "route": "/races/california-superintendent-public-instruction",
+      "status": 308,
+      "location": "/races/california-superintendent-public-instruction/",
+      "expectedLocation": "/races/california-superintendent-public-instruction/"
+    }
+  ],
+  "assetChecks": [
+    {
+      "asset": "/_next/static/chunks/0.-tokwbih8zx.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 23832
+    },
+    {
+      "asset": "/_next/static/chunks/03~yq9q893hmn.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 112594
+    },
+    {
+      "asset": "/_next/static/chunks/04cx2cbzngwdb.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 11882
+    },
+    {
+      "asset": "/_next/static/chunks/06cclqnbyt80n.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 227538
+    },
+    {
+      "asset": "/_next/static/chunks/09mzkwykgmgkt.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 54645
+    },
+    {
+      "asset": "/_next/static/chunks/0h8_~k2~fd93g.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 149873
+    },
+    {
+      "asset": "/_next/static/chunks/0p3d3~h.k5qx3.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedType": "text/css",
+      "bytes": 22290
+    },
+    {
+      "asset": "/_next/static/chunks/0uy-uh-gb1zuw.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 44411
+    },
+    {
+      "asset": "/_next/static/chunks/turbopack-03q5pjr-axsw3.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 10580
+    },
+    {
+      "asset": "/_next/static/chunks/0f2m_dr1f0j0b.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 16567
+    }
+  ],
+  "counts": {
+    "checkedRoutes": 12,
+    "redirectChecks": 11,
+    "assetChecks": 10
+  },
+  "phases": {
+    "preflight": {
+      "status": "pass"
+    },
+    "routeDiscovery": {
+      "status": "pass",
+      "classCounts": {
+        "homepage": 1,
+        "disclosure": 1,
+        "race": 13,
+        "source": 1,
+        "entity": 61
+      },
+      "sampledRoutes": 12
+    },
+    "serverStart": {
+      "status": "pass"
+    },
+    "routeFetch": {
+      "status": "pass",
+      "checked": 12
+    },
+    "redirectChecks": {
+      "status": "pass",
+      "checked": 11
+    },
+    "assetChecks": {
+      "status": "pass",
+      "checked": 10,
+      "sampleLimit": 30
+    },
+    "jsonOut": {
+      "status": "pass",
+      "path": "data/launch/s05-static-smoke.json"
+    }
+  },
+  "completedAt": "2026-05-15T09:00:31.879Z"
+}
