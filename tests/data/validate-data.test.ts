@@ -3,16 +3,16 @@ import assert from "node:assert/strict";
 import { validatePublicData, validatePublicDataFiles } from "../../lib/data/validate";
 import type { PublicDataRepository } from "../../lib/data/types";
 
-test("canonical public sample data validates", async () => {
+test("canonical public data validates", async () => {
   const result = await validatePublicDataFiles();
   assert.deepEqual(result.issues, []);
   assert.equal(result.ok, true);
-  assert.equal(result.counts.sources, 2);
-  assert.equal(result.counts.entities, 2);
-  assert.equal(result.counts.collections, 1);
-  assert.equal(result.counts.races, 1);
-  assert.equal(result.counts.positions, 2);
-  assert.equal(result.counts.evidence, 2);
+  assert.equal(result.counts.sources, 24);
+  assert.equal(result.counts.entities, 139);
+  assert.equal(result.counts.collections, 4);
+  assert.equal(result.counts.races, 21);
+  assert.equal(result.counts.positions, 61);
+  assert.equal(result.counts.evidence, 61);
 });
 
 test("rejects malformed evidence URL", () => {
@@ -86,42 +86,38 @@ function validRepository(): PublicDataRepository {
   return {
     sources: [
       {
-        id: "src-sf-chronicle",
-        slug: "san-francisco-chronicle-editorial-board",
-        name: "San Francisco Chronicle Editorial Board",
-        category: "Media / Editorial",
-        sourceType: "editorial endorsements",
-        status: "pending",
-        guideUrl: "https://www.sfchronicle.com/projects/2026/sample-voter-guide",
-        sampleFixture: true,
+        id: "src-ca-secretary-of-state",
+        slug: "california-secretary-of-state",
+        name: "California Secretary of State",
+        category: "Official election administration",
+        sourceType: "official certified candidate list",
+        status: "active",
+        guideUrl: "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
       },
       {
-        id: "src-growsf",
-        slug: "growsf-voter-guide",
-        name: "GrowSF Voter Guide",
-        category: "Civic / Nonpartisan",
-        sourceType: "civic voter guide / recommendations",
-        status: "pending",
-        guideUrl: "https://growsf.org/voter-guide/sample-2026",
-        sampleFixture: true,
+        id: "src-sf-department-of-elections",
+        slug: "san-francisco-department-of-elections",
+        name: "San Francisco Department of Elections",
+        category: "Official election administration",
+        sourceType: "official local election records",
+        status: "active",
+        homepageUrl: "https://www.sf.gov/departments/department-elections",
       },
     ],
     entities: [
       {
-        id: "ent-sample-candidate-a",
-        slug: "sample-candidate-a",
-        name: "Sample Candidate A",
+        id: "ent-california-governor-akinyemi-agbede",
+        slug: "california-governor-akinyemi-agbede",
+        name: "Akinyemi Agbede",
         kind: "candidate",
-        status: "draft",
-        sampleFixture: true,
+        status: "verified",
       },
       {
-        id: "ent-sample-candidate-b",
-        slug: "sample-candidate-b",
-        name: "Sample Candidate B",
+        id: "ent-california-governor-mohammad-arif",
+        slug: "california-governor-mohammad-arif",
+        name: "Mohammad Arif",
         kind: "candidate",
-        status: "draft",
-        sampleFixture: true,
+        status: "verified",
       },
     ],
     collections: [
@@ -130,43 +126,42 @@ function validRepository(): PublicDataRepository {
         slug: "launch-races",
         title: "Launch races",
         kind: "race",
-        status: "draft",
-        raceIds: ["race-mayor"],
+        status: "verified",
+        raceIds: ["race-california-governor"],
       },
     ],
     races: [
       {
-        id: "race-mayor",
-        slug: "mayor",
-        title: "San Francisco Mayor",
-        kind: "local-executive",
-        status: "draft",
-        publicationStatus: "hidden",
+        id: "race-california-governor",
+        slug: "california-governor",
+        title: "California Governor",
+        kind: "statewide-executive",
+        status: "verified",
+        publicationStatus: "public",
         electionDate: "2026-06-02",
-        jurisdiction: "San Francisco",
-        entityIds: ["ent-sample-candidate-a", "ent-sample-candidate-b"],
-        sourceIds: ["src-sf-chronicle", "src-growsf"],
-        sampleFixture: true,
+        jurisdiction: "California",
+        entityIds: ["ent-california-governor-akinyemi-agbede", "ent-california-governor-mohammad-arif"],
+        sourceIds: ["src-ca-secretary-of-state"],
         positions: [
           {
-            id: "pos-chronicle-candidate-a",
-            raceId: "race-mayor",
-            sourceId: "src-sf-chronicle",
-            entityId: "ent-sample-candidate-a",
-            kind: "endorse",
-            status: "reviewed",
+            id: "pos-sos-governor-akinyemi-agbede",
+            raceId: "race-california-governor",
+            sourceId: "src-ca-secretary-of-state",
+            entityId: "ent-california-governor-akinyemi-agbede",
+            kind: "informational",
+            status: "verified",
             publicationStatus: "public",
-            label: "Sample endorsement for Candidate A",
-            evidenceIds: ["ev-chronicle-candidate-a"],
+            label: "Official certified candidate listing",
+            evidenceIds: ["ev-sos-governor-akinyemi-agbede"],
             evidence: [
               {
-                id: "ev-chronicle-candidate-a",
-                sourceId: "src-sf-chronicle",
-                entityId: "ent-sample-candidate-a",
-                raceId: "race-mayor",
-                url: "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
-                kind: "quote",
-                quote: "Sample fixture quote.",
+                id: "ev-sos-governor-akinyemi-agbede",
+                sourceId: "src-ca-secretary-of-state",
+                entityId: "ent-california-governor-akinyemi-agbede",
+                raceId: "race-california-governor",
+                url: "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+                kind: "link",
+                quote: "Democratic candidate listed by the California Secretary of State for California Governor in the official certified candidate list.",
               },
             ],
           },

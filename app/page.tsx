@@ -21,9 +21,9 @@ export default async function Home() {
       <section className="hero hero-grid" aria-labelledby="page-title">
         <div className="hero-copy">
           <p className="eyebrow">June 2, 2026 · San Francisco primary</p>
-          <h1 id="page-title">A public trail for local election endorsements.</h1>
+          <h1 id="page-title">A public trail for 2026 California and San Francisco election records.</h1>
           <p className="lede">
-            votes.yayarea.news turns reviewed voter guides, editorial endorsements, and civic
+            votes.yayarea.news turns official candidate lists, voter guides, editorial endorsements, and civic
             source material into static race pages with visible counts, provenance, comparison
             tools, evidence receipts, and AI-use disclosure.
           </p>
@@ -104,7 +104,7 @@ export default async function Home() {
           <p className="eyebrow">Reviewed-source trust</p>
           <h2>Counts before claims</h2>
           <p>
-            Every card surfaces source, evidence, and candidate counts so readers can distinguish a
+            Every card surfaces source, evidence, and candidate or option counts so readers can distinguish a
             sparse public record from a rendering bug or missing publication step.
           </p>
         </article>

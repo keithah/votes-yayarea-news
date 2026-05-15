@@ -8,26 +8,26 @@ import type { Entity, Race, Source } from "../../lib/data/types";
 import { buildEntityDrilldownModel, buildSourceDrilldownModel } from "../../lib/ui/drilldowns";
 
 test("builds an entity drill-down from public race contexts with receipt evidence and stable related slugs", async () => {
-  const context = await loadPublicRaceContext("mayor");
+  const context = await loadPublicRaceContext("california-governor");
   assert.ok(context);
 
-  const model = buildEntityDrilldownModel([context], "sample-candidate-a");
+  const model = buildEntityDrilldownModel([context], "california-governor-akinyemi-agbede");
 
   assert.equal(model.kind, "entity");
   assert.equal(model.availability, "available");
-  assert.equal(model.entity?.slug, "sample-candidate-a");
-  assert.equal(model.entity?.name, "Sample Candidate A");
+  assert.equal(model.entity?.slug, "california-governor-akinyemi-agbede");
+  assert.equal(model.entity?.name, "Akinyemi Agbede");
   assert.equal(model.counts.relatedRaceCount, 1);
   assert.equal(model.counts.publicPositionCount, 1);
   assert.equal(model.counts.evidenceCount, 1);
   assert.equal(model.counts.sourceCount, 1);
-  assert.deepEqual(model.relatedRaces.map((race) => race.slug), ["mayor"]);
-  assert.deepEqual(model.relatedSources.map((source) => source.slug), ["san-francisco-chronicle-editorial-board"]);
-  assert.equal(model.positions[0].race.slug, "mayor");
-  assert.equal(model.positions[0].source.slug, "san-francisco-chronicle-editorial-board");
-  assert.equal(model.positions[0].entity.slug, "sample-candidate-a");
+  assert.deepEqual(model.relatedRaces.map((race) => race.slug), ["california-governor"]);
+  assert.deepEqual(model.relatedSources.map((source) => source.slug), ["california-secretary-of-state"]);
+  assert.equal(model.positions[0].race.slug, "california-governor");
+  assert.equal(model.positions[0].source.slug, "california-secretary-of-state");
+  assert.equal(model.positions[0].entity.slug, "california-governor-akinyemi-agbede");
   assert.equal(model.positions[0].receipt.status, "available");
-  assert.equal(model.positions[0].evidence[0].id, "ev-sf-chronicle-sample-candidate-a-1-1");
+  assert.equal(model.positions[0].evidence[0].id, "ev-sos-governor-akinyemi-agbede");
   assert.equal(model.positions[0].evidence[0].publicationStatus, "public");
   assert.equal(model.positions[0].evidence[0].reviewStatus, "verified");
   assert.equal(model.diagnostics.omittedPositionCount, 0);
@@ -35,30 +35,31 @@ test("builds an entity drill-down from public race contexts with receipt evidenc
 });
 
 test("builds a source drill-down grouped by public race/entity with receipt evidence", async () => {
-  const context = await loadPublicRaceContext("mayor");
+  const context = await loadPublicRaceContext("california-governor");
   assert.ok(context);
 
-  const model = buildSourceDrilldownModel([context], "growsf-voter-guide");
+  const model = buildSourceDrilldownModel([context], "california-secretary-of-state");
 
   assert.equal(model.kind, "source");
   assert.equal(model.availability, "available");
-  assert.equal(model.source?.slug, "growsf-voter-guide");
-  assert.equal(model.source?.name, "GrowSF Voter Guide");
+  assert.equal(model.source?.slug, "california-secretary-of-state");
+  assert.equal(model.source?.name, "California Secretary of State");
   assert.equal(model.counts.relatedRaceCount, 1);
-  assert.equal(model.counts.publicPositionCount, 1);
-  assert.equal(model.counts.evidenceCount, 1);
-  assert.equal(model.counts.entityCount, 1);
-  assert.deepEqual(model.relatedRaces.map((race) => race.slug), ["mayor"]);
-  assert.deepEqual(model.relatedEntities.map((entity) => entity.slug), ["sample-candidate-b"]);
+  assert.equal(model.counts.publicPositionCount, 61);
+  assert.equal(model.counts.evidenceCount, 61);
+  assert.equal(model.counts.entityCount, 61);
+  assert.deepEqual(model.relatedRaces.map((race) => race.slug), ["california-governor"]);
+  assert.ok(model.relatedEntities.some((entity) => entity.slug === "california-governor-akinyemi-agbede"));
+  assert.equal(model.relatedEntities.length, 61);
   assert.equal(model.positions[0].position.kind, "informational");
-  assert.equal(model.positions[0].receipt.cellId, "cell:src-growsf::ent-sample-candidate-b");
-  assert.equal(model.positions[0].evidence[0].source.label, "GrowSF Voter Guide");
+  assert.equal(model.positions[0].receipt.cellId, "cell:src-ca-secretary-of-state::ent-california-governor-akinyemi-agbede");
+  assert.equal(model.positions[0].evidence[0].source.label, "California Secretary of State");
   assert.equal(model.diagnostics.omittedPositionCount, 0);
   assert.doesNotThrow(() => JSON.stringify(model));
 });
 
 test("unknown entity and source slugs return explicit unavailable models", async () => {
-  const context = await loadPublicRaceContext("mayor");
+  const context = await loadPublicRaceContext("california-governor");
   assert.ok(context);
 
   const entityModel = buildEntityDrilldownModel([context], "missing-candidate");
@@ -98,13 +99,13 @@ test("hidden and draft recommendations filtered by the public loader never enter
       status: "verified",
       publicationStatus: "public",
       positions: [
-        { id: "pos-chronicle-candidate-a", status: "verified", publicationStatus: "public" },
-        { id: "pos-growsf-candidate-b", status: "draft", publicationStatus: "hidden" },
+        { id: "pos-sos-governor-akinyemi-agbede", status: "verified", publicationStatus: "public" },
+        { id: "pos-sos-governor-mohammad-arif", status: "draft", publicationStatus: "hidden" },
         {
           id: "pos-hidden-verified-candidate-b",
-          raceId: "race-mayor",
-          sourceId: "src-growsf",
-          entityId: "ent-sample-candidate-b",
+          raceId: "race-california-governor",
+          sourceId: "src-ca-secretary-of-state",
+          entityId: "ent-california-governor-mohammad-arif",
           kind: "endorse",
           status: "verified",
           publicationStatus: "hidden",
@@ -113,31 +114,31 @@ test("hidden and draft recommendations filtered by the public loader never enter
           evidence: [
             {
               id: "ev-hidden-verified-candidate-b",
-              sourceId: "src-growsf",
-              entityId: "ent-sample-candidate-b",
-              raceId: "race-mayor",
-              url: "https://growsf.org/voter-guide/sample-2026/mayor",
+              sourceId: "src-ca-secretary-of-state",
+              entityId: "ent-california-governor-mohammad-arif",
+              raceId: "race-california-governor",
+              url: "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
               kind: "quote",
               quote: "Hidden verified fixture evidence must not become public.",
             },
           ],
         },
       ],
-      summary: { status: "verified", publicationStatus: "public", evidenceIds: ["ev-chronicle-candidate-a", "ev-hidden-verified-candidate-b"] },
+      summary: { id: "sum-governor-fixture", status: "verified", publicationStatus: "public", text: "Fixture summary", evidenceIds: ["ev-sos-governor-akinyemi-agbede", "ev-hidden-verified-candidate-b"] },
     },
   });
-  const context = await loadPublicRaceContext("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir });
+  const context = await loadPublicRaceContext("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir });
   assert.ok(context);
 
-  const hiddenEntityModel = buildEntityDrilldownModel([context], "sample-candidate-b");
-  const publicEntityModel = buildEntityDrilldownModel([context], "sample-candidate-a");
+  const hiddenEntityModel = buildEntityDrilldownModel([context], "california-governor-mohammad-arif");
+  const publicEntityModel = buildEntityDrilldownModel([context], "california-governor-akinyemi-agbede");
 
   assert.equal(hiddenEntityModel.availability, "unavailable");
   assert.equal(hiddenEntityModel.unavailableReason, "no-public-positions");
   assert.deepEqual(hiddenEntityModel.positions, []);
   assert.equal(JSON.stringify(hiddenEntityModel).includes("Hidden verified fixture evidence"), false);
   assert.equal(publicEntityModel.availability, "available");
-  assert.deepEqual(publicEntityModel.positions.map((group) => group.position.id), ["pos-chronicle-candidate-a"]);
+  assert.deepEqual(publicEntityModel.positions.map((group) => group.position.id), ["pos-sos-governor-akinyemi-agbede"]);
 });
 
 test("evidence ids without public receipt support are not fabricated", () => {
@@ -183,7 +184,7 @@ async function createFixture(): Promise<{ publicDir: string; overridesDir: strin
 
 async function writeOverride(overridesDir: string, value: unknown): Promise<void> {
   await fs.mkdir(path.join(overridesDir, "races"), { recursive: true });
-  await fs.writeFile(path.join(overridesDir, "races", "mayor.json"), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  await fs.writeFile(path.join(overridesDir, "races", "california-governor.json"), `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
 function contextWith(overrides: Partial<LoadedPublicRaceContext & { positions: Race["positions"] }> = {}): LoadedPublicRaceContext {
@@ -199,7 +200,7 @@ function contextWith(overrides: Partial<LoadedPublicRaceContext & { positions: R
       status: "verified",
       publicationStatus: "public",
       electionDate: "2026-06-02",
-      jurisdiction: "San Francisco",
+      jurisdiction: "California",
       sourceIds: sources.map((item) => item.id),
       entityIds: entities.map((item) => item.id),
       positions,

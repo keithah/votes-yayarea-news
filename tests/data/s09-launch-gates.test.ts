@@ -23,19 +23,19 @@ test("S09 launch gate report records blocking pass gates and keeps manual notes 
     now: new Date("2026-01-02T03:04:05.000Z"),
     htmlByRoute: {
       "/": html({ title: "votes.yayarea.news · San Francisco election guide", canonical: "https://votes.yayarea.news/" }),
-      "/races/mayor/": html({
-        title: "San Francisco Mayor source records",
-        canonical: "https://votes.yayarea.news/races/mayor/",
+      "/races/california-governor/": html({
+        title: "California Governor source records",
+        canonical: "https://votes.yayarea.news/races/california-governor/",
         body: 'votes.yayarea.news San Francisco <div data-analytics-event="race_page_view"></div><button data-analytics-event="recommendation_matrix_open"></button><button data-analytics-event="ai_summary_expand"></button><button data-analytics-event="receipt_drawer_open"></button>',
       }),
       "/how-we-use-ai/": html({ title: "How we use AI", canonical: "https://votes.yayarea.news/how-we-use-ai/" }),
-      "/entities/sample-candidate-a/": html({ title: "Sample Candidate A public source trail", canonical: "https://votes.yayarea.news/entities/sample-candidate-a/" }),
-      "/sources/san-francisco-chronicle-editorial-board/": html({ title: "San Francisco Chronicle Editorial Board public source trail", canonical: "https://votes.yayarea.news/sources/san-francisco-chronicle-editorial-board/" }),
+      "/entities/california-governor-akinyemi-agbede/": html({ title: "Akinyemi Agbede public source trail", canonical: "https://votes.yayarea.news/entities/california-governor-akinyemi-agbede/" }),
+      "/sources/california-secretary-of-state/": html({ title: "California Secretary of State public source trail", canonical: "https://votes.yayarea.news/sources/california-secretary-of-state/" }),
     },
     smokeReport: {
       ok: true,
       checkedRoutes: [{ route: "/", status: 200, contentType: "text/html; charset=utf-8" }],
-      trailingSlashChecks: [{ route: "/races/mayor", status: 308, location: "/races/mayor/" }],
+      trailingSlashChecks: [{ route: "/races/california-governor", status: 308, location: "/races/california-governor/" }],
     },
   }) as { overallStatus: string; buildTimestamp: string; gates: Record<string, { status: string }> };
 

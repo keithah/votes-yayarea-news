@@ -4,41 +4,32 @@ import { loadPublicRaceContext } from "../../lib/data/loaders";
 import type { Entity, Race, Source } from "../../lib/data/types";
 import { buildRaceUiModel, buildRecommendationMatrixModel } from "../../lib/ui/race";
 
-test("builds sample mayor recommendation matrix from public UI model", async () => {
-  const context = await loadPublicRaceContext("mayor");
+test("builds California Governor recommendation matrix from public UI model", async () => {
+  const context = await loadPublicRaceContext("california-governor");
 
   assert.ok(context);
   const ui = buildRaceUiModel(context);
   const matrix = buildRecommendationMatrixModel(ui);
 
-  assert.equal(matrix.raceId, "race-mayor");
+  assert.equal(matrix.raceId, "race-california-governor");
   assert.equal(matrix.empty, false);
-  assert.deepEqual(
-    matrix.candidates.map((candidate) => candidate.id),
-    ["ent-sample-candidate-a", "ent-sample-candidate-b"],
-  );
-  assert.deepEqual(
-    matrix.sources.map((source) => source.id),
-    ["src-growsf", "src-sf-chronicle"],
-    "rows are deterministically grouped by source type then source name",
-  );
+  assert.equal(matrix.candidates.length, 61);
+  assert.ok(matrix.candidates.some((candidate) => candidate.id === "ent-california-governor-akinyemi-agbede"));
+  assert.deepEqual(matrix.sources.map((source) => source.id), ["src-ca-secretary-of-state"]);
   assert.deepEqual(
     matrix.groups.map((group) => ({ id: group.id, sourceType: group.sourceType, sourceIds: group.sourceIds })),
-    [
-      { id: "source-type:civic-voter-guide-recommendations", sourceType: "civic voter guide / recommendations", sourceIds: ["src-growsf"] },
-      { id: "source-type:editorial-endorsements", sourceType: "editorial endorsements", sourceIds: ["src-sf-chronicle"] },
-    ],
+    [{ id: "source-type:official-certified-candidate-list", sourceType: "official certified candidate list", sourceIds: ["src-ca-secretary-of-state"] }],
   );
   assert.equal(matrix.defaultSort.key, "source-type-then-name");
   assert.equal(matrix.defaultGrouping.key, "sourceType");
 
-  const growsfCandidateB = matrix.cells["src-growsf::ent-sample-candidate-b"];
-  assert.equal(growsfCandidateB.state, "position");
-  assert.equal(growsfCandidateB.positionKind, "informational");
-  assert.equal(growsfCandidateB.positionKindLabel, "Informational");
-  assert.deepEqual(growsfCandidateB.positionIds, ["pos-growsf-sample-candidate-b-1"]);
-  assert.equal(growsfCandidateB.evidenceCount, 1);
-  assert.deepEqual(growsfCandidateB.evidenceIds, ["ev-growsf-sample-candidate-b-1-1"]);
+  const officialCell = matrix.cells["src-ca-secretary-of-state::ent-california-governor-akinyemi-agbede"];
+  assert.equal(officialCell.state, "position");
+  assert.equal(officialCell.positionKind, "informational");
+  assert.equal(officialCell.positionKindLabel, "Informational");
+  assert.deepEqual(officialCell.positionIds, ["pos-sos-governor-akinyemi-agbede"]);
+  assert.equal(officialCell.evidenceCount, 1);
+  assert.deepEqual(officialCell.evidenceIds, ["ev-sos-governor-akinyemi-agbede"]);
 });
 
 test("emits neutral cells for missing source-candidate pairs without inferring recommendations", () => {
@@ -153,7 +144,7 @@ function publicRace(overrides: Partial<Race>): Race {
     status: "verified",
     publicationStatus: "public",
     electionDate: "2026-06-02",
-    jurisdiction: "San Francisco",
+    jurisdiction: "California",
     sourceIds: ["src-one"],
     entityIds: ["ent-a"],
     positions: [],

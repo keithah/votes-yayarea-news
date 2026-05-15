@@ -4,7 +4,7 @@ import { createServer } from "node:http";
 import { extname, join, normalize, resolve, sep } from "node:path";
 
 const OUT_DIR = resolve("out");
-const ROUTES = ["/", "/races/mayor/", "/how-we-use-ai/", "/entities/sample-candidate-a/", "/sources/san-francisco-chronicle-editorial-board/"];
+const ROUTES = ["/", "/races/california-governor/", "/how-we-use-ai/", "/entities/california-governor-akinyemi-agbede/", "/sources/california-secretary-of-state/"];
 const CONTENT_TYPE_BY_EXT = new Map([
   [".html", "text/html; charset=utf-8"],
   [".css", "text/css; charset=utf-8"],

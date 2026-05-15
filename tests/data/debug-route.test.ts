@@ -2,23 +2,25 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { buildRaceDebugModel, generateStaticParams } from "../../app/debug/races/[slug]/page";
 
-test("debug race route statically generates the sample mayor slug", async () => {
-  assert.deepEqual(await generateStaticParams(), [{ slug: "mayor" }]);
+test("debug race route statically generates canonical real slugs", async () => {
+  const params = await generateStaticParams();
+  assert.ok(params.some((param) => param.slug === "california-governor"));
+  assert.equal(params.some((param) => param.slug === "mayor"), false);
 });
 
-test("debug race model exposes loader counts and manual override marker", async () => {
-  const model = await buildRaceDebugModel("mayor");
+test("debug race model exposes loader counts without manual override marker", async () => {
+  const model = await buildRaceDebugModel("california-governor");
 
   assert.ok(model);
-  assert.equal(model.race.slug, "mayor");
-  assert.equal(model.race.title, "San Francisco Mayor");
-  assert.equal(model.counts.sources, 2);
-  assert.equal(model.counts.entities, 2);
-  assert.equal(model.counts.positions, 4);
-  assert.equal(model.counts.evidence, 4);
-  assert.equal(model.hasManualOverride, true);
-  assert.ok(model.evidence.some((item) => item.url === "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor"));
-  assert.ok(model.checkedFiles.some((file) => file.endsWith("manual/overrides/races/mayor.json")));
+  assert.equal(model.race.slug, "california-governor");
+  assert.equal(model.race.title, "California Governor");
+  assert.equal(model.counts.sources, 1);
+  assert.equal(model.counts.entities, 61);
+  assert.equal(model.counts.positions, 61);
+  assert.equal(model.counts.evidence, 61);
+  assert.equal(model.hasManualOverride, false);
+  assert.ok(model.evidence.some((item) => item.url === "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"));
+  assert.equal(model.checkedFiles.some((file) => file.endsWith("manual/overrides/races/california-governor.json")), false);
   assert.equal(model.checkedFiles.some((file) => file.startsWith(".gsd/") || file.includes("/.gsd/")), false);
 });
 

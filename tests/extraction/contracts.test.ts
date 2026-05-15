@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import sourcesFile from "../../data/public/sources.json" with { type: "json" };
 import entitiesFile from "../../data/public/entities.json" with { type: "json" };
 import collectionsFile from "../../data/public/collections.json" with { type: "json" };
-import mayorRaceFile from "../../data/public/races/mayor.json" with { type: "json" };
+import governorRaceFile from "../../data/public/races/california-governor.json" with { type: "json" };
 import artifact from "../../data/ingested/artifacts/src-sf-chronicle-mayor-sample.json" with { type: "json" };
 import chunks from "../../data/ingested/chunks/src-sf-chronicle-mayor-sample.json" with { type: "json" };
 import { validateExtractionDraft } from "../../lib/extraction/validate";
@@ -129,28 +129,28 @@ function validDraft(): ExtractionDraft {
     provider: { provider: "test-provider", model: "test-model" },
     positions: [
       {
-        id: "pos-draft-chronicle-candidate-a",
-        raceId: "race-mayor",
-        sourceId: "src-sf-chronicle",
-        entityId: "ent-sample-candidate-a",
-        kind: "endorse",
+        id: "pos-draft-sos-governor-akinyemi-agbede",
+        raceId: "race-california-governor",
+        sourceId: "src-ca-secretary-of-state",
+        entityId: "ent-california-governor-akinyemi-agbede",
+        kind: "informational",
         reviewStatus: "generated",
         publicationStatus: "hidden",
-        label: "Draft extracted endorsement for Candidate A",
-        rationale: "Candidate A is described as emphasizing faster housing approvals.",
-        evidenceIds: ["ev-draft-chronicle-candidate-a"],
+        label: "Draft extracted informational listing for Akinyemi Agbede",
+        rationale: "The candidate is described by source text in the extraction fixture.",
+        evidenceIds: ["ev-draft-sos-governor-akinyemi-agbede"],
       },
     ],
     evidence: [
       {
-        id: "ev-draft-chronicle-candidate-a",
-        positionId: "pos-draft-chronicle-candidate-a",
-        raceId: "race-mayor",
-        sourceId: "src-sf-chronicle",
-        entityId: "ent-sample-candidate-a",
+        id: "ev-draft-sos-governor-akinyemi-agbede",
+        positionId: "pos-draft-sos-governor-akinyemi-agbede",
+        raceId: "race-california-governor",
+        sourceId: "src-ca-secretary-of-state",
+        entityId: "ent-california-governor-akinyemi-agbede",
         artifactId: "art-sf-chronicle-mayor-sample",
         chunkId: "art-sf-chronicle-mayor-sample-chunk-001",
-        url: "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
+        url: "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
         kind: "quote",
         quote,
       },
@@ -164,12 +164,12 @@ function validationContext(): ExtractionValidationContext {
       sources: sourcesFile.sources,
       entities: entitiesFile.entities,
       collections: collectionsFile.collections,
-      races: [mayorRaceFile.race],
+      races: [governorRaceFile.race],
     } as PublicDataRepository,
     artifacts: [artifact as IngestedArtifact],
     chunks: chunks as ArtifactChunk[],
     checkedFiles: [
-      "data/public/races/mayor.json",
+      "data/public/races/california-governor.json",
       "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
       "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",
     ],

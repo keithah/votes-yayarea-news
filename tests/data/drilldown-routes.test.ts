@@ -10,28 +10,31 @@ import { buildSourcePageModel, generateStaticParams as generateSourceStaticParam
 const GSD_PATH = /(^|\/)\.gsd(\/|$)/;
 
 test("entity and source routes statically generate public recommendation slugs only", async () => {
-  assert.deepEqual(await generateEntityStaticParams(), [{ slug: "sample-candidate-a" }, { slug: "sample-candidate-b" }]);
-  assert.deepEqual(await generateSourceStaticParams(), [{ slug: "growsf-voter-guide" }, { slug: "san-francisco-chronicle-editorial-board" }]);
+  const entityParams = await generateEntityStaticParams();
+  assert.equal(entityParams.length, 61);
+  assert.ok(entityParams.some((param) => param.slug === "california-governor-akinyemi-agbede"));
+  assert.equal(entityParams.some((param) => param.slug === "sample-candidate-a"), false);
+  assert.deepEqual(await generateSourceStaticParams(), [{ slug: "california-secretary-of-state" }]);
 });
 
 test("entity page model exposes public recommendation receipts, diagnostics, and related links", async () => {
-  const model = await buildEntityPageModel("sample-candidate-a");
+  const model = await buildEntityPageModel("california-governor-akinyemi-agbede");
 
   assert.ok(model);
   assert.equal(model.kind, "entity");
-  assert.equal(model.entity?.name, "Sample Candidate A");
+  assert.equal(model.entity?.name, "Akinyemi Agbede");
   assert.equal(model.counts.relatedRaceCount, 1);
   assert.equal(model.counts.publicPositionCount, 1);
   assert.equal(model.counts.evidenceCount, 1);
   assert.equal(model.counts.sourceCount, 1);
-  assert.deepEqual(model.relatedRaces.map((race) => `/races/${race.slug}/`), ["/races/mayor/"]);
-  assert.deepEqual(model.relatedSources.map((source) => `/sources/${source.slug}/`), ["/sources/san-francisco-chronicle-editorial-board/"]);
+  assert.deepEqual(model.relatedRaces.map((race) => `/races/${race.slug}/`), ["/races/california-governor/"]);
+  assert.deepEqual(model.relatedSources.map((source) => `/sources/${source.slug}/`), ["/sources/california-secretary-of-state/"]);
   assert.equal(model.positions[0].position.reviewStatus, "verified");
   assert.equal(model.positions[0].position.publicationStatus, "public");
   assert.equal(model.positions[0].receipt.status, "available");
-  assert.equal(model.positions[0].evidence[0].id, "ev-sf-chronicle-sample-candidate-a-1-1");
+  assert.equal(model.positions[0].evidence[0].id, "ev-sos-governor-akinyemi-agbede");
   assert.equal(model.positions[0].evidence[0].publicationStatus, "public");
-  assert.equal(model.diagnostics.requestedSlug, "sample-candidate-a");
+  assert.equal(model.diagnostics.requestedSlug, "california-governor-akinyemi-agbede");
   assert.equal(model.diagnostics.relatedRaceCount, 1);
   assert.equal(model.diagnostics.publicPositionCount, 1);
   assert.equal(model.diagnostics.evidenceCount, 1);
@@ -41,25 +44,25 @@ test("entity page model exposes public recommendation receipts, diagnostics, and
 });
 
 test("source page model exposes public recommendation receipts, diagnostics, and related links", async () => {
-  const model = await buildSourcePageModel("san-francisco-chronicle-editorial-board");
+  const model = await buildSourcePageModel("california-secretary-of-state");
 
   assert.ok(model);
   assert.equal(model.kind, "source");
-  assert.equal(model.source?.name, "San Francisco Chronicle Editorial Board");
+  assert.equal(model.source?.name, "California Secretary of State");
   assert.equal(model.counts.relatedRaceCount, 1);
-  assert.equal(model.counts.publicPositionCount, 1);
-  assert.equal(model.counts.evidenceCount, 1);
-  assert.equal(model.counts.entityCount, 1);
-  assert.deepEqual(model.relatedRaces.map((race) => `/races/${race.slug}/`), ["/races/mayor/"]);
-  assert.deepEqual(model.relatedEntities.map((entity) => `/entities/${entity.slug}/`), ["/entities/sample-candidate-a/"]);
-  assert.equal(model.positions[0].entity.slug, "sample-candidate-a");
+  assert.equal(model.counts.publicPositionCount, 61);
+  assert.equal(model.counts.evidenceCount, 61);
+  assert.equal(model.counts.entityCount, 61);
+  assert.deepEqual(model.relatedRaces.map((race) => `/races/${race.slug}/`), ["/races/california-governor/"]);
+  assert.ok(model.relatedEntities.some((entity) => entity.slug === "california-governor-akinyemi-agbede"));
+  assert.equal(model.positions[0].entity.slug, "california-governor-akinyemi-agbede");
   assert.equal(model.positions[0].position.reviewStatus, "verified");
   assert.equal(model.positions[0].position.publicationStatus, "public");
-  assert.equal(model.positions[0].evidence[0].url, "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor");
-  assert.equal(model.diagnostics.requestedSlug, "san-francisco-chronicle-editorial-board");
+  assert.equal(model.positions[0].evidence[0].url, "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf");
+  assert.equal(model.diagnostics.requestedSlug, "california-secretary-of-state");
   assert.equal(model.diagnostics.relatedRaceCount, 1);
-  assert.equal(model.diagnostics.publicPositionCount, 1);
-  assert.equal(model.diagnostics.evidenceCount, 1);
+  assert.equal(model.diagnostics.publicPositionCount, 61);
+  assert.equal(model.diagnostics.evidenceCount, 61);
   assert.equal(model.diagnostics.checkedFileCount, model.checkedFiles.length);
   assert.ok(model.diagnostics.checkedFileCount > 0);
   assert.equal(model.checkedFiles.some((file) => GSD_PATH.test(file)), false);
@@ -71,23 +74,15 @@ test("entity and source page models return null for unknown or non-public slugs"
 
   const fixture = await createFixture();
   await writeOverride(fixture.overridesDir, {
-    race: {
-      status: "verified",
-      publicationStatus: "public",
-      positions: [
-        { id: "pos-chronicle-candidate-a", status: "draft", publicationStatus: "hidden" },
-        { id: "pos-growsf-candidate-b", status: "draft", publicationStatus: "hidden" },
-      ],
-      summary: { status: "draft", publicationStatus: "hidden" },
-    },
+    race: { status: "draft", publicationStatus: "hidden" },
   });
 
-  assert.equal(await buildEntityPageModel("sample-candidate-a", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
-  assert.equal(await buildSourcePageModel("san-francisco-chronicle-editorial-board", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
+  assert.equal(await buildEntityPageModel("california-governor-akinyemi-agbede", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
+  assert.equal(await buildSourcePageModel("california-secretary-of-state", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
 });
 
 test("race page model still marks drill-down readiness and page source links to entity and source routes", async () => {
-  const model = await buildRacePageModel("mayor");
+  const model = await buildRacePageModel("california-governor");
   assert.ok(model);
   assert.equal(model.ui.placeholders.drilldownReady, true);
 
@@ -125,5 +120,5 @@ async function createFixture(): Promise<{ publicDir: string; overridesDir: strin
 
 async function writeOverride(overridesDir: string, value: unknown): Promise<void> {
   await fs.mkdir(path.join(overridesDir, "races"), { recursive: true });
-  await fs.writeFile(path.join(overridesDir, "races", "mayor.json"), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  await fs.writeFile(path.join(overridesDir, "races", "california-governor.json"), `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }

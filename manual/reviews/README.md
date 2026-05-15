@@ -7,11 +7,11 @@ LLM extraction drafts are never public by themselves. The local review loop copi
 Deterministic local flow:
 
 ```bash
-pnpm extract:positions -- --provider fixture --race-slug mayor
-pnpm validate-extraction -- --race-slug mayor
-pnpm review:positions prepare --race-slug mayor
-pnpm review:positions status --race-slug mayor
-pnpm review:positions publish --race-slug mayor
+pnpm extract:positions -- --provider fixture --race-slug california-governor
+pnpm validate-extraction -- --race-slug california-governor
+pnpm review:positions prepare --race-slug california-governor
+pnpm review:positions status --race-slug california-governor
+pnpm review:positions publish --race-slug california-governor
 ```
 
 Authoritative S04 closeout:
@@ -25,7 +25,7 @@ pnpm verify:s04
 Optional live extraction is explicit and credential-gated:
 
 ```bash
-pnpm extract:positions -- --provider openai --model gpt-4o-mini --race-slug mayor
+pnpm extract:positions -- --provider openai --model gpt-4o-mini --race-slug california-governor
 ```
 
 Live extraction requires `OPENAI_API_KEY`. Missing credentials or provider failures should fail closed with sanitized diagnostics; the deterministic fixture path remains the default verifier and does not require network access.

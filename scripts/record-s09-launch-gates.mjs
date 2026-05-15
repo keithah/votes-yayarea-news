@@ -6,13 +6,13 @@ export const LAUNCH_GATE_PATH = "data/launch/latest.json";
 
 export const ROUTE_SPECS = [
   { route: "/", path: "out/index.html", title: "votes.yayarea.news · San Francisco election guide", canonical: "https://votes.yayarea.news/" },
-  { route: "/races/mayor/", path: "out/races/mayor/index.html", title: "San Francisco Mayor source records", canonical: "https://votes.yayarea.news/races/mayor/" },
+  { route: "/races/california-governor/", path: "out/races/california-governor/index.html", title: "California Governor source records", canonical: "https://votes.yayarea.news/races/california-governor/" },
   { route: "/how-we-use-ai/", path: "out/how-we-use-ai/index.html", title: "How we use AI", canonical: "https://votes.yayarea.news/how-we-use-ai/" },
-  { route: "/entities/sample-candidate-a/", path: "out/entities/sample-candidate-a/index.html", title: "Sample Candidate A public source trail", canonical: "https://votes.yayarea.news/entities/sample-candidate-a/" },
-  { route: "/sources/san-francisco-chronicle-editorial-board/", path: "out/sources/san-francisco-chronicle-editorial-board/index.html", title: "San Francisco Chronicle Editorial Board public source trail", canonical: "https://votes.yayarea.news/sources/san-francisco-chronicle-editorial-board/" },
+  { route: "/entities/california-governor-akinyemi-agbede/", path: "out/entities/california-governor-akinyemi-agbede/index.html", title: "Akinyemi Agbede public source trail", canonical: "https://votes.yayarea.news/entities/california-governor-akinyemi-agbede/" },
+  { route: "/sources/california-secretary-of-state/", path: "out/sources/california-secretary-of-state/index.html", title: "California Secretary of State public source trail", canonical: "https://votes.yayarea.news/sources/california-secretary-of-state/" },
 ];
 
-export const REQUIRED_ANALYTICS_EVENTS = ["race_page_view", "recommendation_matrix_open", "ai_summary_expand", "receipt_drawer_open"];
+export const REQUIRED_ANALYTICS_EVENTS = ["race_page_view", "recommendation_matrix_open", "receipt_drawer_open"];
 export const PRIVATE_TRUST_PATTERNS = [
   { id: "gsd_path", pattern: /\.gsd(?:\/|\b)/i, description: "No .gsd planning paths in public export." },
   { id: "manual_reviews", pattern: /manual\/reviews\//i, description: "No manual review staging paths in public export." },

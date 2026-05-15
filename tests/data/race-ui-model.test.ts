@@ -7,32 +7,28 @@ import { DataLoadError, loadPublicRaceContext } from "../../lib/data/loaders";
 import type { Race, Source, Entity } from "../../lib/data/types";
 import { buildRaceUiModel } from "../../lib/ui/race";
 
-test("builds sample mayor race model from public loader output only", async () => {
-  const context = await loadPublicRaceContext("mayor");
+test("builds California Governor race model from public loader output only", async () => {
+  const context = await loadPublicRaceContext("california-governor");
 
   assert.ok(context);
   const model = buildRaceUiModel(context);
 
-  assert.equal(model.race.slug, "mayor");
-  assert.equal(model.sourceCount, 2);
-  assert.equal(model.evidenceCount, 2);
-  assert.deepEqual(
-    model.candidates.map((candidate) => ({ id: candidate.id, positionCount: candidate.positionCount, evidenceCount: candidate.evidenceCount, sourceCount: candidate.sourceCount })),
-    [
-      { id: "ent-sample-candidate-a", positionCount: 1, evidenceCount: 1, sourceCount: 1 },
-      { id: "ent-sample-candidate-b", positionCount: 1, evidenceCount: 1, sourceCount: 1 },
-    ],
-  );
-  assert.equal(model.candidates[0].countsByKind.endorse, 1, "duplicate same-source endorsements should not inflate consensus counts");
-  assert.equal(model.candidates[1].countsByKind.informational, 1);
-  assert.equal(model.consensus.entityId, "ent-sample-candidate-a");
-  assert.equal(model.consensus.count, 1);
-  assert.equal(model.consensus.sourceCount, 2);
-  assert.equal(model.consensus.percentage, 50);
-  assert.equal(model.summary.visible, true);
-  assert.equal(model.summary.status, "verified");
-  assert.equal(model.summary.publicationStatus, "public");
-  assert.equal(model.summary.evidenceCount, 2);
+  assert.equal(model.race.slug, "california-governor");
+  assert.equal(model.sourceCount, 1);
+  assert.equal(model.evidenceCount, 61);
+  assert.equal(model.candidates.length, 61);
+  const akinyemi = model.candidates.find((candidate) => candidate.id === "ent-california-governor-akinyemi-agbede");
+  assert.ok(akinyemi);
+  assert.equal(akinyemi.positionCount, 1);
+  assert.equal(akinyemi.evidenceCount, 1);
+  assert.equal(akinyemi.sourceCount, 1);
+  assert.equal(akinyemi.countsByKind.informational, 1);
+  assert.equal(model.consensus.label, "No public endorsements");
+  assert.equal(model.consensus.count, 0);
+  assert.equal(model.consensus.sourceCount, 1);
+  assert.equal(model.consensus.percentage, 0);
+  assert.equal(model.summary.visible, false);
+  assert.equal(model.summary.evidenceCount, 0);
   assert.equal(model.placeholders.matrixReady, true);
   assert.equal(model.placeholders.receiptsReady, true);
   assert.equal(model.placeholders.aiDisclosureReady, true);
@@ -42,7 +38,8 @@ test("unknown and non-public races do not produce a UI model context", async () 
   assert.equal(await loadPublicRaceContext("missing-race"), null);
 
   const fixture = await createFixture();
-  assert.equal(await loadPublicRaceContext("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
+  await writeOverride(fixture.overridesDir, { race: { status: "draft", publicationStatus: "hidden" } });
+  assert.equal(await loadPublicRaceContext("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }), null);
 });
 
 test("empty public positions produce zeroed counts and safe placeholders", () => {
@@ -66,7 +63,7 @@ test("malformed public references fail validation before UI model construction",
       publicationStatus: "public",
       positions: [
         {
-          id: "pos-chronicle-candidate-a",
+          id: "pos-sos-governor-akinyemi-agbede",
           status: "verified",
           publicationStatus: "public",
           sourceId: "src-missing",
@@ -76,11 +73,11 @@ test("malformed public references fail validation before UI model construction",
   });
 
   await assert.rejects(
-    () => loadPublicRaceContext("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }),
+    () => loadPublicRaceContext("california-governor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir }),
     (error: unknown) => {
       assert.ok(error instanceof DataLoadError);
       assert.equal(error.phase, "merged");
-      assert.equal(error.slug, "mayor");
+      assert.equal(error.slug, "california-governor");
       assert.ok(error.issues.some((issue) => issue.code === "missing_reference" && issue.path.includes("sourceId")));
       return true;
     },
@@ -132,7 +129,7 @@ async function createFixture(): Promise<{ publicDir: string; overridesDir: strin
 
 async function writeOverride(overridesDir: string, value: unknown): Promise<void> {
   await fs.mkdir(path.join(overridesDir, "races"), { recursive: true });
-  await fs.writeFile(path.join(overridesDir, "races", "mayor.json"), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  await fs.writeFile(path.join(overridesDir, "races", "california-governor.json"), `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
 function publicRace(overrides: Partial<Race>): Race {
@@ -144,7 +141,7 @@ function publicRace(overrides: Partial<Race>): Race {
     status: "verified",
     publicationStatus: "public",
     electionDate: "2026-06-02",
-    jurisdiction: "San Francisco",
+    jurisdiction: "California",
     sourceIds: ["src-one"],
     entityIds: ["ent-a"],
     positions: [],
