@@ -6,6 +6,7 @@ import path from "node:path";
 import {
   DataLoadError,
   listRaceSlugs,
+  loadPublicRaceContext,
   loadPublicRaceData,
   loadRaceData,
   mergeRace,
@@ -103,9 +104,19 @@ test("public race loader filters hidden draft, reviewed, and verified-hidden rec
 });
 
 test("public race loader returns null for non-public race status", async () => {
-  const loaded = await loadPublicRaceData("mayor");
+  const fixture = await createFixture();
+  const loaded = await loadPublicRaceData("mayor", { publicDir: fixture.publicDir, overridesDir: fixture.overridesDir });
 
   assert.equal(loaded, null);
+});
+
+test("public race context returns only referenced source and entity records", async () => {
+  const loaded = await loadPublicRaceContext("mayor");
+
+  assert.ok(loaded);
+  assert.deepEqual(loaded.sources.map((source) => source.id).sort(), ["src-growsf", "src-sf-chronicle"]);
+  assert.deepEqual(loaded.entities.map((entity) => entity.id).sort(), ["ent-sample-candidate-a", "ent-sample-candidate-b"]);
+  assert.ok(loaded.checkedFiles.some((file) => file.endsWith("manual/overrides/races/mayor.json")));
 });
 
 test("malformed override JSON includes manual override path and phase", async () => {

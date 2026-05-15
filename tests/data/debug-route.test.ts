@@ -14,8 +14,8 @@ test("debug race model exposes loader counts and manual override marker", async 
   assert.equal(model.race.title, "San Francisco Mayor");
   assert.equal(model.counts.sources, 2);
   assert.equal(model.counts.entities, 2);
-  assert.equal(model.counts.positions, 2);
-  assert.equal(model.counts.evidence, 2);
+  assert.equal(model.counts.positions, 4);
+  assert.equal(model.counts.evidence, 4);
   assert.equal(model.hasManualOverride, true);
   assert.ok(model.evidence.some((item) => item.url === "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor"));
   assert.ok(model.checkedFiles.some((file) => file.endsWith("manual/overrides/races/mayor.json")));

@@ -1,6 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import type { PublicDataRepository, Race, ReviewStatus, Summary, Theme, Position } from "./types";
+import type { Entity, PublicDataRepository, Race, ReviewStatus, Source, Summary, Theme, Position } from "./types";
 import { validatePublicData, type ValidationIssue } from "./validate";
 
 export type DataLoadPhase = "canonical" | "override" | "merged" | "public-filter";
@@ -12,6 +12,13 @@ export interface LoaderOptions {
 
 export interface LoadedRaceData {
   race: Race;
+  checkedFiles: string[];
+}
+
+export interface LoadedPublicRaceContext {
+  race: Race;
+  sources: Source[];
+  entities: Entity[];
   checkedFiles: string[];
 }
 
@@ -73,6 +80,22 @@ export async function loadPublicRaceData(slug: string, options: LoaderOptions = 
   };
 }
 
+export async function loadPublicRaceContext(slug: string, options: LoaderOptions = {}): Promise<LoadedPublicRaceContext | null> {
+  const loaded = await loadPublicRaceData(slug, options);
+  if (!loaded) return null;
+
+  const canonical = await loadCanonicalRepository(options);
+  const sourceIds = collectReferencedSourceIds(loaded.race);
+  const entityIds = collectReferencedEntityIds(loaded.race);
+
+  return {
+    race: loaded.race,
+    sources: canonical.repository.sources.filter((source) => sourceIds.has(source.id)),
+    entities: canonical.repository.entities.filter((entity) => entityIds.has(entity.id)),
+    checkedFiles: loaded.checkedFiles,
+  };
+}
+
 export function mergeRace(canonicalRace: Race, overrideRace: Partial<Race>, slug = canonicalRace.slug, sourcePath = "manual override"): Race {
   assertNoDuplicateIds(overrideRace.positions, `${sourcePath}.race.positions`, slug);
   assertNoDuplicateIds(overrideRace.themes, `${sourcePath}.race.themes`, slug);
@@ -112,6 +135,26 @@ function uniquePublicEvidenceIds(evidenceIds: string[], publicEvidenceIds: Set<s
 
 function isPublicRecord(record: { status: ReviewStatus; publicationStatus?: string }): boolean {
   return PUBLIC_REVIEW_STATUSES.has(record.status) && record.publicationStatus === "public";
+}
+
+function collectReferencedSourceIds(race: Race): Set<string> {
+  return new Set([
+    ...race.sourceIds,
+    ...race.positions.map((position) => position.sourceId),
+    ...race.positions.flatMap((position) => position.evidence.map((evidence) => evidence.sourceId)),
+  ]);
+}
+
+function collectReferencedEntityIds(race: Race): Set<string> {
+  return new Set([
+    ...race.entityIds,
+    ...race.positions.map((position) => position.entityId),
+    ...race.positions.flatMap((position) => position.evidence.map((evidence) => evidence.entityId).filter(isString)),
+  ]);
+}
+
+function isString(value: unknown): value is string {
+  return typeof value === "string";
 }
 
 async function loadCanonicalRepository(options: LoaderOptions): Promise<{ repository: PublicDataRepository; checkedFiles: string[] }> {
