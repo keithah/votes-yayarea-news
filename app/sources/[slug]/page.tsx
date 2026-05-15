@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { listRaceSlugs, loadPublicRaceContext, type LoadedPublicRaceContext, type LoaderOptions } from "../../../lib/data/loaders";
 import { buildSourceShareMetadata } from "../../../lib/share/metadata";
@@ -69,7 +70,7 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
       data-checked-file-count={diagnostics.checkedFileCount}
     >
       <nav className="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
+        <Link href="/">Home</Link>
         <span aria-hidden="true">/</span>
         <span>Sources</span>
         <span aria-hidden="true">/</span>
@@ -129,7 +130,7 @@ function RelatedRaces({ races }: { races: SourcePageModel["relatedRaces"] }) {
       <ul className="drilldown-link-list">
         {races.map((race) => (
           <li key={race.id}>
-            <a href={`/races/${race.slug}/`}>{race.title}</a>
+            <Link href={`/races/${race.slug}/`}>{race.title}</Link>
             <span>{race.jurisdiction} · {formatDate(race.electionDate)} · {race.positionCount} positions · {race.evidenceCount} evidence</span>
           </li>
         ))}
@@ -146,7 +147,7 @@ function RelatedEntities({ entities }: { entities: SourcePageModel["relatedEntit
       <ul className="drilldown-link-list">
         {entities.map((entity) => (
           <li key={entity.id}>
-            <a href={`/entities/${entity.slug}/`}>{entity.name}</a>
+            <Link href={`/entities/${entity.slug}/`}>{entity.name}</Link>
             <span>{entity.kind} · {entity.positionCount} positions · {entity.evidenceCount} evidence</span>
           </li>
         ))}
@@ -175,7 +176,7 @@ function PositionReceipts({ positions }: { positions: DrilldownPositionGroup[] }
             <p className="eyebrow">{group.position.kind}</p>
             <h3>{group.position.label}</h3>
             <p className="muted-copy">
-              Source: {group.source.name} · <a href={`/races/${group.race.slug}/`}>{group.race.title}</a> · <a href={`/entities/${group.entity.slug}/`}>{group.entity.name}</a>
+              Source: {group.source.name} · <Link href={`/races/${group.race.slug}/`}>{group.race.title}</Link> · <Link href={`/entities/${group.entity.slug}/`}>{group.entity.name}</Link>
             </p>
             {group.position.rationale ? <p>{group.position.rationale}</p> : null}
             <EvidenceList positionId={group.position.id} evidence={group.evidence} />

@@ -20,8 +20,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <span>votes.yayarea.news</span>
             </Link>
             <nav className="site-nav" aria-label="Primary navigation">
-              <a href="/#public-races">Races</a>
-              <a href="/#methodology">Methodology</a>
+              <Link href="/#public-races">Races</Link>
+              <Link href="/#methodology">Methodology</Link>
             </nav>
           </header>
           {children}

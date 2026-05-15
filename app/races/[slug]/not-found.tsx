@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function PublicRaceNotFound() {
   return (
     <main className="race-page-shell">
@@ -8,9 +10,9 @@ export default function PublicRaceNotFound() {
           <p className="lede">
             This race is missing or has not passed the public review and publication gates yet.
           </p>
-          <a className="button button-primary" href="/#public-races">
+          <Link className="button button-primary" href="/#public-races">
             Back to public races
-          </a>
+          </Link>
         </div>
       </section>
     </main>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { listRaceSlugs, loadPublicRaceContext, type LoadedPublicRaceContext, type LoaderOptions } from "../../../lib/data/loaders";
 import { buildRaceShareMetadata } from "../../../lib/share/metadata";
@@ -101,7 +102,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
   return (
     <main className="race-page-shell" data-analytics-event="race_page_view" data-analytics-route-kind="race" data-analytics-race-slug={ui.race.slug}>
       <nav className="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
+        <Link href="/">Home</Link>
         <span aria-hidden="true">/</span>
         <span>{ui.race.title}</span>
       </nav>
@@ -217,7 +218,7 @@ function CandidateCard({ candidate }: { candidate: RaceEntityCard }) {
     <article className="candidate-card">
       <div>
         <p className="eyebrow">{candidate.kind}</p>
-        <h3>{candidate.positionCount > 0 ? <a href={`/entities/${candidate.slug}/`}>{candidate.name}</a> : candidate.name}</h3>
+        <h3>{candidate.positionCount > 0 ? <Link href={`/entities/${candidate.slug}/`}>{candidate.name}</Link> : candidate.name}</h3>
         {candidate.description ? <p className="muted-copy">{candidate.description}</p> : null}
       </div>
       <dl className="candidate-counts" aria-label={`${candidate.name} public position counts`}>
@@ -247,13 +248,13 @@ function SourceItem({ source }: { source: RaceSourceCard }) {
   return (
     <li>
       <div>
-        <strong><a href={`/sources/${source.slug}/`}>{source.name}</a></strong>
+        <strong><Link href={`/sources/${source.slug}/`}>{source.name}</Link></strong>
         <span>
           {source.sourceType} · {source.positionCount} positions · {source.evidenceCount} evidence
         </span>
       </div>
       <div className="source-actions">
-        <a href={`/sources/${source.slug}/`}>Source page</a>
+        <Link href={`/sources/${source.slug}/`}>Source page</Link>
         {href ? <a href={href}>Visit source</a> : <span>No public URL</span>}
       </div>
     </li>

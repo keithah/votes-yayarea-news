@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { EntityDrilldownModel, SourceDrilldownModel } from "../ui/drilldowns";
 import type { RaceUiModel } from "../ui/race";
 
-export const SITE_ORIGIN = "https://votes.yayarea.news";
+export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://votes.yayarea.news";
 export const SITE_NAME = "votes.yayarea.news";
 export const DEFAULT_SHARE_IMAGE_PATH = "/share/votes-yayarea-news.svg";
 
