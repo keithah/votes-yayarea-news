@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "slice": "S05",
+  "generatedBy": "scripts/record-s05-launch-verification.mjs",
+  "generatedAt": "2026-05-15T09:09:26.826Z",
+  "status": "pass",
+  "artifacts": {
+    "staticSmoke": "data/launch/s05-static-smoke.json",
+    "browserEvidence": "data/launch/s05-browser-checks.json",
+    "routeLinkLeakage": "data/launch/s05-launch-export.json"
+  },
+  "counts": {
+    "browserDevices": 2,
+    "browserRoutes": 10,
+    "staticSmokeRoutes": 12,
+    "exportRoutes": 77,
+    "exportLinksChecked": 1104
+  },
+  "gates": {
+    "staticSmoke": {
+      "status": "pass",
+      "errors": []
+    },
+    "browserEvidence": {
+      "status": "pass",
+      "errors": []
+    },
+    "routeLinkLeakage": {
+      "status": "pass",
+      "errors": []
+    }
+  }
+}

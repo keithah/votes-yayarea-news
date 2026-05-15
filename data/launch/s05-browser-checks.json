@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "slice": "S05",
+  "generatedBy": "playwright-chromium-browser-tooling",
+  "checkedAt": "2026-05-15T09:09:17.480Z",
+  "origin": "http://127.0.0.1:4321",
+  "devices": [
+    {
+      "name": "Desktop Chromium 1440x1000",
+      "kind": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "isMobile": false
+      },
+      "userAgent": "S05 desktop Chromium launch verification",
+      "consoleErrors": [],
+      "routes": [
+        {
+          "route": "/",
+          "className": "homepage",
+          "url": "http://127.0.0.1:4321/",
+          "status": 200,
+          "title": "votes.yayarea.news · San Francisco election guide",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "votes.yayarea.news · San Francisco election guide"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "votes.yayarea.news"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/"
+            }
+          ]
+        },
+        {
+          "route": "/races/california-governor/",
+          "className": "race",
+          "url": "http://127.0.0.1:4321/races/california-governor/",
+          "status": 200,
+          "title": "California Governor source records",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "California Governor source records"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "California Governor"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/races/california-governor/"
+            }
+          ]
+        },
+        {
+          "route": "/sources/california-secretary-of-state/",
+          "className": "source",
+          "url": "http://127.0.0.1:4321/sources/california-secretary-of-state/",
+          "status": 200,
+          "title": "California Secretary of State public source trail",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "California Secretary of State public source trail"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "California Secretary of State"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/sources/california-secretary-of-state/"
+            }
+          ]
+        },
+        {
+          "route": "/entities/california-governor-akinyemi-agbede/",
+          "className": "entity",
+          "url": "http://127.0.0.1:4321/entities/california-governor-akinyemi-agbede/",
+          "status": 200,
+          "title": "Akinyemi Agbede public source trail",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "Akinyemi Agbede public source trail"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "Akinyemi Agbede"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/entities/california-governor-akinyemi-agbede/"
+            }
+          ]
+        },
+        {
+          "route": "/how-we-use-ai/",
+          "className": "disclosure",
+          "url": "http://127.0.0.1:4321/how-we-use-ai/",
+          "status": 200,
+          "title": "How we use AI",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "How we use AI"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "How we use AI"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/how-we-use-ai/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mobile Chromium Pixel 7",
+      "kind": "mobile",
+      "viewport": {
+        "width": 412,
+        "height": 915,
+        "isMobile": true
+      },
+      "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.96 Mobile Safari/537.36",
+      "consoleErrors": [],
+      "routes": [
+        {
+          "route": "/",
+          "className": "homepage",
+          "url": "http://127.0.0.1:4321/",
+          "status": 200,
+          "title": "votes.yayarea.news · San Francisco election guide",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "votes.yayarea.news · San Francisco election guide"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "votes.yayarea.news"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/"
+            }
+          ]
+        },
+        {
+          "route": "/races/california-governor/",
+          "className": "race",
+          "url": "http://127.0.0.1:4321/races/california-governor/",
+          "status": 200,
+          "title": "California Governor source records",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "California Governor source records"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "California Governor"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/races/california-governor/"
+            }
+          ]
+        },
+        {
+          "route": "/sources/california-secretary-of-state/",
+          "className": "source",
+          "url": "http://127.0.0.1:4321/sources/california-secretary-of-state/",
+          "status": 200,
+          "title": "California Secretary of State public source trail",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "California Secretary of State public source trail"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "California Secretary of State"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/sources/california-secretary-of-state/"
+            }
+          ]
+        },
+        {
+          "route": "/entities/california-governor-akinyemi-agbede/",
+          "className": "entity",
+          "url": "http://127.0.0.1:4321/entities/california-governor-akinyemi-agbede/",
+          "status": 200,
+          "title": "Akinyemi Agbede public source trail",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "Akinyemi Agbede public source trail"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "Akinyemi Agbede"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/entities/california-governor-akinyemi-agbede/"
+            }
+          ]
+        },
+        {
+          "route": "/how-we-use-ai/",
+          "className": "disclosure",
+          "url": "http://127.0.0.1:4321/how-we-use-ai/",
+          "status": 200,
+          "title": "How we use AI",
+          "assertions": [
+            {
+              "name": "http-200",
+              "status": "pass",
+              "actual": "200"
+            },
+            {
+              "name": "document-title-present",
+              "status": "pass",
+              "actual": "How we use AI"
+            },
+            {
+              "name": "main-visible",
+              "status": "pass",
+              "actual": "main count 1"
+            },
+            {
+              "name": "expected-route-text-present",
+              "status": "pass",
+              "actual": "How we use AI"
+            },
+            {
+              "name": "canonical-present",
+              "status": "pass",
+              "actual": "https://votes.yayarea.news/how-we-use-ai/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

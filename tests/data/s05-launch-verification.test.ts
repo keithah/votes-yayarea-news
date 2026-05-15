@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
+// @ts-ignore JS launch-gate helpers are exercised through node --import tsx tests.
 import {
   classifyHref,
   discoverRouteContractsFromData,
@@ -11,6 +12,7 @@ import {
   runS05LaunchExportAssertions,
   validateS05LaunchReport,
 } from "../../scripts/assert-s05-launch-export.mjs";
+// @ts-ignore JS static-smoke helpers are exercised through node --import tsx tests.
 import {
   choosePort,
   extractLocalAssetHrefs,
@@ -19,10 +21,16 @@ import {
   validateJsonOutPath,
   validateS05StaticSmokeReport,
 } from "../../scripts/smoke-s05-static-export.mjs";
+// @ts-ignore JS launch-verification helpers are exercised through node --import tsx tests.
+import {
+  createS05LaunchVerificationReport,
+  validateS05BrowserEvidence,
+  validateS05LaunchVerificationReport,
+} from "../../scripts/record-s05-launch-verification.mjs";
 
 test("S05 route discovery derives homepage, race, source, entity, and disclosure routes from public data", () => {
   const contracts = discoverRouteContractsFromData(fixturePublicData());
-  const routes = contracts.routes.map((contract) => contract.route).sort();
+  const routes = contracts.routes.map((contract: { route: string }) => contract.route).sort();
 
   assert.deepEqual(contracts.issues, []);
   assert.equal(contracts.classCounts.homepage, 1);
@@ -89,7 +97,7 @@ test("S05 forbidden leakage checks catch private paths, stale fixtures, debug li
     "out/index.html": `Sample Candidate <a href="/debug/races/mayor/">debug</a> file:///home/example/.gsd/x We recommend Candidate A`,
     "out/how-we-use-ai/index.html": "AI does not decide how anyone should vote.",
   });
-  const ids = findings.map((finding) => finding.id).sort();
+  const ids = findings.map((finding: { id: string }) => finding.id).sort();
 
   assert.deepEqual(ids, [
     "absolute_local_path",
@@ -237,6 +245,149 @@ test("S05 static smoke writes a redaction-safe JSON report for the fixture expor
   assert.equal(JSON.stringify(persisted).includes("/home/"), false);
   assert.equal(JSON.stringify(persisted).includes(".gsd"), false);
 });
+
+test("S05 browser evidence validation accepts desktop and mobile route coverage", () => {
+  const evidence = fixtureBrowserEvidence();
+
+  assert.deepEqual(validateS05BrowserEvidence(evidence), []);
+});
+
+test("S05 browser evidence validation rejects missing mobile evidence", () => {
+  const evidence = fixtureBrowserEvidence({ devices: [fixtureDevice("desktop")] });
+
+  assert.match(validateS05BrowserEvidence(evidence).join("\n"), /mobile entry/);
+});
+
+test("S05 browser evidence validation rejects console errors with device context", () => {
+  const evidence = fixtureBrowserEvidence({ devices: [fixtureDevice("desktop", { consoleErrors: [{ text: "boom" }] }), fixtureDevice("mobile")] });
+
+  assert.match(validateS05BrowserEvidence(evidence).join("\n"), /device desktop consoleErrors must be empty/);
+});
+
+test("S05 browser evidence validation rejects failed route assertions with route context", () => {
+  const failedRoute = { ...fixtureRoute("/", "homepage"), assertions: [{ name: "main-visible", status: "fail" }] };
+  const evidence = fixtureBrowserEvidence({ devices: [fixtureDevice("desktop", { routes: [failedRoute, ...fixtureRoutes().slice(1)] }), fixtureDevice("mobile")] });
+
+  assert.match(validateS05BrowserEvidence(evidence).join("\n"), /device desktop route \/ assertion main-visible must pass/);
+});
+
+test("S05 browser evidence validation rejects malformed timestamps and private path leakage", () => {
+  const evidence = fixtureBrowserEvidence({ checkedAt: "not-a-date", notes: "debug file:///home/keith/.gsd/private" });
+  const errors = validateS05BrowserEvidence(evidence).join("\n");
+
+  assert.match(errors, /checkedAt/);
+  assert.match(errors, /file URL path/);
+  assert.match(errors, /absolute local path/);
+  assert.match(errors, /private GSD path/);
+});
+
+test("S05 launch verification report rejects stale S09 slice values", () => {
+  const staticSmoke = fixtureStaticSmoke();
+  const browserEvidence = fixtureBrowserEvidence();
+  const launchExport = { ...fixtureLaunchExport(), slice: "S09" };
+  const report = createS05LaunchVerificationReport({ now: new Date("2026-01-02T03:04:05.000Z"), staticSmoke, browserEvidence, launchExport });
+
+  assert.equal(report.status, "fail");
+  assert.match(validateS05LaunchVerificationReport(report).join("\n"), /gate routeLinkLeakage must pass/);
+});
+
+test("S05 launch verification report accepts pass artifacts and stays redaction-safe", () => {
+  const report = createS05LaunchVerificationReport({
+    now: new Date("2026-01-02T03:04:05.000Z"),
+    staticSmoke: fixtureStaticSmoke(),
+    browserEvidence: fixtureBrowserEvidence(),
+    launchExport: fixtureLaunchExport(),
+  });
+
+  assert.equal(report.status, "pass");
+  assert.equal(report.generatedAt, "2026-01-02T03:04:05.000Z");
+  assert.deepEqual(validateS05LaunchVerificationReport(report), []);
+  assert.equal(JSON.stringify(report).includes("/home/"), false);
+  assert.equal(JSON.stringify(report).includes(".gsd"), false);
+});
+
+function fixtureRoute(route: string, className: string) {
+  return {
+    route,
+    className,
+    url: `http://127.0.0.1:4321${route}`,
+    status: 200,
+    title: className,
+    assertions: [
+      { name: "http-200", status: "pass" },
+      { name: "main-visible", status: "pass" },
+      { name: "no-private-leakage", status: "pass" },
+    ],
+  };
+}
+
+function fixtureRoutes() {
+  return [
+    fixtureRoute("/", "homepage"),
+    fixtureRoute("/races/california-governor/", "race"),
+    fixtureRoute("/sources/official-source/", "source"),
+    fixtureRoute("/entities/candidate-one/", "entity"),
+    fixtureRoute("/how-we-use-ai/", "disclosure"),
+  ];
+}
+
+function fixtureDevice(kind: "desktop" | "mobile", overrides: Record<string, unknown> = {}) {
+  return {
+    name: kind,
+    kind,
+    viewport: kind === "desktop" ? { width: 1440, height: 1000, isMobile: false } : { width: 390, height: 844, isMobile: true },
+    userAgent: `${kind} fixture browser`,
+    consoleErrors: [],
+    routes: fixtureRoutes(),
+    ...overrides,
+  };
+}
+
+function fixtureBrowserEvidence(overrides: Record<string, unknown> = {}) {
+  return {
+    schemaVersion: 1,
+    slice: "S05",
+    generatedBy: "browser-tools",
+    checkedAt: "2026-01-02T03:04:05.000Z",
+    origin: "http://127.0.0.1:4321",
+    devices: [fixtureDevice("desktop"), fixtureDevice("mobile")],
+    ...overrides,
+  };
+}
+
+function fixtureStaticSmoke() {
+  return {
+    schemaVersion: 1,
+    slice: "S05",
+    generatedBy: "scripts/smoke-s05-static-export.mjs",
+    status: "pass",
+    startedAt: "2026-01-02T03:04:05.000Z",
+    completedAt: "2026-01-02T03:04:06.000Z",
+    origin: "http://127.0.0.1:4321",
+    counts: { checkedRoutes: 5, redirectChecks: 4, assetChecks: 1 },
+    checkedRoutes: fixtureRoutes().map((route) => ({ route: route.route, status: 200, contentType: "text/html; charset=utf-8", bytes: 100 })),
+    redirectChecks: [
+      { route: "/races/california-governor", status: 308, location: "/races/california-governor/", expectedLocation: "/races/california-governor/" },
+      { route: "/sources/official-source", status: 308, location: "/sources/official-source/", expectedLocation: "/sources/official-source/" },
+      { route: "/entities/candidate-one", status: 308, location: "/entities/candidate-one/", expectedLocation: "/entities/candidate-one/" },
+      { route: "/how-we-use-ai", status: 308, location: "/how-we-use-ai/", expectedLocation: "/how-we-use-ai/" },
+    ],
+    assetChecks: [{ asset: "/_next/static/app.js", status: 200, contentType: "text/javascript; charset=utf-8", expectedType: "text/javascript", bytes: 10 }],
+  };
+}
+
+function fixtureLaunchExport() {
+  return {
+    schemaVersion: 1,
+    slice: "S05",
+    generatedBy: "scripts/assert-s05-launch-export.mjs",
+    generatedAt: "2026-01-02T03:04:05.000Z",
+    status: "pass",
+    origin: "https://votes.yayarea.news",
+    counts: { htmlFiles: 5, routes: 5, linksChecked: 8, brokenLinks: 0, leakFindings: 0 },
+    checkedRoutes: fixtureRoutes().map((route) => ({ route: route.route, className: route.className, exportPath: route.route === "/" ? "out/index.html" : `out${route.route}index.html`, status: "pass", htmlBytes: 100, hasTitle: true, hasCanonical: true, missingText: [] })),
+  };
+}
 
 function fixturePublicData() {
   return {
