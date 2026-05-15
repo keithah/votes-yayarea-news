@@ -39,6 +39,7 @@ Current scripts:
 | `pnpm verify:s06` | Run the full S06 recommendation matrix verification: public data validation, matrix model and route tests, typecheck, static build, and mayor matrix HTML assertions. |
 | `pnpm verify:s07` | Run the full S07 receipts, reviewed-summary, and AI disclosure verification: public data validation, data/model/route tests, typecheck, static build, and exported HTML assertions for receipt readiness, reviewed summary evidence, and footer disclosure reachability. |
 | `pnpm verify:s08` | Run the full S08 entity/source drill-down verification: public data validation, data/model/route tests, typecheck, static build, and exported HTML assertions for entity pages, source pages, related links, public receipts, diagnostics, and footer disclosure reachability. |
+| `pnpm verify:s09` | Run the full S09 launch QA verification: public data validation, data/share/analytics/launch-gate tests, typecheck, static build, share-card/export assertions, local static smoke, and launch-gate recording under `data/launch/latest.json`. |
 
 ## S02 data skeleton
 
@@ -195,6 +196,20 @@ Expected browser smoke path after `pnpm build` or `pnpm verify:s08`:
 2. Confirm the entity page shows public recommendation counts, related race/source links, verified public recommendation receipts, evidence quotes, source URLs, and visible diagnostics.
 3. Return to `/races/mayor/` and follow the San Francisco Chronicle source page link to `/sources/san-francisco-chronicle-editorial-board/`.
 4. Confirm the source page shows related races/entities, verified public recommendation receipts, evidence quotes, public source URLs, visible diagnostics, and the footer disclosure link.
+
+### S09 launch QA gates
+
+S09 adds the closeout command for public launch QA:
+
+```bash
+pnpm verify:s09
+```
+
+`pnpm verify:s09` is local, credential-free, and network-free. It prints each phase, stops at the first failing phase, and chains public data validation, data/share/analytics/launch-gate tests, TypeScript typecheck, the static Next.js build, `scripts/assert-s09-export.mjs`, a production-like local static smoke server, and `scripts/record-s09-launch-gates.mjs`.
+
+The S09 export assertions are path-qualified across `/`, `/races/mayor/`, `/how-we-use-ai/`, `/entities/sample-candidate-a/`, and `/sources/san-francisco-chronicle-editorial-board/`. They verify static share-card metadata, canonical URLs, required anonymous analytics markers, public route diagnostics, absence of stale placeholder copy, and absence of private-path or directive endorsement-language leakage.
+
+The launch-gate recorder writes `data/launch/latest.json`. Automated blocking gates must be `pass` for `overallStatus` to pass: route exports, metadata/share status, analytics event coverage, public trust leak checks, and local static smoke. `manualLighthouseBrowserNotes` is intentionally explicit and may remain `pending` after repository-only verification; review it before making external launch claims. See [`docs/launch-gates.md`](./docs/launch-gates.md) for the gate schema and failure triage.
 
 ## Static-export constraints
 

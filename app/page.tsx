@@ -24,8 +24,8 @@ export default async function Home() {
           <h1 id="page-title">A public trail for local election endorsements.</h1>
           <p className="lede">
             votes.yayarea.news turns reviewed voter guides, editorial endorsements, and civic
-            source material into static race pages with visible counts, provenance, and clear
-            placeholders where deeper comparison tools are still being built.
+            source material into static race pages with visible counts, provenance, comparison
+            tools, evidence receipts, and AI-use disclosure.
           </p>
           <div className="hero-actions" aria-label="Homepage actions">
             <a className="button button-primary" href="#public-races">
@@ -69,8 +69,8 @@ export default async function Home() {
           <p className="eyebrow">Public race discovery</p>
           <h2 id="public-races-title">Races ready for public review</h2>
           <p>
-            Start with the race shell, then follow source counts and placeholders to see what has
-            been reviewed and what is intentionally deferred to later slices.
+            Start with the race shell, then follow source counts and readiness markers to see what has
+            been reviewed and which public launch gates are active.
           </p>
         </div>
 
@@ -108,12 +108,13 @@ export default async function Home() {
             sparse public record from a rendering bug or missing publication step.
           </p>
         </article>
-        <article className="trust-card placeholder-card">
-          <p className="eyebrow">Coming next</p>
-          <h2>Matrix, receipts, AI disclosure</h2>
+        <article className="trust-card launch-card">
+          <p className="eyebrow">Launch QA</p>
+          <h2>Share, analytics, receipts, and disclosure gates</h2>
           <p>
-            Comparison matrices, receipt drill-downs, and explicit AI-assistance disclosure are
-            reserved placeholders until their static surfaces ship in later slices.
+            Static verification now checks share-card metadata, anonymous analytics markers,
+            evidence receipts, source/entity drill-downs, AI disclosure, and public trust leaks
+            before launch claims.
           </p>
         </article>
       </section>
@@ -161,9 +162,9 @@ function RaceCard({ race }: { race: RaceUiModel }) {
         )}
       </div>
       <ul className="readiness-list" aria-label="Race module readiness">
-        <li className={race.placeholders.matrixReady ? "ready" : "pending"}>Matrix placeholder</li>
-        <li className={race.placeholders.receiptsReady ? "ready" : "pending"}>Receipts placeholder</li>
-        <li className={race.placeholders.aiDisclosureReady ? "ready" : "pending"}>AI disclosure placeholder</li>
+        <li className={race.placeholders.matrixReady ? "ready" : "pending"}>Matrix ready</li>
+        <li className={race.placeholders.receiptsReady ? "ready" : "pending"}>Receipts ready</li>
+        <li className={race.placeholders.aiDisclosureReady ? "ready" : "pending"}>AI disclosure ready</li>
       </ul>
       <Link className="card-link" href={href} aria-label={`Open ${race.race.title}`}>
         Open race shell

@@ -23,7 +23,8 @@
     "verify:s05": "bash scripts/verify-s05.sh",
     "verify:s06": "bash scripts/verify-s06.sh",
     "verify:s07": "bash scripts/verify-s07.sh",
-    "verify:s08": "bash scripts/verify-s08.sh"
+    "verify:s08": "bash scripts/verify-s08.sh",
+    "verify:s09": "bash scripts/verify-s09.sh"
   },
   "dependencies": {
     "next": "^16.0.0",
