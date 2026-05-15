@@ -1,4 +1,4 @@
-import type { Entity, Evidence, Position, PositionKind, Race, Source, Theme } from "../data/types";
+import type { Entity, Evidence, Position, PositionKind, Race, Source, Summary, Theme } from "../data/types";
 
 export interface PublicRaceUiInput {
   race: Race;
@@ -157,6 +157,8 @@ export interface RacePositionCard {
   entityId: string;
   sourceId: string;
   kind: PositionKind;
+  status: Position["status"];
+  publicationStatus: Position["publicationStatus"];
   label: string;
   rationale?: string;
   evidenceCount: number;
@@ -182,8 +184,81 @@ export interface SourceTypeBreakdown {
 
 export interface SummaryVisibility {
   visible: boolean;
+  id?: string;
+  status?: Summary["status"];
+  publicationStatus?: Summary["publicationStatus"];
   text?: string;
+  evidenceIds: string[];
   evidenceCount: number;
+}
+
+export type RaceReceiptStatus = "available" | "unavailable";
+export type RaceReceiptEmptyReason = "no-public-position" | "no-public-evidence";
+export type ReviewedSummaryStatus = "available" | "unavailable";
+export type ReviewedSummaryEmptyReason = "no-reviewed-summary" | "no-public-evidence";
+
+export interface RaceReceiptCollectionModel {
+  raceId: string;
+  raceSlug: string;
+  receiptCount: number;
+  availableCount: number;
+  unavailableCount: number;
+  empty: boolean;
+  byCellId: Record<string, RaceReceiptModel>;
+}
+
+export interface RaceReceiptModel {
+  cellId: string;
+  cellKey: string;
+  source: RaceReceiptLabel;
+  candidate: RaceReceiptLabel;
+  status: RaceReceiptStatus;
+  emptyReason?: RaceReceiptEmptyReason;
+  position: RaceReceiptPosition;
+  positionIds: string[];
+  evidenceIds: string[];
+  evidenceCount: number;
+  evidence: PublicReceiptEvidence[];
+}
+
+export interface RaceReceiptLabel {
+  id: string;
+  label: string;
+}
+
+export interface RaceReceiptPosition {
+  kind?: PositionKind;
+  label: string;
+}
+
+export interface PublicReceiptEvidence {
+  id: string;
+  sourceId: string;
+  entityId?: string;
+  raceId?: string;
+  artifactId?: string;
+  chunkId?: string;
+  url: string;
+  kind: Evidence["kind"];
+  quote: string;
+  capturedAt?: string;
+  source: RaceReceiptLabel;
+  candidate?: RaceReceiptLabel;
+  position: RaceReceiptPosition;
+  positionId: string;
+  reviewStatus: Position["status"];
+  publicationStatus: Position["publicationStatus"];
+}
+
+export interface ReviewedSummaryEvidenceModel {
+  visible: boolean;
+  status: ReviewedSummaryStatus;
+  emptyReason?: ReviewedSummaryEmptyReason;
+  summaryId?: string;
+  text?: string;
+  evidenceIds: string[];
+  evidenceCount: number;
+  evidence: PublicReceiptEvidence[];
 }
 
 export interface ThemeVisibility {
@@ -229,6 +304,8 @@ export function buildRaceUiModel(input: PublicRaceUiInput): RaceUiModel {
     entityId: position.entityId,
     sourceId: position.sourceId,
     kind: position.kind,
+    status: position.status,
+    publicationStatus: position.publicationStatus,
     label: position.label,
     rationale: position.rationale,
     evidenceCount: position.evidence.length,
@@ -327,6 +404,116 @@ export function buildRecommendationMatrixModel(ui: RaceUiModel): RecommendationM
     filters: buildRecommendationMatrixFilters(sources, candidates, cells),
     empty: candidates.length === 0 || sources.length === 0,
   };
+}
+
+export function buildRaceReceiptsModel(ui: RaceUiModel, matrix: RecommendationMatrixModel): RaceReceiptCollectionModel {
+  const sourceById = new Map(ui.sources.map((source) => [source.id, source]));
+  const candidateById = new Map(ui.candidates.map((candidate) => [candidate.id, candidate]));
+  const positionById = new Map(ui.positions.map((position) => [position.id, position]));
+  const byCellId: Record<string, RaceReceiptModel> = {};
+
+  Object.values(matrix.cells).forEach((cell) => {
+    const source = sourceById.get(cell.sourceId);
+    const candidate = candidateById.get(cell.entityId);
+    const primaryPosition = cell.positionIds.map((positionId) => positionById.get(positionId)).find(isDefined);
+    const evidence = cell.positionIds.flatMap((positionId) => {
+      const position = positionById.get(positionId);
+      if (!position) return [];
+      return position.evidence.map((item) => buildPublicReceiptEvidence(item, position, sourceById, candidateById));
+    });
+    const status: RaceReceiptStatus = cell.state === "position" && evidence.length > 0 ? "available" : "unavailable";
+    const emptyReason: RaceReceiptEmptyReason | undefined =
+      status === "available" ? undefined : cell.state === "no-public-position" ? "no-public-position" : "no-public-evidence";
+
+    byCellId[cell.id] = {
+      cellId: cell.id,
+      cellKey: cell.key,
+      source: { id: cell.sourceId, label: source?.name ?? cell.sourceId },
+      candidate: { id: cell.entityId, label: candidate?.name ?? cell.entityId },
+      status,
+      emptyReason,
+      position: {
+        kind: primaryPosition?.kind,
+        label: primaryPosition?.label ?? cell.positionKindLabel,
+      },
+      positionIds: [...cell.positionIds],
+      evidenceIds: [...cell.evidenceIds],
+      evidenceCount: evidence.length,
+      evidence,
+    };
+  });
+
+  const receipts = Object.values(byCellId);
+  const availableCount = receipts.filter((receipt) => receipt.status === "available").length;
+  const unavailableCount = receipts.length - availableCount;
+
+  return {
+    raceId: ui.race.id,
+    raceSlug: ui.race.slug,
+    receiptCount: receipts.length,
+    availableCount,
+    unavailableCount,
+    empty: receipts.length === 0,
+    byCellId,
+  };
+}
+
+export function buildRaceReviewedSummaryModel(ui: RaceUiModel): ReviewedSummaryEvidenceModel {
+  if (!ui.summary.visible || ui.summary.status !== "reviewed" || ui.summary.publicationStatus !== "public") {
+    return {
+      visible: false,
+      status: "unavailable",
+      emptyReason: "no-reviewed-summary",
+      evidenceIds: ui.summary.evidenceIds ?? [],
+      evidenceCount: 0,
+      evidence: [],
+    };
+  }
+
+  const evidenceById = buildPublicReceiptEvidenceById(ui);
+  const evidence = ui.summary.evidenceIds.map((evidenceId) => evidenceById.get(evidenceId)).filter(isDefined);
+
+  return {
+    visible: true,
+    status: evidence.length > 0 ? "available" : "unavailable",
+    emptyReason: evidence.length > 0 ? undefined : "no-public-evidence",
+    summaryId: ui.summary.id,
+    text: ui.summary.text,
+    evidenceIds: [...ui.summary.evidenceIds],
+    evidenceCount: evidence.length,
+    evidence,
+  };
+}
+
+function buildPublicReceiptEvidenceById(ui: RaceUiModel): Map<string, PublicReceiptEvidence> {
+  const sourceById = new Map(ui.sources.map((source) => [source.id, source]));
+  const candidateById = new Map(ui.candidates.map((candidate) => [candidate.id, candidate]));
+  return new Map(
+    ui.positions.flatMap((position) => position.evidence.map((evidence) => [evidence.id, buildPublicReceiptEvidence(evidence, position, sourceById, candidateById)] as const)),
+  );
+}
+
+function buildPublicReceiptEvidence(
+  evidence: Evidence,
+  position: RacePositionCard,
+  sourceById: Map<string, RaceSourceCard>,
+  candidateById: Map<string, RaceEntityCard>,
+): PublicReceiptEvidence {
+  const source = sourceById.get(evidence.sourceId);
+  const candidate = evidence.entityId ? candidateById.get(evidence.entityId) : undefined;
+  return {
+    ...evidence,
+    source: { id: evidence.sourceId, label: source?.name ?? evidence.sourceId },
+    candidate: evidence.entityId ? { id: evidence.entityId, label: candidate?.name ?? evidence.entityId } : undefined,
+    position: { kind: position.kind, label: position.label },
+    positionId: position.id,
+    reviewStatus: position.status,
+    publicationStatus: position.publicationStatus,
+  };
+}
+
+function isDefined<T>(value: T | undefined): value is T {
+  return value !== undefined;
 }
 
 function groupPositionsByCellKey(positions: RacePositionCard[]): Map<string, RacePositionCard[]> {
@@ -543,10 +730,14 @@ function buildSourceTypeBreakdown(sources: Source[], positions: Position[]): Sou
 }
 
 function buildSummaryVisibility(race: Race, evidenceById: Map<string, Evidence>): SummaryVisibility {
-  if (!race.summary) return { visible: false, evidenceCount: 0 };
+  if (!race.summary) return { visible: false, evidenceIds: [], evidenceCount: 0 };
   return {
     visible: true,
+    id: race.summary.id,
+    status: race.summary.status,
+    publicationStatus: race.summary.publicationStatus,
     text: race.summary.text,
+    evidenceIds: [...race.summary.evidenceIds],
     evidenceCount: countKnownEvidenceIds(race.summary.evidenceIds, evidenceById),
   };
 }
