@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "checkedFiles": [
+    "data/ingested/artifacts/src-growsf-mayor-sample.json",
+    "data/ingested/artifacts/src-sf-chronicle-mayor-sample.json",
+    "data/ingested/chunks/src-growsf-mayor-sample.json",
+    "data/ingested/chunks/src-sf-chronicle-mayor-sample.json",
+    "data/ingested/raw/src-growsf-mayor-sample.html",
+    "data/ingested/raw/src-sf-chronicle-mayor-sample.html",
+    "data/ingested/runs/latest.json",
+    "data/ingestion/manifest.json",
+    "data/public/sources.json"
+  ],
+  "counts": {
+    "targets": 2,
+    "artifacts": 2,
+    "chunks": 2,
+    "issues": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "issues": []
+}
