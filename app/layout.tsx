@@ -32,9 +32,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <footer className="site-footer">
             <p>
               Static public election guide in progress. Race pages show reviewed public data, live
-              source-by-candidate recommendation matrices, and label unfinished receipt, AI
-              disclosure, and drill-down surfaces as placeholders.
+              source-by-candidate recommendation matrices, evidence receipts, and reviewed AI
+              summary support.
             </p>
+            <nav className="footer-nav" aria-label="Footer navigation">
+              <Link href="/how-we-use-ai" data-footer-disclosure-link="how-we-use-ai">
+                How we use AI
+              </Link>
+            </nav>
           </footer>
         </div>
       </body>
