@@ -1365,3 +1365,82 @@ code {
     display: grid;
   }
 }
+
+.drilldown-page-shell .race-hero-copy {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.drilldown-primary-link,
+.drilldown-link-list a,
+.candidate-card h3 a,
+.source-list strong a {
+  color: var(--accent-strong);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.drilldown-primary-link {
+  width: fit-content;
+}
+
+.drilldown-grid,
+.drilldown-receipt-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.drilldown-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+}
+
+.drilldown-link-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.drilldown-link-list li {
+  display: grid;
+  gap: 0.28rem;
+  padding-block-start: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.drilldown-link-list span,
+.drilldown-receipt-card .muted-copy {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.drilldown-receipt-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.drilldown-receipt-card h3,
+.drilldown-receipt-card p {
+  margin-bottom: 0;
+}
+
+.source-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.55rem;
+}
+
+.source-actions a,
+.source-actions span {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .source-actions {
+    justify-content: flex-start;
+  }
+}

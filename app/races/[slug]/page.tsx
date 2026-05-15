@@ -220,24 +220,6 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
 
       <ReviewedSummary summary={reviewedSummary} />
 
-      <section className="placeholder-grid" aria-label="Deferred public modules">
-        <PlaceholderCard
-          title="Entity pages"
-          ready={ui.placeholders.drilldownReady}
-          body="Candidate drill-down paths will use trailing-slash routes such as /entities/candidate-slug/ once entity pages ship."
-        />
-        <PlaceholderCard
-          title="Entity pages"
-          ready={ui.placeholders.drilldownReady}
-          body="Candidate drill-down paths will use trailing-slash routes such as /entities/candidate-slug/ once entity pages ship."
-        />
-        <PlaceholderCard
-          title="Source pages"
-          ready={ui.placeholders.drilldownReady}
-          body="Source drill-down paths will use trailing-slash routes such as /sources/source-slug/ once source pages ship."
-        />
-      </section>
-
       <section className="route-card" aria-labelledby="themes-title">
         <p className="eyebrow">Themes and provenance</p>
         <h2 id="themes-title">Evidence-backed signals</h2>
@@ -274,7 +256,7 @@ function CandidateCard({ candidate }: { candidate: RaceEntityCard }) {
     <article className="candidate-card">
       <div>
         <p className="eyebrow">{candidate.kind}</p>
-        <h3>{candidate.name}</h3>
+        <h3><a href={`/entities/${candidate.slug}/`}>{candidate.name}</a></h3>
         {candidate.description ? <p className="muted-copy">{candidate.description}</p> : null}
       </div>
       <dl className="candidate-counts" aria-label={`${candidate.name} public position counts`}>
@@ -304,23 +286,16 @@ function SourceItem({ source }: { source: RaceSourceCard }) {
   return (
     <li>
       <div>
-        <strong>{source.name}</strong>
+        <strong><a href={`/sources/${source.slug}/`}>{source.name}</a></strong>
         <span>
           {source.sourceType} · {source.positionCount} positions · {source.evidenceCount} evidence
         </span>
       </div>
-      {href ? <a href={href}>Visit source</a> : <span>No public URL</span>}
+      <div className="source-actions">
+        <a href={`/sources/${source.slug}/`}>Source page</a>
+        {href ? <a href={href}>Visit source</a> : <span>No public URL</span>}
+      </div>
     </li>
-  );
-}
-
-function PlaceholderCard({ title, ready, body }: { title: string; ready: boolean; body: string }) {
-  return (
-    <article className="placeholder-module" aria-labelledby={`${slugify(title)}-title`}>
-      <p className={ready ? "status-pill ready" : "status-pill pending"}>{ready ? "Data ready" : "Waiting for data"}</p>
-      <h2 id={`${slugify(title)}-title`}>{title}</h2>
-      <p>{body}</p>
-    </article>
   );
 }
 
@@ -331,8 +306,4 @@ function formatDate(value: string): string {
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(value));
-}
-
-function slugify(value: string): string {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
