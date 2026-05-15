@@ -15,6 +15,7 @@
     "extract:positions": "tsx scripts/extract-positions.ts",
     "validate-extraction": "tsx scripts/validate-extraction.ts",
     "review:positions": "tsx scripts/review-positions.ts",
+    "review:coverage": "tsx scripts/report-reviewed-position-coverage.ts",
     "verify:s01": "bash scripts/verify-s01.sh",
     "test:data": "node --import tsx --test tests/data/*.test.ts",
     "test:ingestion": "node --import tsx --test tests/ingestion/*.test.ts",

@@ -1,0 +1,812 @@
+{
+  "ok": true,
+  "generatedAt": "2026-05-15T08:16:29.613Z",
+  "checkedFiles": [
+    "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/coverage/latest.json",
+    "data/ingested/raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt",
+    "data/ingested/runs/latest.json",
+    "data/ingested/validation/latest.json",
+    "data/ingestion/manifest.json",
+    "data/ingestion/source-coverage.json",
+    "data/public/collections.json",
+    "data/public/entities.json",
+    "data/public/races/board-of-equalization-district-2.json",
+    "data/public/races/california-attorney-general.json",
+    "data/public/races/california-controller.json",
+    "data/public/races/california-governor.json",
+    "data/public/races/california-insurance-commissioner.json",
+    "data/public/races/california-lieutenant-governor.json",
+    "data/public/races/california-secretary-of-state.json",
+    "data/public/races/california-superintendent-public-instruction.json",
+    "data/public/races/california-treasurer.json",
+    "data/public/races/san-francisco-prop-a.json",
+    "data/public/races/san-francisco-prop-b.json",
+    "data/public/races/san-francisco-prop-c.json",
+    "data/public/races/san-francisco-prop-d.json",
+    "data/public/races/sfusd-board-of-education.json",
+    "data/public/races/state-assembly-district-17.json",
+    "data/public/races/state-assembly-district-19.json",
+    "data/public/races/superior-court-judge-seat-16.json",
+    "data/public/races/supervisor-district-2.json",
+    "data/public/races/supervisor-district-4.json",
+    "data/public/races/us-house-district-11.json",
+    "data/public/races/us-house-district-15.json",
+    "data/public/sources.json",
+    "manual/overrides/races/board-of-equalization-district-2.json",
+    "manual/overrides/races/california-attorney-general.json",
+    "manual/overrides/races/california-controller.json",
+    "manual/overrides/races/california-governor.json",
+    "manual/overrides/races/california-insurance-commissioner.json",
+    "manual/overrides/races/california-lieutenant-governor.json",
+    "manual/overrides/races/california-secretary-of-state.json",
+    "manual/overrides/races/california-superintendent-public-instruction.json",
+    "manual/overrides/races/california-treasurer.json",
+    "manual/overrides/races/san-francisco-prop-a.json",
+    "manual/overrides/races/san-francisco-prop-b.json",
+    "manual/overrides/races/san-francisco-prop-c.json",
+    "manual/overrides/races/san-francisco-prop-d.json",
+    "manual/overrides/races/sfusd-board-of-education.json",
+    "manual/overrides/races/state-assembly-district-17.json",
+    "manual/overrides/races/state-assembly-district-19.json",
+    "manual/overrides/races/superior-court-judge-seat-16.json",
+    "manual/overrides/races/supervisor-district-2.json",
+    "manual/overrides/races/supervisor-district-4.json",
+    "manual/overrides/races/us-house-district-11.json",
+    "manual/overrides/races/us-house-district-15.json"
+  ],
+  "counts": {
+    "races": 21,
+    "publicRaces": 13,
+    "positions": 61,
+    "publicPositions": 61,
+    "publicEvidence": 61,
+    "reviewedPublicPositions": 61,
+    "evidenceBackedPublicPositions": 61,
+    "provenanceCompleteEvidence": 0,
+    "provenancePartialEvidence": 0,
+    "provenanceAbsentEvidence": 61,
+    "endorse": 0,
+    "oppose": 0,
+    "rank": 0,
+    "noPosition": 0,
+    "informational": 61,
+    "errors": 0,
+    "warnings": 0
+  },
+  "byRace": [
+    {
+      "raceId": "race-board-of-equalization-district-2",
+      "raceSlug": "board-of-equalization-district-2",
+      "title": "Board of Equalization District 2",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-california-attorney-general",
+      "raceSlug": "california-attorney-general",
+      "title": "California Attorney General",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-california-controller",
+      "raceSlug": "california-controller",
+      "title": "California Controller",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-california-governor",
+      "raceSlug": "california-governor",
+      "title": "California Governor",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 122,
+      "publicPositions": 61,
+      "publicEvidence": 61,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 61
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 61,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 61,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 61
+      }
+    },
+    {
+      "raceId": "race-california-insurance-commissioner",
+      "raceSlug": "california-insurance-commissioner",
+      "title": "California Insurance Commissioner",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-california-lieutenant-governor",
+      "raceSlug": "california-lieutenant-governor",
+      "title": "California Lieutenant Governor",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-california-secretary-of-state",
+      "raceSlug": "california-secretary-of-state",
+      "title": "California Secretary of State",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-california-superintendent-public-instruction",
+      "raceSlug": "california-superintendent-public-instruction",
+      "title": "California Superintendent of Public Instruction",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-california-treasurer",
+      "raceSlug": "california-treasurer",
+      "title": "California Treasurer",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-san-francisco-prop-a",
+      "raceSlug": "san-francisco-prop-a",
+      "title": "San Francisco Proposition A",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-san-francisco-prop-b",
+      "raceSlug": "san-francisco-prop-b",
+      "title": "San Francisco Proposition B",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-san-francisco-prop-c",
+      "raceSlug": "san-francisco-prop-c",
+      "title": "San Francisco Proposition C",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-san-francisco-prop-d",
+      "raceSlug": "san-francisco-prop-d",
+      "title": "San Francisco Proposition D",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-sfusd-board-of-education",
+      "raceSlug": "sfusd-board-of-education",
+      "title": "SFUSD Board of Education",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-state-assembly-district-17",
+      "raceSlug": "state-assembly-district-17",
+      "title": "State Assembly District 17",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-state-assembly-district-19",
+      "raceSlug": "state-assembly-district-19",
+      "title": "State Assembly District 19",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-superior-court-judge-seat-16",
+      "raceSlug": "superior-court-judge-seat-16",
+      "title": "Superior Court Judge Seat 16",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-supervisor-district-2",
+      "raceSlug": "supervisor-district-2",
+      "title": "Supervisor District 2",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-supervisor-district-4",
+      "raceSlug": "supervisor-district-4",
+      "title": "Supervisor District 4",
+      "publicationStatus": "hidden",
+      "status": "draft",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-us-house-district-11",
+      "raceSlug": "us-house-district-11",
+      "title": "U.S. House District 11",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "raceId": "race-us-house-district-15",
+      "raceSlug": "us-house-district-15",
+      "title": "U.S. House District 15",
+      "publicationStatus": "public",
+      "status": "verified",
+      "positions": 0,
+      "publicPositions": 0,
+      "publicEvidence": 0,
+      "byKind": {
+        "endorse": 0,
+        "oppose": 0,
+        "rank": 0,
+        "no-position": 0,
+        "informational": 0
+      },
+      "byReviewStatus": {
+        "draft": 0,
+        "reviewed": 0,
+        "verified": 0,
+        "published": 0,
+        "rejected": 0
+      },
+      "byPublicationStatus": {
+        "hidden": 0,
+        "public": 0,
+        "archived": 0
+      },
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 0
+      }
+    }
+  ],
+  "bySource": [
+    {
+      "sourceId": "src-ca-secretary-of-state",
+      "name": "California Secretary of State",
+      "coverageStatus": "captured",
+      "runtimeStatus": "captured",
+      "positions": 61,
+      "publicPositions": 61,
+      "publicEvidence": 61,
+      "publicRecommendationPositions": 0,
+      "provenance": {
+        "complete": 0,
+        "partial": 0,
+        "absent": 61
+      }
+    }
+  ],
+  "issues": []
+}
