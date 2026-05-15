@@ -38,6 +38,7 @@ Current scripts:
 | `pnpm verify:s05` | Run the full S05 public static UI verification: public data validation, data/UI route tests, typecheck, static build, and homepage-to-mayor export smoke checks. |
 | `pnpm verify:s06` | Run the full S06 recommendation matrix verification: public data validation, matrix model and route tests, typecheck, static build, and mayor matrix HTML assertions. |
 | `pnpm verify:s07` | Run the full S07 receipts, reviewed-summary, and AI disclosure verification: public data validation, data/model/route tests, typecheck, static build, and exported HTML assertions for receipt readiness, reviewed summary evidence, and footer disclosure reachability. |
+| `pnpm verify:s08` | Run the full S08 entity/source drill-down verification: public data validation, data/model/route tests, typecheck, static build, and exported HTML assertions for entity pages, source pages, related links, public receipts, diagnostics, and footer disclosure reachability. |
 
 ## S02 data skeleton
 
@@ -175,6 +176,25 @@ Expected browser smoke path after `pnpm build` or `pnpm verify:s07`:
 2. Confirm the receipt drawer shows the candidate, source, position, status, quote, source link, and review/publication status.
 3. Expand the reviewed AI summary and confirm supporting evidence quotes and links are visible.
 4. Use the footer link to open `/how-we-use-ai/` and confirm the AI assistance, human review, automation boundary, evidence, publication gate, limitations, and corrections sections are present.
+
+### S08 entity and source drill-downs
+
+S08 adds static, public-only entity and source drill-down pages and links representative race cards to those routes. The closeout command is:
+
+```bash
+pnpm verify:s08
+```
+
+`pnpm verify:s08` is local, credential-free, and network-free. It prints each verification phase before running it, stops at the first failing phase, and runs public data validation, data/model/route tests, TypeScript typecheck, the static Next.js build, and `scripts/assert-s08-export.mjs` against the exported sample candidate entity page, San Francisco Chronicle source page, and mayor race page.
+
+The export assertions intentionally check route-level diagnostics and public trust signals rather than implementation internals. They verify entity/source headings, recommendation/evidence counts, checked-file diagnostics, verified/public recommendation receipt attributes, evidence quotes and source URLs, related race/source/entity links, race-page drill-down links, `/how-we-use-ai/` footer reachability, absence of stale drill-down placeholder copy, and absence of `.gsd` private path leakage.
+
+Expected browser smoke path after `pnpm build` or `pnpm verify:s08`:
+
+1. Open `/races/mayor/` and follow the Sample Candidate A link to `/entities/sample-candidate-a/`.
+2. Confirm the entity page shows public recommendation counts, related race/source links, verified public recommendation receipts, evidence quotes, source URLs, and visible diagnostics.
+3. Return to `/races/mayor/` and follow the San Francisco Chronicle source page link to `/sources/san-francisco-chronicle-editorial-board/`.
+4. Confirm the source page shows related races/entities, verified public recommendation receipts, evidence quotes, public source URLs, visible diagnostics, and the footer disclosure link.
 
 ## Static-export constraints
 
