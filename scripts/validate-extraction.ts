@@ -30,7 +30,8 @@ function parseArgs(args: string[]): CliOptions {
   const parsed: CliOptions = {};
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
-    if (arg === "--help" || arg === "-h") parsed.help = true;
+    if (arg === "--") continue;
+    else if (arg === "--help" || arg === "-h") parsed.help = true;
     else if (arg === "--draft") parsed.draft = requireValue(args, ++index, arg);
     else if (arg === "--validation-path") parsed.validationPath = requireValue(args, ++index, arg);
     else if (arg === "--manifest") parsed.manifest = requireValue(args, ++index, arg);

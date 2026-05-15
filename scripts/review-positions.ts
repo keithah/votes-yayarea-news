@@ -33,7 +33,8 @@ function parseArgs(args: string[]): CliOptions {
   const parsed: CliOptions = { raceSlug: "" };
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
-    if (index === 0 && (arg === "prepare" || arg === "status" || arg === "publish")) parsed.command = arg;
+    if (arg === "--") continue;
+    else if (index === 0 && (arg === "prepare" || arg === "status" || arg === "publish")) parsed.command = arg;
     else if (arg === "--help" || arg === "-h") parsed.help = true;
     else if (arg === "--race-slug") parsed.raceSlug = requireValue(args, ++index, arg);
     else if (arg === "--draft") parsed.draftPath = requireValue(args, ++index, arg);

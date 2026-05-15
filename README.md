@@ -25,10 +25,16 @@ Current scripts:
 | `pnpm test:ingestion` | Run source-ingestion cleaner, chunker, runner, and validation tests. |
 | `pnpm ingest:sources -- --manifest data/ingestion/manifest.json --out data/ingested` | Import representative fixture sources into raw captures, normalized artifacts, chunks, and run diagnostics. |
 | `pnpm validate-ingestion` | Validate generated ingestion outputs and write `data/ingested/validation/latest.json`. |
+| `pnpm extract:positions -- --provider fixture --race-slug mayor` | Run deterministic S04 position extraction over S03 artifacts/chunks and write hidden drafts plus run/validation diagnostics under `data/extracted/`. |
+| `pnpm validate-extraction -- --race-slug mayor` | Revalidate persisted extraction drafts against public race data and S03 artifact/chunk provenance. |
+| `pnpm review:positions prepare --race-slug mayor` | Stage hidden editable review JSON from extraction drafts under `manual/reviews/races/`. |
+| `pnpm review:positions status --race-slug mayor` | Validate local review JSON readiness before publication. |
+| `pnpm review:positions publish --race-slug mayor` | Publish only verified/public review records into `manual/overrides/races/` and exercise public loaders. |
 | `pnpm typecheck` | Run TypeScript without emitting build output. |
 | `pnpm build` | Build the static Next.js export. |
 | `pnpm verify:s02` | Run the full S02 data skeleton verification, including static export checks for the sample mayor debug route. |
 | `pnpm verify:s03` | Run the full S03 ingestion verification: ingestion tests, representative fixture ingestion, ingestion validation, public data validation, typecheck, static build, and generated diagnostics checks. |
+| `pnpm verify:s04` | Run the full S04 extraction/review/publication verification: deterministic extraction, validation, review publish, public data validation, extraction/loader tests, typecheck, static build, and artifact coherence checks. |
 
 ## S02 data skeleton
 
@@ -71,6 +77,45 @@ S04 extraction should read the normalized boundary produced by S03:
 - use `data/ingested/raw/*.html` only for audit, debugging, or manual fallback.
 
 Extraction must not scrape raw external pages at runtime or bypass the generated artifact/chunk contract. Before S04 starts, run `pnpm verify:s03` or at minimum `pnpm validate-ingestion` and proceed only when `data/ingested/validation/latest.json` reports `ok: true` and `counts.errors: 0`.
+
+### S04 extraction and review
+
+S04 turns S03 artifacts/chunks into evidence-linked position drafts, then requires local human review before anything can affect public loaders. The deterministic closeout command is:
+
+```bash
+pnpm verify:s04
+```
+
+`pnpm verify:s04` is local and network-free by default. It runs fixture extraction for `mayor`, writes `data/extracted/drafts/latest.json`, `data/extracted/runs/latest.json`, and `data/extracted/validation/latest.json`, prepares `manual/reviews/races/mayor.json`, marks the representative sample records verified/public for the verifier fixture, publishes them into `manual/overrides/races/mayor.json`, validates public data, runs extraction and loader integration tests, typechecks, builds, and asserts output JSON status/count coherence.
+
+For day-to-day operation, use the same steps manually when you do not want the verifier to update the sample review/override files:
+
+```bash
+pnpm extract:positions -- --provider fixture --race-slug mayor
+pnpm validate-extraction -- --race-slug mayor
+pnpm review:positions prepare --race-slug mayor
+pnpm review:positions status --race-slug mayor
+# edit manual/reviews/races/mayor.json: set reviewed records to status verified/published and publicationStatus public
+pnpm review:positions publish --race-slug mayor
+pnpm validate-data
+```
+
+Live LLM extraction is opt-in and should only be used when `OPENAI_API_KEY` is available in the environment. The operational demo command is:
+
+```bash
+pnpm extract:positions -- --provider openai --model gpt-4o-mini --race-slug mayor
+```
+
+Live failures are expected to fail closed with sanitized diagnostics in `data/extracted/runs/latest.json` and `data/extracted/validation/latest.json`; API keys, request headers, and raw secret-bearing provider responses must not be printed or persisted. Generated drafts and `manual/reviews/` files are never public loader inputs. Public pages see extraction output only after `review:positions publish` copies verified/public records into `manual/overrides/races/` and `pnpm validate-data`/loader tests pass.
+
+Common failure modes:
+
+- Missing S03 artifacts/chunks: rerun `pnpm ingest:sources -- --manifest data/ingestion/manifest.json --out data/ingested`, then `pnpm validate-ingestion`.
+- Malformed provider JSON or source/entity/race mismatches: inspect path-qualified issues in `data/extracted/runs/latest.json` and `data/extracted/validation/latest.json`.
+- Missing evidence quotes or chunk provenance: fix the extraction/review record; public validation rejects evidence without required source/artifact/chunk linkage.
+- Publication validation failures: inspect `pnpm review:positions publish --race-slug mayor` output and `manual/reviews/races/mayor.json` before changing overrides directly.
+
+S05 should consume only the validated public-loader surface (`data/public/` plus `manual/overrides/`), not hidden extraction drafts or review staging files.
 
 ## Static-export constraints
 

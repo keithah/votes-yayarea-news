@@ -1,14 +1,14 @@
 {
-  "id": "run-20260515024247",
+  "id": "run-20260515030212",
   "status": "complete",
   "provider": {
     "provider": "fixture",
     "model": "fixture-v1"
   },
   "promptVersion": "position-extraction-v1",
-  "startedAt": "2026-05-15T02:42:47.680Z",
-  "completedAt": "2026-05-15T02:42:47.690Z",
-  "durationMs": 10,
+  "startedAt": "2026-05-15T03:02:12.232Z",
+  "completedAt": "2026-05-15T03:02:12.239Z",
+  "durationMs": 7,
   "inputs": [
     {
       "id": "input-mayor-src-sf-chronicle",
