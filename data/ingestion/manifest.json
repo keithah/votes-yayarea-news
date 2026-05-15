@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "description": "Sample fixture manifest for deterministic ingestion tests. Entries are representative only and are not official 2026 election claims.",
+  "targets": [
+    {
+      "id": "fixture-sf-chronicle-mayor-sample",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-sf-chronicle-mayor-sample",
+      "title": "San Francisco Chronicle mayor guide sample",
+      "inputKind": "html",
+      "fixturePath": "sf-chronicle-mayor-sample.html",
+      "canonicalUrl": "https://www.sfchronicle.com/projects/2026/sample-voter-guide/mayor",
+      "sampleFixture": true,
+      "notes": "Representative fixture for ingestion tests only; not an official 2026 endorsement claim."
+    },
+    {
+      "id": "fixture-growsf-mayor-sample",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-mayor-sample",
+      "title": "GrowSF mayor guide sample",
+      "inputKind": "html",
+      "fixturePath": "growsf-mayor-sample.html",
+      "canonicalUrl": "https://growsf.org/voter-guide/sample-2026/mayor",
+      "sampleFixture": true,
+      "notes": "Representative fixture for ingestion tests only; not an official 2026 recommendation claim."
+    }
+  ]
+}
