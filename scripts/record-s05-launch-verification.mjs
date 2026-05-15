@@ -8,7 +8,8 @@ import { validateS05StaticSmokeReport } from "./smoke-s05-static-export.mjs";
 export const BROWSER_CHECKS_PATH = "data/launch/s05-browser-checks.json";
 export const STATIC_SMOKE_PATH = "data/launch/s05-static-smoke.json";
 export const LAUNCH_EXPORT_PATH = "data/launch/s05-launch-export.json";
-export const FINAL_REPORT_PATH = "data/launch/s05-launch-verification.json";
+export const FINAL_REPORT_PATH = "data/launch/latest.json";
+export const S05_REPORT_PATH = "data/launch/s05-launch-verification.json";
 export const RECORDER_GENERATOR = "scripts/record-s05-launch-verification.mjs";
 
 export const REQUIRED_BROWSER_ROUTE_CLASSES = ["homepage", "race", "source", "entity", "disclosure"];
@@ -180,8 +181,8 @@ function parseArgs(argv = process.argv.slice(2)) {
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     const value = argv[index + 1];
-    if (["--static-smoke-json", "--browser-json", "--launch-export-json", "--json-out"].includes(arg) && !value) throw new Error(`${arg} requires a path value`);
-    if (arg === "--static-smoke-json") options.staticSmokePath = value;
+    if (["--static-smoke-json", "--smoke-json-file", "--browser-json", "--launch-export-json", "--json-out"].includes(arg) && !value) throw new Error(`${arg} requires a path value`);
+    if (arg === "--static-smoke-json" || arg === "--smoke-json-file") options.staticSmokePath = value;
     else if (arg === "--browser-json") options.browserEvidencePath = value;
     else if (arg === "--launch-export-json") options.launchExportPath = value;
     else if (arg === "--json-out") options.jsonOut = value;
@@ -207,6 +208,7 @@ function main() {
     const errors = validateS05LaunchVerificationReport(report);
     if (errors.length > 0) throw new Error(`Phase final-launch-report: ${errors.join("; ")}`);
     writeJson(options.jsonOut, report, projectRoot);
+    if (options.jsonOut === FINAL_REPORT_PATH) writeJson(S05_REPORT_PATH, report, projectRoot);
     console.log(`S05 launch verification recorded at ${options.jsonOut}: ${report.counts.browserDevices} devices, ${report.counts.browserRoutes} browser route checks, status=${report.status}.`);
   } catch (error) {
     console.error(`[record-s05-launch-verification] ${error instanceof Error ? error.message : String(error)}`);

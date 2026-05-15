@@ -23,6 +23,8 @@ import {
 } from "../../scripts/smoke-s05-static-export.mjs";
 // @ts-ignore JS launch-verification helpers are exercised through node --import tsx tests.
 import {
+  FINAL_REPORT_PATH,
+  S05_REPORT_PATH,
   createS05LaunchVerificationReport,
   validateS05BrowserEvidence,
   validateS05LaunchVerificationReport,
@@ -289,6 +291,11 @@ test("S05 launch verification report rejects stale S09 slice values", () => {
 
   assert.equal(report.status, "fail");
   assert.match(validateS05LaunchVerificationReport(report).join("\n"), /gate routeLinkLeakage must pass/);
+});
+
+test("S05 launch verification defaults to latest launch gate while preserving the S05-specific artifact path", () => {
+  assert.equal(FINAL_REPORT_PATH, "data/launch/latest.json");
+  assert.equal(S05_REPORT_PATH, "data/launch/s05-launch-verification.json");
 });
 
 test("S05 launch verification report accepts pass artifacts and stays redaction-safe", () => {

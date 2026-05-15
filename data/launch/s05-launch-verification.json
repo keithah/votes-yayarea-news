@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "slice": "S05",
   "generatedBy": "scripts/record-s05-launch-verification.mjs",
-  "generatedAt": "2026-05-15T09:09:26.826Z",
+  "generatedAt": "2026-05-15T09:13:05.712Z",
   "status": "pass",
   "artifacts": {
     "staticSmoke": "data/launch/s05-static-smoke.json",

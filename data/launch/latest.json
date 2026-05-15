@@ -1,238 +1,33 @@
 {
   "schemaVersion": 1,
-  "slice": "S09",
-  "generatedBy": "scripts/record-s09-launch-gates.mjs",
-  "buildTimestamp": "2026-05-15T05:24:16.636Z",
-  "overallStatus": "pass",
-  "checkedRoutes": [
-    {
-      "route": "/",
-      "exportPath": "out/index.html"
-    },
-    {
-      "route": "/races/mayor/",
-      "exportPath": "out/races/mayor/index.html"
-    },
-    {
-      "route": "/how-we-use-ai/",
-      "exportPath": "out/how-we-use-ai/index.html"
-    },
-    {
-      "route": "/entities/sample-candidate-a/",
-      "exportPath": "out/entities/sample-candidate-a/index.html"
-    },
-    {
-      "route": "/sources/san-francisco-chronicle-editorial-board/",
-      "exportPath": "out/sources/san-francisco-chronicle-editorial-board/index.html"
-    }
-  ],
+  "slice": "S05",
+  "generatedBy": "scripts/record-s05-launch-verification.mjs",
+  "generatedAt": "2026-05-15T09:13:05.712Z",
+  "status": "pass",
+  "artifacts": {
+    "staticSmoke": "data/launch/s05-static-smoke.json",
+    "browserEvidence": "data/launch/s05-browser-checks.json",
+    "routeLinkLeakage": "data/launch/s05-launch-export.json"
+  },
+  "counts": {
+    "browserDevices": 2,
+    "browserRoutes": 10,
+    "staticSmokeRoutes": 12,
+    "exportRoutes": 77,
+    "exportLinksChecked": 1104
+  },
   "gates": {
-    "routes": {
-      "status": "pass",
-      "checked": [
-        {
-          "route": "/",
-          "exportPath": "out/index.html",
-          "status": "pass",
-          "htmlBytes": 20664,
-          "hasTitle": true,
-          "hasCanonical": true
-        },
-        {
-          "route": "/races/mayor/",
-          "exportPath": "out/races/mayor/index.html",
-          "status": "pass",
-          "htmlBytes": 54194,
-          "hasTitle": true,
-          "hasCanonical": true
-        },
-        {
-          "route": "/how-we-use-ai/",
-          "exportPath": "out/how-we-use-ai/index.html",
-          "status": "pass",
-          "htmlBytes": 24269,
-          "hasTitle": true,
-          "hasCanonical": true
-        },
-        {
-          "route": "/entities/sample-candidate-a/",
-          "exportPath": "out/entities/sample-candidate-a/index.html",
-          "status": "pass",
-          "htmlBytes": 25922,
-          "hasTitle": true,
-          "hasCanonical": true
-        },
-        {
-          "route": "/sources/san-francisco-chronicle-editorial-board/",
-          "exportPath": "out/sources/san-francisco-chronicle-editorial-board/index.html",
-          "status": "pass",
-          "htmlBytes": 26531,
-          "hasTitle": true,
-          "hasCanonical": true
-        }
-      ]
-    },
-    "metadataShareStatus": {
-      "status": "pass",
-      "routes": [
-        {
-          "route": "/",
-          "status": "pass",
-          "title": "pass",
-          "canonical": "pass",
-          "openGraphImage": "pass",
-          "twitterImage": "pass"
-        },
-        {
-          "route": "/races/mayor/",
-          "status": "pass",
-          "title": "pass",
-          "canonical": "pass",
-          "openGraphImage": "pass",
-          "twitterImage": "pass"
-        },
-        {
-          "route": "/how-we-use-ai/",
-          "status": "pass",
-          "title": "pass",
-          "canonical": "pass",
-          "openGraphImage": "pass",
-          "twitterImage": "pass"
-        },
-        {
-          "route": "/entities/sample-candidate-a/",
-          "status": "pass",
-          "title": "pass",
-          "canonical": "pass",
-          "openGraphImage": "pass",
-          "twitterImage": "pass"
-        },
-        {
-          "route": "/sources/san-francisco-chronicle-editorial-board/",
-          "status": "pass",
-          "title": "pass",
-          "canonical": "pass",
-          "openGraphImage": "pass",
-          "twitterImage": "pass"
-        }
-      ]
-    },
-    "analyticsEventCoverage": {
-      "status": "pass",
-      "events": [
-        {
-          "eventName": "race_page_view",
-          "markerCount": 1,
-          "status": "pass"
-        },
-        {
-          "eventName": "recommendation_matrix_open",
-          "markerCount": 5,
-          "status": "pass"
-        },
-        {
-          "eventName": "ai_summary_expand",
-          "markerCount": 1,
-          "status": "pass"
-        },
-        {
-          "eventName": "receipt_drawer_open",
-          "markerCount": 4,
-          "status": "pass"
-        }
-      ]
-    },
-    "publicTrustLeakChecks": {
-      "status": "pass",
-      "checks": [
-        {
-          "id": "gsd_path",
-          "description": "No .gsd planning paths in public export.",
-          "status": "pass"
-        },
-        {
-          "id": "manual_reviews",
-          "description": "No manual review staging paths in public export.",
-          "status": "pass"
-        },
-        {
-          "id": "extraction_drafts",
-          "description": "No hidden extraction draft paths in public export.",
-          "status": "pass"
-        },
-        {
-          "id": "absolute_local_path",
-          "description": "No machine-local absolute paths in public export.",
-          "status": "pass"
-        },
-        {
-          "id": "file_url",
-          "description": "No local file URLs in public export.",
-          "status": "pass"
-        },
-        {
-          "id": "endorsement_language",
-          "description": "No product-authored directive endorsement language in public export.",
-          "status": "pass"
-        }
-      ]
-    },
     "staticSmoke": {
       "status": "pass",
-      "checkedRoutes": [
-        {
-          "route": "/",
-          "status": 200,
-          "contentType": "text/html; charset=utf-8"
-        },
-        {
-          "route": "/races/mayor/",
-          "status": 200,
-          "contentType": "text/html; charset=utf-8"
-        },
-        {
-          "route": "/how-we-use-ai/",
-          "status": 200,
-          "contentType": "text/html; charset=utf-8"
-        },
-        {
-          "route": "/entities/sample-candidate-a/",
-          "status": 200,
-          "contentType": "text/html; charset=utf-8"
-        },
-        {
-          "route": "/sources/san-francisco-chronicle-editorial-board/",
-          "status": 200,
-          "contentType": "text/html; charset=utf-8"
-        }
-      ],
-      "trailingSlashChecks": [
-        {
-          "route": "/races/mayor",
-          "status": 308,
-          "location": "/races/mayor/"
-        },
-        {
-          "route": "/how-we-use-ai",
-          "status": 308,
-          "location": "/how-we-use-ai/"
-        },
-        {
-          "route": "/entities/sample-candidate-a",
-          "status": 308,
-          "location": "/entities/sample-candidate-a/"
-        },
-        {
-          "route": "/sources/san-francisco-chronicle-editorial-board",
-          "status": 308,
-          "location": "/sources/san-francisco-chronicle-editorial-board/"
-        }
-      ]
+      "errors": []
     },
-    "manualLighthouseBrowserNotes": {
-      "status": "pending",
-      "lighthouse": "Pending manual/browser Lighthouse run against the production-like static deploy.",
-      "browser": "Pending final browser spot-check for share-card previews and representative navigation."
+    "browserEvidence": {
+      "status": "pass",
+      "errors": []
+    },
+    "routeLinkLeakage": {
+      "status": "pass",
+      "errors": []
     }
   }
 }
