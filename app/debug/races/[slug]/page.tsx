@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 import { listRaceSlugs, loadRaceData, type LoadedRaceData } from "../../../../lib/data/loaders";
 import type { Evidence, Race } from "../../../../lib/data/types";
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 interface RaceDebugModel {
   race: Race;
   counts: {
@@ -111,14 +114,8 @@ export default async function RaceDebugPage({ params }: { params: Promise<{ slug
       </section>
 
       <section aria-labelledby="files-title" className="debug-card">
-        <h2 id="files-title">Checked fixture paths</h2>
-        <ul className="debug-list">
-          {checkedFiles.map((file) => (
-            <li key={file}>
-              <code>{file}</code>
-            </li>
-          ))}
-        </ul>
+        <h2 id="files-title">Checked fixture summary</h2>
+        <p>{checkedFiles.length} local fixture inputs were inspected by the loader.</p>
       </section>
     </main>
   );

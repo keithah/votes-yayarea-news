@@ -217,7 +217,7 @@ function CandidateCard({ candidate }: { candidate: RaceEntityCard }) {
     <article className="candidate-card">
       <div>
         <p className="eyebrow">{candidate.kind}</p>
-        <h3><a href={`/entities/${candidate.slug}/`}>{candidate.name}</a></h3>
+        <h3>{candidate.positionCount > 0 ? <a href={`/entities/${candidate.slug}/`}>{candidate.name}</a> : candidate.name}</h3>
         {candidate.description ? <p className="muted-copy">{candidate.description}</p> : null}
       </div>
       <dl className="candidate-counts" aria-label={`${candidate.name} public position counts`}>

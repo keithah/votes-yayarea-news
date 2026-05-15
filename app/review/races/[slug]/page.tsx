@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { listRaceSlugs, loadRaceData } from "../../../../lib/data/loaders";
 import { readRaceReviewModel, type PositionReviewFile, type ReviewIssue } from "../../../../lib/review/positions";
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 interface ExtractionRunView {
   id?: string;
   status?: string;
@@ -22,7 +25,7 @@ export default async function RaceReviewPage({ params }: { params: Promise<{ slu
   const loaded = await loadRaceData(slug);
   if (!loaded) notFound();
 
-  const [{ review, issues, reviewPath, draftPath }, run] = await Promise.all([readRaceReviewModel(slug), readLatestRun()]);
+  const [{ review, issues }, run] = await Promise.all([readRaceReviewModel(slug), readLatestRun()]);
   const race = loaded.race;
 
   return (
@@ -58,7 +61,7 @@ export default async function RaceReviewPage({ params }: { params: Promise<{ slu
             Prepare review JSON: <code>pnpm review:positions prepare --race-slug {slug}</code>
           </li>
           <li>
-            Edit <code>{reviewPath}</code>: set reviewed positions to <code>status: verified</code> and <code>publicationStatus: public</code>, or set rejected/hidden records to keep them private.
+            Edit the local review JSON: set reviewed positions to <code>status: verified</code> and <code>publicationStatus: public</code>, or set rejected/hidden records to keep them private.
           </li>
           <li>
             Check readiness: <code>pnpm review:positions status --race-slug {slug}</code>
@@ -82,12 +85,12 @@ export default async function RaceReviewPage({ params }: { params: Promise<{ slu
               <td>{run?.provider ? `${run.provider.provider ?? "unknown"} / ${run.provider.model ?? "unknown"}` : providerLabel(review)}</td>
             </tr>
             <tr>
-              <th scope="row">Draft path</th>
-              <td><code>{review?.sourceDraftPath ?? draftPath}</code></td>
+              <th scope="row">Draft status</th>
+              <td>{review?.sourceDraftPath ? "available locally" : "not available"}</td>
             </tr>
             <tr>
               <th scope="row">Run outputs</th>
-              <td>{run?.outputPath ? <code>{run.outputPath}</code> : "not available"} {run?.validationPath ? <code>{run.validationPath}</code> : null}</td>
+              <td>{run?.outputPath || run?.validationPath ? "available locally" : "not available"}</td>
             </tr>
           </tbody>
         </table>
@@ -124,7 +127,7 @@ export default async function RaceReviewPage({ params }: { params: Promise<{ slu
             ))}
           </ul>
         ) : (
-          <p>No prepared review file exists yet. Run prepare to create <code>{reviewPath}</code>.</p>
+          <p>No prepared review file exists yet. Run prepare to create the local review artifact.</p>
         )}
       </section>
     </main>
@@ -135,8 +138,8 @@ function IssueList({ issues }: { issues: ReviewIssue[] }) {
   return (
     <ul className="debug-list">
       {issues.map((issue) => (
-        <li key={`${issue.phase}:${issue.path}:${issue.code}`}>
-          <strong>{issue.severity}</strong> {issue.phase} <code>{issue.path}</code> [{issue.code}] {issue.message}
+        <li key={`${issue.phase}:${issue.code}:${issue.message}`}>
+          <strong>{issue.severity}</strong> {issue.phase} [{issue.code}] {issue.message}
         </li>
       ))}
     </ul>
