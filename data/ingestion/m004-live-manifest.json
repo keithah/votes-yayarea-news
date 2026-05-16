@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "description": "Generated M004/S01 live acquisition manifest. Targets are captured public artifacts and are safe to ingest without network access.",
+  "targets": []
+}
