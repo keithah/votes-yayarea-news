@@ -29,8 +29,8 @@ test("homepage metadata contract uses public route counts without unsafe launch 
 
   assert.equal(metadata.title, "votes.yayarea.news · San Francisco election guide");
   assert.match(description, /\b13 public races\b/);
-  assert.match(description, /\b13 reviewed sources\b/);
-  assert.match(description, /\b61 evidence items\b/);
+  assert.match(description, /\b17 reviewed sources\b/);
+  assert.match(description, /\b65 evidence items\b/);
   assertSafeMetadata(metadata);
 });
 

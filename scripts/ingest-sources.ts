@@ -5,6 +5,7 @@ interface CliOptions {
   manifest?: string;
   out?: string;
   onlySource?: string;
+  fixtureRoot?: string;
   allowNetwork: boolean;
   help: boolean;
 }
@@ -27,6 +28,7 @@ async function main(): Promise<void> {
     outDir: options.out,
     onlySource: options.onlySource,
     allowNetwork: options.allowNetwork,
+    fixtureRoot: options.fixtureRoot,
   });
 
   const summary = result.summary;
@@ -82,6 +84,9 @@ function parseArgs(args: string[]): CliOptions {
       case "--only-source":
         options.onlySource = readValue(args, ++index, arg);
         break;
+      case "--fixture-root":
+        options.fixtureRoot = readValue(args, ++index, arg);
+        break;
       case "--allow-network":
         options.allowNetwork = true;
         break;
@@ -114,6 +119,7 @@ Options:
   --manifest       Path to ingestion manifest JSON.
   --out            Output root for generated ingestion files.
   --only-source    Optional sourceId, target id, or artifactId filter.
+  --fixture-root   Fixture root for relative fixture paths (use . for generated acquisition manifests).
   --allow-network  Permit manifest targets with mode: "url" to fetch canonicalUrl.
 `);
 }

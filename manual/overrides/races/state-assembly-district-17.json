@@ -1,0 +1,68 @@
+{
+  "race": {
+    "status": "verified",
+    "publicationStatus": "public",
+    "positions": [
+      {
+        "id": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
+        "raceId": "race-state-assembly-district-17",
+        "sourceId": "src-ca-secretary-of-state",
+        "entityId": "ent-state-assembly-district-17-matt-haney",
+        "kind": "informational",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "Official candidate-list coverage for State Assembly District 17",
+        "rationale": "The official Secretary of State candidate-list source explicitly lists State Assembly District 17 as a covered contest; this is informational coverage only, not an endorsement.",
+        "evidenceIds": [
+          "ev-m004-s02-sos-state-assembly-district-17-matt-haney-informational"
+        ],
+        "evidence": [
+          {
+            "id": "ev-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
+            "sourceId": "src-ca-secretary-of-state",
+            "entityId": "ent-state-assembly-district-17-matt-haney",
+            "raceId": "race-state-assembly-district-17",
+            "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+            "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+            "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+            "kind": "quote",
+            "quote": "- State Assembly District 17"
+          }
+        ]
+      },
+      {
+        "id": "pos-m004-s02-growsf-state-assembly-district-17-matt-haney",
+        "raceId": "race-state-assembly-district-17",
+        "sourceId": "src-growsf",
+        "entityId": "ent-state-assembly-district-17-matt-haney",
+        "kind": "endorse",
+        "status": "verified",
+        "publicationStatus": "public",
+        "label": "GrowSF recommends Matt Haney for State Assembly District 17",
+        "rationale": "Exact quote is present in the M004 GrowSF captured artifact, but this source is not mapped to the public race yet, so publication must be rejected.",
+        "evidenceIds": [
+          "ev-m004-s02-growsf-state-assembly-district-17-matt-haney"
+        ],
+        "evidence": [
+          {
+            "id": "ev-m004-s02-growsf-state-assembly-district-17-matt-haney",
+            "sourceId": "src-growsf",
+            "entityId": "ent-state-assembly-district-17-matt-haney",
+            "raceId": "race-state-assembly-district-17",
+            "artifactId": "art-growsf-voter-guide-m004-live",
+            "chunkId": "art-growsf-voter-guide-m004-live-chunk-070",
+            "url": "https://growsf.org/voter-guide/",
+            "kind": "quote",
+            "quote": "We recommend voting for Matt Haney for State Assembly, District 17."
+          }
+        ]
+      }
+    ],
+    "extractionReview": {
+      "sourceDraftPath": "data/extracted/drafts/m004-s02-agent-bulk.json",
+      "reviewPath": "manual/reviews/races/state-assembly-district-17.json",
+      "runId": "m004-s02-agent-bulk",
+      "publishedAt": "2026-05-16T18:06:23.180Z"
+    }
+  }
+}

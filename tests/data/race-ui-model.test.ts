@@ -14,8 +14,8 @@ test("builds California Governor race model from public loader output only", asy
   const model = buildRaceUiModel(context);
 
   assert.equal(model.race.slug, "california-governor");
-  assert.equal(model.sourceCount, 1);
-  assert.equal(model.evidenceCount, 61);
+  assert.equal(model.sourceCount, 3);
+  assert.equal(model.evidenceCount, 62);
   assert.equal(model.candidates.length, 61);
   const akinyemi = model.candidates.find((candidate) => candidate.id === "ent-california-governor-akinyemi-agbede");
   assert.ok(akinyemi);
@@ -23,10 +23,10 @@ test("builds California Governor race model from public loader output only", asy
   assert.equal(akinyemi.evidenceCount, 1);
   assert.equal(akinyemi.sourceCount, 1);
   assert.equal(akinyemi.countsByKind.informational, 1);
-  assert.equal(model.consensus.label, "No public endorsements");
-  assert.equal(model.consensus.count, 0);
-  assert.equal(model.consensus.sourceCount, 1);
-  assert.equal(model.consensus.percentage, 0);
+  assert.equal(model.consensus.label, "1 of 3 public sources endorse Katie Porter");
+  assert.equal(model.consensus.count, 1);
+  assert.equal(model.consensus.sourceCount, 3);
+  assert.equal(model.consensus.percentage, 33);
   assert.equal(model.summary.visible, false);
   assert.equal(model.summary.evidenceCount, 0);
   assert.equal(model.placeholders.matrixReady, true);

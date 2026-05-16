@@ -62,6 +62,26 @@ test("runIngestion writes stable raw artifacts chunks and run diagnostics", asyn
   assert.equal(rawBefore, rawAfter);
 });
 
+test("runIngestion supports repository-relative generated acquisition fixture paths", async () => {
+  const outDir = await temporaryDirectory();
+  const manifestPath = await writeManifest({
+    version: 1,
+    description: "Repository-relative generated acquisition fixture test.",
+    targets: [
+      target({
+        fixturePath: "data/ingestion/fixtures/ca-secretary-of-state-2026-primary-certified-candidates.txt",
+      }),
+    ],
+  });
+
+  const result = await runIngestion({ manifestPath, outDir, fixtureRoot: ".", now: fixedClock() });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.summary.status, "complete");
+  assert.equal(result.summary.counts.artifacts, 1);
+  assert.equal(existsSync(path.join(outDir, "artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json")), true);
+});
+
 test("CLI supports --only-source and writes non-secret summary output", async () => {
   const outDir = await temporaryDirectory();
   const result = spawnSync(

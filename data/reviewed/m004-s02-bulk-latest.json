@@ -1,0 +1,151 @@
+{
+  "ok": true,
+  "generatedAt": "2026-05-16T18:06:23.119Z",
+  "checkedFiles": [
+    "../../../../../tmp/votes-bulk-review-preflight-HKtf5a/overrides/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-HKtf5a/reviews/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-NoC9Ih/overrides/races/us-house-district-11.json",
+    "../../../../../tmp/votes-bulk-review-preflight-NoC9Ih/reviews/races/us-house-district-11.json",
+    "../../../../../tmp/votes-bulk-review-preflight-P6ZxUA/overrides/races/california-governor.json",
+    "../../../../../tmp/votes-bulk-review-preflight-P6ZxUA/reviews/races/california-governor.json",
+    "data/extracted/drafts/m004-s02-agent-bulk.json",
+    "data/extracted/validation/m004-s02-agent-bulk.json",
+    "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/artifacts/src-growsf-voter-guide-m004-live.json",
+    "data/ingested/artifacts/src-san-francisco-chronicle-editorial-board-m004-live.json",
+    "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/chunks/src-growsf-voter-guide-m004-live.json",
+    "data/ingested/chunks/src-san-francisco-chronicle-editorial-board-m004-live.json",
+    "data/ingestion/manifest.json",
+    "data/public/collections.json",
+    "data/public/entities.json",
+    "data/public/races/board-of-equalization-district-2.json",
+    "data/public/races/california-attorney-general.json",
+    "data/public/races/california-controller.json",
+    "data/public/races/california-governor.json",
+    "data/public/races/california-insurance-commissioner.json",
+    "data/public/races/california-lieutenant-governor.json",
+    "data/public/races/california-secretary-of-state.json",
+    "data/public/races/california-superintendent-public-instruction.json",
+    "data/public/races/california-treasurer.json",
+    "data/public/races/san-francisco-prop-a.json",
+    "data/public/races/san-francisco-prop-b.json",
+    "data/public/races/san-francisco-prop-c.json",
+    "data/public/races/san-francisco-prop-d.json",
+    "data/public/races/sfusd-board-of-education.json",
+    "data/public/races/state-assembly-district-17.json",
+    "data/public/races/state-assembly-district-19.json",
+    "data/public/races/superior-court-judge-seat-16.json",
+    "data/public/races/supervisor-district-2.json",
+    "data/public/races/supervisor-district-4.json",
+    "data/public/races/us-house-district-11.json",
+    "data/public/races/us-house-district-15.json",
+    "data/public/sources.json",
+    "manual/overrides/races/california-governor.json",
+    "manual/overrides/races/state-assembly-district-17.json",
+    "manual/overrides/races/us-house-district-11.json",
+    "manual/reviews/races/california-governor.json",
+    "manual/reviews/races/state-assembly-district-17.json",
+    "manual/reviews/races/us-house-district-11.json"
+  ],
+  "sourceDraftPath": "data/extracted/drafts/m004-s02-agent-bulk.json",
+  "diagnosticsPath": "data/reviewed/m004-s02-bulk-latest.json",
+  "counts": {
+    "positions": 6,
+    "races": 3,
+    "published": 4,
+    "public": 4,
+    "hidden": 2,
+    "rejected": 0,
+    "errors": 0,
+    "issues": 2
+  },
+  "races": [
+    {
+      "raceSlug": "california-governor",
+      "raceId": "race-california-governor",
+      "reviewPath": "manual/reviews/races/california-governor.json",
+      "overridePath": "manual/overrides/races/california-governor.json",
+      "status": "published",
+      "counts": {
+        "positions": 2,
+        "public": 1,
+        "hidden": 1,
+        "rejected": 0,
+        "issues": 1,
+        "errors": 0
+      },
+      "publicPositionIds": [
+        "pos-m004-s02-chronicle-governor-katie-porter"
+      ],
+      "issueCodes": [
+        "not_requested_public"
+      ]
+    },
+    {
+      "raceSlug": "state-assembly-district-17",
+      "raceId": "race-state-assembly-district-17",
+      "reviewPath": "manual/reviews/races/state-assembly-district-17.json",
+      "overridePath": "manual/overrides/races/state-assembly-district-17.json",
+      "status": "published",
+      "counts": {
+        "positions": 3,
+        "public": 2,
+        "hidden": 1,
+        "rejected": 0,
+        "issues": 1,
+        "errors": 0
+      },
+      "publicPositionIds": [
+        "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
+        "pos-m004-s02-growsf-state-assembly-district-17-matt-haney"
+      ],
+      "issueCodes": [
+        "duplicate_public_claim"
+      ]
+    },
+    {
+      "raceSlug": "us-house-district-11",
+      "raceId": "race-us-house-district-11",
+      "reviewPath": "manual/reviews/races/us-house-district-11.json",
+      "overridePath": "manual/overrides/races/us-house-district-11.json",
+      "status": "published",
+      "counts": {
+        "positions": 1,
+        "public": 1,
+        "hidden": 0,
+        "rejected": 0,
+        "issues": 0,
+        "errors": 0
+      },
+      "publicPositionIds": [
+        "pos-m004-s02-growsf-us-house-district-11-scott-wiener"
+      ],
+      "issueCodes": []
+    }
+  ],
+  "issues": [
+    {
+      "phase": "review",
+      "status": "hidden",
+      "reasonCode": "not_requested_public",
+      "path": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+      "message": "Draft record did not request public publication and remains hidden.",
+      "raceId": "race-california-governor",
+      "sourceId": "src-growsf",
+      "entityId": "ent-california-governor-matt-mahan",
+      "positionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden"
+    },
+    {
+      "phase": "review",
+      "status": "hidden",
+      "reasonCode": "duplicate_public_claim",
+      "path": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate",
+      "message": "Duplicate public source/race/entity/kind claim classified as hidden instead of public.",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "positionId": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate"
+    }
+  ]
+}

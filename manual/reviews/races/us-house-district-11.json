@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "raceSlug": "us-house-district-11",
+  "raceId": "race-us-house-district-11",
+  "sourceDraftPath": "data/extracted/drafts/m004-s02-agent-bulk.json",
+  "runId": "m004-s02-agent-bulk",
+  "provider": {
+    "provider": "agent",
+    "model": "pi-auto"
+  },
+  "status": "published",
+  "updatedAt": "2026-05-16T18:06:23.222Z",
+  "positions": [
+    {
+      "id": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
+      "draftPositionId": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
+      "sourceDraft": {
+        "runId": "m004-s02-agent-bulk",
+        "draftPath": "data/extracted/drafts/m004-s02-agent-bulk.json",
+        "generatedAt": "2026-05-16T16:00:00.000Z",
+        "generatedBy": {
+          "provider": "agent",
+          "model": "pi-auto"
+        }
+      },
+      "raceId": "race-us-house-district-11",
+      "sourceId": "src-growsf",
+      "entityId": "ent-us-house-district-11-scott-wiener",
+      "kind": "endorse",
+      "status": "verified",
+      "publicationStatus": "public",
+      "label": "GrowSF recommends Scott Wiener for U.S. House District 11",
+      "rationale": "Exact quote is present in the M004 GrowSF captured artifact, but this source is not mapped to the public race yet, so publication must be rejected.",
+      "reviewerNotes": "bulk:rejected:source_not_in_race\nbulk:verified:public",
+      "evidenceIds": [
+        "ev-m004-s02-growsf-us-house-district-11-scott-wiener"
+      ],
+      "evidence": [
+        {
+          "id": "ev-m004-s02-growsf-us-house-district-11-scott-wiener",
+          "positionId": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
+          "sourceId": "src-growsf",
+          "entityId": "ent-us-house-district-11-scott-wiener",
+          "raceId": "race-us-house-district-11",
+          "artifactId": "art-growsf-voter-guide-m004-live",
+          "chunkId": "art-growsf-voter-guide-m004-live-chunk-072",
+          "url": "https://growsf.org/voter-guide/",
+          "kind": "quote",
+          "quote": "We recommend voting for Scott Wiener for U.S. House of Representatives, District 11."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import {
+  DEFAULT_ORIGIN,
+  REPRESENTATIVE_ROUTE_CONTRACTS,
+  assertRouteHtml,
+  buildRouteUrl,
+  normalizeOrigin,
+  parseCliArgs,
+  runLivePageAssertions,
+  validateJsonOutPath,
+  validateLiveReport,
+} from "../../scripts/assert-m004-s05-live-pages.mjs";
+import {
+  createM004S05LaunchVerificationReport,
+  recordM004S05LaunchVerification,
+  validateM004S05LaunchVerificationReport,
+} from "../../scripts/record-m004-s05-launch-verification.mjs";
+
+const HTML_BY_ROUTE: Record<string, string> = Object.fromEntries(
+  REPRESENTATIVE_ROUTE_CONTRACTS.map((contract: any) => [contract.route, htmlForContract(contract)]),
+);
+
+test("normalizes origins with or without trailing slash and repository base path", () => {
+  assert.equal(buildRouteUrl(normalizeOrigin("https://keithah.github.io"), "/races/california-governor/"), "https://keithah.github.io/races/california-governor/");
+  assert.equal(buildRouteUrl(normalizeOrigin("https://keithah.github.io/votes-yayarea-news/"), "/races/california-governor/"), "https://keithah.github.io/votes-yayarea-news/races/california-governor/");
+  assert.equal(buildRouteUrl(normalizeOrigin(DEFAULT_ORIGIN), "races/california-governor/"), "https://keithah.github.io/votes-yayarea-news/races/california-governor/");
+});
+
+test("rejects malformed origins before network work", async () => {
+  let called = false;
+  await assert.rejects(
+    runLivePageAssertions({ origin: "file:///tmp/site", fetchImpl: async () => {
+      called = true;
+      return htmlResponse("never");
+    } }),
+    (error: any) => error.phase === "origin",
+  );
+  assert.equal(called, false);
+});
+
+test("json-out validation rejects absolute, escaping, and non-launch paths", () => {
+  const projectRoot = process.cwd();
+  assert.throws(() => validateJsonOutPath("/tmp/report.json", projectRoot), (error: any) => error.phase === "json-out");
+  assert.throws(() => validateJsonOutPath("data/launch/../report.json", projectRoot), (error: any) => error.phase === "json-out");
+  assert.throws(() => validateJsonOutPath("data/private/report.json", projectRoot), (error: any) => error.phase === "json-out");
+  assert.throws(() => validateJsonOutPath("data/launch/report.txt", projectRoot), (error: any) => error.phase === "json-out");
+});
+
+test("parseCliArgs wires origin, timeout, and validated json-out path", () => {
+  const options = parseCliArgs(["--origin", "https://example.test/base/", "--timeout-ms", "2500", "--json-out", "data/launch/live.json"], process.cwd());
+  assert.equal(options.origin, "https://example.test/base/");
+  assert.equal(options.timeoutMs, 2500);
+  assert.equal(options.jsonOut, "data/launch/live.json");
+});
+
+test("successful live assertion writes a redaction-safe validated report", async () => {
+  const projectRoot = await mkdtemp(path.join(os.tmpdir(), "m004-s05-live-"));
+  const reportPath = "data/launch/live-report.json";
+  const report = await runLivePageAssertions({
+    origin: "https://example.test/votes-yayarea-news/",
+    projectRoot,
+    jsonOut: reportPath,
+    fetchImpl: fetchFromRoutes(HTML_BY_ROUTE),
+  });
+
+  assert.equal(report.status, "pass");
+  assert.equal(report.origin, "https://example.test/votes-yayarea-news");
+  assert.deepEqual(validateLiveReport(report), []);
+  assert.equal(report.checkedRoutes.length, 3);
+  assert.ok(report.counts.markerAssertions > 20);
+  assert.equal(report.counts.leakageFindings, 0);
+
+  const persisted = JSON.parse(await readFile(path.join(projectRoot, reportPath), "utf8"));
+  assert.deepEqual(validateLiveReport(persisted), []);
+  const serialized = JSON.stringify(persisted);
+  assert.doesNotMatch(serialized, /manual\/(?:reviews|overrides)\//i);
+  assert.doesNotMatch(serialized, /\.gsd\//i);
+  assert.doesNotMatch(serialized, /\/home\//i);
+  assert.doesNotMatch(serialized, /<html/i);
+});
+
+test("non-200 responses fail with route diagnostics and phase non-200", async () => {
+  await assert.rejects(
+    runLivePageAssertions({
+      origin: "https://example.test/votes-yayarea-news",
+      fetchImpl: fetchFromRoutes({ ...HTML_BY_ROUTE, "/races/california-governor/": { status: 404, body: "Not found" } }),
+    }),
+    (error: any) => {
+      assert.equal(error.phase, "non-200");
+      assert.equal(error.diagnostics.checkedRoutes.at(-1).route, "/races/california-governor/");
+      assert.equal(error.diagnostics.checkedRoutes.at(-1).status, 404);
+      return true;
+    },
+  );
+});
+
+test("missing expanded comparison markers fail closed with marker names", async () => {
+  const staleStateAssembly = HTML_BY_ROUTE["/races/state-assembly-district-17/"].replace('data-source-id="src-growsf"', "");
+  await assert.rejects(
+    runLivePageAssertions({
+      origin: "https://example.test/votes-yayarea-news",
+      fetchImpl: fetchFromRoutes({ ...HTML_BY_ROUTE, "/races/state-assembly-district-17/": staleStateAssembly }),
+    }),
+    (error: any) => {
+      assert.equal(error.phase, "marker");
+      assert.match(error.message, /GrowSF source/);
+      assert.equal(error.diagnostics.checkedRoutes[0].missingMarkers.includes("GrowSF source"), true);
+      return true;
+    },
+  );
+});
+
+test("missing expanded comparison markers persist redaction-safe failure diagnostics", async () => {
+  const projectRoot = await mkdtemp(path.join(os.tmpdir(), "m004-s05-live-fail-"));
+  const reportPath = "data/launch/live-report.json";
+  const staleStateAssembly = HTML_BY_ROUTE["/races/state-assembly-district-17/"].replace('data-source-id="src-growsf"', "");
+
+  await assert.rejects(
+    runLivePageAssertions({
+      origin: "https://example.test/votes-yayarea-news",
+      projectRoot,
+      jsonOut: reportPath,
+      fetchImpl: fetchFromRoutes({ ...HTML_BY_ROUTE, "/races/state-assembly-district-17/": staleStateAssembly }),
+    }),
+    (error: any) => error.phase === "marker",
+  );
+
+  const persisted = JSON.parse(await readFile(path.join(projectRoot, reportPath), "utf8"));
+  assert.equal(persisted.status, "fail");
+  assert.equal(persisted.origin, "https://example.test/votes-yayarea-news");
+  assert.equal(persisted.checkedRoutes[0].route, "/races/state-assembly-district-17/");
+  assert.equal(persisted.checkedRoutes[0].status, 200);
+  assert.equal(persisted.checkedRoutes[0].missingMarkers.includes("GrowSF source"), true);
+  assert.equal(persisted.phases.markers.status, "fail");
+  assert.equal(persisted.phases.markers.route, "/races/state-assembly-district-17/");
+  assert.equal(persisted.phases.report.status, "fail");
+  assert.equal(persisted.phases.jsonOut.path, reportPath);
+  assert.equal(persisted.counts.checkedRoutes, 1);
+  assert.ok(persisted.counts.markerAssertions > 0);
+  assert.equal(persisted.counts.leakageFindings, 0);
+  assert.match(validateLiveReport(persisted).join("; "), /status must be pass/);
+  const serialized = JSON.stringify(persisted);
+  assert.doesNotMatch(serialized, /<html/i);
+  assert.doesNotMatch(serialized, /manual\/(?:reviews|overrides)\//i);
+  assert.doesNotMatch(serialized, /\.gsd\//i);
+  assert.doesNotMatch(serialized, /\/home\//i);
+});
+
+test("private-path leakage fails with pattern id and route only", async () => {
+  const leaked = `${HTML_BY_ROUTE["/races/us-house-district-11/"]}<p>manual/reviews/private.json</p>`;
+  await assert.rejects(
+    runLivePageAssertions({
+      origin: "https://example.test/votes-yayarea-news",
+      fetchImpl: fetchFromRoutes({ ...HTML_BY_ROUTE, "/races/us-house-district-11/": leaked }),
+    }),
+    (error: any) => {
+      assert.equal(error.phase, "leakage");
+      const route = error.diagnostics.checkedRoutes.at(-1);
+      assert.equal(route.route, "/races/us-house-district-11/");
+      assert.deepEqual(route.leakageFindings, [{ patternId: "manual-review-path", description: "private manual review path" }]);
+      assert.doesNotMatch(JSON.stringify(error.diagnostics), /manual\/reviews\/private/);
+      return true;
+    },
+  );
+});
+
+test("fetch errors and timeouts use phase diagnostics", async () => {
+  await assert.rejects(
+    runLivePageAssertions({ origin: "https://example.test", fetchImpl: async () => { throw new Error("DNS failed"); } }),
+    (error: any) => error.phase === "fetch" && /DNS failed/.test(error.message),
+  );
+
+  await assert.rejects(
+    runLivePageAssertions({ origin: "https://example.test", timeoutMs: 100, fetchImpl: async (_url: string, options: any) => {
+      await new Promise((_resolve, reject) => options.signal.addEventListener("abort", () => {
+        const error = new Error("aborted");
+        (error as any).name = "AbortError";
+        reject(error);
+      }));
+      return htmlResponse("never");
+    } }),
+    (error: any) => error.phase === "timeout",
+  );
+});
+
+test("assertRouteHtml exposes missing marker and leakage details without full HTML", () => {
+  const result = assertRouteHtml(REPRESENTATIVE_ROUTE_CONTRACTS[1], '<html data-race-slug="california-governor">manual/overrides/private.json</html>');
+  assert.ok(result.missingMarkers.includes("Chronicle source"));
+  assert.deepEqual(result.leakageFindings, [{ patternId: "manual-review-path", description: "private manual review path" }]);
+});
+
+test("recorder validates live report and writes final launch summaries", async () => {
+  const projectRoot = await mkdtemp(path.join(os.tmpdir(), "m004-s05-recorder-"));
+  const liveReport = await runLivePageAssertions({
+    origin: "https://example.test/votes-yayarea-news/",
+    projectRoot,
+    fetchImpl: fetchFromRoutes(HTML_BY_ROUTE),
+  });
+  await mkdir(path.join(projectRoot, "data/launch"), { recursive: true });
+  await writeFile(path.join(projectRoot, "data/launch/m004-s05-live-pages.json"), `${JSON.stringify(liveReport, null, 2)}\n`, "utf8");
+
+  const report = recordM004S05LaunchVerification({ projectRoot });
+
+  assert.equal(report.status, "pass");
+  assert.deepEqual(validateM004S05LaunchVerificationReport(report), []);
+  assert.equal(report.summaries.routes.checkedRoutes, 3);
+  assert.equal(report.summaries.routes.missingRoutes.length, 0);
+  assert.equal(report.redaction.status, "pass");
+  assert.deepEqual(JSON.parse(await readFile(path.join(projectRoot, "data/launch/m004-s05-launch-verification.json"), "utf8")), report);
+  assert.deepEqual(JSON.parse(await readFile(path.join(projectRoot, "data/launch/latest.json"), "utf8")), report);
+});
+
+test("recorder rejects malformed, stale, non-pass, incomplete, and leaking live reports", async () => {
+  const valid = await runLivePageAssertions({
+    origin: "https://example.test/votes-yayarea-news/",
+    fetchImpl: fetchFromRoutes(HTML_BY_ROUTE),
+  });
+
+  assert.match(validateLiveReport({}).join("; "), /schemaVersion must be 1/);
+
+  const staleSlice = structuredClone(valid);
+  staleSlice.slice = "S04";
+  assert.match(validateLiveReport(staleSlice).join("; "), /slice must be S05/);
+
+  const nonPass = structuredClone(valid);
+  nonPass.status = "fail";
+  assert.match(validateLiveReport(nonPass).join("; "), /status must be pass/);
+
+  const missingCoverage = structuredClone(valid);
+  missingCoverage.checkedRoutes = missingCoverage.checkedRoutes.slice(0, 2);
+  assert.match(validateLiveReport(missingCoverage).join("; "), /checkedRoutes must include the three representative routes/);
+  const incompleteSummary = createM004S05LaunchVerificationReport({ liveReport: missingCoverage });
+  assert.equal(incompleteSummary.gates.routeCoverage.status, "fail");
+  assert.match(validateM004S05LaunchVerificationReport(incompleteSummary).join("; "), /status must be pass|checkedRoutes must be 3|missingRoutes must be empty/);
+
+  const duplicateCoverage = structuredClone(valid);
+  duplicateCoverage.checkedRoutes[2] = structuredClone(duplicateCoverage.checkedRoutes[0]);
+  const duplicateSummary = createM004S05LaunchVerificationReport({ liveReport: duplicateCoverage });
+  assert.equal(duplicateSummary.gates.routeCoverage.status, "fail");
+  assert.deepEqual(duplicateSummary.summaries.routes.missingRoutes, ["/races/us-house-district-11/"]);
+
+  const leaked = structuredClone(valid);
+  leaked.checkedRoutes[0].url = "file:///home/keith/private.html";
+  assert.match(validateLiveReport(leaked).join("; "), /report leaked/);
+});
+
+test("recorder does not update latest when live report validation fails", async () => {
+  const projectRoot = await mkdtemp(path.join(os.tmpdir(), "m004-s05-recorder-fail-"));
+  const launchDir = path.join(projectRoot, "data/launch");
+  await mkdir(launchDir, { recursive: true });
+  await writeFile(path.join(launchDir, "latest.json"), '{"status":"previous"}\n', "utf8");
+  await writeFile(path.join(launchDir, "m004-s05-live-pages.json"), '{"schemaVersion":1,"milestone":"M004","slice":"S04","status":"pass"}\n', "utf8");
+
+  assert.throws(() => recordM004S05LaunchVerification({ projectRoot }), /Phase live-report-validation/);
+  assert.deepEqual(JSON.parse(await readFile(path.join(launchDir, "latest.json"), "utf8")), { status: "previous" });
+  assert.equal(existsSync(path.join(launchDir, "m004-s05-launch-verification.json")), false);
+});
+
+function fetchFromRoutes(routes: Record<string, string | { status: number; body: string }>) {
+  return async (url: string) => {
+    const pathname = new URL(url).pathname;
+    const route = pathname.replace(/^\/votes-yayarea-news/, "");
+    const value = routes[route];
+    if (!value) return htmlResponse("Not found", 404);
+    if (typeof value === "string") return htmlResponse(value, 200);
+    return htmlResponse(value.body, value.status);
+  };
+}
+
+function htmlResponse(body: string, status = 200) {
+  const bytes = new TextEncoder().encode(body);
+  return {
+    status,
+    headers: new Headers({ "content-type": "text/html; charset=utf-8" }),
+    async arrayBuffer() {
+      return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
+    },
+  };
+}
+
+function htmlForContract(contract: any) {
+  if (contract.slug === "state-assembly-district-17") {
+    return baseHtml(`
+      <main data-race-slug="state-assembly-district-17">
+        <h1>State Assembly District 17</h1>
+        <h2>Source-by-candidate comparison</h2>
+        <section data-matrix-source-count="2" data-matrix-cell-count="4">
+          <div data-matrix-view="desktop"></div><div data-matrix-view="mobile"></div>
+          <p>California Secretary of State</p><p>GrowSF</p>
+          <span data-source-id="src-ca-secretary-of-state"></span><span data-source-id="src-growsf"></span>
+          <span data-candidate-id="ent-state-assembly-district-17-matt-haney"></span>
+          <span data-position-kind="informational" data-receipt-status="available"></span>
+          <span data-position-kind="endorse" data-receipt-status="available"></span>
+        </section>
+      </main>`);
+  }
+  if (contract.slug === "california-governor") {
+    return baseHtml(`
+      <main data-race-slug="california-governor">
+        <h1>California Governor</h1>
+        <h2>Source-by-candidate comparison</h2>
+        <section data-matrix-source-count="3" data-matrix-cell-count="9">
+          <div data-matrix-view="desktop"></div><div data-matrix-view="mobile"></div>
+          <p>California Secretary of State</p><p>San Francisco Chronicle</p><p>GrowSF</p>
+          <span data-source-id="src-ca-secretary-of-state"></span><span data-source-id="src-sf-chronicle"></span><span data-source-id="src-growsf"></span>
+          <span data-candidate-id="ent-california-governor-katie-porter"></span>
+          <span data-candidate-id="ent-california-governor-matt-mahan"></span>
+          <span data-position-kind="endorse" data-receipt-status="available"></span>
+          <span data-position-kind="no-public-position" data-receipt-empty-reason="no-public-position"></span>
+        </section>
+      </main>`);
+  }
+  return baseHtml(`
+    <main data-race-slug="us-house-district-11">
+      <h1>U.S. House District 11</h1>
+      <h2>Source-by-candidate comparison</h2>
+      <section data-matrix-source-count="2" data-matrix-cell-count="4">
+        <div data-matrix-view="desktop"></div><div data-matrix-view="mobile"></div>
+        <p>GrowSF</p><p>Scott Wiener has 2 evidence receipts.</p>
+        <span data-source-id="src-growsf"></span>
+        <span data-candidate-id="ent-us-house-district-11-scott-wiener"></span>
+        <span data-position-kind="endorse" data-receipt-status="available"></span>
+      </section>
+    </main>`);
+}
+
+function baseHtml(body: string) {
+  return `<!doctype html><html><body>${body}</body></html>`;
+}

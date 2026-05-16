@@ -20,12 +20,12 @@ test("reviewed coverage flags unsupported public no-position records from uncapt
   await writeOverridePosition(fixture, {
     id: "pos-test-public-no-position",
     kind: "no-position",
-    sourceId: "src-sf-chronicle",
+    sourceId: "src-mission-local",
     evidenceIds: ["ev-test-public-no-position"],
     evidence: [
       {
         id: "ev-test-public-no-position",
-        sourceId: "src-sf-chronicle",
+        sourceId: "src-mission-local",
         entityId: "ent-california-governor-akinyemi-agbede",
         raceId: "race-california-governor",
         url: "https://example.test/no-position",
@@ -46,7 +46,7 @@ test("reviewed coverage flags unsupported public endorsements and missing eviden
   await writeOverridePosition(fixture, {
     id: "pos-test-public-endorsement",
     kind: "endorse",
-    sourceId: "src-sf-chronicle",
+    sourceId: "src-mission-local",
     evidenceIds: [],
     evidence: [],
   });
@@ -84,6 +84,98 @@ test("reviewed coverage flags partial artifact and chunk provenance", async () =
   assert.equal(report.ok, false);
   assert.equal(report.counts.provenancePartialEvidence, 1);
   assertIssue(report.issues, "partial_evidence_provenance", /chunkId/);
+});
+
+
+test("reviewed coverage preserves public counts when diagnostics are omitted", async () => {
+  const withZeroDiagnosticsFixture = await createFixture();
+  const withoutDiagnostics = await buildReviewedPositionCoverageReport({ ...withZeroDiagnosticsFixture.options, now: fixedNow });
+  const diagnosticsPath = await writeBulkDiagnostics(withZeroDiagnosticsFixture, []);
+  const withZeroDiagnostics = await buildReviewedPositionCoverageReport({ ...withZeroDiagnosticsFixture.options, bulkDiagnosticsPath: diagnosticsPath, now: fixedNow });
+
+  assert.equal(withoutDiagnostics.unpublishedCounts.total, 0);
+  assert.equal(withZeroDiagnostics.ok, true, JSON.stringify(withZeroDiagnostics.issues, null, 2));
+  assert.equal(withZeroDiagnostics.counts.publicPositions, withoutDiagnostics.counts.publicPositions);
+  assert.equal(withZeroDiagnostics.unpublishedCounts.total, 0);
+  assert.equal(withZeroDiagnostics.checkedFiles.includes(path.relative(process.cwd(), diagnosticsPath)), true);
+});
+
+test("reviewed coverage fails visibly for supplied missing or malformed bulk diagnostics", async () => {
+  const fixture = await createFixture();
+  const missingPath = path.join(fixture.root, "missing-bulk.json");
+  const missing = await buildReviewedPositionCoverageReport({ ...fixture.options, bulkDiagnosticsPath: missingPath, now: fixedNow });
+  assert.equal(missing.ok, false);
+  assertIssue(missing.issues, "coverage_input_missing", /missing-bulk\.json/);
+
+  const malformedPath = path.join(fixture.root, "malformed-bulk.json");
+  await fs.writeFile(malformedPath, "{not json", "utf8");
+  const malformed = await buildReviewedPositionCoverageReport({ ...fixture.options, bulkDiagnosticsPath: malformedPath, now: fixedNow });
+  assert.equal(malformed.ok, false);
+  assertIssue(malformed.issues, "bulk_diagnostics_json_malformed", /malformed-bulk\.json/);
+});
+
+test("reviewed coverage summarizes hidden and rejected diagnostics by reason code without changing public positions", async () => {
+  const fixture = await createFixture();
+  const baseline = await buildReviewedPositionCoverageReport({ ...fixture.options, now: fixedNow });
+  const diagnosticsPath = await writeBulkDiagnostics(fixture, [
+    bulkIssue({ status: "hidden", reasonCode: "not_requested_public", path: "pos-hidden", sourceId: "src-growsf", entityId: "ent-california-governor-matt-mahan" }),
+    bulkIssue({ status: "rejected", reasonCode: "source_not_in_race", path: "pos-rejected", sourceId: "src-sf-chronicle", entityId: "ent-california-governor-katie-porter" }),
+  ]);
+
+  const report = await buildReviewedPositionCoverageReport({ ...fixture.options, bulkDiagnosticsPath: diagnosticsPath, now: fixedNow });
+
+  assert.equal(report.ok, true, JSON.stringify(report.issues, null, 2));
+  assert.equal(report.counts.publicPositions, baseline.counts.publicPositions);
+  assert.equal(report.unpublishedCounts.total, 2);
+  assert.equal(report.unpublishedCounts.byStatus.hidden, 1);
+  assert.equal(report.unpublishedCounts.byStatus.rejected, 1);
+  assert.deepEqual(report.unpublishedCounts.byReasonCode, { not_requested_public: 1, source_not_in_race: 1 });
+  assert.equal(report.unpublished.find((item) => item.reasonCode === "not_requested_public")?.sourceName, "GrowSF Voter Guide");
+});
+
+test("reviewed coverage counts duplicate diagnostics deterministically", async () => {
+  const fixture = await createFixture();
+  const diagnosticsPath = await writeBulkDiagnostics(fixture, [
+    bulkIssue({ status: "hidden", reasonCode: "duplicate_public_claim", path: "pos-duplicate-b" }),
+    bulkIssue({ status: "hidden", reasonCode: "duplicate_public_claim", path: "pos-duplicate-a" }),
+  ]);
+
+  const report = await buildReviewedPositionCoverageReport({ ...fixture.options, bulkDiagnosticsPath: diagnosticsPath, now: fixedNow });
+
+  assert.equal(report.ok, true, JSON.stringify(report.issues, null, 2));
+  assert.equal(report.unpublishedCounts.byReasonCode.duplicate_public_claim, 2);
+  assert.deepEqual(report.unpublished.map((item) => item.diagnosticPath), ["pos-duplicate-a", "pos-duplicate-b"]);
+});
+
+test("reviewed coverage surfaces malformed diagnostic rows and unknown identifiers", async () => {
+  const fixture = await createFixture();
+  const diagnosticsPath = await writeBulkDiagnostics(fixture, [
+    bulkIssue({ reasonCode: undefined, path: "pos-missing-reason" }),
+    bulkIssue({ reasonCode: "source_not_in_race", path: "pos-unknown", raceId: "race-unknown", sourceId: "src-unknown", entityId: "ent-unknown" }),
+  ]);
+
+  const report = await buildReviewedPositionCoverageReport({ ...fixture.options, bulkDiagnosticsPath: diagnosticsPath, now: fixedNow });
+
+  assert.equal(report.ok, false);
+  assert.equal(report.unpublishedCounts.byReasonCode.missing_reason_code, 1);
+  assert.equal(report.unpublishedCounts.byReasonCode.source_not_in_race, 1);
+  assertIssue(report.issues, "bulk_diagnostic_missing_reason_code", /bulk-diagnostics\.json\.issues\[0\]\.reasonCode/);
+  assertIssue(report.issues, "unknown_bulk_diagnostic_race", /bulk-diagnostics\.json\.issues\[1\]\.raceId/);
+  assertIssue(report.issues, "unknown_bulk_diagnostic_source", /bulk-diagnostics\.json\.issues\[1\]\.sourceId/);
+  assertIssue(report.issues, "unknown_bulk_diagnostic_entity", /bulk-diagnostics\.json\.issues\[1\]\.entityId/);
+});
+
+test("reviewed coverage summarizes the known M004 S02 hidden and rejected reasons", async () => {
+  const baseline = await buildReviewedPositionCoverageReport({ now: fixedNow });
+  const report = await buildReviewedPositionCoverageReport({ bulkDiagnosticsPath: path.join(process.cwd(), "data", "reviewed", "m004-s02-bulk-latest.json"), now: fixedNow });
+
+  assert.equal(report.ok, true, JSON.stringify(report.issues, null, 2));
+  assert.equal(report.counts.publicPositions, baseline.counts.publicPositions);
+  assert.equal(report.unpublishedCounts.total, 2);
+  assert.deepEqual(report.unpublishedCounts.byReasonCode, { duplicate_public_claim: 1, not_requested_public: 1 });
+  assert.equal(report.unpublishedCounts.byStatus.hidden, 2);
+  assert.equal(report.unpublishedCounts.byStatus.rejected ?? 0, 0);
+  assert.equal(report.unpublished.some((item) => item.raceSlug === "state-assembly-district-17" && item.reasonCode === "duplicate_public_claim" && item.positionId === "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate"), true);
 });
 
 test("reviewed coverage writes the deterministic report artifact", async () => {
@@ -165,6 +257,54 @@ async function writeOverridePosition(
     },
   };
   await fs.writeFile(overridePath, `${JSON.stringify(override, null, 2)}\n`, "utf8");
+}
+
+
+async function writeBulkDiagnostics(fixture: Fixture, issues: Array<Record<string, unknown>>): Promise<string> {
+  const diagnosticsPath = path.join(fixture.root, "bulk-diagnostics.json");
+  const diagnostics = {
+    ok: true,
+    generatedAt: fixedNow().toISOString(),
+    checkedFiles: ["data/extracted/drafts/test-bulk.json"],
+    sourceDraftPath: "data/extracted/drafts/test-bulk.json",
+    diagnosticsPath: path.relative(process.cwd(), diagnosticsPath),
+    counts: {
+      positions: issues.length,
+      races: 1,
+      published: 0,
+      public: 0,
+      hidden: issues.filter((issue) => issue.status === "hidden").length,
+      rejected: issues.filter((issue) => issue.status === "rejected").length,
+      errors: issues.filter((issue) => issue.status === "error").length,
+      issues: issues.length,
+    },
+    races: [],
+    issues,
+  };
+  await fs.writeFile(diagnosticsPath, `${JSON.stringify(diagnostics, null, 2)}\n`, "utf8");
+  return diagnosticsPath;
+}
+
+function bulkIssue(overrides: { status?: string; phase?: string; reasonCode?: string; path?: string; raceId?: string; sourceId?: string; entityId?: string } = {}): Record<string, unknown> {
+  const base: Record<string, unknown> = {
+    phase: "review",
+    status: "hidden",
+    reasonCode: "not_requested_public",
+    path: "pos-test-unpublished",
+    message: "Test diagnostic summary.",
+    raceId: "race-california-governor",
+    sourceId: "src-growsf",
+    entityId: "ent-california-governor-matt-mahan",
+    positionId: "pos-test-unpublished",
+    artifactId: "art-test",
+    chunkId: "chunk-test",
+    evidenceId: "ev-test",
+  };
+  for (const [key, value] of Object.entries(overrides)) {
+    if (value === undefined) delete base[key];
+    else base[key] = value;
+  }
+  return base;
 }
 
 function assertIssue(issues: { code: string; path: string }[], code: string, pathPattern: RegExp): void {

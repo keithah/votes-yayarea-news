@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
-import { buildDurableSourceRaceCoverageReport, buildSourceRaceCoverageReport, type DurableSourceRaceCoverageReport, type SourceCoverageLedger } from "../../lib/data/sourceRaceCoverage";
+import { buildDurableSourceRaceCoverageReport, buildSourceRaceCoverageReport, type DurableSourceRaceCoverageReport, type PublicationDiagnosticsInput, type SourceCoverageLedger } from "../../lib/data/sourceRaceCoverage";
 import { listRaceSlugs, loadRaceData } from "../../lib/data/loaders";
 import type { Position, Race, Source } from "../../lib/data/types";
 
@@ -45,6 +45,83 @@ test("buildSourceRaceCoverageReport emits one row per race/source and explicit c
   assert.equal(row(report, "empty", "src-epsilon")?.status, "no-public-source-found");
   assert.equal(row(report, "controller", "src-alpha")?.status, "not-applicable");
 });
+
+
+test("publication diagnostics attach unpublished reason codes without minting public positions", () => {
+  const sources = [source("src-alpha"), source("src-beta"), source("src-gamma")];
+  const races = [
+    race("mayor"),
+    race("controller", [position({ sourceId: "src-alpha", status: "verified", publicationStatus: "public", evidenceIds: [REVIEWED_EVIDENCE.id], evidence: [REVIEWED_EVIDENCE] })]),
+  ];
+  const report = buildSourceRaceCoverageReport({
+    sources,
+    races,
+    sourceCoverage: ledger([
+      { sourceId: "src-alpha", status: "captured", relevantRaceSlugs: ["mayor", "controller"] },
+      { sourceId: "src-beta", status: "captured", relevantRaceSlugs: ["mayor"] },
+      { sourceId: "src-gamma", status: "captured", relevantRaceSlugs: ["mayor"] },
+    ]),
+    publicationDiagnosticsPath: "bulk.json",
+    publicationDiagnostics: publicationDiagnostics([
+      diagnostic({ reasonCode: "not_requested_public", status: "hidden", raceId: "race-mayor", sourceId: "src-alpha", path: "draft.positions[0]" }),
+      diagnostic({ reasonCode: "source_not_in_race", status: "rejected", raceSlug: "mayor", sourceId: "src-beta", path: "draft.positions[1]", entityId: "ent-mayor-a", evidenceId: "ev-1", artifactId: "art-1", chunkId: "chunk-1" }),
+      diagnostic({ reasonCode: "duplicate_public_claim", status: "hidden", raceSlug: "mayor", sourceId: "src-beta", path: "draft.positions[2]" }),
+      diagnostic({ reasonCode: "duplicate_public_claim", status: "hidden", raceSlug: "mayor", sourceId: "src-beta", path: "draft.positions[2]" }),
+      diagnostic({ reasonCode: "no_public_position", status: "hidden", raceSlug: "mayor", sourceId: "src-gamma", path: "draft.positions[3]" }),
+      diagnostic({ reasonCode: "not_requested_public", status: "hidden", raceSlug: "controller", sourceId: "src-alpha", path: "draft.positions[4]" }),
+    ]),
+  });
+
+  assert.equal(report.ok, true, report.issues.map((issue) => `${issue.code}:${issue.path}`).join("\n"));
+  assertIssue(report, "duplicate_publication_diagnostic", "bulk.json.issues[3]", "src-beta");
+  assert.equal(row(report, "mayor", "src-alpha")?.status, "no-public-position-found");
+  assert.deepEqual(row(report, "mayor", "src-alpha")?.unpublishedReasonCounts, { not_requested_public: 1 });
+  assert.deepEqual(row(report, "mayor", "src-alpha")?.publicPositionIds, []);
+  assert.deepEqual(row(report, "mayor", "src-alpha")?.reviewedPublicPositionIds, []);
+  assert.deepEqual(row(report, "mayor", "src-beta")?.unpublishedReasonCounts, { duplicate_public_claim: 2, source_not_in_race: 1 });
+  assert.equal(row(report, "mayor", "src-beta")?.unpublishedDiagnostics.find((item) => item.reasonCode === "source_not_in_race")?.artifactId, "art-1");
+  assert.equal(row(report, "controller", "src-alpha")?.status, "reviewed-public-position", "diagnostics must not downgrade reviewed public rows");
+  assert.deepEqual(row(report, "controller", "src-alpha")?.unpublishedReasonCounts, { not_requested_public: 1 });
+  assert.equal(report.counts.statuses["reviewed-public-position"], 1, "hidden diagnostics must not increase public coverage");
+
+  const empty = buildSourceRaceCoverageReport({ sources: [source("src-alpha")], races: [race("mayor")], sourceCoverage: ledger([{ sourceId: "src-alpha", status: "captured" }]), publicationDiagnostics: { issues: [] } });
+  assert.equal(empty.ok, true);
+  assert.deepEqual(empty.rows[0]?.unpublishedDiagnostics, []);
+  assert.deepEqual(empty.rows[0]?.unpublishedReasonCounts, {});
+});
+
+test("publication diagnostics validation is path-qualified for malformed, unknown, and missing identifiers", () => {
+  const report = buildSourceRaceCoverageReport({
+    sources: [source("src-alpha")],
+    races: [race("mayor")],
+    sourceCoverage: ledger([{ sourceId: "src-alpha", status: "captured" }]),
+    publicationDiagnosticsPath: "bulk.json",
+    publicationDiagnostics: publicationDiagnostics([
+      diagnostic({ sourceId: "src-unknown", raceSlug: "mayor", reasonCode: "source_not_in_race" }),
+      diagnostic({ sourceId: "src-alpha", raceSlug: "missing-race", reasonCode: "not_requested_public" }),
+      diagnostic({ sourceId: "", raceSlug: "mayor", reasonCode: "not_requested_public" }),
+      diagnostic({ sourceId: "src-alpha", raceSlug: "", raceId: "", reasonCode: "duplicate_public_claim" }),
+      diagnostic({ sourceId: "src-alpha", raceSlug: "mayor", reasonCode: "", status: "hidden" }),
+      { sourceId: "src-alpha", raceSlug: "mayor", reasonCode: "not_requested_public", status: "wat" as never, phase: "review", path: "bad-status", message: "bad" },
+      { sourceId: "src-alpha", raceSlug: "mayor", reasonCode: "not_requested_public", status: "hidden", phase: "wat" as never, path: "bad-phase", message: "bad" },
+    ]),
+  });
+
+  assert.equal(report.ok, false);
+  assertIssue(report, "unknown_publication_diagnostic_source", "bulk.json.issues[0].sourceId", "src-unknown");
+  assertIssue(report, "unknown_publication_diagnostic_race", "bulk.json.issues[1].raceSlug", "src-alpha");
+  assertIssue(report, "missing_publication_diagnostic_source_id", "bulk.json.issues[2].sourceId");
+  assertIssue(report, "missing_publication_diagnostic_race", "bulk.json.issues[3].raceId", "src-alpha");
+  assertIssue(report, "missing_publication_diagnostic_reason", "bulk.json.issues[4].reasonCode", "src-alpha");
+  assertIssue(report, "invalid_publication_diagnostic_status", "bulk.json.issues[5].status", "src-alpha");
+  assertIssue(report, "invalid_publication_diagnostic_phase", "bulk.json.issues[6].phase", "src-alpha");
+  assert.equal(row(report, "mayor", "src-alpha")?.unpublishedDiagnostics.length, 0);
+
+  const malformed = buildSourceRaceCoverageReport({ sources: [source("src-alpha")], races: [race("mayor")], sourceCoverage: ledger([{ sourceId: "src-alpha", status: "captured" }]), publicationDiagnosticsPath: "bulk.json", publicationDiagnostics: {} });
+  assert.equal(malformed.ok, false);
+  assertIssue(malformed, "invalid_publication_diagnostics_issues", "bulk.json.issues");
+});
+
 
 test("negative diagnostics are path-qualified for malformed ledger status, duplicates, unknown sources, unknown race slugs, and missing rows", () => {
   const report = buildSourceRaceCoverageReport({
@@ -100,9 +177,10 @@ test("race with no positions still emits one coverage row per registered source"
 });
 
 test("current repository data builds the 24 by 21 source/race truth matrix", async () => {
-  const [sourcesFile, sourceCoverage, raceSlugs] = await Promise.all([
+  const [sourcesFile, sourceCoverage, publicationDiagnosticsFile, raceSlugs] = await Promise.all([
     readJson<{ sources: Source[] }>("data/public/sources.json"),
     readJson<SourceCoverageLedger>("data/ingestion/source-coverage.json"),
+    readJson<PublicationDiagnosticsInput>("data/reviewed/m004-s02-bulk-latest.json"),
     listRaceSlugs(),
   ]);
   const loadedRaces = await Promise.all(raceSlugs.map((slug) => loadRaceData(slug)));
@@ -111,7 +189,7 @@ test("current repository data builds the 24 by 21 source/race truth matrix", asy
     return loaded.race;
   });
 
-  const report = buildSourceRaceCoverageReport({ sources: sourcesFile.sources, races, sourceCoverage, sourceCoveragePath: "data/ingestion/source-coverage.json" });
+  const report = buildSourceRaceCoverageReport({ sources: sourcesFile.sources, races, sourceCoverage, sourceCoveragePath: "data/ingestion/source-coverage.json", publicationDiagnostics: publicationDiagnosticsFile, publicationDiagnosticsPath: "data/reviewed/m004-s02-bulk-latest.json" });
 
   assert.equal(report.ok, true, report.issues.map((issue) => `${issue.code}:${issue.path}`).join("\n"));
   assert.equal(report.counts.sources, 24);
@@ -123,6 +201,8 @@ test("current repository data builds the 24 by 21 source/race truth matrix", asy
   assert.equal(row(report, "california-secretary-of-state", "src-ca-secretary-of-state")?.ledgerStatus, "captured");
   assert.ok(report.counts.statuses["pending-capture"] > 0, "pending source ledger rows must remain explicit pending coverage");
   assert.ok(report.counts.statuses["not-applicable"] > 0, "coverage metadata should emit at least one not-applicable row");
+  assert.deepEqual(row(report, "california-governor", "src-growsf")?.unpublishedReasonCounts, { not_requested_public: 1 });
+  assert.deepEqual(row(report, "state-assembly-district-17", "src-growsf")?.unpublishedReasonCounts, {});
 });
 
 test("durable source/race coverage artifact has deterministic race and source summaries", async () => {
@@ -132,6 +212,7 @@ test("durable source/race coverage artifact has deterministic race and source su
   assert.equal(artifact.generatedAt, "2026-01-01T00:00:00.000Z");
   assert.ok(artifact.checkedFiles.includes("data/ingestion/source-coverage.json"));
   assert.ok(artifact.checkedFiles.includes("data/public/sources.json"));
+  assert.ok(artifact.checkedFiles.includes("data/reviewed/m004-s02-bulk-latest.json"));
   assert.equal(artifact.counts.registeredSourceCount, 24);
   assert.equal(artifact.counts.raceCount, 21);
   assert.equal(artifact.counts.totalMatrixRows, 504);
@@ -172,9 +253,10 @@ async function buildCurrentDurableArtifact(generatedAt: string): Promise<{
   raceSlugs: string[];
   sources: Source[];
 }> {
-  const [sourcesFile, sourceCoverage, raceSlugs] = await Promise.all([
+  const [sourcesFile, sourceCoverage, publicationDiagnosticsFile, raceSlugs] = await Promise.all([
     readJson<{ sources: Source[] }>("data/public/sources.json"),
     readJson<SourceCoverageLedger>("data/ingestion/source-coverage.json"),
+    readJson<PublicationDiagnosticsInput>("data/reviewed/m004-s02-bulk-latest.json"),
     listRaceSlugs(),
   ]);
   const loadedRaces = await Promise.all(raceSlugs.map((slug) => loadRaceData(slug)));
@@ -182,14 +264,43 @@ async function buildCurrentDurableArtifact(generatedAt: string): Promise<{
     assert.ok(loaded);
     return loaded.race;
   });
-  const report = buildSourceRaceCoverageReport({ sources: sourcesFile.sources, races, sourceCoverage, sourceCoveragePath: "data/ingestion/source-coverage.json" });
+  const report = buildSourceRaceCoverageReport({ sources: sourcesFile.sources, races, sourceCoverage, sourceCoveragePath: "data/ingestion/source-coverage.json", publicationDiagnostics: publicationDiagnosticsFile, publicationDiagnosticsPath: "data/reviewed/m004-s02-bulk-latest.json" });
   const checkedFiles = [
     "data/public/sources.json",
     "data/ingestion/source-coverage.json",
+    "data/reviewed/m004-s02-bulk-latest.json",
     ...raceSlugs.map((slug) => `data/public/races/${slug}.json`),
+    ...(await existingRaceOverrideFiles(raceSlugs)),
   ];
   const artifact = buildDurableSourceRaceCoverageReport(report, { generatedAt, checkedFiles });
   return { artifact, report, raceSlugs, sources: sourcesFile.sources };
+}
+
+
+async function existingRaceOverrideFiles(raceSlugs: string[]): Promise<string[]> {
+  const entries = await readdir(path.join(process.cwd(), "manual/overrides/races"), { withFileTypes: true }).catch(() => []);
+  const expected = new Set(raceSlugs.map((slug) => `${slug}.json`));
+  return entries
+    .filter((entry) => entry.isFile() && expected.has(entry.name))
+    .map((entry) => `manual/overrides/races/${entry.name}`)
+    .sort();
+}
+
+function publicationDiagnostics(issues: NonNullable<PublicationDiagnosticsInput["issues"]>): PublicationDiagnosticsInput {
+  return { issues };
+}
+
+function diagnostic(overrides: Partial<NonNullable<PublicationDiagnosticsInput["issues"]>[number]> = {}): NonNullable<PublicationDiagnosticsInput["issues"]>[number] {
+  return {
+    phase: "review",
+    status: "hidden",
+    reasonCode: "not_requested_public",
+    path: "fixture-position",
+    message: "Fixture diagnostic",
+    raceSlug: "mayor",
+    sourceId: "src-alpha",
+    ...overrides,
+  };
 }
 
 function source(id: string): Source {

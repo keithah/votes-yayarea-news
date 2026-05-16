@@ -72,7 +72,9 @@
       "ent-california-governor-nancy-d-young"
     ],
     "sourceIds": [
-      "src-ca-secretary-of-state"
+      "src-ca-secretary-of-state",
+      "src-sf-chronicle",
+      "src-growsf"
     ],
     "positions": [
       {

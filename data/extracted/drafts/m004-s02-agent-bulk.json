@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "runId": "m004-s02-agent-bulk",
+  "provider": {
+    "provider": "agent",
+    "model": "pi-auto"
+  },
+  "positions": [
+    {
+      "id": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "kind": "informational",
+      "reviewStatus": "verified",
+      "publicationStatus": "public",
+      "label": "Official candidate-list coverage for State Assembly District 17",
+      "rationale": "The official Secretary of State candidate-list source explicitly lists State Assembly District 17 as a covered contest; this is informational coverage only, not an endorsement.",
+      "evidenceIds": [
+        "ev-m004-s02-sos-state-assembly-district-17-matt-haney-informational"
+      ],
+      "publicReady": true,
+      "generatedBy": {
+        "provider": "agent",
+        "model": "pi-auto"
+      },
+      "generatedAt": "2026-05-16T16:00:00.000Z",
+      "manualOverride": {
+        "reviewer": "pi-agent",
+        "reviewedAt": "2026-05-16T16:00:00.000Z",
+        "status": "verified",
+        "publicationStatus": "public",
+        "notes": "Agent-authored from exact ingested chunk quote; unsafe mappings intentionally left hidden or rejected by the bulk review gate."
+      }
+    },
+    {
+      "id": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "kind": "informational",
+      "reviewStatus": "verified",
+      "publicationStatus": "public",
+      "label": "Duplicate official candidate-list coverage for State Assembly District 17",
+      "rationale": "Deliberate duplicate of the official informational claim so the bulk gate records duplicate_public_claim and keeps it hidden.",
+      "evidenceIds": [
+        "ev-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate"
+      ],
+      "publicReady": true,
+      "generatedBy": {
+        "provider": "agent",
+        "model": "pi-auto"
+      },
+      "generatedAt": "2026-05-16T16:00:00.000Z",
+      "manualOverride": {
+        "reviewer": "pi-agent",
+        "reviewedAt": "2026-05-16T16:00:00.000Z",
+        "status": "verified",
+        "publicationStatus": "public",
+        "notes": "Agent-authored from exact ingested chunk quote; unsafe mappings intentionally left hidden or rejected by the bulk review gate."
+      }
+    },
+    {
+      "id": "pos-m004-s02-growsf-state-assembly-district-17-matt-haney",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-growsf",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "kind": "endorse",
+      "reviewStatus": "verified",
+      "publicationStatus": "public",
+      "label": "GrowSF recommends Matt Haney for State Assembly District 17",
+      "rationale": "Exact quote is present in the M004 GrowSF captured artifact, and GrowSF is mapped to the public State Assembly District 17 race for this verified recommendation.",
+      "evidenceIds": [
+        "ev-m004-s02-growsf-state-assembly-district-17-matt-haney"
+      ],
+      "publicReady": true,
+      "generatedBy": {
+        "provider": "agent",
+        "model": "pi-auto"
+      },
+      "generatedAt": "2026-05-16T16:00:00.000Z",
+      "manualOverride": {
+        "reviewer": "pi-agent",
+        "reviewedAt": "2026-05-16T16:00:00.000Z",
+        "status": "verified",
+        "publicationStatus": "public",
+        "notes": "Agent-authored from exact ingested chunk quote; unsafe mappings intentionally left hidden or rejected by the bulk review gate."
+      }
+    },
+    {
+      "id": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
+      "raceId": "race-us-house-district-11",
+      "sourceId": "src-growsf",
+      "entityId": "ent-us-house-district-11-scott-wiener",
+      "kind": "endorse",
+      "reviewStatus": "verified",
+      "publicationStatus": "public",
+      "label": "GrowSF recommends Scott Wiener for U.S. House District 11",
+      "rationale": "Exact quote is present in the M004 GrowSF captured artifact, and GrowSF is mapped to the public U.S. House District 11 race for this verified recommendation.",
+      "evidenceIds": [
+        "ev-m004-s02-growsf-us-house-district-11-scott-wiener"
+      ],
+      "publicReady": true,
+      "generatedBy": {
+        "provider": "agent",
+        "model": "pi-auto"
+      },
+      "generatedAt": "2026-05-16T16:00:00.000Z",
+      "manualOverride": {
+        "reviewer": "pi-agent",
+        "reviewedAt": "2026-05-16T16:00:00.000Z",
+        "status": "verified",
+        "publicationStatus": "public",
+        "notes": "Agent-authored from exact ingested chunk quote; unsafe mappings intentionally left hidden or rejected by the bulk review gate."
+      }
+    },
+    {
+      "id": "pos-m004-s02-chronicle-governor-katie-porter",
+      "raceId": "race-california-governor",
+      "sourceId": "src-sf-chronicle",
+      "entityId": "ent-california-governor-katie-porter",
+      "kind": "endorse",
+      "reviewStatus": "verified",
+      "publicationStatus": "public",
+      "label": "Chronicle editorial board recommends Katie Porter for Governor",
+      "rationale": "Exact quote is present in the M004 Chronicle captured artifact, and the Chronicle is mapped to the public California Governor race for this verified recommendation.",
+      "evidenceIds": [
+        "ev-m004-s02-chronicle-governor-katie-porter"
+      ],
+      "publicReady": true,
+      "generatedBy": {
+        "provider": "agent",
+        "model": "pi-auto"
+      },
+      "generatedAt": "2026-05-16T16:00:00.000Z",
+      "manualOverride": {
+        "reviewer": "pi-agent",
+        "reviewedAt": "2026-05-16T16:00:00.000Z",
+        "status": "verified",
+        "publicationStatus": "public",
+        "notes": "Agent-authored from exact ingested chunk quote; unsafe mappings intentionally left hidden or rejected by the bulk review gate."
+      }
+    },
+    {
+      "id": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+      "raceId": "race-california-governor",
+      "sourceId": "src-growsf",
+      "entityId": "ent-california-governor-matt-mahan",
+      "kind": "endorse",
+      "reviewStatus": "reviewed",
+      "publicationStatus": "hidden",
+      "label": "GrowSF recommends Matt Mahan for Governor but remains hidden pending race/source mapping",
+      "rationale": "Exact quote is present, but the source is not mapped to the race; this intentionally exercises hidden/not_requested_public diagnostics rather than publication.",
+      "evidenceIds": [
+        "ev-m004-s02-growsf-governor-matt-mahan-hidden"
+      ],
+      "publicReady": false,
+      "generatedBy": {
+        "provider": "agent",
+        "model": "pi-auto"
+      },
+      "generatedAt": "2026-05-16T16:00:00.000Z",
+      "manualOverride": {
+        "reviewer": "pi-agent",
+        "reviewedAt": "2026-05-16T16:00:00.000Z",
+        "status": "reviewed",
+        "publicationStatus": "hidden",
+        "notes": "Agent-authored from exact ingested chunk quote; unsafe mappings intentionally left hidden or rejected by the bulk review gate."
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
+      "positionId": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "- State Assembly District 17"
+    },
+    {
+      "id": "ev-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate",
+      "positionId": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-ca-secretary-of-state",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "artifactId": "art-ca-secretary-of-state-2026-primary-certified-candidates",
+      "chunkId": "art-ca-secretary-of-state-2026-primary-certified-candidates-chunk-001",
+      "url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "kind": "quote",
+      "quote": "- State Assembly District 17"
+    },
+    {
+      "id": "ev-m004-s02-growsf-state-assembly-district-17-matt-haney",
+      "positionId": "pos-m004-s02-growsf-state-assembly-district-17-matt-haney",
+      "raceId": "race-state-assembly-district-17",
+      "sourceId": "src-growsf",
+      "entityId": "ent-state-assembly-district-17-matt-haney",
+      "artifactId": "art-growsf-voter-guide-m004-live",
+      "chunkId": "art-growsf-voter-guide-m004-live-chunk-070",
+      "url": "https://growsf.org/voter-guide/",
+      "kind": "quote",
+      "quote": "We recommend voting for Matt Haney for State Assembly, District 17."
+    },
+    {
+      "id": "ev-m004-s02-growsf-us-house-district-11-scott-wiener",
+      "positionId": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
+      "raceId": "race-us-house-district-11",
+      "sourceId": "src-growsf",
+      "entityId": "ent-us-house-district-11-scott-wiener",
+      "artifactId": "art-growsf-voter-guide-m004-live",
+      "chunkId": "art-growsf-voter-guide-m004-live-chunk-072",
+      "url": "https://growsf.org/voter-guide/",
+      "kind": "quote",
+      "quote": "We recommend voting for Scott Wiener for U.S. House of Representatives, District 11."
+    },
+    {
+      "id": "ev-m004-s02-chronicle-governor-katie-porter",
+      "positionId": "pos-m004-s02-chronicle-governor-katie-porter",
+      "raceId": "race-california-governor",
+      "sourceId": "src-sf-chronicle",
+      "entityId": "ent-california-governor-katie-porter",
+      "artifactId": "art-san-francisco-chronicle-editorial-board-m004-live",
+      "chunkId": "art-san-francisco-chronicle-editorial-board-m004-live-chunk-002",
+      "url": "https://www.sfchronicle.com/projects/2026/california-primary-sf-election-endorsements/",
+      "kind": "quote",
+      "quote": "Governor: Katie Porter Democrat"
+    },
+    {
+      "id": "ev-m004-s02-growsf-governor-matt-mahan-hidden",
+      "positionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+      "raceId": "race-california-governor",
+      "sourceId": "src-growsf",
+      "entityId": "ent-california-governor-matt-mahan",
+      "artifactId": "art-growsf-voter-guide-m004-live",
+      "chunkId": "art-growsf-voter-guide-m004-live-chunk-037",
+      "url": "https://growsf.org/voter-guide/",
+      "kind": "quote",
+      "quote": "We recommend voting for Matt Mahan for Governor."
+    }
+  ]
+}

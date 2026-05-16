@@ -15,10 +15,14 @@ test("builds California Governor recommendation matrix from public UI model", as
   assert.equal(matrix.empty, false);
   assert.equal(matrix.candidates.length, 61);
   assert.ok(matrix.candidates.some((candidate) => candidate.id === "ent-california-governor-akinyemi-agbede"));
-  assert.deepEqual(matrix.sources.map((source) => source.id), ["src-ca-secretary-of-state"]);
+  assert.deepEqual(matrix.sources.map((source) => source.id), ["src-growsf", "src-sf-chronicle", "src-ca-secretary-of-state"]);
   assert.deepEqual(
     matrix.groups.map((group) => ({ id: group.id, sourceType: group.sourceType, sourceIds: group.sourceIds })),
-    [{ id: "source-type:official-certified-candidate-list", sourceType: "official certified candidate list", sourceIds: ["src-ca-secretary-of-state"] }],
+    [
+      { id: "source-type:civic-voter-guide-recommendations", sourceType: "civic voter guide / recommendations", sourceIds: ["src-growsf"] },
+      { id: "source-type:editorial-endorsements", sourceType: "editorial endorsements", sourceIds: ["src-sf-chronicle"] },
+      { id: "source-type:official-certified-candidate-list", sourceType: "official certified candidate list", sourceIds: ["src-ca-secretary-of-state"] },
+    ],
   );
   assert.equal(matrix.defaultSort.key, "source-type-then-name");
   assert.equal(matrix.defaultGrouping.key, "sourceType");

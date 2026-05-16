@@ -1,0 +1,25 @@
+{
+  "id": "art-spur-voter-guide-m004-live",
+  "sourceId": "src-spur",
+  "targetId": "fixture-spur-voter-guide-m004-live",
+  "title": "June 2026 Voter Guide | SPUR",
+  "url": "https://www.spur.org/voter-guide/2026-06",
+  "status": "chunked",
+  "inputKind": "html",
+  "capturedAt": "2026-05-16T15:14:19.094Z",
+  "rawPath": "data/ingested/raw/src-spur-voter-guide-m004-live.html",
+  "cleanPath": "data/ingested/artifacts/src-spur-voter-guide-m004-live.json",
+  "chunkPath": "data/ingested/chunks/src-spur-voter-guide-m004-live.json",
+  "text": "June 2026 Voter Guide | SPUR\nSkip to main content\nJune 2026 Voter Guide\nFor the June 2026 election, SPUR analyzed local and state measures related to our policy areas on the San Francisco, San José, and Oakland ballots. Our analysis includes the measures' background, equity impacts, and pros and cons and a recommendation on how to vote.\nAll\nSan Francisco\nSan José\nOakland\nSearch\n​ Print Voter Guide Voter Guide Archive ​\nSan Francisco (SF)\nProp\nA\nEarthquake Bond\nVote YES\nProp\nB\nLifetime Term Limits\nVote NO\nProp\nC\nSmall Business Tax Cuts\nVote NO\nProp\nD\nBusiness Tax Increase\nVote NO\nSan José (SJ)\nMeasure\nA\nHotel Tax Increase\nVote YES\nMeasure\nD\nOpen Space Tax\nVote YES\nOakland (OAK)\nMeasure\nA\nCommunity College Tax\nVote YES\nMeasure\nC\nSmall Business Tax Relief\nVote YES\nMeasure\nD\nPolice and Fire Retirement\nVote YES\nMeasure\nE\nCity Services Tax\nNo Recommendation\nSPUR Voter Guide Purpose and Process\nThe goal of the SPUR Voter Guide is to offer objective analysis and advise voters on which measures will deliver real solutions.\nFor this election, SPUR analyzed measures related to our policy areas on the San Francisco, San José, and Oakland ballots.\nAll ballot measures are researched and analyzed by SPUR staff.\nFor city measures, SPUR’s city advisory boards in San Francisco, San José, and Oakland form the ballot analysis committees. Each committee reviews staff research, hears arguments on both sides of the relevant measures, debates the merits of each, and recommends a position. The endorsements from each city advisory board are then affirmed by the SPUR Board of Directors with a vote of 50% of the members. The SPUR Board can overturn the recommendations of the city advisory boards with a 60% vote.\nThe SPUR Board of Directors voted to adopt positions on the relevant measures on March 19, 2026.\nAcknowledgments\nSan Francisco City Advisory Board: Jacob Best, Jay Bradshaw, Christopher Brown, Genevieve Cadwalader, Shiyama Clunie, Emily Cohen, Kelly Dearman, Sarah Dennis Phillips, Jean Fraser, Ed Harrington, Dawn Kamalanathan, Dorka Keehn, Hao Ko, Alicia Murasaki, Shannon Peloquin, Guillermo Rodriguez, Ann Silverberg, Kate White, Lauren Wilson\nSan José City Advisory Board: Anil Babbar, Laura Chmielewski, John Diffenderfer, Kathy Duong, Katie Ferrick, Rosalynn Hughey, Ria Hutabarat Lo, Christine Laing, Jim Lightbody, Camille Llanes-Fontanilla, David Nieh, Jessica Paz-Cedillos, James Reber, Jasneet Sharma, Kelly Snider, Leah Toeniskoetter, Ben Tripousis, Geri Wong\nOakland City Advisory Board: Lynette Dias, Jonathan Fearn, Kiran Jain, Carolyn Johnson, Andrea Lowe, Nikki Lowy, Jay Murphy, Ari Takata-Vasquez, Amy Tharpe, Molly Turner, Lauren Wilson\nSPUR Staff: Sarah Atkinson, Colleen Corrigan, Julie Hernandez, Nicole Neditch, Maeve Skelly, Sujata Srivastava\nEditors: Melissa Edeburn, Ren Steen\nPaid for by the San Francisco Bay Area Planning and Urban Research Association. Financial disclosures available at sfethics.org\nPublished on\nApril 30, 2026",
+  "metadata": {
+    "inputKind": "html",
+    "originalLength": 49954,
+    "normalizedLength": 2974,
+    "removedScriptLikeBlocks": 9,
+    "removedStyleLikeBlocks": 0,
+    "removedBoilerplateBlocks": 2,
+    "headingCount": 6,
+    "lowText": false
+  },
+  "issues": []
+}
