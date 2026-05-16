@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, readFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import {
@@ -14,6 +15,11 @@ import {
   validateJsonOutPath,
   validateLiveReport,
 } from "../../scripts/assert-m004-s05-live-pages.mjs";
+import {
+  createM004S05LaunchVerificationReport,
+  recordM004S05LaunchVerification,
+  validateM004S05LaunchVerificationReport,
+} from "../../scripts/record-m004-s05-launch-verification.mjs";
 
 const HTML_BY_ROUTE: Record<string, string> = Object.fromEntries(
   REPRESENTATIVE_ROUTE_CONTRACTS.map((contract: any) => [contract.route, htmlForContract(contract)]),
@@ -150,6 +156,73 @@ test("assertRouteHtml exposes missing marker and leakage details without full HT
   const result = assertRouteHtml(REPRESENTATIVE_ROUTE_CONTRACTS[1], '<html data-race-slug="california-governor">manual/overrides/private.json</html>');
   assert.ok(result.missingMarkers.includes("Chronicle source"));
   assert.deepEqual(result.leakageFindings, [{ patternId: "manual-review-path", description: "private manual review path" }]);
+});
+
+test("recorder validates live report and writes final launch summaries", async () => {
+  const projectRoot = await mkdtemp(path.join(os.tmpdir(), "m004-s05-recorder-"));
+  const liveReport = await runLivePageAssertions({
+    origin: "https://example.test/votes-yayarea-news/",
+    projectRoot,
+    fetchImpl: fetchFromRoutes(HTML_BY_ROUTE),
+  });
+  await mkdir(path.join(projectRoot, "data/launch"), { recursive: true });
+  await writeFile(path.join(projectRoot, "data/launch/m004-s05-live-pages.json"), `${JSON.stringify(liveReport, null, 2)}\n`, "utf8");
+
+  const report = recordM004S05LaunchVerification({ projectRoot });
+
+  assert.equal(report.status, "pass");
+  assert.deepEqual(validateM004S05LaunchVerificationReport(report), []);
+  assert.equal(report.summaries.routes.checkedRoutes, 3);
+  assert.equal(report.summaries.routes.missingRoutes.length, 0);
+  assert.equal(report.redaction.status, "pass");
+  assert.deepEqual(JSON.parse(await readFile(path.join(projectRoot, "data/launch/m004-s05-launch-verification.json"), "utf8")), report);
+  assert.deepEqual(JSON.parse(await readFile(path.join(projectRoot, "data/launch/latest.json"), "utf8")), report);
+});
+
+test("recorder rejects malformed, stale, non-pass, incomplete, and leaking live reports", async () => {
+  const valid = await runLivePageAssertions({
+    origin: "https://example.test/votes-yayarea-news/",
+    fetchImpl: fetchFromRoutes(HTML_BY_ROUTE),
+  });
+
+  assert.match(validateLiveReport({}).join("; "), /schemaVersion must be 1/);
+
+  const staleSlice = structuredClone(valid);
+  staleSlice.slice = "S04";
+  assert.match(validateLiveReport(staleSlice).join("; "), /slice must be S05/);
+
+  const nonPass = structuredClone(valid);
+  nonPass.status = "fail";
+  assert.match(validateLiveReport(nonPass).join("; "), /status must be pass/);
+
+  const missingCoverage = structuredClone(valid);
+  missingCoverage.checkedRoutes = missingCoverage.checkedRoutes.slice(0, 2);
+  assert.match(validateLiveReport(missingCoverage).join("; "), /checkedRoutes must include the three representative routes/);
+  const incompleteSummary = createM004S05LaunchVerificationReport({ liveReport: missingCoverage });
+  assert.equal(incompleteSummary.gates.routeCoverage.status, "fail");
+  assert.match(validateM004S05LaunchVerificationReport(incompleteSummary).join("; "), /status must be pass|checkedRoutes must be 3|missingRoutes must be empty/);
+
+  const duplicateCoverage = structuredClone(valid);
+  duplicateCoverage.checkedRoutes[2] = structuredClone(duplicateCoverage.checkedRoutes[0]);
+  const duplicateSummary = createM004S05LaunchVerificationReport({ liveReport: duplicateCoverage });
+  assert.equal(duplicateSummary.gates.routeCoverage.status, "fail");
+  assert.deepEqual(duplicateSummary.summaries.routes.missingRoutes, ["/races/us-house-district-11/"]);
+
+  const leaked = structuredClone(valid);
+  leaked.checkedRoutes[0].url = "file:///home/keith/private.html";
+  assert.match(validateLiveReport(leaked).join("; "), /report leaked/);
+});
+
+test("recorder does not update latest when live report validation fails", async () => {
+  const projectRoot = await mkdtemp(path.join(os.tmpdir(), "m004-s05-recorder-fail-"));
+  const launchDir = path.join(projectRoot, "data/launch");
+  await mkdir(launchDir, { recursive: true });
+  await writeFile(path.join(launchDir, "latest.json"), '{"status":"previous"}\n', "utf8");
+  await writeFile(path.join(launchDir, "m004-s05-live-pages.json"), '{"schemaVersion":1,"milestone":"M004","slice":"S04","status":"pass"}\n', "utf8");
+
+  assert.throws(() => recordM004S05LaunchVerification({ projectRoot }), /Phase live-report-validation/);
+  assert.deepEqual(JSON.parse(await readFile(path.join(launchDir, "latest.json"), "utf8")), { status: "previous" });
+  assert.equal(existsSync(path.join(launchDir, "m004-s05-launch-verification.json")), false);
 });
 
 function fetchFromRoutes(routes: Record<string, string | { status: number; body: string }>) {

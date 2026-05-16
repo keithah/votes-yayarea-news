@@ -24,6 +24,7 @@
     "verify:m004:s02": "bash scripts/verify-m004-s02.sh",
     "verify:m004:s03": "bash scripts/verify-m004-s03.sh",
     "verify:m004:s04": "bash scripts/verify-m004-s04.sh",
+    "verify:m004:s05": "bash scripts/verify-m004-s05.sh",
     "test:data": "node --import tsx --test tests/data/*.test.ts",
     "test:ingestion": "node --import tsx --test tests/ingestion/*.test.ts",
     "test:extraction": "node --import tsx --test tests/extraction/*.test.ts",

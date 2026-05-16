@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "milestone": "M004",
+  "slice": "S05",
+  "generatedBy": "scripts/assert-m004-s05-live-pages.mjs",
+  "status": "pass",
+  "startedAt": "2026-05-16T18:36:55.225Z",
+  "origin": "http://127.0.0.1:4173",
+  "timeoutMs": 15000,
+  "checkedRoutes": [
+    {
+      "route": "/races/state-assembly-district-17/",
+      "slug": "state-assembly-district-17",
+      "url": "http://127.0.0.1:4173/races/state-assembly-district-17/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 42579,
+      "markerAssertions": [
+        {
+          "name": "text: State Assembly District 17",
+          "status": "pass"
+        },
+        {
+          "name": "text: Source-by-candidate comparison",
+          "status": "pass"
+        },
+        {
+          "name": "text: California Secretary of State",
+          "status": "pass"
+        },
+        {
+          "name": "text: GrowSF",
+          "status": "pass"
+        },
+        {
+          "name": "race slug",
+          "status": "pass"
+        },
+        {
+          "name": "multi-source matrix source count",
+          "status": "pass"
+        },
+        {
+          "name": "non-empty matrix cell count",
+          "status": "pass"
+        },
+        {
+          "name": "desktop matrix",
+          "status": "pass"
+        },
+        {
+          "name": "mobile matrix",
+          "status": "pass"
+        },
+        {
+          "name": "Secretary of State source",
+          "status": "pass"
+        },
+        {
+          "name": "GrowSF source",
+          "status": "pass"
+        },
+        {
+          "name": "Matt Haney candidate",
+          "status": "pass"
+        },
+        {
+          "name": "informational matrix cell",
+          "status": "pass"
+        },
+        {
+          "name": "endorsement matrix cell",
+          "status": "pass"
+        },
+        {
+          "name": "receipt diagnostics",
+          "status": "pass"
+        },
+        {
+          "name": "available receipt",
+          "status": "pass"
+        }
+      ],
+      "missingMarkers": [],
+      "leakageFindings": []
+    },
+    {
+      "route": "/races/california-governor/",
+      "slug": "california-governor",
+      "url": "http://127.0.0.1:4173/races/california-governor/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 850576,
+      "markerAssertions": [
+        {
+          "name": "text: California Governor",
+          "status": "pass"
+        },
+        {
+          "name": "text: Source-by-candidate comparison",
+          "status": "pass"
+        },
+        {
+          "name": "text: California Secretary of State",
+          "status": "pass"
+        },
+        {
+          "name": "text: San Francisco Chronicle",
+          "status": "pass"
+        },
+        {
+          "name": "race slug",
+          "status": "pass"
+        },
+        {
+          "name": "multi-source matrix source count",
+          "status": "pass"
+        },
+        {
+          "name": "non-empty matrix cell count",
+          "status": "pass"
+        },
+        {
+          "name": "desktop matrix",
+          "status": "pass"
+        },
+        {
+          "name": "mobile matrix",
+          "status": "pass"
+        },
+        {
+          "name": "Secretary of State source",
+          "status": "pass"
+        },
+        {
+          "name": "Chronicle source",
+          "status": "pass"
+        },
+        {
+          "name": "GrowSF empty-source marker",
+          "status": "pass"
+        },
+        {
+          "name": "Katie Porter candidate",
+          "status": "pass"
+        },
+        {
+          "name": "Matt Mahan hidden-claim candidate",
+          "status": "pass"
+        },
+        {
+          "name": "endorsement matrix cell",
+          "status": "pass"
+        },
+        {
+          "name": "no-public-position matrix cell",
+          "status": "pass"
+        },
+        {
+          "name": "receipt diagnostics",
+          "status": "pass"
+        },
+        {
+          "name": "no-public-position receipt",
+          "status": "pass"
+        }
+      ],
+      "missingMarkers": [],
+      "leakageFindings": []
+    },
+    {
+      "route": "/races/us-house-district-11/",
+      "slug": "us-house-district-11",
+      "url": "http://127.0.0.1:4173/races/us-house-district-11/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 124781,
+      "markerAssertions": [
+        {
+          "name": "text: U.S. House District 11",
+          "status": "pass"
+        },
+        {
+          "name": "text: Source-by-candidate comparison",
+          "status": "pass"
+        },
+        {
+          "name": "text: GrowSF",
+          "status": "pass"
+        },
+        {
+          "name": "text: Scott Wiener",
+          "status": "pass"
+        },
+        {
+          "name": "race slug",
+          "status": "pass"
+        },
+        {
+          "name": "multi-source matrix source count",
+          "status": "pass"
+        },
+        {
+          "name": "non-empty matrix cell count",
+          "status": "pass"
+        },
+        {
+          "name": "desktop matrix",
+          "status": "pass"
+        },
+        {
+          "name": "mobile matrix",
+          "status": "pass"
+        },
+        {
+          "name": "GrowSF source",
+          "status": "pass"
+        },
+        {
+          "name": "Scott Wiener candidate",
+          "status": "pass"
+        },
+        {
+          "name": "endorsement matrix cell",
+          "status": "pass"
+        },
+        {
+          "name": "receipt diagnostics",
+          "status": "pass"
+        },
+        {
+          "name": "available receipt",
+          "status": "pass"
+        },
+        {
+          "name": "Scott Wiener evidence copy",
+          "status": "pass"
+        }
+      ],
+      "missingMarkers": [],
+      "leakageFindings": []
+    }
+  ],
+  "counts": {
+    "checkedRoutes": 3,
+    "markerAssertions": 49,
+    "leakageFindings": 0
+  },
+  "phases": {
+    "origin": {
+      "status": "pass"
+    },
+    "fetch": {
+      "status": "pass",
+      "checked": 3
+    },
+    "markers": {
+      "status": "pass",
+      "checked": 49
+    },
+    "leakage": {
+      "status": "pass",
+      "checked": 33
+    },
+    "report": {
+      "status": "pass"
+    },
+    "jsonOut": {
+      "status": "pass",
+      "path": "data/launch/m004-s05-live-pages.json"
+    }
+  },
+  "completedAt": "2026-05-16T18:36:55.290Z"
+}
