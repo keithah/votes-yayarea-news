@@ -1,0 +1,127 @@
+{
+  "ok": false,
+  "checkedFiles": [
+    "data/extracted/drafts/m004-s02-agent-bulk.json",
+    "data/ingestion/manifest.json",
+    "data/public/sources.json",
+    "data/public/entities.json",
+    "data/public/collections.json",
+    "data/public/races/board-of-equalization-district-2.json",
+    "data/public/races/california-attorney-general.json",
+    "data/public/races/california-controller.json",
+    "data/public/races/california-governor.json",
+    "data/public/races/california-insurance-commissioner.json",
+    "data/public/races/california-lieutenant-governor.json",
+    "data/public/races/california-secretary-of-state.json",
+    "data/public/races/california-superintendent-public-instruction.json",
+    "data/public/races/california-treasurer.json",
+    "data/public/races/san-francisco-prop-a.json",
+    "data/public/races/san-francisco-prop-b.json",
+    "data/public/races/san-francisco-prop-c.json",
+    "data/public/races/san-francisco-prop-d.json",
+    "data/public/races/sfusd-board-of-education.json",
+    "data/public/races/state-assembly-district-17.json",
+    "data/public/races/state-assembly-district-19.json",
+    "data/public/races/superior-court-judge-seat-16.json",
+    "data/public/races/supervisor-district-2.json",
+    "data/public/races/supervisor-district-4.json",
+    "data/public/races/us-house-district-11.json",
+    "data/public/races/us-house-district-15.json",
+    "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/chunks/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
+    "data/ingested/artifacts/src-growsf-voter-guide-m004-live.json",
+    "data/ingested/artifacts/src-san-francisco-chronicle-editorial-board-m004-live.json",
+    "data/ingested/chunks/src-growsf-voter-guide-m004-live.json",
+    "data/ingested/chunks/src-san-francisco-chronicle-editorial-board-m004-live.json"
+  ],
+  "counts": {
+    "inputs": 0,
+    "positions": 6,
+    "evidence": 6,
+    "issues": 8,
+    "errors": 8,
+    "warnings": 0
+  },
+  "issues": [
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "evidence[2].sourceId",
+      "message": "Source 'src-growsf' is not allowed for race 'race-state-assembly-district-17'.",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-voter-guide-m004-live",
+      "chunkId": "art-growsf-voter-guide-m004-live-chunk-070",
+      "raceId": "race-state-assembly-district-17",
+      "entityId": "ent-state-assembly-district-17-matt-haney"
+    },
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "evidence[3].sourceId",
+      "message": "Source 'src-growsf' is not allowed for race 'race-us-house-district-11'.",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-voter-guide-m004-live",
+      "chunkId": "art-growsf-voter-guide-m004-live-chunk-072",
+      "raceId": "race-us-house-district-11",
+      "entityId": "ent-us-house-district-11-scott-wiener"
+    },
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "evidence[4].sourceId",
+      "message": "Source 'src-sf-chronicle' is not allowed for race 'race-california-governor'.",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-san-francisco-chronicle-editorial-board-m004-live",
+      "chunkId": "art-san-francisco-chronicle-editorial-board-m004-live-chunk-002",
+      "raceId": "race-california-governor",
+      "entityId": "ent-california-governor-katie-porter"
+    },
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "evidence[5].sourceId",
+      "message": "Source 'src-growsf' is not allowed for race 'race-california-governor'.",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-voter-guide-m004-live",
+      "chunkId": "art-growsf-voter-guide-m004-live-chunk-037",
+      "raceId": "race-california-governor",
+      "entityId": "ent-california-governor-matt-mahan"
+    },
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "positions[2].sourceId",
+      "message": "Source 'src-growsf' is not allowed for race 'race-state-assembly-district-17'.",
+      "sourceId": "src-growsf",
+      "raceId": "race-state-assembly-district-17",
+      "entityId": "ent-state-assembly-district-17-matt-haney"
+    },
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "positions[3].sourceId",
+      "message": "Source 'src-growsf' is not allowed for race 'race-us-house-district-11'.",
+      "sourceId": "src-growsf",
+      "raceId": "race-us-house-district-11",
+      "entityId": "ent-us-house-district-11-scott-wiener"
+    },
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "positions[4].sourceId",
+      "message": "Source 'src-sf-chronicle' is not allowed for race 'race-california-governor'.",
+      "sourceId": "src-sf-chronicle",
+      "raceId": "race-california-governor",
+      "entityId": "ent-california-governor-katie-porter"
+    },
+    {
+      "code": "source_not_in_race",
+      "severity": "error",
+      "path": "positions[5].sourceId",
+      "message": "Source 'src-growsf' is not allowed for race 'race-california-governor'.",
+      "sourceId": "src-growsf",
+      "raceId": "race-california-governor",
+      "entityId": "ent-california-governor-matt-mahan"
+    }
+  ]
+}

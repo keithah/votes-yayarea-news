@@ -34,7 +34,9 @@ function parseArgs(args: string[]): CliOptions {
     else if (arg === "--overrides-dir") parsed.overridesDir = requireValue(args, ++index, arg);
     else if (arg === "--public-dir") parsed.publicDir = requireValue(args, ++index, arg);
     else if (arg === "--diagnostics-dir") parsed.diagnosticsDir = requireValue(args, ++index, arg);
-    else if (arg === "--diagnostics-path") parsed.diagnosticsPath = requireValue(args, ++index, arg);
+    else if (arg === "--diagnostics-path" || arg === "--diagnostics") parsed.diagnosticsPath = requireValue(args, ++index, arg);
+    else if (arg === "--validation") parsed.validationPath = requireValue(args, ++index, arg);
+    else if (arg === "--publish") parsed.publish = true;
     else throw new Error(`Unknown argument '${arg}'. Use --help for usage.`);
   }
   return parsed;
@@ -47,7 +49,7 @@ function requireValue(args: string[], index: number, flag: string): string {
 }
 
 function printHelp(): void {
-  console.log(`Usage: pnpm review:bulk [options]\n\nValidates an extraction draft, writes race review JSON, publishes only evidence-backed public records through the existing review publisher, and persists bulk diagnostics.\n\nOptions:\n  --draft <path>              Extraction draft path (default: data/extracted/drafts/latest.json)\n  --manifest <path>           Ingestion manifest path (default: data/ingestion/manifest.json)\n  --reviews-dir <path>        Review root (default: manual/reviews)\n  --overrides-dir <path>      Override root (default: manual/overrides)\n  --public-dir <path>         Public data root (default: data/public)\n  --diagnostics-dir <path>    Diagnostics root (default: data/reviewed)\n  --diagnostics-path <path>   Exact diagnostics report path\n  -h, --help                  Show this help`);
+  console.log(`Usage: pnpm review:bulk [options]\n\nValidates an extraction draft, writes race review JSON, publishes only evidence-backed public records through the existing review publisher, and persists bulk diagnostics.\n\nOptions:\n  --draft <path>              Extraction draft path (default: data/extracted/drafts/latest.json)\n  --manifest <path>           Ingestion manifest path (default: data/ingestion/manifest.json)\n  --reviews-dir <path>        Review root (default: manual/reviews)\n  --overrides-dir <path>      Override root (default: manual/overrides)\n  --public-dir <path>         Public data root (default: data/public)\n  --diagnostics-dir <path>    Diagnostics root (default: data/reviewed)\n  --diagnostics-path <path>   Exact diagnostics report path (--diagnostics is accepted as an alias)\n  --validation <path>         Exact extraction validation report path\n  --publish                   Publish safe public-ready records (accepted for explicit workflows; currently the default)\n  -h, --help                  Show this help`);
 }
 
 function sanitize(message: string): string {

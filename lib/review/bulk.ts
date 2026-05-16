@@ -3,6 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import type { Race } from "../data/types";
 import { DataLoadError } from "../data/loaders";
+import type { ArtifactChunk, IngestedArtifact } from "../ingestion/types";
 import { assembleExtractionPrompts } from "../extraction/prompt";
 import type { DraftPosition, ExtractionDraft, ExtractionValidationIssue } from "../extraction/types";
 import { validateExtractionDraft } from "../extraction/validate";
@@ -19,6 +20,8 @@ export interface BulkReviewOptions {
   publicDir?: string;
   diagnosticsDir?: string;
   diagnosticsPath?: string;
+  validationPath?: string;
+  publish?: boolean;
   now?: () => Date;
 }
 
@@ -102,13 +105,22 @@ export async function runBulkPositionReview(options: BulkReviewOptions = {}): Pr
   try {
     assembly = await assembleExtractionPrompts({ manifestPath: options.manifestPath ?? DEFAULT_MANIFEST_PATH, publicDir: options.publicDir });
     assembly.checkedFiles.forEach((file) => checkedFiles.add(file));
+    await addDraftEvidenceProvenance(draft, assembly.artifacts, assembly.chunks, checkedFiles);
   } catch (error) {
     issues.push(bulkIssue("validate", "error", "context_load_error", options.manifestPath ?? DEFAULT_MANIFEST_PATH, sanitizeError(error)));
     return writeDiagnostics(diagnosticsPath, buildDiagnostics({ ok: false, generatedAt, checkedFiles, draftPath, diagnosticsPath, positions: draft.positions?.length ?? 0, races, issues }));
   }
 
-  const validation = validateExtractionDraft(draft, { publicData: assembly.publicData, artifacts: assembly.artifacts, chunks: assembly.chunks, checkedFiles: assembly.checkedFiles });
+  const validation = validateExtractionDraft(draft, { publicData: assembly.publicData, artifacts: assembly.artifacts, chunks: assembly.chunks, checkedFiles: [...checkedFiles] });
   validation.checkedFiles.forEach((file) => checkedFiles.add(file));
+  if (options.validationPath) {
+    try {
+      await writeJson(options.validationPath, validation);
+      checkedFiles.add(relative(options.validationPath));
+    } catch (error) {
+      issues.push(bulkIssue("write", "error", "write_validation_error", options.validationPath, sanitizeError(error)));
+    }
+  }
   const validationIssuesByPosition = indexValidationIssues(validation.issues, draft);
   const racesById = new Map(assembly.publicData.races.map((race) => [race.id, race]));
   const sourceIds = new Set(assembly.publicData.sources.map((source) => source.id));
@@ -311,6 +323,44 @@ function findPositionByIssueContext(issue: ExtractionValidationIssue, draft: Ext
     return draft.positions.find((position) => (!issue.raceId || position.raceId === issue.raceId) && (!issue.sourceId || position.sourceId === issue.sourceId) && (!issue.entityId || position.entityId === issue.entityId))?.id;
   }
   return undefined;
+}
+
+async function addDraftEvidenceProvenance(draft: ExtractionDraft, artifacts: IngestedArtifact[], chunks: ArtifactChunk[], checkedFiles: Set<string>): Promise<void> {
+  const loadedArtifactIds = new Set(artifacts.map((artifact) => artifact.id));
+  const loadedChunkIds = new Set(chunks.map((chunk) => chunk.id));
+  const artifactIds = [...new Set((draft.evidence ?? []).map((evidence) => evidence.artifactId).filter(Boolean))];
+  for (const artifactId of artifactIds) {
+    if (loadedArtifactIds.has(artifactId)) continue;
+    const artifactPath = path.join(process.cwd(), "data", "ingested", "artifacts", `${stripArtifactPrefix(artifactId)}.json`);
+    try {
+      const artifact = JSON.parse(await fs.readFile(artifactPath, "utf8")) as IngestedArtifact;
+      artifacts.push(artifact);
+      loadedArtifactIds.add(artifact.id);
+      checkedFiles.add(relative(artifactPath));
+    } catch {
+      // Leave missing artifacts to the extraction validator, which will report unknown_artifact_id.
+    }
+  }
+
+  const chunkArtifactIds = new Set((draft.evidence ?? []).map((evidence) => evidence.artifactId).filter(Boolean));
+  for (const artifactId of chunkArtifactIds) {
+    const chunkPath = path.join(process.cwd(), "data", "ingested", "chunks", `${stripArtifactPrefix(artifactId)}.json`);
+    try {
+      const artifactChunks = JSON.parse(await fs.readFile(chunkPath, "utf8")) as ArtifactChunk[];
+      checkedFiles.add(relative(chunkPath));
+      for (const chunk of artifactChunks) {
+        if (loadedChunkIds.has(chunk.id)) continue;
+        chunks.push(chunk);
+        loadedChunkIds.add(chunk.id);
+      }
+    } catch {
+      // Leave missing chunks to the extraction validator, which will report unknown_chunk_id.
+    }
+  }
+}
+
+function stripArtifactPrefix(artifactId: string): string {
+  return artifactId.replace(/^art-/, "src-");
 }
 
 async function readDraft(filePath: string, issues: BulkReviewIssue[]): Promise<ExtractionDraft | null> {

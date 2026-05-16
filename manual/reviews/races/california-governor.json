@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "raceSlug": "california-governor",
+  "raceId": "race-california-governor",
+  "sourceDraftPath": "data/extracted/drafts/m004-s02-agent-bulk.json",
+  "runId": "m004-s02-agent-bulk",
+  "provider": {
+    "provider": "agent",
+    "model": "pi-auto"
+  },
+  "status": "partially-ready",
+  "updatedAt": "2026-05-16T15:34:08.719Z",
+  "positions": [
+    {
+      "id": "pos-m004-s02-chronicle-governor-katie-porter",
+      "draftPositionId": "pos-m004-s02-chronicle-governor-katie-porter",
+      "sourceDraft": {
+        "runId": "m004-s02-agent-bulk",
+        "draftPath": "data/extracted/drafts/m004-s02-agent-bulk.json",
+        "generatedAt": "2026-05-16T16:00:00.000Z",
+        "generatedBy": {
+          "provider": "agent",
+          "model": "pi-auto"
+        }
+      },
+      "raceId": "race-california-governor",
+      "sourceId": "src-sf-chronicle",
+      "entityId": "ent-california-governor-katie-porter",
+      "kind": "endorse",
+      "status": "rejected",
+      "publicationStatus": "hidden",
+      "label": "Chronicle editorial board recommends Katie Porter for Governor",
+      "rationale": "Exact quote is present in the M004 Chronicle captured artifact, but this source is not mapped to the public governor race yet, so publication must be rejected.",
+      "reviewerNotes": "bulk:rejected:source_not_in_race",
+      "evidenceIds": [
+        "ev-m004-s02-chronicle-governor-katie-porter"
+      ],
+      "evidence": [
+        {
+          "id": "ev-m004-s02-chronicle-governor-katie-porter",
+          "positionId": "pos-m004-s02-chronicle-governor-katie-porter",
+          "sourceId": "src-sf-chronicle",
+          "entityId": "ent-california-governor-katie-porter",
+          "raceId": "race-california-governor",
+          "artifactId": "art-san-francisco-chronicle-editorial-board-m004-live",
+          "chunkId": "art-san-francisco-chronicle-editorial-board-m004-live-chunk-002",
+          "url": "https://www.sfchronicle.com/projects/2026/california-primary-sf-election-endorsements/",
+          "kind": "quote",
+          "quote": "Governor: Katie Porter Democrat"
+        }
+      ]
+    },
+    {
+      "id": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+      "draftPositionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+      "sourceDraft": {
+        "runId": "m004-s02-agent-bulk",
+        "draftPath": "data/extracted/drafts/m004-s02-agent-bulk.json",
+        "generatedAt": "2026-05-16T16:00:00.000Z",
+        "generatedBy": {
+          "provider": "agent",
+          "model": "pi-auto"
+        }
+      },
+      "raceId": "race-california-governor",
+      "sourceId": "src-growsf",
+      "entityId": "ent-california-governor-matt-mahan",
+      "kind": "endorse",
+      "status": "reviewed",
+      "publicationStatus": "hidden",
+      "label": "GrowSF recommends Matt Mahan for Governor but remains hidden pending race/source mapping",
+      "rationale": "Exact quote is present, but the source is not mapped to the race; this intentionally exercises hidden/not_requested_public diagnostics rather than publication.",
+      "reviewerNotes": "bulk:hidden:not_requested_public",
+      "evidenceIds": [
+        "ev-m004-s02-growsf-governor-matt-mahan-hidden"
+      ],
+      "evidence": [
+        {
+          "id": "ev-m004-s02-growsf-governor-matt-mahan-hidden",
+          "positionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+          "sourceId": "src-growsf",
+          "entityId": "ent-california-governor-matt-mahan",
+          "raceId": "race-california-governor",
+          "artifactId": "art-growsf-voter-guide-m004-live",
+          "chunkId": "art-growsf-voter-guide-m004-live-chunk-037",
+          "url": "https://growsf.org/voter-guide/",
+          "kind": "quote",
+          "quote": "We recommend voting for Matt Mahan for Governor."
+        }
+      ]
+    }
+  ]
+}

@@ -153,6 +153,21 @@ test("bulk CLI exits non-zero for malformed draft and prints sanitized diagnosti
   assert.doesNotMatch(result.stdout + result.stderr, /sk-secret-token/);
 });
 
+test("bulk CLI accepts explicit validation and publish flags", async () => {
+  const fixture = await createFixture();
+  const draftPath = await writeDraft(fixture.root, (draft) => markPublic(draft));
+  const validationPath = path.join(fixture.root, "validation", "bulk.json");
+  const diagnosticsPath = path.join(fixture.root, "diagnostics", "bulk.json");
+
+  const result = spawnSync(process.execPath, ["--import", "tsx", "scripts/review-bulk-positions.ts", "--draft", draftPath, "--reviews-dir", fixture.reviewsDir, "--overrides-dir", fixture.overridesDir, "--public-dir", fixture.publicDir, "--validation", validationPath, "--diagnostics", diagnosticsPath, "--publish"], { cwd: process.cwd(), encoding: "utf8" });
+
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  assert.equal(await pathExists(validationPath), true);
+  assert.equal(await pathExists(diagnosticsPath), true);
+  const validation = JSON.parse(await fs.readFile(validationPath, "utf8"));
+  assert.equal(validation.ok, true);
+});
+
 test("bulk reports existing override loader failures without overwriting override files", async () => {
   const fixture = await createFixture();
   const draftPath = await writeDraft(fixture.root, (draft) => markPublic(draft));
