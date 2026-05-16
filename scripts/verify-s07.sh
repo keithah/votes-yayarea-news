@@ -18,5 +18,6 @@ run_phase "typecheck" pnpm typecheck
 run_phase "static export build" pnpm build
 run_phase "receipt, reviewed-summary, and disclosure export assertions" node scripts/assert-s07-export.mjs
 run_phase "local Pages static HTTP smoke" node scripts/smoke-s07-static-export.mjs --json-out data/launch/s07-static-smoke.json
+run_phase "launch evidence and Pages workflow proof" node scripts/record-s07-launch-verification.mjs
 
-echo "S07 verification passed: public data validation, data/model/route tests, typecheck, static export build, export assertions, and local Pages static HTTP smoke."
+echo "S07 verification passed: public data validation, data/model/route tests, typecheck, static export build, export assertions, local Pages static HTTP smoke, and launch evidence recording."

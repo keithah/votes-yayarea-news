@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "slice": "S07",
+  "generatedBy": "scripts/record-s07-launch-verification.mjs",
+  "generatedAt": "2026-05-16T06:52:41.922Z",
+  "status": "pass",
+  "workflow": ".github/workflows/pages.yml",
+  "checks": [
+    {
+      "id": "node24",
+      "label": "Node 24 setup",
+      "status": "pass"
+    },
+    {
+      "id": "corepack",
+      "label": "Corepack enabled",
+      "status": "pass"
+    },
+    {
+      "id": "pnpmInstall",
+      "label": "Frozen pnpm install",
+      "status": "pass"
+    },
+    {
+      "id": "typecheck",
+      "label": "Typecheck phase",
+      "status": "pass"
+    },
+    {
+      "id": "validateData",
+      "label": "Public data validation phase",
+      "status": "pass"
+    },
+    {
+      "id": "build",
+      "label": "Static build phase",
+      "status": "pass"
+    },
+    {
+      "id": "githubPagesEnv",
+      "label": "GitHub Pages env enabled",
+      "status": "pass"
+    },
+    {
+      "id": "siteOriginEnv",
+      "label": "Public site origin env set",
+      "status": "pass"
+    },
+    {
+      "id": "localOnlyRemoval",
+      "label": "Local-only route removal",
+      "status": "pass"
+    },
+    {
+      "id": "nojekyll",
+      "label": "No-Jekyll marker",
+      "status": "pass"
+    },
+    {
+      "id": "uploadOut",
+      "label": "Upload static export directory",
+      "status": "pass"
+    }
+  ]
+}
