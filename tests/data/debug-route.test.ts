@@ -1,11 +1,29 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildRaceDebugModel, generateStaticParams } from "../../app/debug/races/[slug]/page";
+import { buildRaceDebugModel, generateStaticParams } from "../../app/_debug/races/[slug]/page";
 
-test("debug race route statically generates canonical real slugs", async () => {
-  const params = await generateStaticParams();
-  assert.ok(params.some((param) => param.slug === "california-governor"));
-  assert.equal(params.some((param) => param.slug === "mayor"), false);
+test("debug race route statically generates canonical real slugs when local review routes are explicitly enabled", async () => {
+  const previous = process.env.INCLUDE_LOCAL_REVIEW_ROUTES;
+  process.env.INCLUDE_LOCAL_REVIEW_ROUTES = "true";
+  try {
+    const params = await generateStaticParams();
+    assert.ok(params.some((param) => param.slug === "california-governor"));
+    assert.equal(params.some((param) => param.slug === "mayor"), false);
+  } finally {
+    if (previous === undefined) delete process.env.INCLUDE_LOCAL_REVIEW_ROUTES;
+    else process.env.INCLUDE_LOCAL_REVIEW_ROUTES = previous;
+  }
+});
+
+test("debug race route is excluded from default static export params", async () => {
+  const previous = process.env.INCLUDE_LOCAL_REVIEW_ROUTES;
+  delete process.env.INCLUDE_LOCAL_REVIEW_ROUTES;
+  try {
+    assert.deepEqual(await generateStaticParams(), []);
+  } finally {
+    if (previous === undefined) delete process.env.INCLUDE_LOCAL_REVIEW_ROUTES;
+    else process.env.INCLUDE_LOCAL_REVIEW_ROUTES = previous;
+  }
 });
 
 test("debug race model exposes loader counts without manual override marker", async () => {

@@ -111,7 +111,7 @@ test("entity and source route components expose drill-down diagnostic attributes
     assert.equal(routeSource.includes("data-related-race-count"), true);
     assert.equal(routeSource.includes("data-recommendation-count"), true);
     assert.equal(routeSource.includes("data-evidence-count"), true);
-    assert.equal(routeSource.includes("data-checked-file-count"), true);
+    assert.equal(routeSource.includes("data-checked-file-count"), false);
     assert.equal(routeSource.includes("data-drilldown-evidence-id"), true);
     assert.equal(routeSource.includes("data-drilldown-evidence-source-url"), true);
     assert.equal(routeSource.includes("data-drilldown-evidence-publication-status"), true);

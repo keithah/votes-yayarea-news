@@ -65,7 +65,6 @@ export default async function EntityPage({ params }: { params: Promise<{ slug: s
       data-related-race-count={diagnostics.relatedRaceCount}
       data-recommendation-count={diagnostics.publicPositionCount}
       data-evidence-count={diagnostics.evidenceCount}
-      data-checked-file-count={diagnostics.checkedFileCount}
     >
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <Link href="/">Home</Link>

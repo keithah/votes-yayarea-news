@@ -11,6 +11,7 @@
     "validate-data": "tsx scripts/validate-data.ts",
     "validate-ingestion": "tsx scripts/validate-ingestion.ts",
     "report:source-coverage": "tsx scripts/report-source-coverage.ts",
+    "report:source-race-coverage": "tsx scripts/report-source-race-coverage.ts",
     "ingest:sources": "tsx scripts/ingest-sources.ts",
     "extract:positions": "tsx scripts/extract-positions.ts",
     "validate-extraction": "tsx scripts/validate-extraction.ts",
