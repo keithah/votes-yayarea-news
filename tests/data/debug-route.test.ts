@@ -32,13 +32,13 @@ test("debug race model exposes loader counts without manual override marker", as
   assert.ok(model);
   assert.equal(model.race.slug, "california-governor");
   assert.equal(model.race.title, "California Governor");
-  assert.equal(model.counts.sources, 1);
+  assert.equal(model.counts.sources, 3);
   assert.equal(model.counts.entities, 61);
-  assert.equal(model.counts.positions, 61);
-  assert.equal(model.counts.evidence, 61);
-  assert.equal(model.hasManualOverride, false);
+  assert.equal(model.counts.positions, 62);
+  assert.equal(model.counts.evidence, 62);
+  assert.equal(model.hasManualOverride, true);
   assert.ok(model.evidence.some((item) => item.url === "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf"));
-  assert.equal(model.checkedFiles.some((file) => file.endsWith("manual/overrides/races/california-governor.json")), false);
+  assert.equal(model.checkedFiles.some((file) => file.endsWith("manual/overrides/races/california-governor.json")), true);
   assert.equal(model.checkedFiles.some((file) => file.startsWith(".gsd/") || file.includes("/.gsd/")), false);
 });
 

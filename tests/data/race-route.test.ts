@@ -22,21 +22,21 @@ test("public race page model exposes California Governor route content and place
   assert.equal(model.ui.race.jurisdiction, "California");
   assert.equal(model.diagnostics.reviewStatus, "verified");
   assert.equal(model.diagnostics.publicationStatus, "public");
-  assert.equal(model.diagnostics.hasManualOverride, false);
-  assert.equal(model.diagnostics.publicSourceCount, 1);
-  assert.equal(model.diagnostics.publicPositionCount, 61);
-  assert.equal(model.diagnostics.evidenceCount, 61);
+  assert.equal(model.diagnostics.hasManualOverride, true);
+  assert.equal(model.diagnostics.publicSourceCount, 3);
+  assert.equal(model.diagnostics.publicPositionCount, 62);
+  assert.equal(model.diagnostics.evidenceCount, 62);
   assert.equal(model.diagnostics.matrixCandidateCount, 61);
-  assert.equal(model.diagnostics.matrixSourceCount, 1);
-  assert.equal(model.diagnostics.matrixCellCount, 61);
-  assert.equal(model.diagnostics.receiptCount, 61);
-  assert.equal(model.diagnostics.availableReceiptCount, 61);
+  assert.equal(model.diagnostics.matrixSourceCount, 3);
+  assert.equal(model.diagnostics.matrixCellCount, 183);
+  assert.equal(model.diagnostics.receiptCount, 183);
+  assert.equal(model.diagnostics.availableReceiptCount, 62);
   assert.equal(model.diagnostics.reviewedSummaryEvidenceCount, 0);
-  assert.equal(model.ui.consensus.entityName, undefined);
-  assert.equal(model.ui.consensus.percentage, 0);
+  assert.equal(model.ui.consensus.entityName, "Katie Porter");
+  assert.equal(model.ui.consensus.percentage, 33);
   assert.deepEqual(
     model.ui.sourceTypeBreakdown.map((item) => item.sourceType),
-    ["official certified candidate list"],
+    ["civic voter guide / recommendations", "editorial endorsements", "official certified candidate list"],
   );
   assert.equal(model.ui.placeholders.matrixReady, true);
   assert.equal(model.matrix.empty, false);
@@ -45,15 +45,15 @@ test("public race page model exposes California Governor route content and place
   assert.ok(model.matrix.candidates.some((candidate) => candidate.name === "Akinyemi Agbede"));
   assert.deepEqual(
     model.matrix.groups.map((group) => group.sourceType),
-    ["official certified candidate list"],
+    ["civic voter guide / recommendations", "editorial endorsements", "official certified candidate list"],
   );
   assert.equal(model.matrix.cells["src-ca-secretary-of-state::ent-california-governor-akinyemi-agbede"].id, "cell:src-ca-secretary-of-state::ent-california-governor-akinyemi-agbede");
   assert.equal(model.matrix.cells["src-ca-secretary-of-state::ent-california-governor-akinyemi-agbede"].positionKindLabel, "Informational");
   assert.equal(model.ui.placeholders.receiptsReady, true);
   assert.equal(model.ui.placeholders.aiDisclosureReady, true);
   assert.equal(model.ui.placeholders.drilldownReady, true);
-  assert.equal(model.receipts.receiptCount, 61);
-  assert.equal(model.receipts.availableCount, 61);
+  assert.equal(model.receipts.receiptCount, 183);
+  assert.equal(model.receipts.availableCount, 62);
   assert.equal(model.receipts.byCellId["cell:src-ca-secretary-of-state::ent-california-governor-akinyemi-agbede"].status, "available");
   assert.equal(model.receipts.byCellId["cell:src-ca-secretary-of-state::ent-california-governor-akinyemi-agbede"].evidence[0].publicationStatus, "public");
   assert.equal(model.reviewedSummary.visible, false);

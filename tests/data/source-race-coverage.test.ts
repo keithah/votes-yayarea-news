@@ -202,7 +202,7 @@ test("current repository data builds the 24 by 21 source/race truth matrix", asy
   assert.ok(report.counts.statuses["pending-capture"] > 0, "pending source ledger rows must remain explicit pending coverage");
   assert.ok(report.counts.statuses["not-applicable"] > 0, "coverage metadata should emit at least one not-applicable row");
   assert.deepEqual(row(report, "california-governor", "src-growsf")?.unpublishedReasonCounts, { not_requested_public: 1 });
-  assert.deepEqual(row(report, "state-assembly-district-17", "src-growsf")?.unpublishedReasonCounts, { source_not_in_race: 1 });
+  assert.deepEqual(row(report, "state-assembly-district-17", "src-growsf")?.unpublishedReasonCounts, {});
 });
 
 test("durable source/race coverage artifact has deterministic race and source summaries", async () => {

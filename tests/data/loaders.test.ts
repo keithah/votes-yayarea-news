@@ -55,15 +55,15 @@ test("unknown race slug returns null instead of building a broken route", async 
   assert.equal(await loadPublicRaceData("missing-race"), null);
 });
 
-test("canonical California Governor race loads without committed manual override", async () => {
+test("canonical California Governor race loads with S04 public manual override", async () => {
   const loaded = await loadRaceData(GOV_SLUG);
 
   assert.ok(loaded);
   assert.equal(loaded.race.slug, GOV_SLUG);
   assert.equal(loaded.race.title, "California Governor");
-  assert.equal(loaded.race.positions.length, 61);
+  assert.equal(loaded.race.positions.length, 62);
   assert.equal(loaded.race.positions[0].label, "Official certified candidate listing");
-  assert.equal(loaded.checkedFiles.some((file) => file.endsWith("manual/overrides/races/california-governor.json")), false);
+  assert.equal(loaded.checkedFiles.some((file) => file.endsWith("manual/overrides/races/california-governor.json")), true);
 });
 
 test("missing override file is allowed", async () => {
@@ -121,10 +121,10 @@ test("public race loader returns null for non-public race status", async () => {
 test("public race context returns only referenced source and entity records", async () => {
   const loaded = await loadPublicRaceContext(GOV_SLUG);
   assert.ok(loaded);
-  assert.deepEqual(loaded.sources.map((source) => source.id), [SOS_SOURCE_ID]);
+  assert.deepEqual(loaded.sources.map((source) => source.id), [SOS_SOURCE_ID, "src-sf-chronicle", "src-growsf"]);
   assert.equal(loaded.entities.length, 61);
   assert.equal(loaded.entities[0].id, FIRST_ENTITY_ID);
-  assert.equal(loaded.checkedFiles.some((file) => file.endsWith("manual/overrides/races/california-governor.json")), false);
+  assert.equal(loaded.checkedFiles.some((file) => file.endsWith("manual/overrides/races/california-governor.json")), true);
 });
 
 test("malformed override JSON includes manual override path and phase", async () => {

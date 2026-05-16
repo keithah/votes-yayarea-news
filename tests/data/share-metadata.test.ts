@@ -37,7 +37,7 @@ test("homepage metadata exposes static public counts and share card fields", asy
   const metadata = await generateHomeMetadata();
 
   assert.equal(metadata.title, "votes.yayarea.news · San Francisco election guide");
-  assert.equal(metadata.description, "Static San Francisco election source tracker with 13 public races, 13 reviewed sources, and 61 evidence items.");
+  assert.equal(metadata.description, "Static San Francisco election source tracker with 13 public races, 17 reviewed sources, and 65 evidence items.");
   assertMetadataCommonFields(metadata, "/");
   assertSafeMetadata(metadata);
 });
@@ -46,7 +46,7 @@ test("race metadata describes public source records without telling readers how 
   const metadata = await generateRaceMetadata({ params: Promise.resolve({ slug: "california-governor" }) });
 
   assert.equal(metadata.title, "California Governor source records");
-  assert.equal(metadata.description, "Public source tracker for California Governor: 1 sources, 61 entities, and 61 evidence items.");
+  assert.equal(metadata.description, "Public source tracker for California Governor: 3 sources, 61 entities, and 62 evidence items.");
   assertMetadataCommonFields(metadata, "/races/california-governor/");
   assertSafeMetadata(metadata);
 });
@@ -64,7 +64,7 @@ test("source metadata describes the public source trail and evidence counts", as
   const metadata = await generateSourceMetadata({ params: Promise.resolve({ slug: "california-secretary-of-state" }) });
 
   assert.equal(metadata.title, "California Secretary of State public source trail");
-  assert.equal(metadata.description, "California Secretary of State public source trail across 1 races: 61 tracked source records and 61 evidence items.");
+  assert.equal(metadata.description, "California Secretary of State public source trail across 2 races: 62 tracked source records and 62 evidence items.");
   assertMetadataCommonFields(metadata, "/sources/california-secretary-of-state/");
   assertSafeMetadata(metadata);
 });

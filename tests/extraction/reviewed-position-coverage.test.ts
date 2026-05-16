@@ -20,12 +20,12 @@ test("reviewed coverage flags unsupported public no-position records from uncapt
   await writeOverridePosition(fixture, {
     id: "pos-test-public-no-position",
     kind: "no-position",
-    sourceId: "src-sf-chronicle",
+    sourceId: "src-mission-local",
     evidenceIds: ["ev-test-public-no-position"],
     evidence: [
       {
         id: "ev-test-public-no-position",
-        sourceId: "src-sf-chronicle",
+        sourceId: "src-mission-local",
         entityId: "ent-california-governor-akinyemi-agbede",
         raceId: "race-california-governor",
         url: "https://example.test/no-position",
@@ -46,7 +46,7 @@ test("reviewed coverage flags unsupported public endorsements and missing eviden
   await writeOverridePosition(fixture, {
     id: "pos-test-public-endorsement",
     kind: "endorse",
-    sourceId: "src-sf-chronicle",
+    sourceId: "src-mission-local",
     evidenceIds: [],
     evidence: [],
   });
@@ -171,10 +171,10 @@ test("reviewed coverage summarizes the known M004 S02 hidden and rejected reason
 
   assert.equal(report.ok, true, JSON.stringify(report.issues, null, 2));
   assert.equal(report.counts.publicPositions, baseline.counts.publicPositions);
-  assert.equal(report.unpublishedCounts.total, 5);
-  assert.deepEqual(report.unpublishedCounts.byReasonCode, { duplicate_public_claim: 1, not_requested_public: 1, source_not_in_race: 3 });
+  assert.equal(report.unpublishedCounts.total, 2);
+  assert.deepEqual(report.unpublishedCounts.byReasonCode, { duplicate_public_claim: 1, not_requested_public: 1 });
   assert.equal(report.unpublishedCounts.byStatus.hidden, 2);
-  assert.equal(report.unpublishedCounts.byStatus.rejected, 3);
+  assert.equal(report.unpublishedCounts.byStatus.rejected ?? 0, 0);
   assert.equal(report.unpublished.some((item) => item.raceSlug === "state-assembly-district-17" && item.reasonCode === "duplicate_public_claim" && item.positionId === "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate"), true);
 });
 
