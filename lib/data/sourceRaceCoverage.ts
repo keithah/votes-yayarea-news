@@ -1,3 +1,4 @@
+import type { BulkReviewDiagnostics, BulkReviewIssuePhase, BulkReviewIssueStatus } from "../review/bulk";
 import type { Position, Race, ReviewStatus, Source } from "./types";
 
 export type SourceRaceCoverageStatus =
@@ -21,6 +22,7 @@ export interface SourceRaceCoverageIssue {
   raceSlug?: string;
   positionId?: string;
   value?: unknown;
+  reasonCode?: string;
 }
 
 export interface SourceCoverageLedger {
@@ -35,6 +37,27 @@ export interface SourceCoverageLedgerRow {
   reason?: unknown;
   notes?: unknown;
 }
+
+export type SourceRaceUnpublishedDiagnosticStatus = BulkReviewIssueStatus;
+export type SourceRaceUnpublishedDiagnosticPhase = BulkReviewIssuePhase;
+
+export interface SourceRaceUnpublishedDiagnostic {
+  status: SourceRaceUnpublishedDiagnosticStatus;
+  phase: SourceRaceUnpublishedDiagnosticPhase;
+  reasonCode: string;
+  path: string;
+  message: string;
+  raceId: string;
+  raceSlug: string;
+  sourceId: string;
+  entityId?: string;
+  positionId?: string;
+  evidenceId?: string;
+  artifactId?: string;
+  chunkId?: string;
+}
+
+export type PublicationDiagnosticsInput = Partial<Pick<BulkReviewDiagnostics, "issues">>;
 
 export interface SourceRaceCoverageRow {
   raceId: string;
@@ -51,6 +74,8 @@ export interface SourceRaceCoverageRow {
   ledgerPath?: string;
   reason?: string;
   notes?: string;
+  unpublishedDiagnostics: SourceRaceUnpublishedDiagnostic[];
+  unpublishedReasonCounts: Record<string, number>;
 }
 
 export interface SourceRaceCoverageReport {
@@ -107,7 +132,7 @@ export interface DurableSourceRaceCoverageSource {
   sourceSlug: string;
   sourceName: string;
   counts: Record<SourceRaceCoverageStatus, number>;
-  races: Array<Pick<SourceRaceCoverageRow, "raceId" | "raceSlug" | "raceTitle" | "status" | "positionIds" | "publicPositionIds" | "reviewedPublicPositionIds" | "ledgerStatus" | "ledgerPath" | "reason" | "notes">>;
+  races: Array<Pick<SourceRaceCoverageRow, "raceId" | "raceSlug" | "raceTitle" | "status" | "positionIds" | "publicPositionIds" | "reviewedPublicPositionIds" | "ledgerStatus" | "ledgerPath" | "reason" | "notes" | "unpublishedDiagnostics" | "unpublishedReasonCounts">>;
 }
 
 export interface BuildSourceRaceCoverageOptions {
@@ -115,6 +140,8 @@ export interface BuildSourceRaceCoverageOptions {
   races: Race[];
   sourceCoverage: SourceCoverageLedger;
   sourceCoveragePath?: string;
+  publicationDiagnostics?: PublicationDiagnosticsInput;
+  publicationDiagnosticsPath?: string;
 }
 
 type SourceCoverageLedgerStatus = "captured" | "pending" | "excluded" | "manual-only" | "unavailable";
@@ -142,13 +169,25 @@ const COVERAGE_STATUSES: SourceRaceCoverageStatus[] = [
   "no-public-source-found",
   "not-applicable",
 ];
+const PUBLICATION_DIAGNOSTIC_STATUSES = new Set<SourceRaceUnpublishedDiagnosticStatus>(["hidden", "rejected", "error"]);
+const PUBLICATION_DIAGNOSTIC_PHASES = new Set<SourceRaceUnpublishedDiagnosticPhase>(["read", "validate", "prepare", "review", "publish", "load", "write"]);
 
 export function buildSourceRaceCoverageReport(options: BuildSourceRaceCoverageOptions): SourceRaceCoverageReport {
   const coveragePath = options.sourceCoveragePath ?? "source-coverage.json";
   const issues: SourceRaceCoverageIssue[] = [];
   const raceSlugs = new Set(options.races.map((race) => race.slug));
+  const racesById = new Map(options.races.map((race) => [race.id, race]));
+  const racesBySlug = new Map(options.races.map((race) => [race.slug, race]));
   const sourcesById = collectSources(options.sources, issues);
   const coverageBySourceId = collectCoverageRows(options.sourceCoverage, coveragePath, sourcesById, raceSlugs, issues);
+  const publicationDiagnosticsByRow = collectPublicationDiagnostics(
+    options.publicationDiagnostics,
+    options.publicationDiagnosticsPath ?? "publication-diagnostics.json",
+    sourcesById,
+    racesById,
+    racesBySlug,
+    issues,
+  );
 
   for (const source of options.sources) {
     if (!coverageBySourceId.has(source.id)) {
@@ -164,7 +203,9 @@ export function buildSourceRaceCoverageReport(options: BuildSourceRaceCoverageOp
 
   const sortedRaces = [...options.races].sort((left, right) => left.slug.localeCompare(right.slug));
   const sortedSources = [...options.sources].sort((left, right) => left.id.localeCompare(right.id));
-  const rows = sortedRaces.flatMap((race) => sortedSources.map((source) => buildRow(race, source, coverageBySourceId.get(source.id))));
+  const rows = sortedRaces.flatMap((race) =>
+    sortedSources.map((source) => buildRow(race, source, coverageBySourceId.get(source.id), publicationDiagnosticsByRow.get(rowKey(race.id, source.id)) ?? [])),
+  );
 
   const sortedIssues = issues.sort(compareIssues);
   const counts = countRows(options.sources.length, options.races.length, rows, sortedIssues);
@@ -261,6 +302,8 @@ function buildBySource(rows: SourceRaceCoverageRow[]): DurableSourceRaceCoverage
           ledgerPath: row.ledgerPath,
           reason: row.reason,
           notes: row.notes,
+          unpublishedDiagnostics: row.unpublishedDiagnostics,
+          unpublishedReasonCounts: row.unpublishedReasonCounts,
         })),
       };
     });
@@ -280,7 +323,7 @@ function compareRowsByRace(left: SourceRaceCoverageRow, right: SourceRaceCoverag
   return left.raceSlug.localeCompare(right.raceSlug);
 }
 
-function buildRow(race: Race, source: Source, coverage: NormalizedCoverageRow | undefined): SourceRaceCoverageRow {
+function buildRow(race: Race, source: Source, coverage: NormalizedCoverageRow | undefined, unpublishedDiagnostics: SourceRaceUnpublishedDiagnostic[]): SourceRaceCoverageRow {
   const positions = race.positions.filter((position) => position.sourceId === source.id);
   const publicPositions = positions.filter((position) => position.publicationStatus === "public");
   const reviewedPublicPositions = publicPositions.filter(isReviewedEvidenceBackedPublicPosition);
@@ -301,6 +344,8 @@ function buildRow(race: Race, source: Source, coverage: NormalizedCoverageRow | 
     ledgerPath: coverage?.path,
     reason: coverage?.reason,
     notes: coverage?.notes,
+    unpublishedDiagnostics: [...unpublishedDiagnostics].sort(comparePublicationDiagnostics),
+    unpublishedReasonCounts: countDiagnosticReasons(unpublishedDiagnostics),
   };
 }
 
@@ -402,6 +447,135 @@ function collectCoverageRows(
     });
   });
   return coverageBySourceId;
+}
+
+function collectPublicationDiagnostics(
+  publicationDiagnostics: PublicationDiagnosticsInput | undefined,
+  diagnosticsPath: string,
+  sourcesById: Map<string, Source>,
+  racesById: Map<string, Race>,
+  racesBySlug: Map<string, Race>,
+  issues: SourceRaceCoverageIssue[],
+): Map<string, SourceRaceUnpublishedDiagnostic[]> {
+  const byRow = new Map<string, SourceRaceUnpublishedDiagnostic[]>();
+  if (publicationDiagnostics === undefined) return byRow;
+  if (!isRecord(publicationDiagnostics)) {
+    issues.push({ code: "invalid_publication_diagnostics_shape", severity: "error", path: diagnosticsPath, message: "Publication diagnostics must be an object.", value: publicationDiagnostics });
+    return byRow;
+  }
+  if (!Array.isArray(publicationDiagnostics.issues)) {
+    issues.push({ code: "invalid_publication_diagnostics_issues", severity: "error", path: `${diagnosticsPath}.issues`, message: "Publication diagnostics must contain an issues array.", value: publicationDiagnostics.issues });
+    return byRow;
+  }
+
+  const seen = new Set<string>();
+  publicationDiagnostics.issues.forEach((raw, index) => {
+    const issuePath = `${diagnosticsPath}.issues[${index}]`;
+    if (!isRecord(raw)) {
+      issues.push({ code: "invalid_publication_diagnostic", severity: "error", path: issuePath, message: "Publication diagnostic issue must be an object.", value: raw });
+      return;
+    }
+
+    const sourceId = typeof raw.sourceId === "string" ? raw.sourceId : "";
+    const raceId = typeof raw.raceId === "string" ? raw.raceId : "";
+    const raceSlug = typeof raw.raceSlug === "string" ? raw.raceSlug : "";
+    const reasonCode = typeof raw.reasonCode === "string" ? raw.reasonCode : "";
+    const status = normalizePublicationDiagnosticStatus(raw.status, issuePath, sourceId, raceId || raceSlug, reasonCode, issues);
+    const phase = normalizePublicationDiagnosticPhase(raw.phase, issuePath, sourceId, raceId || raceSlug, reasonCode, issues);
+
+    if (!sourceId) {
+      issues.push({ code: "missing_publication_diagnostic_source_id", severity: "error", path: `${issuePath}.sourceId`, message: "Publication diagnostic must include sourceId.", raceId, raceSlug, reasonCode, value: raw.sourceId });
+    } else if (!sourcesById.has(sourceId)) {
+      issues.push({ code: "unknown_publication_diagnostic_source", severity: "error", path: `${issuePath}.sourceId`, message: `Publication diagnostic references unknown source ${sourceId}.`, sourceId, raceId, raceSlug, reasonCode });
+    }
+
+    let race = raceId ? racesById.get(raceId) : undefined;
+    const slugRace = raceSlug ? racesBySlug.get(raceSlug) : undefined;
+    if (!race && slugRace) race = slugRace;
+    if (!raceId && !raceSlug) {
+      issues.push({ code: "missing_publication_diagnostic_race", severity: "error", path: `${issuePath}.raceId`, message: "Publication diagnostic must include raceId or raceSlug.", sourceId, reasonCode });
+    } else if (!race) {
+      issues.push({ code: "unknown_publication_diagnostic_race", severity: "error", path: `${issuePath}.${raceId ? "raceId" : "raceSlug"}`, message: `Publication diagnostic references unknown race ${raceId || raceSlug}.`, sourceId, raceId, raceSlug, reasonCode });
+    } else if (raceId && raceSlug && race.slug !== raceSlug) {
+      issues.push({ code: "mismatched_publication_diagnostic_race", severity: "error", path: `${issuePath}.raceSlug`, message: `Publication diagnostic raceSlug ${raceSlug} does not match raceId ${raceId}.`, sourceId, raceId, raceSlug, reasonCode });
+    }
+
+    if (!reasonCode) {
+      issues.push({ code: "missing_publication_diagnostic_reason", severity: "error", path: `${issuePath}.reasonCode`, message: "Publication diagnostic must include reasonCode.", sourceId, raceId, raceSlug, value: raw.reasonCode });
+    }
+
+    if (!sourceId || !race || !reasonCode || !status || !phase || !sourcesById.has(sourceId)) return;
+
+    const diagnostic: SourceRaceUnpublishedDiagnostic = {
+      status,
+      phase,
+      reasonCode,
+      path: typeof raw.path === "string" ? raw.path : issuePath,
+      message: typeof raw.message === "string" ? raw.message : "",
+      raceId: race.id,
+      raceSlug: race.slug,
+      sourceId,
+    };
+    if (typeof raw.entityId === "string") diagnostic.entityId = raw.entityId;
+    if (typeof raw.positionId === "string") diagnostic.positionId = raw.positionId;
+    if (typeof raw.evidenceId === "string") diagnostic.evidenceId = raw.evidenceId;
+    if (typeof raw.artifactId === "string") diagnostic.artifactId = raw.artifactId;
+    if (typeof raw.chunkId === "string") diagnostic.chunkId = raw.chunkId;
+    const key = rowKey(race.id, sourceId);
+    const duplicateKey = [key, diagnostic.status, diagnostic.phase, diagnostic.reasonCode, diagnostic.path, diagnostic.entityId ?? "", diagnostic.positionId ?? "", diagnostic.evidenceId ?? ""].join("|");
+    if (seen.has(duplicateKey)) {
+      issues.push({ code: "duplicate_publication_diagnostic", severity: "warning", path: issuePath, message: `Duplicate publication diagnostic for ${sourceId} in ${race.slug}.`, sourceId, raceId: race.id, raceSlug: race.slug, reasonCode });
+    }
+    seen.add(duplicateKey);
+    const list = byRow.get(key) ?? [];
+    list.push(diagnostic);
+    byRow.set(key, list);
+  });
+  return byRow;
+}
+
+function normalizePublicationDiagnosticStatus(
+  value: unknown,
+  issuePath: string,
+  sourceId: string,
+  raceIdentifier: string,
+  reasonCode: string,
+  issues: SourceRaceCoverageIssue[],
+): SourceRaceUnpublishedDiagnosticStatus | undefined {
+  if (typeof value === "string" && PUBLICATION_DIAGNOSTIC_STATUSES.has(value as SourceRaceUnpublishedDiagnosticStatus)) return value as SourceRaceUnpublishedDiagnosticStatus;
+  issues.push({ code: "invalid_publication_diagnostic_status", severity: "error", path: `${issuePath}.status`, message: `Publication diagnostic has invalid status ${JSON.stringify(value)}.`, sourceId, raceId: raceIdentifier, reasonCode, value });
+  return undefined;
+}
+
+function normalizePublicationDiagnosticPhase(
+  value: unknown,
+  issuePath: string,
+  sourceId: string,
+  raceIdentifier: string,
+  reasonCode: string,
+  issues: SourceRaceCoverageIssue[],
+): SourceRaceUnpublishedDiagnosticPhase | undefined {
+  if (typeof value === "string" && PUBLICATION_DIAGNOSTIC_PHASES.has(value as SourceRaceUnpublishedDiagnosticPhase)) return value as SourceRaceUnpublishedDiagnosticPhase;
+  issues.push({ code: "invalid_publication_diagnostic_phase", severity: "error", path: `${issuePath}.phase`, message: `Publication diagnostic has invalid phase ${JSON.stringify(value)}.`, sourceId, raceId: raceIdentifier, reasonCode, value });
+  return undefined;
+}
+
+function countDiagnosticReasons(diagnostics: SourceRaceUnpublishedDiagnostic[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const diagnostic of diagnostics) counts[diagnostic.reasonCode] = (counts[diagnostic.reasonCode] ?? 0) + 1;
+  return Object.fromEntries(Object.entries(counts).sort(([left], [right]) => left.localeCompare(right)));
+}
+
+function comparePublicationDiagnostics(left: SourceRaceUnpublishedDiagnostic, right: SourceRaceUnpublishedDiagnostic): number {
+  return left.reasonCode.localeCompare(right.reasonCode) || left.path.localeCompare(right.path) || left.status.localeCompare(right.status);
+}
+
+function rowKey(raceId: string, sourceId: string): string {
+  return `${raceId}::${sourceId}`;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function normalizeLedgerStatus(

@@ -2,7 +2,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { buildDurableSourceRaceCoverageReport, buildSourceRaceCoverageReport, type SourceCoverageLedger, type SourceRaceCoverageIssue } from "../lib/data/sourceRaceCoverage";
+import { buildDurableSourceRaceCoverageReport, buildSourceRaceCoverageReport, type PublicationDiagnosticsInput, type SourceCoverageLedger, type SourceRaceCoverageIssue } from "../lib/data/sourceRaceCoverage";
 import { mergeRace } from "../lib/data/loaders";
 import type { Race, Source } from "../lib/data/types";
 
@@ -11,6 +11,7 @@ interface CliOptions {
   publicRaces: string;
   overridesRaces: string;
   coverage: string;
+  publicationDiagnostics?: string;
   report: string;
   help: boolean;
 }
@@ -19,6 +20,7 @@ interface LoadedInputs {
   sources: Source[];
   races: Race[];
   sourceCoverage: SourceCoverageLedger;
+  publicationDiagnostics?: PublicationDiagnosticsInput;
   checkedFiles: string[];
   issues: SourceRaceCoverageIssue[];
 }
@@ -42,6 +44,8 @@ async function main(): Promise<void> {
     races: loaded.races,
     sourceCoverage: loaded.sourceCoverage,
     sourceCoveragePath: options.coverage,
+    publicationDiagnostics: loaded.publicationDiagnostics,
+    publicationDiagnosticsPath: options.publicationDiagnostics,
   });
   const issues = [...loaded.issues, ...matrixReport.issues].sort(compareIssues);
   const report = buildDurableSourceRaceCoverageReport(
@@ -99,8 +103,10 @@ async function loadInputs(options: CliOptions): Promise<LoadedInputs> {
   const coverageJson = await readJson(options.coverage, checkedFiles, issues);
   const sources = readSources(sourcesJson, options.publicSources, issues);
   const sourceCoverage = readCoverage(coverageJson, options.coverage, issues);
+  const publicationDiagnosticsJson = options.publicationDiagnostics ? await readJson(options.publicationDiagnostics, checkedFiles, issues) : undefined;
+  const publicationDiagnostics = options.publicationDiagnostics ? readPublicationDiagnostics(publicationDiagnosticsJson, options.publicationDiagnostics, issues) : undefined;
   const races = await readRaces(options.publicRaces, options.overridesRaces, checkedFiles, issues);
-  return { sources, races, sourceCoverage, checkedFiles: [...new Set(checkedFiles)].sort(), issues };
+  return { sources, races, sourceCoverage, publicationDiagnostics, checkedFiles: [...new Set(checkedFiles)].sort(), issues };
 }
 
 async function readRaces(racesDir: string, overridesDir: string, checkedFiles: string[], issues: SourceRaceCoverageIssue[]): Promise<Race[]> {
@@ -176,6 +182,12 @@ function readCoverage(value: unknown, filePath: string, issues: SourceRaceCovera
   return { sources: [] };
 }
 
+function readPublicationDiagnostics(value: unknown, filePath: string, issues: SourceRaceCoverageIssue[]): PublicationDiagnosticsInput {
+  if (isRecord(value)) return value as PublicationDiagnosticsInput;
+  issues.push({ code: "invalid_publication_diagnostics_shape", severity: "error", path: filePath, message: "Expected publication diagnostics object." });
+  return { issues: [] };
+}
+
 function readRace(value: unknown, filePath: string, issues: SourceRaceCoverageIssue[]): Race | undefined {
   if (isRecord(value) && isRecord(value.race)) return value.race as unknown as Race;
   issues.push({ code: "invalid_race_shape", severity: "error", path: `${filePath}.race`, message: "Expected top-level race object." });
@@ -215,6 +227,9 @@ function parseArgs(args: string[]): CliOptions {
       case "--coverage":
         options.coverage = readValue(args, ++index, arg);
         break;
+      case "--publication-diagnostics":
+        options.publicationDiagnostics = readValue(args, ++index, arg);
+        break;
       case "--report":
         options.report = readValue(args, ++index, arg);
         break;
@@ -237,7 +252,7 @@ function readValue(args: string[], index: number, flag: string): string {
 }
 
 function printHelp(): void {
-  console.log(`Usage: pnpm report:source-race-coverage [-- --public-sources <path> --public-races <dir> --overrides-races <dir> --coverage <path> --report <path>]
+  console.log(`Usage: pnpm report:source-race-coverage [-- --public-sources <path> --public-races <dir> --overrides-races <dir> --coverage <path> --publication-diagnostics <path> --report <path>]
 
 Build deterministic source-by-race public coverage diagnostics.
 
@@ -246,6 +261,7 @@ Defaults:
   --public-races    ${DEFAULT_PUBLIC_RACES}
   --overrides-races ${DEFAULT_OVERRIDES_RACES}
   --coverage        ${DEFAULT_COVERAGE}
+  --publication-diagnostics <optional bulk diagnostics JSON>
   --report          ${DEFAULT_REPORT}
 `);
 }
