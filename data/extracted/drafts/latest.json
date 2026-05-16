@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "runId": "run-20260515082215",
+  "runId": "run-20260516070459",
   "provider": {
     "provider": "fixture",
     "model": "fixture-v1"
@@ -23,7 +23,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-attorney-general-rob-bonta-1",
@@ -42,7 +42,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-controller-malia-m-cohen-1",
@@ -61,7 +61,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-governor-akinyemi-agbede-1",
@@ -80,7 +80,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-insurance-commissioner-ben-allen-1",
@@ -99,7 +99,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-lieutenant-governor-josh-fryday-1",
@@ -118,7 +118,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-secretary-of-state-shirley-n-weber-1",
@@ -137,7 +137,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-superintendent-public-instruction-richard-barrera-1",
@@ -156,7 +156,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-california-treasurer-anna-m-caballero-1",
@@ -175,7 +175,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-state-assembly-district-17-matt-haney-1",
@@ -194,7 +194,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-state-assembly-district-19-catherine-stefani-1",
@@ -213,7 +213,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-us-house-district-11-john-gus-buffler-1",
@@ -232,7 +232,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     },
     {
       "id": "pos-ca-secretary-of-state-us-house-district-15-anthony-van-dang-1",
@@ -251,7 +251,7 @@
         "provider": "fixture",
         "model": "fixture-v1"
       },
-      "generatedAt": "2026-05-15T08:22:15.915Z"
+      "generatedAt": "2026-05-16T07:04:59.660Z"
     }
   ],
   "evidence": [

@@ -3,8 +3,8 @@
   "slice": "S07",
   "generatedBy": "scripts/smoke-s07-static-export.mjs",
   "status": "pass",
-  "startedAt": "2026-05-16T06:59:18.195Z",
-  "origin": "http://127.0.0.1:41353",
+  "startedAt": "2026-05-16T07:05:25.310Z",
+  "origin": "http://127.0.0.1:35073",
   "checkedRoutes": [
     {
       "route": "/",
@@ -93,7 +93,7 @@
       "className": "race",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 51348,
+      "bytes": 51391,
       "assets": [
         "/votes-yayarea-news/_next/static/chunks/0.r3wvb36_j0z.js",
         "/votes-yayarea-news/_next/static/chunks/03~yq9q893hmn.js",
@@ -261,7 +261,7 @@
       "className": "race",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 55552,
+      "bytes": 55509,
       "assets": [
         "/votes-yayarea-news/_next/static/chunks/0.r3wvb36_j0z.js",
         "/votes-yayarea-news/_next/static/chunks/03~yq9q893hmn.js",
@@ -282,7 +282,7 @@
       "className": "race",
       "status": 200,
       "contentType": "text/html; charset=utf-8",
-      "bytes": 32995,
+      "bytes": 33038,
       "assets": [
         "/votes-yayarea-news/_next/static/chunks/0.r3wvb36_j0z.js",
         "/votes-yayarea-news/_next/static/chunks/03~yq9q893hmn.js",
@@ -2230,5 +2230,5 @@
       "path": "data/launch/s07-static-smoke.json"
     }
   },
-  "completedAt": "2026-05-16T06:59:18.341Z"
+  "completedAt": "2026-05-16T07:05:25.478Z"
 }
