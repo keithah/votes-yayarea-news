@@ -115,6 +115,42 @@ test("missing expanded comparison markers fail closed with marker names", async 
   );
 });
 
+test("missing expanded comparison markers persist redaction-safe failure diagnostics", async () => {
+  const projectRoot = await mkdtemp(path.join(os.tmpdir(), "m004-s05-live-fail-"));
+  const reportPath = "data/launch/live-report.json";
+  const staleStateAssembly = HTML_BY_ROUTE["/races/state-assembly-district-17/"].replace('data-source-id="src-growsf"', "");
+
+  await assert.rejects(
+    runLivePageAssertions({
+      origin: "https://example.test/votes-yayarea-news",
+      projectRoot,
+      jsonOut: reportPath,
+      fetchImpl: fetchFromRoutes({ ...HTML_BY_ROUTE, "/races/state-assembly-district-17/": staleStateAssembly }),
+    }),
+    (error: any) => error.phase === "marker",
+  );
+
+  const persisted = JSON.parse(await readFile(path.join(projectRoot, reportPath), "utf8"));
+  assert.equal(persisted.status, "fail");
+  assert.equal(persisted.origin, "https://example.test/votes-yayarea-news");
+  assert.equal(persisted.checkedRoutes[0].route, "/races/state-assembly-district-17/");
+  assert.equal(persisted.checkedRoutes[0].status, 200);
+  assert.equal(persisted.checkedRoutes[0].missingMarkers.includes("GrowSF source"), true);
+  assert.equal(persisted.phases.markers.status, "fail");
+  assert.equal(persisted.phases.markers.route, "/races/state-assembly-district-17/");
+  assert.equal(persisted.phases.report.status, "fail");
+  assert.equal(persisted.phases.jsonOut.path, reportPath);
+  assert.equal(persisted.counts.checkedRoutes, 1);
+  assert.ok(persisted.counts.markerAssertions > 0);
+  assert.equal(persisted.counts.leakageFindings, 0);
+  assert.match(validateLiveReport(persisted).join("; "), /status must be pass/);
+  const serialized = JSON.stringify(persisted);
+  assert.doesNotMatch(serialized, /<html/i);
+  assert.doesNotMatch(serialized, /manual\/(?:reviews|overrides)\//i);
+  assert.doesNotMatch(serialized, /\.gsd\//i);
+  assert.doesNotMatch(serialized, /\/home\//i);
+});
+
 test("private-path leakage fails with pattern id and route only", async () => {
   const leaked = `${HTML_BY_ROUTE["/races/us-house-district-11/"]}<p>manual/reviews/private.json</p>`;
   await assert.rejects(

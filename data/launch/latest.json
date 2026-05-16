@@ -3,9 +3,9 @@
   "milestone": "M004",
   "slice": "S05",
   "generatedBy": "scripts/record-m004-s05-launch-verification.mjs",
-  "generatedAt": "2026-05-16T18:36:55.342Z",
+  "generatedAt": "2026-05-16T21:39:21.985Z",
   "status": "pass",
-  "origin": "http://127.0.0.1:4173",
+  "origin": "https://keithah.github.io/votes-yayarea-news",
   "artifacts": {
     "livePages": "data/launch/m004-s05-live-pages.json",
     "launchVerification": "data/launch/m004-s05-launch-verification.json",

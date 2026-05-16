@@ -130,6 +130,43 @@ export function validateJsonOutPath(relativePath, projectRoot = process.cwd()) {
   return fullPath;
 }
 
+function refreshReportCounts(report) {
+  report.counts = {
+    checkedRoutes: report.checkedRoutes.length,
+    markerAssertions: report.checkedRoutes.reduce((sum, route) => sum + (route.markerAssertions?.length ?? 0), 0),
+    leakageFindings: report.checkedRoutes.reduce((sum, route) => sum + (route.leakageFindings?.length ?? 0), 0),
+  };
+}
+
+function writeJsonOutReport(report, jsonOut, projectRoot) {
+  if (!jsonOut) return;
+  const outputPath = validateJsonOutPath(jsonOut, projectRoot);
+  mkdirSync(path.dirname(outputPath), { recursive: true });
+  report.phases.jsonOut = { status: "pass", path: path.relative(projectRoot, outputPath).replaceAll(path.sep, "/") };
+  writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`);
+}
+
+function stripFailurePrefix(error) {
+  const message = error instanceof Error ? error.message : String(error);
+  return message.replace(/^\[assert-m004-s05-live-pages\] Phase [^:]+: /, "");
+}
+
+function failWithReport(phase, message, report, { jsonOut, projectRoot, phaseDetails = {} }) {
+  report.status = "fail";
+  report.completedAt = new Date().toISOString();
+  refreshReportCounts(report);
+
+  if (["fetch", "timeout", "non-200"].includes(phase)) report.phases.fetch = { status: "fail", ...phaseDetails };
+  else if (report.phases.fetch.status === "pending") report.phases.fetch = { status: "pass", checked: report.checkedRoutes.length };
+
+  if (phase === "marker") report.phases.markers = { status: "fail", ...phaseDetails };
+  if (phase === "leakage") report.phases.leakage = { status: "fail", ...phaseDetails };
+  report.phases.report = { status: "fail", phase, message };
+
+  writeJsonOutReport(report, jsonOut, projectRoot);
+  throw phaseFail(phase, message, report);
+}
+
 export function parseCliArgs(argv = process.argv.slice(2), projectRoot = process.cwd()) {
   const options = { origin: DEFAULT_ORIGIN, jsonOut: null, timeoutMs: DEFAULT_TIMEOUT_MS };
   for (let index = 0; index < argv.length; index += 1) {
@@ -255,7 +292,13 @@ export async function runLivePageAssertions({ origin = DEFAULT_ORIGIN, jsonOut =
 
   for (const contract of REPRESENTATIVE_ROUTE_CONTRACTS) {
     const url = buildRouteUrl(originInfo, contract.route);
-    const response = await fetchWithTimeout(fetchImpl, url, timeoutMs);
+    let response;
+    try {
+      response = await fetchWithTimeout(fetchImpl, url, timeoutMs);
+    } catch (error) {
+      const phase = error?.phase ?? "fetch";
+      failWithReport(phase, stripFailurePrefix(error), report, { jsonOut, projectRoot, phaseDetails: { route: contract.route, url } });
+    }
     const arrayBuffer = await response.arrayBuffer();
     const bytes = arrayBuffer.byteLength;
     const html = new TextDecoder().decode(arrayBuffer);
@@ -274,32 +317,23 @@ export async function runLivePageAssertions({ origin = DEFAULT_ORIGIN, jsonOut =
     };
     report.checkedRoutes.push(routeSummary);
 
-    if (response.status !== 200) throw phaseFail("non-200", `${contract.route} returned ${response.status}.`, report);
-    if (assertions.missingMarkers.length > 0) throw phaseFail("marker", `${contract.route} is missing required markers: ${assertions.missingMarkers.join(", ")}.`, report);
-    if (assertions.leakageFindings.length > 0) throw phaseFail("leakage", `${contract.route} leaked forbidden public content patterns: ${assertions.leakageFindings.map((finding) => finding.patternId).join(", ")}.`, report);
+    if (response.status !== 200) failWithReport("non-200", `${contract.route} returned ${response.status}.`, report, { jsonOut, projectRoot, phaseDetails: { route: contract.route, status: response.status } });
+    if (assertions.missingMarkers.length > 0) failWithReport("marker", `${contract.route} is missing required markers: ${assertions.missingMarkers.join(", ")}.`, report, { jsonOut, projectRoot, phaseDetails: { route: contract.route, missingMarkers: assertions.missingMarkers } });
+    if (assertions.leakageFindings.length > 0) failWithReport("leakage", `${contract.route} leaked forbidden public content patterns: ${assertions.leakageFindings.map((finding) => finding.patternId).join(", ")}.`, report, { jsonOut, projectRoot, phaseDetails: { route: contract.route, leakageFindings: assertions.leakageFindings } });
   }
 
   report.status = "pass";
   report.completedAt = new Date().toISOString();
-  report.counts = {
-    checkedRoutes: report.checkedRoutes.length,
-    markerAssertions: report.checkedRoutes.reduce((sum, route) => sum + route.markerAssertions.length, 0),
-    leakageFindings: report.checkedRoutes.reduce((sum, route) => sum + route.leakageFindings.length, 0),
-  };
+  refreshReportCounts(report);
   report.phases.fetch = { status: "pass", checked: report.checkedRoutes.length };
   report.phases.markers = { status: "pass", checked: report.counts.markerAssertions };
   report.phases.leakage = { status: "pass", checked: FORBIDDEN_LEAKAGE_PATTERNS.length * report.checkedRoutes.length };
 
   const validationErrors = validateLiveReport(report);
-  if (validationErrors.length > 0) throw phaseFail("report", validationErrors.join("; "), report);
+  if (validationErrors.length > 0) failWithReport("report", validationErrors.join("; "), report, { jsonOut, projectRoot, phaseDetails: { errors: validationErrors } });
   report.phases.report = { status: "pass" };
 
-  if (jsonOut) {
-    const outputPath = validateJsonOutPath(jsonOut, projectRoot);
-    mkdirSync(path.dirname(outputPath), { recursive: true });
-    report.phases.jsonOut = { status: "pass", path: path.relative(projectRoot, outputPath).replaceAll(path.sep, "/") };
-    writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`);
-  }
+  writeJsonOutReport(report, jsonOut, projectRoot);
 
   return report;
 }

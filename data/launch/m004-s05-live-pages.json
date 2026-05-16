@@ -4,16 +4,16 @@
   "slice": "S05",
   "generatedBy": "scripts/assert-m004-s05-live-pages.mjs",
   "status": "pass",
-  "startedAt": "2026-05-16T18:36:55.225Z",
-  "origin": "http://127.0.0.1:4173",
+  "startedAt": "2026-05-16T21:39:21.479Z",
+  "origin": "https://keithah.github.io/votes-yayarea-news",
   "timeoutMs": 15000,
   "checkedRoutes": [
     {
       "route": "/races/state-assembly-district-17/",
       "slug": "state-assembly-district-17",
-      "url": "http://127.0.0.1:4173/races/state-assembly-district-17/",
+      "url": "https://keithah.github.io/votes-yayarea-news/races/state-assembly-district-17/",
       "status": 200,
-      "contentType": "text/html",
+      "contentType": "text/html; charset=utf-8",
       "bytes": 42579,
       "markerAssertions": [
         {
@@ -87,9 +87,9 @@
     {
       "route": "/races/california-governor/",
       "slug": "california-governor",
-      "url": "http://127.0.0.1:4173/races/california-governor/",
+      "url": "https://keithah.github.io/votes-yayarea-news/races/california-governor/",
       "status": 200,
-      "contentType": "text/html",
+      "contentType": "text/html; charset=utf-8",
       "bytes": 850576,
       "markerAssertions": [
         {
@@ -171,9 +171,9 @@
     {
       "route": "/races/us-house-district-11/",
       "slug": "us-house-district-11",
-      "url": "http://127.0.0.1:4173/races/us-house-district-11/",
+      "url": "https://keithah.github.io/votes-yayarea-news/races/us-house-district-11/",
       "status": 200,
-      "contentType": "text/html",
+      "contentType": "text/html; charset=utf-8",
       "bytes": 124781,
       "markerAssertions": [
         {
@@ -270,5 +270,5 @@
       "path": "data/launch/m004-s05-live-pages.json"
     }
   },
-  "completedAt": "2026-05-16T18:36:55.290Z"
+  "completedAt": "2026-05-16T21:39:21.914Z"
 }
