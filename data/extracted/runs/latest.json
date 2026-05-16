@@ -1,14 +1,14 @@
 {
-  "id": "run-20260516070459",
+  "id": "run-20260516070827",
   "status": "complete",
   "provider": {
     "provider": "fixture",
     "model": "fixture-v1"
   },
   "promptVersion": "position-extraction-v1",
-  "startedAt": "2026-05-16T07:04:59.660Z",
-  "completedAt": "2026-05-16T07:04:59.669Z",
-  "durationMs": 9,
+  "startedAt": "2026-05-16T07:08:27.848Z",
+  "completedAt": "2026-05-16T07:08:27.855Z",
+  "durationMs": 7,
   "inputs": [
     {
       "id": "input-board-of-equalization-district-2-src-ca-secretary-of-state",
