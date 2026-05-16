@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 
 export const DEFAULT_ORIGIN = "https://votes.yayarea.news";
 export const DEFAULT_OUT_DIR = "out";
-export const DEFAULT_REPORT_PATH = "data/launch/s07-export-assertions.json";
+export const DEFAULT_REPORT_PATH = "data/launch/s07-launch-export.json";
 export const EXPECTED_REGISTERED_SOURCE_COUNT = 24;
 
 export const REQUIRED_PUBLIC_JSON_PATHS = [
@@ -89,7 +89,21 @@ export function routeFromHtmlPath(filePath, outDir = DEFAULT_OUT_DIR) {
   return normalizeRoute(relative);
 }
 
-export function classifyHref(href, sourceRoute = "/", origin = DEFAULT_ORIGIN) {
+export function githubPagesBasePath(env = process.env) {
+  if (env.GITHUB_PAGES !== "true") return "";
+  const repositoryName = env.GITHUB_REPOSITORY?.split("/")[1] ?? "votes-yayarea-news";
+  return `/${repositoryName}`;
+}
+
+export function stripBasePathFromPathname(pathname, basePath = githubPagesBasePath()) {
+  if (!basePath || basePath === "/") return pathname;
+  const normalizedBase = basePath.startsWith("/") ? basePath : `/${basePath}`;
+  if (pathname === normalizedBase) return "/";
+  if (pathname.startsWith(`${normalizedBase}/`)) return pathname.slice(normalizedBase.length) || "/";
+  return pathname;
+}
+
+export function classifyHref(href, sourceRoute = "/", origin = DEFAULT_ORIGIN, basePath = githubPagesBasePath()) {
   if (!href) return { kind: "ignored", reason: "empty" };
   const trimmed = href.trim();
   if (!trimmed || trimmed.startsWith("#")) return { kind: "ignored", reason: "fragment" };
@@ -103,20 +117,20 @@ export function classifyHref(href, sourceRoute = "/", origin = DEFAULT_ORIGIN) {
   }
 
   if (url.origin !== origin) return { kind: "external", href: trimmed, origin: url.origin };
-  return { kind: "internal", href: trimmed, route: normalizeRoute(url.pathname) };
+  return { kind: "internal", href: trimmed, route: normalizeRoute(stripBasePathFromPathname(url.pathname, basePath)) };
 }
 
 export function extractAnchorHrefs(html) {
   return [...html.matchAll(/<a\b[^>]*\shref=(['"])(.*?)\1/gi)].map((match) => match[2]);
 }
 
-export function findBrokenInternalLinks(htmlFiles, outDir = DEFAULT_OUT_DIR, origin = DEFAULT_ORIGIN) {
+export function findBrokenInternalLinks(htmlFiles, outDir = DEFAULT_OUT_DIR, origin = DEFAULT_ORIGIN, basePath = githubPagesBasePath()) {
   const broken = [];
   for (const sourceHtml of htmlFiles) {
     const sourceRoute = routeFromHtmlPath(sourceHtml, outDir);
     const html = readFileSync(sourceHtml, "utf8");
     for (const href of extractAnchorHrefs(html)) {
-      const classified = classifyHref(href, sourceRoute, origin);
+      const classified = classifyHref(href, sourceRoute, origin, basePath);
       if (classified.kind !== "internal") continue;
       if (!htmlPathForRoute(classified.route, outDir)) broken.push({ sourceHtml, sourceRoute, href, targetRoute: classified.route });
     }

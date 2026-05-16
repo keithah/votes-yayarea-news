@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 // @ts-ignore JS launch-gate helpers are exercised through node --import tsx tests.
 import { validateS07ExportReport } from "../../scripts/assert-s07-export.mjs";
 // @ts-ignore JS launch-gate helpers are exercised through node --import tsx tests.
@@ -94,11 +95,31 @@ test("S07 redaction validation rejects private paths and secret-like tokens in u
 });
 
 test("S07 launch verification defaults to latest while preserving S07-specific artifact paths", () => {
-  assert.equal(LAUNCH_EXPORT_PATH, "data/launch/s07-export-assertions.json");
+  assert.equal(LAUNCH_EXPORT_PATH, "data/launch/s07-launch-export.json");
   assert.equal(STATIC_SMOKE_PATH, "data/launch/s07-static-smoke.json");
   assert.equal(PAGES_PROOF_PATH, "data/launch/s07-pages-proof.json");
   assert.equal(S07_REPORT_PATH, "data/launch/s07-launch-verification.json");
   assert.equal(FINAL_REPORT_PATH, "data/launch/latest.json");
+});
+
+test("S07 verifier script wires the canonical final launch gate phases", () => {
+  const script = readFileSync("scripts/verify-s07.sh", "utf8");
+
+  assert.match(script, /set -euo pipefail/);
+  assert.match(script, /GITHUB_PAGES=\"\$\{GITHUB_PAGES:-true\}\"/);
+  assert.match(script, /NEXT_PUBLIC_SITE_ORIGIN=\"\$\{NEXT_PUBLIC_SITE_ORIGIN:-https:\/\/votes\.yayarea\.news\}\"/);
+  assert.match(script, /pnpm validate-data/);
+  assert.match(script, /pnpm ingest:sources -- --manifest data\/ingestion\/manifest\.json --out data\/ingested/);
+  assert.match(script, /pnpm report:source-race-coverage/);
+  assert.match(script, /node --import tsx --test tests\/data\/s07-\*\.test\.ts/);
+  assert.match(script, /pnpm test:data/);
+  assert.match(script, /pnpm typecheck/);
+  assert.match(script, /pnpm build/);
+  assert.match(script, /rm -rf out\/debug out\/review/);
+  assert.match(script, /touch out\/\.nojekyll/);
+  assert.match(script, /node scripts\/assert-s07-export\.mjs --json-out data\/launch\/s07-launch-export\.json/);
+  assert.match(script, /node scripts\/smoke-s07-static-export\.mjs --json-out data\/launch\/s07-static-smoke\.json/);
+  assert.match(script, /node scripts\/record-s07-launch-verification\.mjs/);
 });
 
 test("S07 launch verification accepts pass artifacts and summarizes route, source, count, workflow, and redaction evidence", () => {

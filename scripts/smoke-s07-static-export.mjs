@@ -3,7 +3,7 @@ import { createReadStream, existsSync, mkdirSync, statSync, writeFileSync } from
 import { createServer } from "node:http";
 import path, { extname, join, normalize, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
-import { DEFAULT_OUT_DIR, loadS07RouteContracts, normalizeRoute } from "./assert-s07-export.mjs";
+import { DEFAULT_OUT_DIR, githubPagesBasePath, loadS07RouteContracts, normalizeRoute, stripBasePathFromPathname } from "./assert-s07-export.mjs";
 
 export const DEFAULT_SMOKE_REPORT_PATH = "data/launch/s07-static-smoke.json";
 export const SMOKE_GENERATOR = "scripts/smoke-s07-static-export.mjs";
@@ -68,8 +68,8 @@ export function choosePort(env = process.env) {
   return port;
 }
 
-export function safeFilePath(urlPath, outDir = resolve(DEFAULT_OUT_DIR)) {
-  const rawPath = String(urlPath).split("?", 1)[0];
+export function safeFilePath(urlPath, outDir = resolve(DEFAULT_OUT_DIR), basePath = githubPagesBasePath()) {
+  const rawPath = stripBasePathFromPathname(String(urlPath).split("?", 1)[0], basePath);
   if (rawPath.split(/[\\/]+/).includes("..")) return null;
   let decoded;
   try {
@@ -84,8 +84,8 @@ export function safeFilePath(urlPath, outDir = resolve(DEFAULT_OUT_DIR)) {
   return candidate;
 }
 
-export function findStaticFile(urlPath, outDir = resolve(DEFAULT_OUT_DIR)) {
-  const candidate = safeFilePath(urlPath, outDir);
+export function findStaticFile(urlPath, outDir = resolve(DEFAULT_OUT_DIR), basePath = githubPagesBasePath()) {
+  const candidate = safeFilePath(urlPath, outDir, basePath);
   if (!candidate) return null;
   if (existsSync(candidate) && statSync(candidate).isFile()) return candidate;
   if (existsSync(candidate) && statSync(candidate).isDirectory()) {
@@ -97,13 +97,13 @@ export function findStaticFile(urlPath, outDir = resolve(DEFAULT_OUT_DIR)) {
   return null;
 }
 
-export function createStaticServer({ outDir = resolve(DEFAULT_OUT_DIR) } = {}) {
+export function createStaticServer({ outDir = resolve(DEFAULT_OUT_DIR), basePath = githubPagesBasePath() } = {}) {
   return createServer((request, response) => {
     try {
       const requestUrl = new URL(request.url ?? "/", "http://127.0.0.1");
       const pathname = requestUrl.pathname;
 
-      if (!safeFilePath(pathname, outDir)) {
+      if (!safeFilePath(pathname, outDir, basePath)) {
         response.writeHead(400, { "content-type": "text/plain; charset=utf-8" });
         response.end("Bad request");
         return;
@@ -111,14 +111,14 @@ export function createStaticServer({ outDir = resolve(DEFAULT_OUT_DIR) } = {}) {
 
       if (pathname !== "/" && !pathname.endsWith("/") && !extname(pathname)) {
         const slashPath = `${pathname}/`;
-        if (findStaticFile(slashPath, outDir)) {
+        if (findStaticFile(slashPath, outDir, basePath)) {
           response.writeHead(308, { location: slashPath });
           response.end();
           return;
         }
       }
 
-      const filePath = findStaticFile(pathname, outDir);
+      const filePath = findStaticFile(pathname, outDir, basePath);
       if (!filePath) {
         response.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
         response.end("Not found");

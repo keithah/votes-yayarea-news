@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "slice": "S07",
   "generatedBy": "scripts/record-s07-launch-verification.mjs",
-  "generatedAt": "2026-05-16T06:52:41.923Z",
+  "generatedAt": "2026-05-16T06:59:18.395Z",
   "status": "pass",
   "artifacts": {
-    "routeLinkLeakage": "data/launch/s07-export-assertions.json",
+    "routeLinkLeakage": "data/launch/s07-launch-export.json",
     "staticSmoke": "data/launch/s07-static-smoke.json",
     "pagesWorkflowProof": "data/launch/s07-pages-proof.json",
     "launchVerification": "data/launch/s07-launch-verification.json",
@@ -100,7 +100,7 @@
   "redaction": {
     "status": "pass",
     "checkedArtifacts": [
-      "data/launch/s07-export-assertions.json",
+      "data/launch/s07-launch-export.json",
       "data/launch/s07-static-smoke.json",
       "data/launch/s07-pages-proof.json"
     ],

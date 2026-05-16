@@ -98,6 +98,7 @@ test("S07 internal-link crawler reports source HTML, href, and missing target fo
     },
   ]);
   assert.equal(classifyHref("https://votes.yayarea.news/how-we-use-ai", "/").route, "/how-we-use-ai/");
+  assert.equal(classifyHref("/votes-yayarea-news/races/california-governor/", "/", "https://votes.yayarea.news", "/votes-yayarea-news").route, "/races/california-governor/");
 });
 
 test("S07 forbidden leakage checks catch private paths, debug/review routes, and stale sample mayor copy", () => {
@@ -174,7 +175,7 @@ test("S07 assertion runner fails with parse context for malformed public JSON", 
 test("S07 assertion runner writes a redaction-safe launch report for minimal homepage, race, source, entity, and disclosure fixtures", async () => {
   const projectRoot = await writeFixtureProject();
   const outDir = path.join(projectRoot, "out");
-  const reportPath = path.join(projectRoot, "data", "launch", "s07-export-assertions.json");
+  const reportPath = path.join(projectRoot, "data", "launch", "s07-launch-export.json");
   await writeCompleteStaticExport(outDir);
 
   const report = runS07ExportAssertions({ projectRoot, outDir, reportPath });
@@ -198,7 +199,7 @@ test("S07 assertion runner rejects debug route emission before writing a pass re
   await fs.mkdir(path.join(outDir, "debug"), { recursive: true });
 
   assert.throws(
-    () => runS07ExportAssertions({ projectRoot, outDir, reportPath: path.join(projectRoot, "data", "launch", "s07-export-assertions.json") }),
+    () => runS07ExportAssertions({ projectRoot, outDir, reportPath: path.join(projectRoot, "data", "launch", "s07-launch-export.json") }),
     /local-only-routes: final artifact must not include out\/debug/,
   );
 });

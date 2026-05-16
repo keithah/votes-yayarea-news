@@ -44,6 +44,20 @@ test("S07 static server redirects extensionless exported routes to slash routes"
   }
 });
 
+test("S07 static server strips the GitHub Pages base path when serving exported assets", async () => {
+  const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "s07-server-basepath-"));
+  await writeText(path.join(tempDir, "out", "_next", "static", "app.js"), "console.log('ok');");
+  const { server, origin } = await listen(createStaticServer({ outDir: path.join(tempDir, "out"), basePath: "/votes-yayarea-news" }));
+
+  try {
+    const response = await fetch(`${origin}/votes-yayarea-news/_next/static/app.js`, { redirect: "manual" });
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type") ?? "", /text\/javascript/);
+  } finally {
+    await close(server);
+  }
+});
+
 test("S07 static smoke uses exhaustive route contracts by default and supports bounded representatives", () => {
   const routes = [
     { route: "/", className: "homepage" },

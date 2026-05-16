@@ -1,0 +1,1038 @@
+{
+  "schemaVersion": 1,
+  "slice": "S07",
+  "generatedBy": "scripts/assert-s07-export.mjs",
+  "generatedAt": "2026-05-16T06:59:18.134Z",
+  "status": "pass",
+  "origin": "https://votes.yayarea.news",
+  "counts": {
+    "htmlFiles": 80,
+    "routes": 77,
+    "routeClasses": {
+      "homepage": 1,
+      "disclosure": 1,
+      "race": 13,
+      "source": 1,
+      "entity": 61
+    },
+    "linksChecked": 936,
+    "brokenLinks": 0,
+    "leakFindings": 0,
+    "localOnlyRouteArtifacts": 0,
+    "coverageRaceContracts": 13
+  },
+  "checkedRoutes": [
+    {
+      "route": "/",
+      "className": "homepage",
+      "exportPath": "out/index.html",
+      "status": "pass",
+      "htmlBytes": 56609,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/how-we-use-ai/",
+      "className": "disclosure",
+      "exportPath": "out/how-we-use-ai/index.html",
+      "status": "pass",
+      "htmlBytes": 24938,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-governor/",
+      "className": "race",
+      "exportPath": "out/races/california-governor/index.html",
+      "status": "pass",
+      "htmlBytes": 494132,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-lieutenant-governor/",
+      "className": "race",
+      "exportPath": "out/races/california-lieutenant-governor/index.html",
+      "status": "pass",
+      "htmlBytes": 121792,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-secretary-of-state/",
+      "className": "race",
+      "exportPath": "out/races/california-secretary-of-state/index.html",
+      "status": "pass",
+      "htmlBytes": 51348,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-controller/",
+      "className": "race",
+      "exportPath": "out/races/california-controller/index.html",
+      "status": "pass",
+      "htmlBytes": 44179,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-treasurer/",
+      "className": "race",
+      "exportPath": "out/races/california-treasurer/index.html",
+      "status": "pass",
+      "htmlBytes": 61174,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-attorney-general/",
+      "className": "race",
+      "exportPath": "out/races/california-attorney-general/index.html",
+      "status": "pass",
+      "htmlBytes": 44806,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-insurance-commissioner/",
+      "className": "race",
+      "exportPath": "out/races/california-insurance-commissioner/index.html",
+      "status": "pass",
+      "htmlBytes": 93909,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-superintendent-public-instruction/",
+      "className": "race",
+      "exportPath": "out/races/california-superintendent-public-instruction/index.html",
+      "status": "pass",
+      "htmlBytes": 91245,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/board-of-equalization-district-2/",
+      "className": "race",
+      "exportPath": "out/races/board-of-equalization-district-2/index.html",
+      "status": "pass",
+      "htmlBytes": 63652,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/us-house-district-11/",
+      "className": "race",
+      "exportPath": "out/races/us-house-district-11/index.html",
+      "status": "pass",
+      "htmlBytes": 89681,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/us-house-district-15/",
+      "className": "race",
+      "exportPath": "out/races/us-house-district-15/index.html",
+      "status": "pass",
+      "htmlBytes": 55552,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/state-assembly-district-17/",
+      "className": "race",
+      "exportPath": "out/races/state-assembly-district-17/index.html",
+      "status": "pass",
+      "htmlBytes": 32995,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/state-assembly-district-19/",
+      "className": "race",
+      "exportPath": "out/races/state-assembly-district-19/index.html",
+      "status": "pass",
+      "htmlBytes": 39182,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/sources/california-secretary-of-state/",
+      "className": "source",
+      "exportPath": "out/sources/california-secretary-of-state/index.html",
+      "status": "pass",
+      "htmlBytes": 342269,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-akinyemi-agbede/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-akinyemi-agbede/index.html",
+      "status": "pass",
+      "htmlBytes": 24801,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-alicia-olivia-lapp/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-alicia-olivia-lapp/index.html",
+      "status": "pass",
+      "htmlBytes": 24935,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-amanda-martin/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-amanda-martin/index.html",
+      "status": "pass",
+      "htmlBytes": 24825,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-anne-komarovsk/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-anne-komarovsk/index.html",
+      "status": "pass",
+      "htmlBytes": 24847,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-antonio-villaraigosa/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-antonio-villaraigosa/index.html",
+      "status": "pass",
+      "htmlBytes": 25026,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-barack-d-obama-shaw/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-barack-d-obama-shaw/index.html",
+      "status": "pass",
+      "htmlBytes": 24959,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-betty-t-yee/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-betty-t-yee/index.html",
+      "status": "pass",
+      "htmlBytes": 24702,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-brent-maupin/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-brent-maupin/index.html",
+      "status": "pass",
+      "htmlBytes": 24726,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-carolina-buhler/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-carolina-buhler/index.html",
+      "status": "pass",
+      "htmlBytes": 24833,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-chad-bianco/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-chad-bianco/index.html",
+      "status": "pass",
+      "htmlBytes": 24696,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-christine-r-sarmiento/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-christine-r-sarmiento/index.html",
+      "status": "pass",
+      "htmlBytes": 25070,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-daniel-mercuri/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-daniel-mercuri/index.html",
+      "status": "pass",
+      "htmlBytes": 24851,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-david-zickefoose/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-david-zickefoose/index.html",
+      "status": "pass",
+      "htmlBytes": 24863,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-dawit-kellel/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-dawit-kellel/index.html",
+      "status": "pass",
+      "htmlBytes": 24694,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-derek-grasty/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-derek-grasty/index.html",
+      "status": "pass",
+      "htmlBytes": 24734,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-don-j-grundmann/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-don-j-grundmann/index.html",
+      "status": "pass",
+      "htmlBytes": 24891,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-duane-terrence-loynes-jr/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-duane-terrence-loynes-jr/index.html",
+      "status": "pass",
+      "htmlBytes": 25180,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-elaine-culotti/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-elaine-culotti/index.html",
+      "status": "pass",
+      "htmlBytes": 24867,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-eric-swalwell/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-eric-swalwell/index.html",
+      "status": "pass",
+      "htmlBytes": 24744,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-erin-zez-zezulak/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-erin-zez-zezulak/index.html",
+      "status": "pass",
+      "htmlBytes": 24903,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-frederic-c-schultz/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-frederic-c-schultz/index.html",
+      "status": "pass",
+      "htmlBytes": 24989,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-gary-howard-kidgell/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-gary-howard-kidgell/index.html",
+      "status": "pass",
+      "htmlBytes": 24961,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-gretha-solorzano/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-gretha-solorzano/index.html",
+      "status": "pass",
+      "htmlBytes": 24879,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-james-athans-jr/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-james-athans-jr/index.html",
+      "status": "pass",
+      "htmlBytes": 24835,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-joel-e-jacob/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-joel-e-jacob/index.html",
+      "status": "pass",
+      "htmlBytes": 24773,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-jon-henderson/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-jon-henderson/index.html",
+      "status": "pass",
+      "htmlBytes": 24773,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-joseph-cabrera/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-joseph-cabrera/index.html",
+      "status": "pass",
+      "htmlBytes": 24839,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-katie-porter/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-katie-porter/index.html",
+      "status": "pass",
+      "htmlBytes": 24759,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-larry-azevedo/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-larry-azevedo/index.html",
+      "status": "pass",
+      "htmlBytes": 24712,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-leo-naranjo-iv/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-leo-naranjo-iv/index.html",
+      "status": "pass",
+      "htmlBytes": 24815,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-leo-samuel-zacky/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-leo-samuel-zacky/index.html",
+      "status": "pass",
+      "htmlBytes": 24903,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-lewis-herms/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-lewis-herms/index.html",
+      "status": "pass",
+      "htmlBytes": 24720,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-livingforgod-andcountry-demott/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-livingforgod-andcountry-demott/index.html",
+      "status": "pass",
+      "htmlBytes": 25423,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-louis-a-de-barraicua/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-louis-a-de-barraicua/index.html",
+      "status": "pass",
+      "htmlBytes": 25025,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-lukasz-adam-filinski/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-lukasz-adam-filinski/index.html",
+      "status": "pass",
+      "htmlBytes": 24979,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-margaret-trowe/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-margaret-trowe/index.html",
+      "status": "pass",
+      "htmlBytes": 24799,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-matt-mahan/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-matt-mahan/index.html",
+      "status": "pass",
+      "htmlBytes": 24626,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-matthew-chase-levy/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-matthew-chase-levy/index.html",
+      "status": "pass",
+      "htmlBytes": 24939,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-mauro-alberto-orozco/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-mauro-alberto-orozco/index.html",
+      "status": "pass",
+      "htmlBytes": 25022,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-max-fomin/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-max-fomin/index.html",
+      "status": "pass",
+      "htmlBytes": 24652,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-mohammad-arif/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-mohammad-arif/index.html",
+      "status": "pass",
+      "htmlBytes": 24748,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-nancy-d-young/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-nancy-d-young/index.html",
+      "status": "pass",
+      "htmlBytes": 24831,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-naomi-bar-lev/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-naomi-bar-lev/index.html",
+      "status": "pass",
+      "htmlBytes": 24821,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-patricia-de-luca-basualdo/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-patricia-de-luca-basualdo/index.html",
+      "status": "pass",
+      "htmlBytes": 25148,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-rafael-m-hernandez/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-rafael-m-hernandez/index.html",
+      "status": "pass",
+      "htmlBytes": 24985,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-raji-rab/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-raji-rab/index.html",
+      "status": "pass",
+      "htmlBytes": 24614,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-ramsey-robinson/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-ramsey-robinson/index.html",
+      "status": "pass",
+      "htmlBytes": 24857,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-randeep-s-dhillon/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-randeep-s-dhillon/index.html",
+      "status": "pass",
+      "htmlBytes": 24947,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-reza-safarnejad/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-reza-safarnejad/index.html",
+      "status": "pass",
+      "htmlBytes": 24865,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-sam-sandak/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-sam-sandak/index.html",
+      "status": "pass",
+      "htmlBytes": 24638,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-satish-rao/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-satish-rao/index.html",
+      "status": "pass",
+      "htmlBytes": 24602,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-scott-p-shields/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-scott-p-shields/index.html",
+      "status": "pass",
+      "htmlBytes": 24841,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-serge-fiankan/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-serge-fiankan/index.html",
+      "status": "pass",
+      "htmlBytes": 24789,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-sophia-edum-a-sam/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-sophia-edum-a-sam/index.html",
+      "status": "pass",
+      "htmlBytes": 24877,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-steve-hilton/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-steve-hilton/index.html",
+      "status": "pass",
+      "htmlBytes": 24714,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-thunder-parley/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-thunder-parley/index.html",
+      "status": "pass",
+      "htmlBytes": 24758,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tim-nelson/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-tim-nelson/index.html",
+      "status": "pass",
+      "htmlBytes": 24662,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tom-steyer/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-tom-steyer/index.html",
+      "status": "pass",
+      "htmlBytes": 24630,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tom-woodard/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-tom-woodard/index.html",
+      "status": "pass",
+      "htmlBytes": 24648,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tony-k-thurmond/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-tony-k-thurmond/index.html",
+      "status": "pass",
+      "htmlBytes": 24966,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-xavier-becerra/",
+      "className": "entity",
+      "exportPath": "out/entities/california-governor-xavier-becerra/index.html",
+      "status": "pass",
+      "htmlBytes": 24803,
+      "hasTitle": true,
+      "hasCanonical": true,
+      "missingText": [],
+      "missingPatterns": []
+    }
+  ],
+  "coverageContracts": [
+    {
+      "raceSlug": "california-governor",
+      "rowCount": 24,
+      "reviewedRowCount": 1,
+      "unresolvedRowCount": 23
+    },
+    {
+      "raceSlug": "california-lieutenant-governor",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "california-secretary-of-state",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "california-controller",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "california-treasurer",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "california-attorney-general",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "california-insurance-commissioner",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "california-superintendent-public-instruction",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "board-of-equalization-district-2",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "us-house-district-11",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "us-house-district-15",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "state-assembly-district-17",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    },
+    {
+      "raceSlug": "state-assembly-district-19",
+      "rowCount": 24,
+      "reviewedRowCount": 0,
+      "unresolvedRowCount": 24
+    }
+  ],
+  "phases": {
+    "preflight": {
+      "status": "pass"
+    },
+    "routeDiscovery": {
+      "status": "pass",
+      "classCounts": {
+        "homepage": 1,
+        "disclosure": 1,
+        "race": 13,
+        "source": 1,
+        "entity": 61
+      },
+      "coverageRaceContracts": 13
+    },
+    "routeContracts": {
+      "status": "pass"
+    },
+    "internalLinks": {
+      "status": "pass",
+      "checked": 936
+    },
+    "publicPrivateLeakage": {
+      "status": "pass",
+      "checks": [
+        {
+          "id": "private_gsd_path",
+          "description": "private GSD path",
+          "status": "pass"
+        },
+        {
+          "id": "absolute_local_path",
+          "description": "absolute local path",
+          "status": "pass"
+        },
+        {
+          "id": "file_url",
+          "description": "file URL path",
+          "status": "pass"
+        },
+        {
+          "id": "private_manual_review_path",
+          "description": "private manual or review path",
+          "status": "pass"
+        },
+        {
+          "id": "private_diagnostics",
+          "description": "draft-only or private diagnostics",
+          "status": "pass"
+        },
+        {
+          "id": "debug_route",
+          "description": "debug route leakage",
+          "status": "pass"
+        },
+        {
+          "id": "review_route",
+          "description": "review route leakage",
+          "status": "pass"
+        },
+        {
+          "id": "sample_candidate",
+          "description": "stale sample candidate fixture copy",
+          "status": "pass"
+        },
+        {
+          "id": "sample_voter_guide",
+          "description": "stale sample voter-guide fixture URL",
+          "status": "pass"
+        },
+        {
+          "id": "stale_mayor_fixture",
+          "description": "stale sample mayor fixture copy",
+          "status": "pass"
+        }
+      ]
+    },
+    "localOnlyRoutes": {
+      "status": "pass",
+      "forbidden": [
+        "out/debug",
+        "out/review"
+      ]
+    }
+  }
+}

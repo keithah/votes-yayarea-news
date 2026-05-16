@@ -6,7 +6,7 @@ import { validateS07ExportReport } from "./assert-s07-export.mjs";
 import { validateS07StaticSmokeReport } from "./smoke-s07-static-export.mjs";
 
 export const STATIC_SMOKE_PATH = "data/launch/s07-static-smoke.json";
-export const LAUNCH_EXPORT_PATH = "data/launch/s07-export-assertions.json";
+export const LAUNCH_EXPORT_PATH = "data/launch/s07-launch-export.json";
 export const PAGES_WORKFLOW_PATH = ".github/workflows/pages.yml";
 export const PAGES_PROOF_PATH = "data/launch/s07-pages-proof.json";
 export const S07_REPORT_PATH = "data/launch/s07-launch-verification.json";
