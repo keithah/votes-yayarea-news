@@ -17,6 +17,7 @@
     "extract:positions": "tsx scripts/extract-positions.ts",
     "validate-extraction": "tsx scripts/validate-extraction.ts",
     "review:positions": "tsx scripts/review-positions.ts",
+    "review:bulk": "tsx scripts/review-bulk-positions.ts",
     "review:coverage": "tsx scripts/report-reviewed-position-coverage.ts",
     "verify:s01": "bash scripts/verify-s01.sh",
     "verify:m004:s01": "bash scripts/verify-m004-s01.sh",
