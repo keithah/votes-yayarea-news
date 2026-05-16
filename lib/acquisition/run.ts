@@ -81,7 +81,14 @@ export async function acquireSources(options: AcquireSourcesOptions): Promise<Ac
     const candidate = candidatesBySource.get(source.id);
     if (!candidate) {
       diagnostics.push(diagnostic(source.id, "candidate", "skipped", timestamp, false, {
-        skippedReason: "No candidate URL registered for source.",
+        skippedReason: "No candidate URL registered for source; source-candidates.json has no search diagnostic for this source.",
+      }));
+      continue;
+    }
+
+    if (!candidate.url) {
+      diagnostics.push(diagnostic(source.id, "candidate", "skipped", timestamp, false, {
+        skippedReason: candidate.skippedReason ?? "No safe public guide or endorsement artifact was registered for this source.",
       }));
       continue;
     }
@@ -117,7 +124,7 @@ export async function acquireSources(options: AcquireSourcesOptions): Promise<Ac
       await mkdir(path.dirname(absoluteFixturePath), { recursive: true });
       await writeFile(absoluteFixturePath, fetched.body, "utf8");
 
-      const target = targetFor(source, candidate, fixturePath, inputKind);
+      const target = targetFor(source, candidate, candidate.url, fixturePath, inputKind);
       targets.push(target);
       diagnostics.push(diagnostic(source.id, "capture", "captured", timestamp, true, {
         attemptedUrl,
@@ -181,12 +188,13 @@ function loadCandidates(body: string, filePath: string): AcquisitionCandidate[] 
     }
     return {
       sourceId: typeof item.sourceId === "string" ? item.sourceId : "",
-      url: typeof item.url === "string" ? item.url : "",
+      url: typeof item.url === "string" ? item.url : undefined,
       title: typeof item.title === "string" ? item.title : undefined,
       kind: typeof item.kind === "string" ? item.kind : undefined,
       discoveredAt: typeof item.discoveredAt === "string" ? item.discoveredAt : undefined,
       fixtureName: typeof item.fixtureName === "string" ? item.fixtureName : undefined,
       notes: typeof item.notes === "string" ? item.notes : undefined,
+      skippedReason: typeof item.skippedReason === "string" ? item.skippedReason : undefined,
     };
   });
 }
@@ -231,15 +239,22 @@ function validateCandidates(candidates: AcquisitionCandidate[], sources: PublicS
     }
     seen.add(candidate.sourceId);
 
-    try {
-      const parsed = new URL(candidate.url);
-      if (!["http:", "https:"].includes(parsed.protocol)) {
-        throw new Error("Candidate URL must use http or https.");
+    if (candidate.url !== undefined) {
+      try {
+        const parsed = new URL(candidate.url);
+        if (!["http:", "https:"].includes(parsed.protocol)) {
+          throw new Error("Candidate URL must use http or https.");
+        }
+      } catch (error) {
+        diagnostics.push(diagnostic(candidate.sourceId || "unknown", "candidate", "invalid_candidate", timestamp, false, {
+          path: `candidates[${index}].url`,
+          error: { code: "invalid_candidate_url", message: sanitizeError(error) },
+        }));
       }
-    } catch (error) {
+    } else if (!candidate.skippedReason || candidate.skippedReason.trim().length === 0) {
       diagnostics.push(diagnostic(candidate.sourceId || "unknown", "candidate", "invalid_candidate", timestamp, false, {
-        path: `candidates[${index}].url`,
-        error: { code: "invalid_candidate_url", message: sanitizeError(error) },
+        path: `candidates[${index}].skippedReason`,
+        error: { code: "missing_candidate_skip_reason", message: "Candidates without a URL must explain why no safe public artifact was registered." },
       }));
     }
 
@@ -310,7 +325,7 @@ function fixturePathFor(source: PublicSource, candidate: AcquisitionCandidate, i
   return `${ACQUISITION_FIXTURE_PREFIX}/${fixtureName}`;
 }
 
-function targetFor(source: PublicSource, candidate: AcquisitionCandidate, fixturePath: string, inputKind: IngestionInputKind): IngestionTarget {
+function targetFor(source: PublicSource, candidate: AcquisitionCandidate, candidateUrl: string, fixturePath: string, inputKind: IngestionInputKind): IngestionTarget {
   const stem = path.posix.basename(fixturePath).replace(/\.[^.]+$/, "");
   return {
     id: `fixture-${stem}`,
@@ -319,10 +334,10 @@ function targetFor(source: PublicSource, candidate: AcquisitionCandidate, fixtur
     title: candidate.title ?? source.name ?? source.id,
     inputKind,
     fixturePath,
-    canonicalUrl: redactUrl(candidate.url),
+    canonicalUrl: redactUrl(candidateUrl),
     sampleFixture: false,
     mode: "fixture",
-    notes: candidate.notes ?? `Captured from ${redactUrl(candidate.url)} for M004/S01 live acquisition.`,
+    notes: candidate.notes ?? `Captured from ${redactUrl(candidateUrl)} for M004/S01 live acquisition.`,
   };
 }
 

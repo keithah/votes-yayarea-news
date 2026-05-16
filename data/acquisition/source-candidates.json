@@ -1,4 +1,184 @@
 {
   "version": 1,
-  "candidates": []
+  "candidates": [
+    {
+      "sourceId": "src-ca-secretary-of-state",
+      "url": "https://www.sos.ca.gov/administration/news-releases-and-advisories/2026-news-releases-and-advisories/california-secretary-state-shirley-n-weber-phd-certifies-candidate-list-june-2-2026-primary-election",
+      "title": "California Secretary of State certified candidate list press release for June 2, 2026 primary",
+      "kind": "official-candidate-list",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "DuckDuckGo query: California Secretary of State 2026 primary certified list candidates. HTML acquisition captures the source-owned public page because the linked certified-list PDF is outside the current HTML/text acquisition allowlist."
+    },
+    {
+      "sourceId": "src-sf-department-of-elections",
+      "url": "https://www.sf.gov/reports--candidates-june-2-2026-statewide-direct-primary-election",
+      "title": "Candidates - June 2, 2026, Consolidated Statewide Direct Primary Election",
+      "kind": "official-local-candidate-list",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "DuckDuckGo query: San Francisco Department of Elections June 2 2026 election candidates measures. Source-owned SF.gov candidate report selected over the calendar page."
+    },
+    {
+      "sourceId": "src-sf-chronicle",
+      "url": "https://www.sfchronicle.com/projects/2026/california-primary-sf-election-endorsements/",
+      "title": "S.F. Chronicle endorsements for the 2026 California Primary Election",
+      "kind": "editorial-endorsements",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "DuckDuckGo query: San Francisco Chronicle 2026 primary endorsements San Francisco. The endorsement page was preferred over the broader voter-guide page to stay under the capture byte limit and match the source's endorsement role."
+    },
+    {
+      "sourceId": "src-mission-local",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'Mission Local June 2026 election voter guide endorsements San Francisco'; no Mission Local-owned 2026 guide or endorsement URL was located in top public results.",
+      "notes": "Top public results pointed to third-party endorsement aggregators or other organizations, not a Mission Local-owned artifact."
+    },
+    {
+      "sourceId": "src-sf-standard",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'San Francisco Standard 2026 election voter guide endorsements San Francisco'; no SF Standard-owned 2026 guide or endorsement URL was located in top public results.",
+      "notes": "Top public results pointed to GrowSF, Bay Guardian, and Chronicle pages rather than a SF Standard-owned artifact."
+    },
+    {
+      "sourceId": "src-lwv-sf-voters-edge",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'Voter's Edge California June 2 2026 San Francisco voter guide'; no Voter's Edge-owned June 2026 San Francisco guide URL was located in top public results.",
+      "notes": "Search surfaced the California Secretary of State voter guide and other guides, not a durable Voter's Edge 2026 SF election artifact."
+    },
+    {
+      "sourceId": "src-spur",
+      "url": "https://www.spur.org/voter-guide/2026-06",
+      "title": "June 2026 Voter Guide | SPUR",
+      "kind": "civic-voter-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "DuckDuckGo query: SPUR voter guide June 2026 San Francisco. Source-owned June 2026 guide selected over the announcement page."
+    },
+    {
+      "sourceId": "src-growsf",
+      "url": "https://growsf.org/voter-guide/",
+      "title": "GrowSF Voter Guide",
+      "kind": "civic-voter-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "Candidate found in public search results and probed directly; page advertises the June 2, 2026 Primary Election and GrowSF endorsements."
+    },
+    {
+      "sourceId": "src-sf-democratic-party",
+      "url": "https://www.sfdems.org/endorsements/june-2-2026-primary-election",
+      "title": "June 2, 2026 Primary Election Voter Guide — San Francisco Democratic Party",
+      "kind": "party-endorsement-slate",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "Candidate appeared in San Francisco Department of Elections adjacent search results and probed as a source-owned 2026 voter-guide artifact."
+    },
+    {
+      "sourceId": "src-sf-republican-party",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'San Francisco Republican Party endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was found, and /endorsements returned 404.",
+      "notes": "Do not ingest the homepage as a substitute for a recommendation slate."
+    },
+    {
+      "sourceId": "src-harvey-milk-lgbtq-democratic-club",
+      "kind": "fetch-failed",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "fetch-failed: searched 'Harvey Milk LGBTQ Democratic Club endorsements June 2026' and probed https://www.harveymilkclub.org/endorsements; public fetch failed, so no safe durable artifact was registered.",
+      "notes": "Leave out of manifest until a fetchable source-owned 2026 slate is located."
+    },
+    {
+      "sourceId": "src-alice-b-toklas-lgbtq-democratic-club",
+      "url": "https://alicebtoklas.org/2026endorsements",
+      "title": "2026 Endorsements — Alice B. Toklas LGBTQ Democratic Club",
+      "kind": "club-endorsement-slate",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "The public endorsements page linked a source-owned 2026 Endorsements page, which probed successfully and includes June 2, 2026 signals."
+    },
+    {
+      "sourceId": "src-sf-berniecrats",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'San Francisco Berniecrats endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was located, and the probed page returned a website-not-found response.",
+      "notes": "Do not infer endorsements from historical or unavailable pages."
+    },
+    {
+      "sourceId": "src-united-democratic-club",
+      "url": "https://www.uniteddems.org/endorsements",
+      "title": "Endorsements | United Democratic Club",
+      "kind": "club-endorsement-slate",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "Direct probe found source-owned endorsements page with June 2026 Primary Election signals."
+    },
+    {
+      "sourceId": "src-sf-labor-council",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'San Francisco Labor Council endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was found, and /endorsements returned 404.",
+      "notes": "Leave out of manifest until a public San Francisco Labor Council slate is located."
+    },
+    {
+      "sourceId": "src-seiu-local-1021",
+      "url": "https://www.seiu1021.org/endorsements",
+      "title": "Endorsements - SEIU 1021",
+      "kind": "union-endorsement-slate",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "Direct probe found source-owned endorsements page with an Election Endorsements: June 2, 2026 section."
+    },
+    {
+      "sourceId": "src-united-educators-of-san-francisco",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'United Educators San Francisco endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was found, and the probed page returned 404.",
+      "notes": "Do not ingest the 404 page despite generic site text containing election-related words."
+    },
+    {
+      "sourceId": "src-yimby-action-sf-yimby",
+      "kind": "ambiguous-source",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "ambiguous-source: searched and probed YIMBY Action endorsements; the source-owned page is fetchable but visible public links pointed to current/general endorsement browsing and older 2025/2024 entries, with no unambiguous SF June 2026 guide captured.",
+      "notes": "Leave out of manifest until a specific 2026 SF YIMBY or YIMBY Action slate URL is identified."
+    },
+    {
+      "sourceId": "src-sf-tenants-union",
+      "url": "https://sftu.org/endorsements/",
+      "title": "2026 Endorsements — San Francisco Tenants Union",
+      "kind": "advocacy-endorsement-slate",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "Direct probe found source-owned 2026 Endorsements page."
+    },
+    {
+      "sourceId": "src-housing-action-coalition",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'Housing Action Coalition endorsements June 2026' and probed /endorsements; no source-owned current candidate/measure recommendation URL was found, and /endorsements returned 404.",
+      "notes": "Housing project endorsements are not a substitute for an election guide."
+    },
+    {
+      "sourceId": "src-sierra-club-bay-chapter",
+      "url": "https://www.sierraclub.org/sfbay/2026-endorsements",
+      "title": "2026 Endorsements | Sierra Club San Francisco Bay Chapter",
+      "kind": "issue-group-endorsement-slate",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "notes": "The Bay Chapter endorsements page linked a source-owned 2026 endorsements page, which probed successfully."
+    },
+    {
+      "sourceId": "src-sf-bicycle-coalition",
+      "kind": "fetch-failed",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "fetch-failed: searched 'San Francisco Bicycle Coalition voter guide June 2026' and probed a likely /news/2026-voter-guide/ URL; no source-owned current guide URL was found, and the probed URL returned 403.",
+      "notes": "Leave out of manifest until a public fetchable SF Bicycle Coalition guide is located."
+    },
+    {
+      "sourceId": "src-togethersf-action",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'TogetherSF Action voter guide June 2026' and probed the redirected Blueprint voter-guide URL; no source-owned current guide URL was found, and the probed guide returned 404.",
+      "notes": "Do not ingest organization or not-found pages as recommendations."
+    },
+    {
+      "sourceId": "src-aclu-norcal",
+      "kind": "no-public-2026-guide",
+      "discoveredAt": "2026-05-16T00:00:00.000Z",
+      "skippedReason": "no-public-2026-guide: searched 'ACLU Northern California voter guide June 2026' and probed the current voter-guide path; no source-owned June 2026 guide URL was found, and the probed URL returned 404.",
+      "notes": "Leave out of manifest until a public issue guide or recommendation page is located."
+    }
+  ]
 }

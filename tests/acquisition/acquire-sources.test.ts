@@ -215,6 +215,41 @@ test("bounded acquisition remains deterministic with one diagnostic per source f
   assert.equal(result.diagnostics.every((diagnostic: AcquisitionDiagnostic) => diagnostic.status === "skipped"), true);
 });
 
+test("candidate ledger can record searched sources with explicit no-public-artifact diagnostics", async () => {
+  const directory = await temporaryDirectory();
+  const sourcesPath = await writeSources(directory, [source("src-alpha")]);
+  const candidatesPath = await writeCandidates(directory, [
+    {
+      sourceId: "src-alpha",
+      kind: "no-public-2026-guide",
+      discoveredAt: "2026-01-01T00:00:00.000Z",
+      skippedReason: "no-public-2026-guide: searched official site and public web results; no source-owned 2026 guide or endorsement artifact located.",
+      notes: "Search diagnostic only; do not ingest homepage.",
+    },
+  ]);
+  const output = paths(directory);
+
+  const result = await acquireSources({
+    sourcesPath,
+    candidatesPath,
+    acquisitionDir: output.acquisitionDir,
+    manifestPath: output.manifestPath,
+    fetchTimeoutMs: 1_000,
+    now: fixedClock(),
+  });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.diagnostics.length, 1);
+  assert.equal(result.diagnostics[0].sourceId, "src-alpha");
+  assert.equal(result.diagnostics[0].phase, "candidate");
+  assert.equal(result.diagnostics[0].status, "skipped");
+  assert.match(result.diagnostics[0].skippedReason ?? "", /no-public-2026-guide/);
+  assert.equal(result.diagnostics[0].manifestIncluded, false);
+
+  const manifest = JSON.parse(await readFile(output.manifestPath, "utf8"));
+  assert.equal(manifest.targets.length, 0);
+});
+
 test("CLI writes diagnostics without printing secrets or raw page bodies", async () => {
   const directory = await temporaryDirectory();
   const secret = "SECRET_TOKEN_SHOULD_NOT_LEAK";

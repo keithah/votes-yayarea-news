@@ -1,0 +1,25 @@
+{
+  "id": "art-san-francisco-democratic-party-m004-live",
+  "sourceId": "src-sf-democratic-party",
+  "targetId": "fixture-san-francisco-democratic-party-m004-live",
+  "title": "June 2, 2026 Primary Election Voter Guide — San Francisco Democratic Party",
+  "url": "https://www.sfdems.org/endorsements/june-2-2026-primary-election",
+  "status": "chunked",
+  "inputKind": "html",
+  "capturedAt": "2026-05-16T15:10:53.300Z",
+  "rawPath": "data/ingested/raw/src-san-francisco-democratic-party-m004-live.html",
+  "cleanPath": "data/ingested/artifacts/src-san-francisco-democratic-party-m004-live.json",
+  "chunkPath": "data/ingested/chunks/src-san-francisco-democratic-party-m004-live.json",
+  "text": "June 2, 2026 Primary Election Voter Guide — San Francisco Democratic Party\n0\nJune 2, 2026 Primary Election Voter Guide\nJun 2\nWritten By Bobak Esfandiari\nThe California Democratic Party makes endorsements for federal and state partisan offices and state ballot measures.\nFull endorsements from the California Democratic Party can be found here .\nThe San Francisco Democratic Party endorses local municipal candidates and local ballot measures.\nThese are the endorsed candidates and measures made by the San Francisco Democratic County Central Committee for the June 2, 2026 Primary Election, made at the February 25, 2026 meeting and March 25, 2026 meeting .\nInformation about the San Francisco County Central Committee endorsement process can be found here .\nNonpartisan Offices\nJUDICIAL\nSuperior Court Judge, Seat 16 Phoebe Maffei\nSCHOOL\n(Local) Board of Education Phil Kim\nCity and County\nBOARD OF SUPERVISORS\nDistrict 2 Stephen Sherrill\nDistrict 4 Alan Wong\nFederal & State Candidates*\nSecretary of State Shirley Weber\nController Malia Cohen\nAttorney General Rob Bonta\nBoard of Equalization, Seat 2 Sally Lieber\nU.S. Congress District 11 Scott Wiener\nU.S. Congress District 15 Kevin Mullin\nAssembly District 17 Matt Haney\nAssembly District 19 Catherine Stefani\nLocal Ballot Measures\nYes on A - Earthquake Safety and Emergency Response Bond\nYes on B - Lifetime Term Limits for Mayor and Members of the Board of Supervisors\nNo on C - Decreases in Business Taxes\nNo on D - Increases to Business Tax Based on Comparison of Top Executive's Pay to Employee’s Pay\n*Endorsements made by the California Democratic Party. Other endorsements made by the San Francisco Democratic Party.\nRegistered voters will receive their ballots by May 4, 2026.\nJune 2, 2026 is the LAST DAY to return mail-in-ballots and vote in-person. To ensure your ballot is counted either:\nUse a Ballot Drop Box: You don’t have to go far from home to vote. Drop your completed ballot at one of 37 Official Ballot Drop Box locations across San Francisco on your way to school, work, or even when walking your dog.\nGo to a Polling Place: If you prefer to vote in person, polling places will be open for in-person voting from 7:00 AM - 8:00 PM on Election Day. Avoid long lines by voting early. You can visit any available location to cast your ballot or to return your completed Vote by Mail ballot. Vote in person at these locations .\nVoters can register and then vote at their county’s elections office, polling place, or vote centers up until 8:00 PM on Election Day. Click here for more information on Same-Day Registration.\nTrack Your Ballot: Sign-up at WheresMyBallot.sos.ca.gov to receive automated notifications about your ballot by email, text (SMS), or voice call.\nBobak Esfandiari\nNext\nNext\nNovember 4, 2025 Special Election Voter Guide",
+  "metadata": {
+    "inputKind": "html",
+    "originalLength": 180815,
+    "normalizedLength": 2810,
+    "removedScriptLikeBlocks": 30,
+    "removedStyleLikeBlocks": 29,
+    "removedBoilerplateBlocks": 2,
+    "headingCount": 9,
+    "lowText": false
+  },
+  "issues": []
+}

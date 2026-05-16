@@ -13,12 +13,13 @@ export type AcquisitionStatus =
 
 export interface AcquisitionCandidate {
   sourceId: string;
-  url: string;
+  url?: string;
   title?: string;
   kind?: string;
   discoveredAt?: string;
   fixtureName?: string;
   notes?: string;
+  skippedReason?: string;
 }
 
 export interface AcquisitionDiagnostic {

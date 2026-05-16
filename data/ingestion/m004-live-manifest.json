@@ -1,5 +1,138 @@
 {
   "version": 1,
   "description": "Generated M004/S01 live acquisition manifest. Targets are captured public artifacts and are safe to ingest without network access.",
-  "targets": []
+  "targets": [
+    {
+      "id": "fixture-california-secretary-of-state-m004-live",
+      "sourceId": "src-ca-secretary-of-state",
+      "artifactId": "art-california-secretary-of-state-m004-live",
+      "title": "California Secretary of State certified candidate list press release for June 2, 2026 primary",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/california-secretary-of-state-m004-live.html",
+      "canonicalUrl": "https://www.sos.ca.gov/administration/news-releases-and-advisories/2026-news-releases-and-advisories/california-secretary-state-shirley-n-weber-phd-certifies-candidate-list-june-2-2026-primary-election",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "DuckDuckGo query: California Secretary of State 2026 primary certified list candidates. HTML acquisition captures the source-owned public page because the linked certified-list PDF is outside the current HTML/text acquisition allowlist."
+    },
+    {
+      "id": "fixture-san-francisco-department-of-elections-m004-live",
+      "sourceId": "src-sf-department-of-elections",
+      "artifactId": "art-san-francisco-department-of-elections-m004-live",
+      "title": "Candidates - June 2, 2026, Consolidated Statewide Direct Primary Election",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/san-francisco-department-of-elections-m004-live.html",
+      "canonicalUrl": "https://www.sf.gov/reports--candidates-june-2-2026-statewide-direct-primary-election",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "DuckDuckGo query: San Francisco Department of Elections June 2 2026 election candidates measures. Source-owned SF.gov candidate report selected over the calendar page."
+    },
+    {
+      "id": "fixture-san-francisco-chronicle-editorial-board-m004-live",
+      "sourceId": "src-sf-chronicle",
+      "artifactId": "art-san-francisco-chronicle-editorial-board-m004-live",
+      "title": "S.F. Chronicle endorsements for the 2026 California Primary Election",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/san-francisco-chronicle-editorial-board-m004-live.html",
+      "canonicalUrl": "https://www.sfchronicle.com/projects/2026/california-primary-sf-election-endorsements/",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "DuckDuckGo query: San Francisco Chronicle 2026 primary endorsements San Francisco. The endorsement page was preferred over the broader voter-guide page to stay under the capture byte limit and match the source's endorsement role."
+    },
+    {
+      "id": "fixture-spur-voter-guide-m004-live",
+      "sourceId": "src-spur",
+      "artifactId": "art-spur-voter-guide-m004-live",
+      "title": "June 2026 Voter Guide | SPUR",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/spur-voter-guide-m004-live.html",
+      "canonicalUrl": "https://www.spur.org/voter-guide/2026-06",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "DuckDuckGo query: SPUR voter guide June 2026 San Francisco. Source-owned June 2026 guide selected over the announcement page."
+    },
+    {
+      "id": "fixture-growsf-voter-guide-m004-live",
+      "sourceId": "src-growsf",
+      "artifactId": "art-growsf-voter-guide-m004-live",
+      "title": "GrowSF Voter Guide",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/growsf-voter-guide-m004-live.html",
+      "canonicalUrl": "https://growsf.org/voter-guide/",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "Candidate found in public search results and probed directly; page advertises the June 2, 2026 Primary Election and GrowSF endorsements."
+    },
+    {
+      "id": "fixture-san-francisco-democratic-party-m004-live",
+      "sourceId": "src-sf-democratic-party",
+      "artifactId": "art-san-francisco-democratic-party-m004-live",
+      "title": "June 2, 2026 Primary Election Voter Guide — San Francisco Democratic Party",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/san-francisco-democratic-party-m004-live.html",
+      "canonicalUrl": "https://www.sfdems.org/endorsements/june-2-2026-primary-election",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "Candidate appeared in San Francisco Department of Elections adjacent search results and probed as a source-owned 2026 voter-guide artifact."
+    },
+    {
+      "id": "fixture-alice-b-toklas-lgbtq-democratic-club-m004-live",
+      "sourceId": "src-alice-b-toklas-lgbtq-democratic-club",
+      "artifactId": "art-alice-b-toklas-lgbtq-democratic-club-m004-live",
+      "title": "2026 Endorsements — Alice B. Toklas LGBTQ Democratic Club",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/alice-b-toklas-lgbtq-democratic-club-m004-live.html",
+      "canonicalUrl": "https://alicebtoklas.org/2026endorsements",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "The public endorsements page linked a source-owned 2026 Endorsements page, which probed successfully and includes June 2, 2026 signals."
+    },
+    {
+      "id": "fixture-united-democratic-club-m004-live",
+      "sourceId": "src-united-democratic-club",
+      "artifactId": "art-united-democratic-club-m004-live",
+      "title": "Endorsements | United Democratic Club",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/united-democratic-club-m004-live.html",
+      "canonicalUrl": "https://www.uniteddems.org/endorsements",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "Direct probe found source-owned endorsements page with June 2026 Primary Election signals."
+    },
+    {
+      "id": "fixture-seiu-local-1021-m004-live",
+      "sourceId": "src-seiu-local-1021",
+      "artifactId": "art-seiu-local-1021-m004-live",
+      "title": "Endorsements - SEIU 1021",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/seiu-local-1021-m004-live.html",
+      "canonicalUrl": "https://www.seiu1021.org/endorsements",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "Direct probe found source-owned endorsements page with an Election Endorsements: June 2, 2026 section."
+    },
+    {
+      "id": "fixture-sf-tenants-union-m004-live",
+      "sourceId": "src-sf-tenants-union",
+      "artifactId": "art-sf-tenants-union-m004-live",
+      "title": "2026 Endorsements — San Francisco Tenants Union",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/sf-tenants-union-m004-live.html",
+      "canonicalUrl": "https://sftu.org/endorsements/",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "Direct probe found source-owned 2026 Endorsements page."
+    },
+    {
+      "id": "fixture-sierra-club-bay-chapter-m004-live",
+      "sourceId": "src-sierra-club-bay-chapter",
+      "artifactId": "art-sierra-club-bay-chapter-m004-live",
+      "title": "2026 Endorsements | Sierra Club San Francisco Bay Chapter",
+      "inputKind": "html",
+      "fixturePath": "data/acquisition/fixtures/sierra-club-bay-chapter-m004-live.html",
+      "canonicalUrl": "https://www.sierraclub.org/sfbay/2026-endorsements",
+      "sampleFixture": false,
+      "mode": "fixture",
+      "notes": "The Bay Chapter endorsements page linked a source-owned 2026 endorsements page, which probed successfully."
+    }
+  ]
 }

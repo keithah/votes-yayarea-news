@@ -9,7 +9,7 @@ MANIFEST="data/ingestion/m004-live-manifest.json"
 INGESTED_DIR="data/ingested"
 
 echo "[m004:s01] acquire source diagnostics"
-pnpm acquire:sources -- --sources data/public/sources.json --candidates data/acquisition/source-candidates.json --out "$ACQUISITION_DIR" --manifest "$MANIFEST" --fetch-timeout-ms 10000 --max-candidate-bytes 1000000
+pnpm acquire:sources -- --allow-network --sources data/public/sources.json --candidates data/acquisition/source-candidates.json --out "$ACQUISITION_DIR" --manifest "$MANIFEST" --fetch-timeout-ms 10000 --max-candidate-bytes 1000000
 
 echo "[m004:s01] validate acquisition report"
 node --input-type=module <<'NODE'
@@ -22,7 +22,16 @@ for (const diagnostic of report.diagnostics) {
     if (!diagnostic[field]) throw new Error(`Diagnostic missing ${field}: ${JSON.stringify(diagnostic)}`);
   }
   if (diagnostic.status === 'captured') {
-    if (!diagnostic.capturedArtifactPath || diagnostic.manifestIncluded !== true) throw new Error(`Captured diagnostic lacks artifact/manifest signal: ${JSON.stringify(diagnostic)}`);
+    if (!diagnostic.attemptedUrl || !diagnostic.capturedArtifactPath || diagnostic.manifestIncluded !== true) throw new Error(`Captured diagnostic lacks URL/artifact/manifest signal: ${JSON.stringify(diagnostic)}`);
+  } else if (!diagnostic.skippedReason && !diagnostic.error) {
+    throw new Error(`Non-captured diagnostic lacks concrete skip/error detail: ${JSON.stringify(diagnostic)}`);
+  }
+}
+const manifest = JSON.parse(await readFile('data/ingestion/m004-live-manifest.json', 'utf8'));
+if (!Array.isArray(manifest.targets)) throw new Error('Generated manifest targets must be an array.');
+for (const target of manifest.targets) {
+  if (!target.canonicalUrl || !target.fixturePath || target.sampleFixture !== false || target.mode !== 'fixture') {
+    throw new Error(`Manifest target lacks canonical durable fixture signals: ${JSON.stringify(target)}`);
   }
 }
 NODE

@@ -64,7 +64,14 @@ export function normalizeFixturePath(fixturePath: string, baseDirectory = "data/
   }
 
   const joined = path.posix.normalize(path.posix.join(baseDirectory, normalized));
-  const safeBase = baseDirectory.replace(/\\/g, "/").replace(/\/$/, "");
+  const safeBase = baseDirectory.replace(/\\/g, "/").replace(/\/$/, "") || ".";
+
+  if (safeBase === ".") {
+    if (joined === ".." || joined.startsWith("../")) {
+      throw new Error(`Fixture path escapes ${safeBase}: ${fixturePath}`);
+    }
+    return joined;
+  }
 
   if (joined !== safeBase && !joined.startsWith(`${safeBase}/`)) {
     throw new Error(`Fixture path escapes ${safeBase}: ${fixturePath}`);

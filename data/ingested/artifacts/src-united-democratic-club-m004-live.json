@@ -1,0 +1,25 @@
+{
+  "id": "art-united-democratic-club-m004-live",
+  "sourceId": "src-united-democratic-club",
+  "targetId": "fixture-united-democratic-club-m004-live",
+  "title": "Endorsements | United Democratic Club",
+  "url": "https://www.uniteddems.org/endorsements",
+  "status": "chunked",
+  "inputKind": "html",
+  "capturedAt": "2026-05-16T15:10:53.319Z",
+  "rawPath": "data/ingested/raw/src-united-democratic-club-m004-live.html",
+  "cleanPath": "data/ingested/artifacts/src-united-democratic-club-m004-live.json",
+  "chunkPath": "data/ingested/chunks/src-united-democratic-club-m004-live.json",
+  "text": "Endorsements | United Democratic Club\ntop of page\nEndorsements\nJune 2026 Primary Election\nFederal & State Candidates\nGovernor : Matt Mahan\nLt. Governor : Fiona Ma\nSecretary of State : Shirley Weber\nController : Malia Cohen\nTreasurer : Eleni Kounalakis\nAttorney General : Rob Bonta\nInsurance Commissioner : Patrick Wolff\nBoard of Equalization, Seat 2 : Sally Lieber\nU.S. Congress District 11 : Scott Wiener\nU.S. Congress District 15 : Kevin Mullin\nAssembly District 17 : Matt Haney\nAssembly District 19 : Catherine Stefani\nLocal Ballot Measures\nYes on A - Earthquake Safety and Emergency Response Bond\nYes on B - Lifetime Term Limits for Mayor and Members of the Board of Supervisors\nNo on C - Decreases in Business Taxes\nNo on D - Increases to Business Tax Based on Comparison of Top Executive's Pay to Employee’s Pay\nNonpartisan Offices\nJUDICIAL\nSuperior Court Judge, Seat 16 : Phoebe Maffei\n​\nSCHOOL\n(State) Superintendent of Public Instruction : No Endorsement\n(Local) Board of Education : Phil Kim\nCity and County\nBOARD OF SUPERVISORS\nDistrict 2 : Stephen Sherrill\nDistrict 4 : Alan Wong\nbottom of page",
+  "metadata": {
+    "inputKind": "html",
+    "originalLength": 843010,
+    "normalizedLength": 1106,
+    "removedScriptLikeBlocks": 59,
+    "removedStyleLikeBlocks": 23,
+    "removedBoilerplateBlocks": 3,
+    "headingCount": 2,
+    "lowText": false
+  },
+  "issues": []
+}
