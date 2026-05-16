@@ -3,6 +3,7 @@ import path from "node:path";
 import { mergeRace } from "../data/loaders";
 import { loadPublicData } from "../data/validate";
 import type { Entity, Evidence, Position, PositionKind, PublicationStatus, Race, ReviewStatus, Source } from "../data/types";
+import type { BulkReviewDiagnostics, BulkReviewIssuePhase, BulkReviewIssueStatus } from "./bulk";
 import type { SourceCoverageStatus } from "../ingestion/sourceCoverage";
 
 export type ReviewedPositionCoverageSeverity = "error" | "warning";
@@ -27,7 +28,34 @@ export interface ReviewedPositionCoverageReport {
   counts: ReviewedPositionCoverageCounts;
   byRace: ReviewedPositionRaceCoverage[];
   bySource: ReviewedPositionSourceCoverage[];
+  unpublished: ReviewedPositionUnpublishedSummary[];
+  unpublishedCounts: ReviewedPositionUnpublishedCounts;
   issues: ReviewedPositionCoverageIssue[];
+}
+
+export interface ReviewedPositionUnpublishedSummary {
+  status: BulkReviewIssueStatus;
+  phase: BulkReviewIssuePhase;
+  reasonCode: string;
+  diagnosticPath: string;
+  message: string;
+  raceId?: string;
+  raceSlug?: string;
+  sourceId?: string;
+  sourceName?: string;
+  entityId?: string;
+  entityName?: string;
+  positionId?: string;
+  evidenceId?: string;
+  artifactId?: string;
+  chunkId?: string;
+}
+
+export interface ReviewedPositionUnpublishedCounts {
+  total: number;
+  byStatus: Record<BulkReviewIssueStatus, number>;
+  byPhase: Record<BulkReviewIssuePhase, number>;
+  byReasonCode: Record<string, number>;
 }
 
 export interface ReviewedPositionCoverageCounts {
@@ -83,6 +111,7 @@ export interface BuildReviewedPositionCoverageOptions {
   sourceCoveragePath?: string;
   ingestedCoveragePath?: string;
   ingestedValidationPath?: string;
+  bulkDiagnosticsPath?: string;
   outPath?: string;
   now?: () => Date;
 }
@@ -124,6 +153,7 @@ export async function buildReviewedPositionCoverageReport(options: BuildReviewed
   const sourceCoveragePath = options.sourceCoveragePath ?? DEFAULT_SOURCE_COVERAGE;
   const ingestedCoveragePath = options.ingestedCoveragePath ?? DEFAULT_INGESTED_COVERAGE;
   const ingestedValidationPath = options.ingestedValidationPath ?? DEFAULT_INGESTED_VALIDATION;
+  const bulkDiagnosticsPath = options.bulkDiagnosticsPath;
   const checkedFiles = new Set<string>();
   const issues: ReviewedPositionCoverageIssue[] = [];
 
@@ -136,10 +166,12 @@ export async function buildReviewedPositionCoverageReport(options: BuildReviewed
   const sourceCoverage = await readOptionalJson<SourceCoverageJson>(sourceCoveragePath, checkedFiles, issues, "source_coverage_json_malformed");
   const ingestedCoverage = await readOptionalJson<IngestedCoverageJson>(ingestedCoveragePath, checkedFiles, issues, "ingested_coverage_json_malformed");
   const ingestedValidation = await readOptionalJson<IngestedValidationJson>(ingestedValidationPath, checkedFiles, issues, "ingested_validation_json_malformed");
+  const bulkDiagnostics = bulkDiagnosticsPath ? await readRequiredJson<BulkReviewDiagnostics>(bulkDiagnosticsPath, checkedFiles, issues, "bulk_diagnostics_json_malformed") : null;
   collectCheckedFiles(ingestedCoverage?.checkedFiles, checkedFiles);
   collectCheckedFiles(ingestedValidation?.checkedFiles, checkedFiles);
   collectExternalIssues(ingestedCoverage?.issues, ingestedCoveragePath, "ingested_coverage_issue", issues);
   collectExternalIssues(ingestedValidation?.issues, ingestedValidationPath, "ingested_validation_issue", issues);
+  collectCheckedFiles(bulkDiagnostics?.checkedFiles, checkedFiles);
 
   const sourceCoverageById = collectSourceCoverage(sourceCoverage, ingestedCoverage);
   const sourcesById = new Map(loadedPublic.repository.sources.map((source) => [source.id, source]));
@@ -153,6 +185,10 @@ export async function buildReviewedPositionCoverageReport(options: BuildReviewed
     const override = await readOptionalRaceOverride(overridePath, checkedFiles, issues);
     races.push(override ? mergeRace(canonicalRace, override, canonicalRace.slug, relative(overridePath)) : structuredClone(canonicalRace));
   }
+
+  const racesById = new Map(races.map((race) => [race.id, race]));
+  const racesBySlug = new Map(races.map((race) => [race.slug, race]));
+  const unpublished = summarizeBulkDiagnostics(bulkDiagnostics, { racesById, racesBySlug, sourcesById, entitiesById, issues, inputPath: bulkDiagnosticsPath });
 
   const byRace: ReviewedPositionRaceCoverage[] = [];
   const sourceAccumulators = new Map<string, ReviewedPositionSourceCoverage>();
@@ -245,6 +281,8 @@ export async function buildReviewedPositionCoverageReport(options: BuildReviewed
     counts: totals,
     byRace,
     bySource: Array.from(sourceAccumulators.values()).sort((left, right) => left.sourceId.localeCompare(right.sourceId)),
+    unpublished: unpublished.items,
+    unpublishedCounts: unpublished.counts,
     issues: sortedIssues,
   };
 }
@@ -337,6 +375,113 @@ async function readOptionalJson<T>(filePath: string, checkedFiles: Set<string>, 
     issues.push(issue(malformedCode, "error", relative(filePath), `Unable to read coverage input: ${formatError(error)}`));
     return null;
   }
+}
+
+async function readRequiredJson<T>(filePath: string, checkedFiles: Set<string>, issues: ReviewedPositionCoverageIssue[], malformedCode: string): Promise<T | null> {
+  checkedFiles.add(relative(filePath));
+  try {
+    return JSON.parse(await fs.readFile(filePath, "utf8")) as T;
+  } catch (error) {
+    const code = isNodeError(error) && error.code === "ENOENT" ? "coverage_input_missing" : malformedCode;
+    issues.push(issue(code, "error", relative(filePath), `Required coverage input could not be read: ${formatError(error)}`));
+    return null;
+  }
+}
+
+function summarizeBulkDiagnostics(
+  diagnostics: BulkReviewDiagnostics | null,
+  context: {
+    racesById: Map<string, Race>;
+    racesBySlug: Map<string, Race>;
+    sourcesById: Map<string, Source>;
+    entitiesById: Map<string, Entity>;
+    issues: ReviewedPositionCoverageIssue[];
+    inputPath?: string;
+  },
+): { items: ReviewedPositionUnpublishedSummary[]; counts: ReviewedPositionUnpublishedCounts } {
+  const items: ReviewedPositionUnpublishedSummary[] = [];
+  const counts = emptyUnpublishedCounts();
+  if (!diagnostics) return { items, counts };
+  if (!isRecord(diagnostics) || !Array.isArray(diagnostics.issues)) {
+    context.issues.push(issue("bulk_diagnostics_invalid_shape", "error", context.inputPath ?? "bulk-diagnostics", "Bulk diagnostics must contain an issues array."));
+    return { items, counts };
+  }
+
+  diagnostics.issues.forEach((item, index) => {
+    const issuePath = `${relative(context.inputPath ?? "bulk-diagnostics")}.issues[${index}]`;
+    if (!isRecord(item)) {
+      context.issues.push(issue("bulk_diagnostic_invalid_shape", "error", issuePath, "Bulk diagnostic issue must be an object."));
+      return;
+    }
+    const status = asBulkStatus(item.status);
+    const phase = asBulkPhase(item.phase);
+    const reasonCode = typeof item.reasonCode === "string" && item.reasonCode.trim() ? item.reasonCode.trim() : "missing_reason_code";
+    if (!status) context.issues.push(issue("bulk_diagnostic_unknown_status", "error", `${issuePath}.status`, "Bulk diagnostic issue status must be hidden, rejected, or error."));
+    if (!phase) context.issues.push(issue("bulk_diagnostic_unknown_phase", "error", `${issuePath}.phase`, "Bulk diagnostic issue phase is not recognized."));
+    if (reasonCode === "missing_reason_code") context.issues.push(issue("bulk_diagnostic_missing_reason_code", "error", `${issuePath}.reasonCode`, "Bulk diagnostic issue must include a non-empty reasonCode."));
+    if (!status || !phase) return;
+
+    const raceId = stringValue(item.raceId);
+    const raceSlug = stringValue(item.raceSlug);
+    const sourceId = stringValue(item.sourceId);
+    const entityId = stringValue(item.entityId);
+    const race = (raceId ? context.racesById.get(raceId) : undefined) ?? (raceSlug ? context.racesBySlug.get(raceSlug) : undefined);
+    const source = sourceId ? context.sourcesById.get(sourceId) : undefined;
+    const entity = entityId ? context.entitiesById.get(entityId) : undefined;
+
+    if (raceId && !race) context.issues.push(issue("unknown_bulk_diagnostic_race", "warning", `${issuePath}.raceId`, "Bulk diagnostic references an unknown raceId."));
+    if (sourceId && !source) context.issues.push(issue("unknown_bulk_diagnostic_source", "warning", `${issuePath}.sourceId`, "Bulk diagnostic references an unknown sourceId."));
+    if (entityId && !entity) context.issues.push(issue("unknown_bulk_diagnostic_entity", "warning", `${issuePath}.entityId`, "Bulk diagnostic references an unknown entityId."));
+
+    items.push({
+      status,
+      phase,
+      reasonCode,
+      diagnosticPath: typeof item.path === "string" ? relative(item.path) : issuePath,
+      message: sanitize(typeof item.message === "string" ? item.message : "Bulk diagnostic did not include a message."),
+      raceId,
+      raceSlug: race?.slug ?? raceSlug,
+      sourceId,
+      sourceName: source?.name,
+      entityId,
+      entityName: entity?.name,
+      positionId: stringValue(item.positionId),
+      evidenceId: stringValue(item.evidenceId),
+      artifactId: stringValue(item.artifactId),
+      chunkId: stringValue(item.chunkId),
+    });
+  });
+
+  items.sort((left, right) => `${left.reasonCode}:${left.status}:${left.phase}:${left.diagnosticPath}`.localeCompare(`${right.reasonCode}:${right.status}:${right.phase}:${right.diagnosticPath}`));
+  for (const item of items) {
+    counts.total += 1;
+    counts.byStatus[item.status] += 1;
+    counts.byPhase[item.phase] += 1;
+    counts.byReasonCode[item.reasonCode] = (counts.byReasonCode[item.reasonCode] ?? 0) + 1;
+  }
+  counts.byReasonCode = Object.fromEntries(Object.entries(counts.byReasonCode).sort(([left], [right]) => left.localeCompare(right)));
+  return { items, counts };
+}
+
+function emptyUnpublishedCounts(): ReviewedPositionUnpublishedCounts {
+  return {
+    total: 0,
+    byStatus: { hidden: 0, rejected: 0, error: 0 },
+    byPhase: { read: 0, validate: 0, prepare: 0, review: 0, publish: 0, load: 0, write: 0 },
+    byReasonCode: {},
+  };
+}
+
+function asBulkStatus(value: unknown): BulkReviewIssueStatus | null {
+  return value === "hidden" || value === "rejected" || value === "error" ? value : null;
+}
+
+function asBulkPhase(value: unknown): BulkReviewIssuePhase | null {
+  return value === "read" || value === "validate" || value === "prepare" || value === "review" || value === "publish" || value === "load" || value === "write" ? value : null;
+}
+
+function stringValue(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim() ? value : undefined;
 }
 
 async function readOptionalRaceOverride(filePath: string, checkedFiles: Set<string>, issues: ReviewedPositionCoverageIssue[]): Promise<Partial<Race> | null> {

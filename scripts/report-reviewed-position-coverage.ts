@@ -8,6 +8,7 @@ interface CliOptions {
   sourceCoverage: string;
   ingestedCoverage: string;
   ingestedValidation: string;
+  bulkDiagnostics?: string;
   report: string;
   help: boolean;
 }
@@ -32,6 +33,7 @@ async function main(): Promise<void> {
     sourceCoveragePath: options.sourceCoverage,
     ingestedCoveragePath: options.ingestedCoverage,
     ingestedValidationPath: options.ingestedValidation,
+    bulkDiagnosticsPath: options.bulkDiagnostics,
     outPath: options.report,
   });
   await writeReviewedPositionCoverageReport(options.report, report);
@@ -47,6 +49,8 @@ async function main(): Promise<void> {
         publicEvidence: report.counts.publicEvidence,
         reviewedPublicPositions: report.counts.reviewedPublicPositions,
         evidenceBackedPublicPositions: report.counts.evidenceBackedPublicPositions,
+        unpublished: report.unpublishedCounts.total,
+        unpublishedByReasonCode: report.unpublishedCounts.byReasonCode,
         provenanceCompleteEvidence: report.counts.provenanceCompleteEvidence,
         provenancePartialEvidence: report.counts.provenancePartialEvidence,
         provenanceAbsentEvidence: report.counts.provenanceAbsentEvidence,
@@ -77,6 +81,7 @@ function parseArgs(args: string[]): CliOptions {
     sourceCoverage: DEFAULT_SOURCE_COVERAGE,
     ingestedCoverage: DEFAULT_INGESTED_COVERAGE,
     ingestedValidation: DEFAULT_INGESTED_VALIDATION,
+    bulkDiagnostics: undefined,
     report: DEFAULT_REPORT,
     help: false,
   };
@@ -89,6 +94,7 @@ function parseArgs(args: string[]): CliOptions {
     else if (arg === "--source-coverage") options.sourceCoverage = readValue(args, ++index, arg);
     else if (arg === "--ingested-coverage") options.ingestedCoverage = readValue(args, ++index, arg);
     else if (arg === "--ingested-validation") options.ingestedValidation = readValue(args, ++index, arg);
+    else if (arg === "--bulk-diagnostics") options.bulkDiagnostics = readValue(args, ++index, arg);
     else if (arg === "--report") options.report = readValue(args, ++index, arg);
     else if (arg === "--help" || arg === "-h") options.help = true;
     else throw new Error(`Unknown argument: ${arg}`);
@@ -104,7 +110,7 @@ function readValue(args: string[], index: number, flag: string): string {
 }
 
 function printHelp(): void {
-  console.log(`Usage: pnpm review:coverage [-- --public-dir <path> --overrides-dir <path> --source-coverage <path> --ingested-coverage <path> --ingested-validation <path> --report <path>]\n\nBuild deterministic reviewed public-position coverage diagnostics.\n\nDefaults:\n  --public-dir           ${DEFAULT_PUBLIC_DIR}\n  --overrides-dir        ${DEFAULT_OVERRIDES_DIR}\n  --source-coverage      ${DEFAULT_SOURCE_COVERAGE}\n  --ingested-coverage    ${DEFAULT_INGESTED_COVERAGE}\n  --ingested-validation  ${DEFAULT_INGESTED_VALIDATION}\n  --report               ${DEFAULT_REPORT}\n\nExample:\n  pnpm review:coverage`);
+  console.log(`Usage: pnpm review:coverage [-- --public-dir <path> --overrides-dir <path> --source-coverage <path> --ingested-coverage <path> --ingested-validation <path> --bulk-diagnostics <path> --report <path>]\n\nBuild deterministic reviewed public-position coverage diagnostics.\n\nDefaults:\n  --public-dir           ${DEFAULT_PUBLIC_DIR}\n  --overrides-dir        ${DEFAULT_OVERRIDES_DIR}\n  --source-coverage      ${DEFAULT_SOURCE_COVERAGE}\n  --ingested-coverage    ${DEFAULT_INGESTED_COVERAGE}\n  --ingested-validation  ${DEFAULT_INGESTED_VALIDATION}\n  --report               ${DEFAULT_REPORT}\n\nExample:\n  pnpm review:coverage`);
 }
 
 main().catch((error: unknown) => {
