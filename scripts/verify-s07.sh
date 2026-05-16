@@ -17,5 +17,6 @@ run_phase "receipt, summary, matrix, and route tests" pnpm test:data
 run_phase "typecheck" pnpm typecheck
 run_phase "static export build" pnpm build
 run_phase "receipt, reviewed-summary, and disclosure export assertions" node scripts/assert-s07-export.mjs
+run_phase "local Pages static HTTP smoke" node scripts/smoke-s07-static-export.mjs --json-out data/launch/s07-static-smoke.json
 
-echo "S07 verification passed: public data validation, data/model/route tests, typecheck, static export build, and receipt/reviewed-summary/disclosure HTML assertions."
+echo "S07 verification passed: public data validation, data/model/route tests, typecheck, static export build, export assertions, and local Pages static HTTP smoke."

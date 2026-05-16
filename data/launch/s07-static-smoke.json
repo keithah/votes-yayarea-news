@@ -1,0 +1,2234 @@
+{
+  "schemaVersion": 1,
+  "slice": "S07",
+  "generatedBy": "scripts/smoke-s07-static-export.mjs",
+  "status": "pass",
+  "startedAt": "2026-05-16T06:47:33.945Z",
+  "origin": "http://127.0.0.1:44673",
+  "checkedRoutes": [
+    {
+      "route": "/",
+      "className": "homepage",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 55450,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/how-we-use-ai/",
+      "className": "disclosure",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24273,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-governor/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 492080,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-lieutenant-governor/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 120886,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-secretary-of-state/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 50455,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-controller/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 43286,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-treasurer/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 60238,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-attorney-general/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 43913,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-insurance-commissioner/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 93003,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/california-superintendent-public-instruction/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 90339,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/board-of-equalization-district-2/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 62746,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/us-house-district-11/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 88788,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/us-house-district-15/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 54659,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/state-assembly-district-17/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32145,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/races/state-assembly-district-19/",
+      "className": "race",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 38289,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0f2m_dr1f0j0b.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/sources/california-secretary-of-state/",
+      "className": "source",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 338089,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-akinyemi-agbede/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24041,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-alicia-olivia-lapp/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24175,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-amanda-martin/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24065,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-anne-komarovsk/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24087,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-antonio-villaraigosa/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24266,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-barack-d-obama-shaw/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24199,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-betty-t-yee/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23942,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-brent-maupin/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23966,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-carolina-buhler/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24073,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-chad-bianco/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23936,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-christine-r-sarmiento/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24310,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-daniel-mercuri/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24091,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-david-zickefoose/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24103,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-dawit-kellel/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23934,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-derek-grasty/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23974,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-don-j-grundmann/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24131,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-duane-terrence-loynes-jr/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24420,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-elaine-culotti/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24107,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-eric-swalwell/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23984,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-erin-zez-zezulak/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24143,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-frederic-c-schultz/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24229,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-gary-howard-kidgell/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24201,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-gretha-solorzano/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24119,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-james-athans-jr/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24075,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-joel-e-jacob/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24013,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-jon-henderson/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24013,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-joseph-cabrera/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24079,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-katie-porter/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23999,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-larry-azevedo/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23952,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-leo-naranjo-iv/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24055,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-leo-samuel-zacky/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24143,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-lewis-herms/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23960,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-livingforgod-andcountry-demott/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24663,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-louis-a-de-barraicua/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24265,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-lukasz-adam-filinski/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24219,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-margaret-trowe/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24039,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-matt-mahan/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23866,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-matthew-chase-levy/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24179,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-mauro-alberto-orozco/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24262,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-max-fomin/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23892,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-mohammad-arif/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23988,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-nancy-d-young/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24071,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-naomi-bar-lev/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24061,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-patricia-de-luca-basualdo/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24388,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-rafael-m-hernandez/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24225,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-raji-rab/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23854,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-ramsey-robinson/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24097,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-randeep-s-dhillon/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24187,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-reza-safarnejad/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24105,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-sam-sandak/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23878,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-satish-rao/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23842,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-scott-p-shields/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24081,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-serge-fiankan/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24029,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-sophia-edum-a-sam/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24117,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-steve-hilton/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23954,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-thunder-parley/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23998,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tim-nelson/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23902,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tom-steyer/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23870,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tom-woodard/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23888,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-tony-k-thurmond/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24206,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    },
+    {
+      "route": "/entities/california-governor-xavier-becerra/",
+      "className": "entity",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24043,
+      "assets": [
+        "/_next/static/chunks/03~yq9q893hmn.js",
+        "/_next/static/chunks/06cclqnbyt80n.js",
+        "/_next/static/chunks/096~ipag8.2gs.js",
+        "/_next/static/chunks/09mzkwykgmgkt.js",
+        "/_next/static/chunks/0h8_~k2~fd93g.js",
+        "/_next/static/chunks/0p3d3~h.k5qx3.css",
+        "/_next/static/chunks/0uy-uh-gb1zuw.js",
+        "/_next/static/chunks/17jc69b_0ns7-.js",
+        "/_next/static/chunks/turbopack-0xw8n9_8.usci.js"
+      ],
+      "missingText": [],
+      "missingPatterns": []
+    }
+  ],
+  "redirectChecks": [
+    {
+      "route": "/how-we-use-ai",
+      "className": "disclosure",
+      "status": 308,
+      "location": "/how-we-use-ai/",
+      "expectedLocation": "/how-we-use-ai/"
+    },
+    {
+      "route": "/races/california-governor",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-governor/",
+      "expectedLocation": "/races/california-governor/"
+    },
+    {
+      "route": "/races/california-lieutenant-governor",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-lieutenant-governor/",
+      "expectedLocation": "/races/california-lieutenant-governor/"
+    },
+    {
+      "route": "/races/california-secretary-of-state",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-secretary-of-state/",
+      "expectedLocation": "/races/california-secretary-of-state/"
+    },
+    {
+      "route": "/races/california-controller",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-controller/",
+      "expectedLocation": "/races/california-controller/"
+    },
+    {
+      "route": "/races/california-treasurer",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-treasurer/",
+      "expectedLocation": "/races/california-treasurer/"
+    },
+    {
+      "route": "/races/california-attorney-general",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-attorney-general/",
+      "expectedLocation": "/races/california-attorney-general/"
+    },
+    {
+      "route": "/races/california-insurance-commissioner",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-insurance-commissioner/",
+      "expectedLocation": "/races/california-insurance-commissioner/"
+    },
+    {
+      "route": "/races/california-superintendent-public-instruction",
+      "className": "race",
+      "status": 308,
+      "location": "/races/california-superintendent-public-instruction/",
+      "expectedLocation": "/races/california-superintendent-public-instruction/"
+    },
+    {
+      "route": "/races/board-of-equalization-district-2",
+      "className": "race",
+      "status": 308,
+      "location": "/races/board-of-equalization-district-2/",
+      "expectedLocation": "/races/board-of-equalization-district-2/"
+    },
+    {
+      "route": "/races/us-house-district-11",
+      "className": "race",
+      "status": 308,
+      "location": "/races/us-house-district-11/",
+      "expectedLocation": "/races/us-house-district-11/"
+    },
+    {
+      "route": "/races/us-house-district-15",
+      "className": "race",
+      "status": 308,
+      "location": "/races/us-house-district-15/",
+      "expectedLocation": "/races/us-house-district-15/"
+    },
+    {
+      "route": "/races/state-assembly-district-17",
+      "className": "race",
+      "status": 308,
+      "location": "/races/state-assembly-district-17/",
+      "expectedLocation": "/races/state-assembly-district-17/"
+    },
+    {
+      "route": "/races/state-assembly-district-19",
+      "className": "race",
+      "status": 308,
+      "location": "/races/state-assembly-district-19/",
+      "expectedLocation": "/races/state-assembly-district-19/"
+    },
+    {
+      "route": "/sources/california-secretary-of-state",
+      "className": "source",
+      "status": 308,
+      "location": "/sources/california-secretary-of-state/",
+      "expectedLocation": "/sources/california-secretary-of-state/"
+    },
+    {
+      "route": "/entities/california-governor-akinyemi-agbede",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-akinyemi-agbede/",
+      "expectedLocation": "/entities/california-governor-akinyemi-agbede/"
+    },
+    {
+      "route": "/entities/california-governor-alicia-olivia-lapp",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-alicia-olivia-lapp/",
+      "expectedLocation": "/entities/california-governor-alicia-olivia-lapp/"
+    },
+    {
+      "route": "/entities/california-governor-amanda-martin",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-amanda-martin/",
+      "expectedLocation": "/entities/california-governor-amanda-martin/"
+    },
+    {
+      "route": "/entities/california-governor-anne-komarovsk",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-anne-komarovsk/",
+      "expectedLocation": "/entities/california-governor-anne-komarovsk/"
+    },
+    {
+      "route": "/entities/california-governor-antonio-villaraigosa",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-antonio-villaraigosa/",
+      "expectedLocation": "/entities/california-governor-antonio-villaraigosa/"
+    },
+    {
+      "route": "/entities/california-governor-barack-d-obama-shaw",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-barack-d-obama-shaw/",
+      "expectedLocation": "/entities/california-governor-barack-d-obama-shaw/"
+    },
+    {
+      "route": "/entities/california-governor-betty-t-yee",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-betty-t-yee/",
+      "expectedLocation": "/entities/california-governor-betty-t-yee/"
+    },
+    {
+      "route": "/entities/california-governor-brent-maupin",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-brent-maupin/",
+      "expectedLocation": "/entities/california-governor-brent-maupin/"
+    },
+    {
+      "route": "/entities/california-governor-carolina-buhler",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-carolina-buhler/",
+      "expectedLocation": "/entities/california-governor-carolina-buhler/"
+    },
+    {
+      "route": "/entities/california-governor-chad-bianco",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-chad-bianco/",
+      "expectedLocation": "/entities/california-governor-chad-bianco/"
+    },
+    {
+      "route": "/entities/california-governor-christine-r-sarmiento",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-christine-r-sarmiento/",
+      "expectedLocation": "/entities/california-governor-christine-r-sarmiento/"
+    },
+    {
+      "route": "/entities/california-governor-daniel-mercuri",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-daniel-mercuri/",
+      "expectedLocation": "/entities/california-governor-daniel-mercuri/"
+    },
+    {
+      "route": "/entities/california-governor-david-zickefoose",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-david-zickefoose/",
+      "expectedLocation": "/entities/california-governor-david-zickefoose/"
+    },
+    {
+      "route": "/entities/california-governor-dawit-kellel",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-dawit-kellel/",
+      "expectedLocation": "/entities/california-governor-dawit-kellel/"
+    },
+    {
+      "route": "/entities/california-governor-derek-grasty",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-derek-grasty/",
+      "expectedLocation": "/entities/california-governor-derek-grasty/"
+    },
+    {
+      "route": "/entities/california-governor-don-j-grundmann",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-don-j-grundmann/",
+      "expectedLocation": "/entities/california-governor-don-j-grundmann/"
+    },
+    {
+      "route": "/entities/california-governor-duane-terrence-loynes-jr",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-duane-terrence-loynes-jr/",
+      "expectedLocation": "/entities/california-governor-duane-terrence-loynes-jr/"
+    },
+    {
+      "route": "/entities/california-governor-elaine-culotti",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-elaine-culotti/",
+      "expectedLocation": "/entities/california-governor-elaine-culotti/"
+    },
+    {
+      "route": "/entities/california-governor-eric-swalwell",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-eric-swalwell/",
+      "expectedLocation": "/entities/california-governor-eric-swalwell/"
+    },
+    {
+      "route": "/entities/california-governor-erin-zez-zezulak",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-erin-zez-zezulak/",
+      "expectedLocation": "/entities/california-governor-erin-zez-zezulak/"
+    },
+    {
+      "route": "/entities/california-governor-frederic-c-schultz",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-frederic-c-schultz/",
+      "expectedLocation": "/entities/california-governor-frederic-c-schultz/"
+    },
+    {
+      "route": "/entities/california-governor-gary-howard-kidgell",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-gary-howard-kidgell/",
+      "expectedLocation": "/entities/california-governor-gary-howard-kidgell/"
+    },
+    {
+      "route": "/entities/california-governor-gretha-solorzano",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-gretha-solorzano/",
+      "expectedLocation": "/entities/california-governor-gretha-solorzano/"
+    },
+    {
+      "route": "/entities/california-governor-james-athans-jr",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-james-athans-jr/",
+      "expectedLocation": "/entities/california-governor-james-athans-jr/"
+    },
+    {
+      "route": "/entities/california-governor-joel-e-jacob",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-joel-e-jacob/",
+      "expectedLocation": "/entities/california-governor-joel-e-jacob/"
+    },
+    {
+      "route": "/entities/california-governor-jon-henderson",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-jon-henderson/",
+      "expectedLocation": "/entities/california-governor-jon-henderson/"
+    },
+    {
+      "route": "/entities/california-governor-joseph-cabrera",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-joseph-cabrera/",
+      "expectedLocation": "/entities/california-governor-joseph-cabrera/"
+    },
+    {
+      "route": "/entities/california-governor-katie-porter",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-katie-porter/",
+      "expectedLocation": "/entities/california-governor-katie-porter/"
+    },
+    {
+      "route": "/entities/california-governor-larry-azevedo",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-larry-azevedo/",
+      "expectedLocation": "/entities/california-governor-larry-azevedo/"
+    },
+    {
+      "route": "/entities/california-governor-leo-naranjo-iv",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-leo-naranjo-iv/",
+      "expectedLocation": "/entities/california-governor-leo-naranjo-iv/"
+    },
+    {
+      "route": "/entities/california-governor-leo-samuel-zacky",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-leo-samuel-zacky/",
+      "expectedLocation": "/entities/california-governor-leo-samuel-zacky/"
+    },
+    {
+      "route": "/entities/california-governor-lewis-herms",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-lewis-herms/",
+      "expectedLocation": "/entities/california-governor-lewis-herms/"
+    },
+    {
+      "route": "/entities/california-governor-livingforgod-andcountry-demott",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-livingforgod-andcountry-demott/",
+      "expectedLocation": "/entities/california-governor-livingforgod-andcountry-demott/"
+    },
+    {
+      "route": "/entities/california-governor-louis-a-de-barraicua",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-louis-a-de-barraicua/",
+      "expectedLocation": "/entities/california-governor-louis-a-de-barraicua/"
+    },
+    {
+      "route": "/entities/california-governor-lukasz-adam-filinski",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-lukasz-adam-filinski/",
+      "expectedLocation": "/entities/california-governor-lukasz-adam-filinski/"
+    },
+    {
+      "route": "/entities/california-governor-margaret-trowe",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-margaret-trowe/",
+      "expectedLocation": "/entities/california-governor-margaret-trowe/"
+    },
+    {
+      "route": "/entities/california-governor-matt-mahan",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-matt-mahan/",
+      "expectedLocation": "/entities/california-governor-matt-mahan/"
+    },
+    {
+      "route": "/entities/california-governor-matthew-chase-levy",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-matthew-chase-levy/",
+      "expectedLocation": "/entities/california-governor-matthew-chase-levy/"
+    },
+    {
+      "route": "/entities/california-governor-mauro-alberto-orozco",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-mauro-alberto-orozco/",
+      "expectedLocation": "/entities/california-governor-mauro-alberto-orozco/"
+    },
+    {
+      "route": "/entities/california-governor-max-fomin",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-max-fomin/",
+      "expectedLocation": "/entities/california-governor-max-fomin/"
+    },
+    {
+      "route": "/entities/california-governor-mohammad-arif",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-mohammad-arif/",
+      "expectedLocation": "/entities/california-governor-mohammad-arif/"
+    },
+    {
+      "route": "/entities/california-governor-nancy-d-young",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-nancy-d-young/",
+      "expectedLocation": "/entities/california-governor-nancy-d-young/"
+    },
+    {
+      "route": "/entities/california-governor-naomi-bar-lev",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-naomi-bar-lev/",
+      "expectedLocation": "/entities/california-governor-naomi-bar-lev/"
+    },
+    {
+      "route": "/entities/california-governor-patricia-de-luca-basualdo",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-patricia-de-luca-basualdo/",
+      "expectedLocation": "/entities/california-governor-patricia-de-luca-basualdo/"
+    },
+    {
+      "route": "/entities/california-governor-rafael-m-hernandez",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-rafael-m-hernandez/",
+      "expectedLocation": "/entities/california-governor-rafael-m-hernandez/"
+    },
+    {
+      "route": "/entities/california-governor-raji-rab",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-raji-rab/",
+      "expectedLocation": "/entities/california-governor-raji-rab/"
+    },
+    {
+      "route": "/entities/california-governor-ramsey-robinson",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-ramsey-robinson/",
+      "expectedLocation": "/entities/california-governor-ramsey-robinson/"
+    },
+    {
+      "route": "/entities/california-governor-randeep-s-dhillon",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-randeep-s-dhillon/",
+      "expectedLocation": "/entities/california-governor-randeep-s-dhillon/"
+    },
+    {
+      "route": "/entities/california-governor-reza-safarnejad",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-reza-safarnejad/",
+      "expectedLocation": "/entities/california-governor-reza-safarnejad/"
+    },
+    {
+      "route": "/entities/california-governor-sam-sandak",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-sam-sandak/",
+      "expectedLocation": "/entities/california-governor-sam-sandak/"
+    },
+    {
+      "route": "/entities/california-governor-satish-rao",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-satish-rao/",
+      "expectedLocation": "/entities/california-governor-satish-rao/"
+    },
+    {
+      "route": "/entities/california-governor-scott-p-shields",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-scott-p-shields/",
+      "expectedLocation": "/entities/california-governor-scott-p-shields/"
+    },
+    {
+      "route": "/entities/california-governor-serge-fiankan",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-serge-fiankan/",
+      "expectedLocation": "/entities/california-governor-serge-fiankan/"
+    },
+    {
+      "route": "/entities/california-governor-sophia-edum-a-sam",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-sophia-edum-a-sam/",
+      "expectedLocation": "/entities/california-governor-sophia-edum-a-sam/"
+    },
+    {
+      "route": "/entities/california-governor-steve-hilton",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-steve-hilton/",
+      "expectedLocation": "/entities/california-governor-steve-hilton/"
+    },
+    {
+      "route": "/entities/california-governor-thunder-parley",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-thunder-parley/",
+      "expectedLocation": "/entities/california-governor-thunder-parley/"
+    },
+    {
+      "route": "/entities/california-governor-tim-nelson",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-tim-nelson/",
+      "expectedLocation": "/entities/california-governor-tim-nelson/"
+    },
+    {
+      "route": "/entities/california-governor-tom-steyer",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-tom-steyer/",
+      "expectedLocation": "/entities/california-governor-tom-steyer/"
+    },
+    {
+      "route": "/entities/california-governor-tom-woodard",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-tom-woodard/",
+      "expectedLocation": "/entities/california-governor-tom-woodard/"
+    },
+    {
+      "route": "/entities/california-governor-tony-k-thurmond",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-tony-k-thurmond/",
+      "expectedLocation": "/entities/california-governor-tony-k-thurmond/"
+    },
+    {
+      "route": "/entities/california-governor-xavier-becerra",
+      "className": "entity",
+      "status": 308,
+      "location": "/entities/california-governor-xavier-becerra/",
+      "expectedLocation": "/entities/california-governor-xavier-becerra/"
+    }
+  ],
+  "assetChecks": [
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/03~yq9q893hmn.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 112594
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/06cclqnbyt80n.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 227538
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/096~ipag8.2gs.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 11882
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/09mzkwykgmgkt.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 54645
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/0h8_~k2~fd93g.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 149873
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/0p3d3~h.k5qx3.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "expectedType": "text/css",
+      "bytes": 22290
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/0uy-uh-gb1zuw.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 44411
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/17jc69b_0ns7-.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 23832
+    },
+    {
+      "sourceRoute": "/",
+      "asset": "/_next/static/chunks/turbopack-0xw8n9_8.usci.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 10580
+    },
+    {
+      "sourceRoute": "/races/california-governor/",
+      "asset": "/_next/static/chunks/0f2m_dr1f0j0b.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "expectedType": "text/javascript",
+      "bytes": 16567
+    }
+  ],
+  "counts": {
+    "checkedRoutes": 77,
+    "redirectChecks": 76,
+    "assetChecks": 10,
+    "routeClasses": {
+      "homepage": 1,
+      "disclosure": 1,
+      "race": 13,
+      "source": 1,
+      "entity": 61
+    }
+  },
+  "phases": {
+    "preflight": {
+      "status": "pass"
+    },
+    "routeDiscovery": {
+      "status": "pass",
+      "classCounts": {
+        "homepage": 1,
+        "disclosure": 1,
+        "race": 13,
+        "source": 1,
+        "entity": 61
+      },
+      "coverageRaceContracts": 13,
+      "discoveredRoutes": 77,
+      "selectedRoutes": 77,
+      "mode": "exhaustive"
+    },
+    "serverStart": {
+      "status": "pass"
+    },
+    "routeFetch": {
+      "status": "pass",
+      "checked": 77
+    },
+    "redirectChecks": {
+      "status": "pass",
+      "checked": 76
+    },
+    "assetChecks": {
+      "status": "pass",
+      "checked": 10,
+      "sampleLimit": 40
+    },
+    "smokeReport": {
+      "status": "pass"
+    },
+    "jsonOut": {
+      "status": "pass",
+      "path": "data/launch/s07-static-smoke.json"
+    }
+  },
+  "completedAt": "2026-05-16T06:47:34.302Z"
+}
