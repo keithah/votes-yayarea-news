@@ -21,6 +21,7 @@
     "review:coverage": "tsx scripts/report-reviewed-position-coverage.ts",
     "verify:s01": "bash scripts/verify-s01.sh",
     "verify:m004:s01": "bash scripts/verify-m004-s01.sh",
+    "verify:m004:s02": "bash scripts/verify-m004-s02.sh",
     "test:data": "node --import tsx --test tests/data/*.test.ts",
     "test:ingestion": "node --import tsx --test tests/ingestion/*.test.ts",
     "test:extraction": "node --import tsx --test tests/extraction/*.test.ts",
