@@ -8,8 +8,8 @@
     "provider": "agent",
     "model": "pi-auto"
   },
-  "status": "partially-ready",
-  "updatedAt": "2026-05-16T15:34:08.750Z",
+  "status": "published",
+  "updatedAt": "2026-05-16T18:06:23.222Z",
   "positions": [
     {
       "id": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
@@ -27,11 +27,11 @@
       "sourceId": "src-growsf",
       "entityId": "ent-us-house-district-11-scott-wiener",
       "kind": "endorse",
-      "status": "rejected",
-      "publicationStatus": "hidden",
+      "status": "verified",
+      "publicationStatus": "public",
       "label": "GrowSF recommends Scott Wiener for U.S. House District 11",
       "rationale": "Exact quote is present in the M004 GrowSF captured artifact, but this source is not mapped to the public race yet, so publication must be rejected.",
-      "reviewerNotes": "bulk:rejected:source_not_in_race",
+      "reviewerNotes": "bulk:rejected:source_not_in_race\nbulk:verified:public",
       "evidenceIds": [
         "ev-m004-s02-growsf-us-house-district-11-scott-wiener"
       ],

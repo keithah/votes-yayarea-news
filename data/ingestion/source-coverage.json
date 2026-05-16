@@ -5,8 +5,8 @@
     {
       "sourceId": "src-ca-secretary-of-state",
       "status": "captured",
-      "targetId": "fixture-ca-secretary-of-state-2026-primary-certified-candidates",
-      "guideUrl": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list-candidates.pdf",
+      "targetId": "fixture-california-secretary-of-state-m004-live",
+      "guideUrl": "https://www.sos.ca.gov/administration/news-releases-and-advisories/2026-news-releases-and-advisories/california-secretary-state-shirley-n-weber-phd-certifies-candidate-list-june-2-2026-primary-election",
       "relevantRaceSlugs": [
         "california-governor",
         "california-lieutenant-governor",
@@ -22,7 +22,7 @@
         "state-assembly-district-17",
         "state-assembly-district-19"
       ],
-      "reason": "Official public certified candidate list is captured as a deterministic non-sample text fixture for offline ingestion.",
+      "reason": "Official public certified candidate source is captured as a deterministic non-sample M004 live fixture for offline ingestion.",
       "notes": "Official Certified List of Candidates for the June 2, 2026 Statewide Direct Primary Election, dated 2026-03-26. Used for statewide, federal, BOE, and Assembly candidate entities only; not a recommendation source."
     },
     {
@@ -43,9 +43,14 @@
     },
     {
       "sourceId": "src-sf-chronicle",
-      "status": "unavailable",
-      "reason": "No public June 2026 endorsement guide URL is available in repo evidence; legacy Mayor sample fixture targets are excluded from launch coverage.",
-      "notes": "pending 2026 voter-guide or endorsement URL; include if public June 2026 endorsement pages are available."
+      "status": "captured",
+      "reason": "M004/S02 verified a public June 2026 Chronicle endorsement artifact and exact quoted Governor recommendation.",
+      "notes": "Captured from the non-sample M004 live fixture; current public recommendation coverage is limited to verified rows published through the bulk review gate.",
+      "targetId": "fixture-san-francisco-chronicle-editorial-board-m004-live",
+      "guideUrl": "https://www.sfchronicle.com/projects/2026/california-primary-sf-election-endorsements/",
+      "relevantRaceSlugs": [
+        "california-governor"
+      ]
     },
     {
       "sourceId": "src-mission-local",
@@ -73,9 +78,15 @@
     },
     {
       "sourceId": "src-growsf",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 voter-guide URL; recognizable local guide with broad race/measure coverage."
+      "status": "captured",
+      "reason": "M004/S02 verified public June 2026 GrowSF voter-guide artifacts and exact quoted recommendations for mapped races.",
+      "notes": "Captured from the non-sample M004 live fixture; the hidden Governor/Matt Mahan draft row remains unpublished because it was not requested for public coverage.",
+      "targetId": "fixture-growsf-voter-guide-m004-live",
+      "guideUrl": "https://growsf.org/voter-guide/",
+      "relevantRaceSlugs": [
+        "state-assembly-district-17",
+        "us-house-district-11"
+      ]
     },
     {
       "sourceId": "src-sf-democratic-party",

@@ -1,5 +1,5 @@
 {
-  "ok": false,
+  "ok": true,
   "checkedFiles": [
     "data/extracted/drafts/m004-s02-agent-bulk.json",
     "data/ingestion/manifest.json",
@@ -38,90 +38,9 @@
     "inputs": 0,
     "positions": 6,
     "evidence": 6,
-    "issues": 8,
-    "errors": 8,
+    "issues": 0,
+    "errors": 0,
     "warnings": 0
   },
-  "issues": [
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "evidence[2].sourceId",
-      "message": "Source 'src-growsf' is not allowed for race 'race-state-assembly-district-17'.",
-      "sourceId": "src-growsf",
-      "artifactId": "art-growsf-voter-guide-m004-live",
-      "chunkId": "art-growsf-voter-guide-m004-live-chunk-070",
-      "raceId": "race-state-assembly-district-17",
-      "entityId": "ent-state-assembly-district-17-matt-haney"
-    },
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "evidence[3].sourceId",
-      "message": "Source 'src-growsf' is not allowed for race 'race-us-house-district-11'.",
-      "sourceId": "src-growsf",
-      "artifactId": "art-growsf-voter-guide-m004-live",
-      "chunkId": "art-growsf-voter-guide-m004-live-chunk-072",
-      "raceId": "race-us-house-district-11",
-      "entityId": "ent-us-house-district-11-scott-wiener"
-    },
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "evidence[4].sourceId",
-      "message": "Source 'src-sf-chronicle' is not allowed for race 'race-california-governor'.",
-      "sourceId": "src-sf-chronicle",
-      "artifactId": "art-san-francisco-chronicle-editorial-board-m004-live",
-      "chunkId": "art-san-francisco-chronicle-editorial-board-m004-live-chunk-002",
-      "raceId": "race-california-governor",
-      "entityId": "ent-california-governor-katie-porter"
-    },
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "evidence[5].sourceId",
-      "message": "Source 'src-growsf' is not allowed for race 'race-california-governor'.",
-      "sourceId": "src-growsf",
-      "artifactId": "art-growsf-voter-guide-m004-live",
-      "chunkId": "art-growsf-voter-guide-m004-live-chunk-037",
-      "raceId": "race-california-governor",
-      "entityId": "ent-california-governor-matt-mahan"
-    },
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "positions[2].sourceId",
-      "message": "Source 'src-growsf' is not allowed for race 'race-state-assembly-district-17'.",
-      "sourceId": "src-growsf",
-      "raceId": "race-state-assembly-district-17",
-      "entityId": "ent-state-assembly-district-17-matt-haney"
-    },
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "positions[3].sourceId",
-      "message": "Source 'src-growsf' is not allowed for race 'race-us-house-district-11'.",
-      "sourceId": "src-growsf",
-      "raceId": "race-us-house-district-11",
-      "entityId": "ent-us-house-district-11-scott-wiener"
-    },
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "positions[4].sourceId",
-      "message": "Source 'src-sf-chronicle' is not allowed for race 'race-california-governor'.",
-      "sourceId": "src-sf-chronicle",
-      "raceId": "race-california-governor",
-      "entityId": "ent-california-governor-katie-porter"
-    },
-    {
-      "code": "source_not_in_race",
-      "severity": "error",
-      "path": "positions[5].sourceId",
-      "message": "Source 'src-growsf' is not allowed for race 'race-california-governor'.",
-      "sourceId": "src-growsf",
-      "raceId": "race-california-governor",
-      "entityId": "ent-california-governor-matt-mahan"
-    }
-  ]
+  "issues": []
 }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-05-16T15:10:48.874Z",
+  "generatedAt": "2026-05-16T15:14:14.164Z",
   "sourcesPath": "data/public/sources.json",
   "candidatesPath": "data/acquisition/source-candidates.json",
   "manifestPath": "data/ingestion/m004-live-manifest.json",
@@ -17,7 +17,7 @@
       "sourceId": "src-ca-secretary-of-state",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.sos.ca.gov/administration/news-releases-and-advisories/2026-news-releases-and-advisories/california-secretary-state-shirley-n-weber-phd-certifies-candidate-list-june-2-2026-primary-election",
       "capturedArtifactPath": "data/acquisition/fixtures/california-secretary-of-state-m004-live.html"
@@ -26,7 +26,7 @@
       "sourceId": "src-sf-department-of-elections",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.sf.gov/reports--candidates-june-2-2026-statewide-direct-primary-election",
       "capturedArtifactPath": "data/acquisition/fixtures/san-francisco-department-of-elections-m004-live.html"
@@ -35,7 +35,7 @@
       "sourceId": "src-sf-chronicle",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.sfchronicle.com/projects/2026/california-primary-sf-election-endorsements/",
       "capturedArtifactPath": "data/acquisition/fixtures/san-francisco-chronicle-editorial-board-m004-live.html"
@@ -44,7 +44,7 @@
       "sourceId": "src-mission-local",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'Mission Local June 2026 election voter guide endorsements San Francisco'; no Mission Local-owned 2026 guide or endorsement URL was located in top public results."
     },
@@ -52,7 +52,7 @@
       "sourceId": "src-sf-standard",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'San Francisco Standard 2026 election voter guide endorsements San Francisco'; no SF Standard-owned 2026 guide or endorsement URL was located in top public results."
     },
@@ -60,7 +60,7 @@
       "sourceId": "src-lwv-sf-voters-edge",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'Voter's Edge California June 2 2026 San Francisco voter guide'; no Voter's Edge-owned June 2026 San Francisco guide URL was located in top public results."
     },
@@ -68,7 +68,7 @@
       "sourceId": "src-spur",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.spur.org/voter-guide/2026-06",
       "capturedArtifactPath": "data/acquisition/fixtures/spur-voter-guide-m004-live.html"
@@ -77,7 +77,7 @@
       "sourceId": "src-growsf",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://growsf.org/voter-guide/",
       "capturedArtifactPath": "data/acquisition/fixtures/growsf-voter-guide-m004-live.html"
@@ -86,7 +86,7 @@
       "sourceId": "src-sf-democratic-party",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.sfdems.org/endorsements/june-2-2026-primary-election",
       "capturedArtifactPath": "data/acquisition/fixtures/san-francisco-democratic-party-m004-live.html"
@@ -95,7 +95,7 @@
       "sourceId": "src-sf-republican-party",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'San Francisco Republican Party endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was found, and /endorsements returned 404."
     },
@@ -103,7 +103,7 @@
       "sourceId": "src-harvey-milk-lgbtq-democratic-club",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "fetch-failed: searched 'Harvey Milk LGBTQ Democratic Club endorsements June 2026' and probed https://www.harveymilkclub.org/endorsements; public fetch failed, so no safe durable artifact was registered."
     },
@@ -111,7 +111,7 @@
       "sourceId": "src-alice-b-toklas-lgbtq-democratic-club",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://alicebtoklas.org/2026endorsements",
       "capturedArtifactPath": "data/acquisition/fixtures/alice-b-toklas-lgbtq-democratic-club-m004-live.html"
@@ -120,7 +120,7 @@
       "sourceId": "src-sf-berniecrats",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'San Francisco Berniecrats endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was located, and the probed page returned a website-not-found response."
     },
@@ -128,7 +128,7 @@
       "sourceId": "src-united-democratic-club",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.uniteddems.org/endorsements",
       "capturedArtifactPath": "data/acquisition/fixtures/united-democratic-club-m004-live.html"
@@ -137,7 +137,7 @@
       "sourceId": "src-sf-labor-council",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'San Francisco Labor Council endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was found, and /endorsements returned 404."
     },
@@ -145,7 +145,7 @@
       "sourceId": "src-seiu-local-1021",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.seiu1021.org/endorsements",
       "capturedArtifactPath": "data/acquisition/fixtures/seiu-local-1021-m004-live.html"
@@ -154,7 +154,7 @@
       "sourceId": "src-united-educators-of-san-francisco",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'United Educators San Francisco endorsements June 2026' and probed /endorsements; no source-owned current 2026 endorsement URL was found, and the probed page returned 404."
     },
@@ -162,7 +162,7 @@
       "sourceId": "src-yimby-action-sf-yimby",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "ambiguous-source: searched and probed YIMBY Action endorsements; the source-owned page is fetchable but visible public links pointed to current/general endorsement browsing and older 2025/2024 entries, with no unambiguous SF June 2026 guide captured."
     },
@@ -170,7 +170,7 @@
       "sourceId": "src-sf-tenants-union",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://sftu.org/endorsements/",
       "capturedArtifactPath": "data/acquisition/fixtures/sf-tenants-union-m004-live.html"
@@ -179,7 +179,7 @@
       "sourceId": "src-housing-action-coalition",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'Housing Action Coalition endorsements June 2026' and probed /endorsements; no source-owned current candidate/measure recommendation URL was found, and /endorsements returned 404."
     },
@@ -187,7 +187,7 @@
       "sourceId": "src-sierra-club-bay-chapter",
       "phase": "capture",
       "status": "captured",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": true,
       "attemptedUrl": "https://www.sierraclub.org/sfbay/2026-endorsements",
       "capturedArtifactPath": "data/acquisition/fixtures/sierra-club-bay-chapter-m004-live.html"
@@ -196,7 +196,7 @@
       "sourceId": "src-sf-bicycle-coalition",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "fetch-failed: searched 'San Francisco Bicycle Coalition voter guide June 2026' and probed a likely /news/2026-voter-guide/ URL; no source-owned current guide URL was found, and the probed URL returned 403."
     },
@@ -204,7 +204,7 @@
       "sourceId": "src-togethersf-action",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'TogetherSF Action voter guide June 2026' and probed the redirected Blueprint voter-guide URL; no source-owned current guide URL was found, and the probed guide returned 404."
     },
@@ -212,7 +212,7 @@
       "sourceId": "src-aclu-norcal",
       "phase": "candidate",
       "status": "skipped",
-      "timestamp": "2026-05-16T15:10:48.874Z",
+      "timestamp": "2026-05-16T15:14:14.164Z",
       "manifestIncluded": false,
       "skippedReason": "no-public-2026-guide: searched 'ACLU Northern California voter guide June 2026' and probed the current voter-guide path; no source-owned June 2026 guide URL was found, and the probed URL returned 404."
     }

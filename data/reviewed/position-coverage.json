@@ -1,9 +1,13 @@
 {
   "ok": true,
-  "generatedAt": "2026-05-16T15:57:58.081Z",
+  "generatedAt": "2026-05-16T18:06:24.311Z",
   "checkedFiles": [
-    "../../../../../tmp/votes-bulk-review-preflight-KUjrat/overrides/races/state-assembly-district-17.json",
-    "../../../../../tmp/votes-bulk-review-preflight-KUjrat/reviews/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-HKtf5a/overrides/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-HKtf5a/reviews/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-NoC9Ih/overrides/races/us-house-district-11.json",
+    "../../../../../tmp/votes-bulk-review-preflight-NoC9Ih/reviews/races/us-house-district-11.json",
+    "../../../../../tmp/votes-bulk-review-preflight-P6ZxUA/overrides/races/california-governor.json",
+    "../../../../../tmp/votes-bulk-review-preflight-P6ZxUA/reviews/races/california-governor.json",
     "data/extracted/drafts/m004-s02-agent-bulk.json",
     "data/extracted/validation/m004-s02-agent-bulk.json",
     "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
@@ -16,6 +20,7 @@
     "data/ingested/raw/src-ca-secretary-of-state-2026-primary-certified-candidates.txt",
     "data/ingested/runs/latest.json",
     "data/ingested/validation/latest.json",
+    "data/ingestion/m004-live-manifest.json",
     "data/ingestion/manifest.json",
     "data/ingestion/source-coverage.json",
     "data/public/collections.json",
@@ -71,15 +76,15 @@
   "counts": {
     "races": 21,
     "publicRaces": 13,
-    "positions": 62,
-    "publicPositions": 62,
-    "publicEvidence": 62,
-    "reviewedPublicPositions": 62,
-    "evidenceBackedPublicPositions": 62,
-    "provenanceCompleteEvidence": 1,
+    "positions": 65,
+    "publicPositions": 65,
+    "publicEvidence": 65,
+    "reviewedPublicPositions": 65,
+    "evidenceBackedPublicPositions": 65,
+    "provenanceCompleteEvidence": 4,
     "provenancePartialEvidence": 0,
     "provenanceAbsentEvidence": 61,
-    "endorse": 0,
+    "endorse": 3,
     "oppose": 0,
     "rank": 0,
     "noPosition": 0,
@@ -196,11 +201,11 @@
       "title": "California Governor",
       "publicationStatus": "public",
       "status": "verified",
-      "positions": 122,
-      "publicPositions": 61,
-      "publicEvidence": 61,
+      "positions": 124,
+      "publicPositions": 62,
+      "publicEvidence": 62,
       "byKind": {
-        "endorse": 0,
+        "endorse": 1,
         "oppose": 0,
         "rank": 0,
         "no-position": 0,
@@ -209,17 +214,17 @@
       "byReviewStatus": {
         "draft": 0,
         "reviewed": 0,
-        "verified": 61,
+        "verified": 62,
         "published": 0,
         "rejected": 0
       },
       "byPublicationStatus": {
         "hidden": 0,
-        "public": 61,
+        "public": 62,
         "archived": 0
       },
       "provenance": {
-        "complete": 0,
+        "complete": 1,
         "partial": 0,
         "absent": 61
       }
@@ -570,11 +575,11 @@
       "title": "State Assembly District 17",
       "publicationStatus": "public",
       "status": "verified",
-      "positions": 2,
-      "publicPositions": 1,
-      "publicEvidence": 1,
+      "positions": 4,
+      "publicPositions": 2,
+      "publicEvidence": 2,
       "byKind": {
-        "endorse": 0,
+        "endorse": 1,
         "oppose": 0,
         "rank": 0,
         "no-position": 0,
@@ -583,17 +588,17 @@
       "byReviewStatus": {
         "draft": 0,
         "reviewed": 0,
-        "verified": 1,
+        "verified": 2,
         "published": 0,
         "rejected": 0
       },
       "byPublicationStatus": {
         "hidden": 0,
-        "public": 1,
+        "public": 2,
         "archived": 0
       },
       "provenance": {
-        "complete": 1,
+        "complete": 2,
         "partial": 0,
         "absent": 0
       }
@@ -740,11 +745,11 @@
       "title": "U.S. House District 11",
       "publicationStatus": "public",
       "status": "verified",
-      "positions": 0,
-      "publicPositions": 0,
-      "publicEvidence": 0,
+      "positions": 2,
+      "publicPositions": 1,
+      "publicEvidence": 1,
       "byKind": {
-        "endorse": 0,
+        "endorse": 1,
         "oppose": 0,
         "rank": 0,
         "no-position": 0,
@@ -753,17 +758,17 @@
       "byReviewStatus": {
         "draft": 0,
         "reviewed": 0,
-        "verified": 0,
+        "verified": 1,
         "published": 0,
         "rejected": 0
       },
       "byPublicationStatus": {
         "hidden": 0,
-        "public": 0,
+        "public": 1,
         "archived": 0
       },
       "provenance": {
-        "complete": 0,
+        "complete": 1,
         "partial": 0,
         "absent": 0
       }
@@ -818,6 +823,36 @@
         "partial": 0,
         "absent": 61
       }
+    },
+    {
+      "sourceId": "src-growsf",
+      "name": "GrowSF Voter Guide",
+      "coverageStatus": "captured",
+      "runtimeStatus": "captured",
+      "positions": 2,
+      "publicPositions": 2,
+      "publicEvidence": 2,
+      "publicRecommendationPositions": 2,
+      "provenance": {
+        "complete": 2,
+        "partial": 0,
+        "absent": 0
+      }
+    },
+    {
+      "sourceId": "src-sf-chronicle",
+      "name": "San Francisco Chronicle Editorial Board",
+      "coverageStatus": "captured",
+      "runtimeStatus": "captured",
+      "positions": 1,
+      "publicPositions": 1,
+      "publicEvidence": 1,
+      "publicRecommendationPositions": 1,
+      "provenance": {
+        "complete": 1,
+        "partial": 0,
+        "absent": 0
+      }
     }
   ],
   "unpublished": [
@@ -848,70 +883,27 @@
       "entityId": "ent-california-governor-matt-mahan",
       "entityName": "Matt Mahan",
       "positionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden"
-    },
-    {
-      "status": "rejected",
-      "phase": "review",
-      "reasonCode": "source_not_in_race",
-      "diagnosticPath": "pos-m004-s02-chronicle-governor-katie-porter",
-      "message": "Draft sourceId is not mapped to this race.",
-      "raceId": "race-california-governor",
-      "raceSlug": "california-governor",
-      "sourceId": "src-sf-chronicle",
-      "sourceName": "San Francisco Chronicle Editorial Board",
-      "entityId": "ent-california-governor-katie-porter",
-      "entityName": "Katie Porter",
-      "positionId": "pos-m004-s02-chronicle-governor-katie-porter"
-    },
-    {
-      "status": "rejected",
-      "phase": "review",
-      "reasonCode": "source_not_in_race",
-      "diagnosticPath": "pos-m004-s02-growsf-state-assembly-district-17-matt-haney",
-      "message": "Draft sourceId is not mapped to this race.",
-      "raceId": "race-state-assembly-district-17",
-      "raceSlug": "state-assembly-district-17",
-      "sourceId": "src-growsf",
-      "sourceName": "GrowSF Voter Guide",
-      "entityId": "ent-state-assembly-district-17-matt-haney",
-      "entityName": "Matt Haney",
-      "positionId": "pos-m004-s02-growsf-state-assembly-district-17-matt-haney"
-    },
-    {
-      "status": "rejected",
-      "phase": "review",
-      "reasonCode": "source_not_in_race",
-      "diagnosticPath": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
-      "message": "Draft sourceId is not mapped to this race.",
-      "raceId": "race-us-house-district-11",
-      "raceSlug": "us-house-district-11",
-      "sourceId": "src-growsf",
-      "sourceName": "GrowSF Voter Guide",
-      "entityId": "ent-us-house-district-11-scott-wiener",
-      "entityName": "Scott Wiener",
-      "positionId": "pos-m004-s02-growsf-us-house-district-11-scott-wiener"
     }
   ],
   "unpublishedCounts": {
-    "total": 5,
+    "total": 2,
     "byStatus": {
       "hidden": 2,
-      "rejected": 3,
+      "rejected": 0,
       "error": 0
     },
     "byPhase": {
       "read": 0,
       "validate": 0,
       "prepare": 0,
-      "review": 5,
+      "review": 2,
       "publish": 0,
       "load": 0,
       "write": 0
     },
     "byReasonCode": {
       "duplicate_public_claim": 1,
-      "not_requested_public": 1,
-      "source_not_in_race": 3
+      "not_requested_public": 1
     }
   },
   "issues": []

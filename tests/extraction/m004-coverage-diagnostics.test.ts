@@ -103,38 +103,44 @@ test("source/race matrix preserves the current 24 by 21 M004 truth matrix", asyn
   assert.ok(sourceRace.byRace.every((race) => race.sources.length === sourceRace.counts.registeredSourceCount), "each race must include every registered source");
 });
 
-test("State Assembly District 17 has the reviewed public Secretary of State informational position in both reports", async () => {
+test("State Assembly District 17 has reviewed public Secretary of State and GrowSF positions in both reports", async () => {
   const { sourceRace, reviewed } = await loadArtifacts();
   const sosSad17Row = sourceRaceRow(sourceRace, SAD17_RACE_SLUG, SOS_SOURCE_ID);
+  const growSfSad17Row = sourceRaceRow(sourceRace, SAD17_RACE_SLUG, GROWSF_SOURCE_ID);
   const reviewedSad17 = reviewed.byRace.find((race) => race.raceSlug === SAD17_RACE_SLUG);
   const reviewedSos = reviewed.bySource.find((source) => source.sourceId === SOS_SOURCE_ID);
+  const reviewedGrowSf = reviewed.bySource.find((source) => source.sourceId === GROWSF_SOURCE_ID);
 
   assert.equal(sosSad17Row.status, "reviewed-public-position");
   assert.deepEqual(sosSad17Row.publicPositionIds, [SAD17_PUBLIC_POSITION_ID]);
   assert.deepEqual(sosSad17Row.reviewedPublicPositionIds, [SAD17_PUBLIC_POSITION_ID]);
   assert.equal(sosSad17Row.unpublishedReasonCounts.duplicate_public_claim, 1, "duplicate SOS SAD17 diagnostic should remain explained separately from the public row");
+  assert.equal(growSfSad17Row.status, "reviewed-public-position");
+  assert.deepEqual(growSfSad17Row.publicPositionIds, ["pos-m004-s02-growsf-state-assembly-district-17-matt-haney"]);
 
   assert.ok(reviewedSad17, "reviewed-position report must include State Assembly District 17");
-  assert.equal(reviewedSad17.publicPositions, 1);
+  assert.equal(reviewedSad17.publicPositions, 2);
   assert.equal(reviewedSad17.byKind.informational, 1);
+  assert.equal(reviewedSad17.byKind.endorse, 1);
   assert.ok(reviewedSos, "reviewed-position report must include Secretary of State source summary");
   assert.equal(reviewedSos.coverageStatus, "captured");
-  assert.equal(reviewedSos.publicPositions, reviewed.counts.publicPositions);
+  assert.ok(reviewedSos.publicPositions >= 1);
+  assert.ok(reviewedGrowSf, "reviewed-position report must include GrowSF source summary");
+  assert.equal(reviewedGrowSf.coverageStatus, "captured");
   assert.equal(reviewed.counts.publicPositions, reviewed.counts.reviewedPublicPositions);
-  assert.ok(reviewed.counts.informational >= reviewedSad17.publicPositions);
+  assert.ok(reviewed.counts.informational >= reviewedSad17.byKind.informational);
 });
 
-test("known hidden, rejected, and duplicate S02 diagnostics keep their reason-code explanations", async () => {
+test("known hidden and duplicate S02 diagnostics keep their reason-code explanations", async () => {
   const { sourceRace, reviewed } = await loadArtifacts();
 
-  assert.equal(reviewed.unpublishedCounts.total, 5, "M004 S02 unpublished diagnostic count changed unexpectedly");
+  assert.equal(reviewed.unpublishedCounts.total, 2, "M004 S02 unpublished diagnostic count changed unexpectedly");
   assert.deepEqual(reviewed.unpublishedCounts.byReasonCode, {
     duplicate_public_claim: 1,
     not_requested_public: 1,
-    source_not_in_race: 3,
   });
   assert.equal(reviewed.unpublishedCounts.byStatus.hidden, 2);
-  assert.equal(reviewed.unpublishedCounts.byStatus.rejected, 3);
+  assert.equal(reviewed.unpublishedCounts.byStatus.rejected ?? 0, 0);
 
   assertReviewedDiagnostic(reviewed, {
     diagnosticPath: "pos-m004-s02-growsf-governor-matt-mahan-hidden",
@@ -142,20 +148,6 @@ test("known hidden, rejected, and duplicate S02 diagnostics keep their reason-co
     raceSlug: "california-governor",
     status: "hidden",
     reasonCode: "not_requested_public",
-  });
-  assertReviewedDiagnostic(reviewed, {
-    diagnosticPath: "pos-m004-s02-chronicle-governor-katie-porter",
-    sourceId: CHRONICLE_SOURCE_ID,
-    raceSlug: "california-governor",
-    status: "rejected",
-    reasonCode: "source_not_in_race",
-  });
-  assertReviewedDiagnostic(reviewed, {
-    diagnosticPath: "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
-    sourceId: GROWSF_SOURCE_ID,
-    raceSlug: "us-house-district-11",
-    status: "rejected",
-    reasonCode: "source_not_in_race",
   });
   assertReviewedDiagnostic(reviewed, {
     diagnosticPath: SAD17_DUPLICATE_POSITION_ID,
@@ -166,9 +158,9 @@ test("known hidden, rejected, and duplicate S02 diagnostics keep their reason-co
   });
 
   assert.equal(sourceRaceRow(sourceRace, "california-governor", GROWSF_SOURCE_ID).unpublishedReasonCounts.not_requested_public, 1);
-  assert.equal(sourceRaceRow(sourceRace, "california-governor", CHRONICLE_SOURCE_ID).unpublishedReasonCounts.source_not_in_race, 1);
-  assert.equal(sourceRaceRow(sourceRace, "us-house-district-11", GROWSF_SOURCE_ID).unpublishedReasonCounts.source_not_in_race, 1);
   assert.equal(sourceRaceRow(sourceRace, SAD17_RACE_SLUG, SOS_SOURCE_ID).unpublishedReasonCounts.duplicate_public_claim, 1);
+  assert.deepEqual(sourceRaceRow(sourceRace, "california-governor", CHRONICLE_SOURCE_ID).unpublishedReasonCounts, {});
+  assert.deepEqual(sourceRaceRow(sourceRace, "us-house-district-11", GROWSF_SOURCE_ID).unpublishedReasonCounts, {});
 });
 
 test("diagnostics-only source/race rows never mint public position identifiers", async () => {
@@ -182,7 +174,7 @@ test("diagnostics-only source/race rows never mint public position identifiers",
     diagnosticsOnlyRows.every((row) => row.publicPositionIds.length === 0 && row.reviewedPublicPositionIds.length === 0),
     "hidden/rejected diagnostics must not inflate public coverage counts",
   );
-  assert.equal(sourceRace.counts.reviewedPublicRows, 2, "diagnostics-only rows must not increase reviewed public source/race rows");
+  assert.equal(sourceRace.counts.reviewedPublicRows, 5, "diagnostics-only rows must not increase reviewed public source/race rows beyond the five published source/race pairs");
 });
 
 async function loadArtifacts(): Promise<{ sourceRace: SourceRaceCoverageArtifact; reviewed: ReviewedPositionCoverageArtifact }> {

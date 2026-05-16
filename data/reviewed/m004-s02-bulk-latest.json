@@ -1,9 +1,13 @@
 {
   "ok": true,
-  "generatedAt": "2026-05-16T15:34:08.692Z",
+  "generatedAt": "2026-05-16T18:06:23.119Z",
   "checkedFiles": [
-    "../../../../../tmp/votes-bulk-review-preflight-c97dg3/overrides/races/state-assembly-district-17.json",
-    "../../../../../tmp/votes-bulk-review-preflight-c97dg3/reviews/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-HKtf5a/overrides/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-HKtf5a/reviews/races/state-assembly-district-17.json",
+    "../../../../../tmp/votes-bulk-review-preflight-NoC9Ih/overrides/races/us-house-district-11.json",
+    "../../../../../tmp/votes-bulk-review-preflight-NoC9Ih/reviews/races/us-house-district-11.json",
+    "../../../../../tmp/votes-bulk-review-preflight-P6ZxUA/overrides/races/california-governor.json",
+    "../../../../../tmp/votes-bulk-review-preflight-P6ZxUA/reviews/races/california-governor.json",
     "data/extracted/drafts/m004-s02-agent-bulk.json",
     "data/extracted/validation/m004-s02-agent-bulk.json",
     "data/ingested/artifacts/src-ca-secretary-of-state-2026-primary-certified-candidates.json",
@@ -37,7 +41,9 @@
     "data/public/races/us-house-district-11.json",
     "data/public/races/us-house-district-15.json",
     "data/public/sources.json",
+    "manual/overrides/races/california-governor.json",
     "manual/overrides/races/state-assembly-district-17.json",
+    "manual/overrides/races/us-house-district-11.json",
     "manual/reviews/races/california-governor.json",
     "manual/reviews/races/state-assembly-district-17.json",
     "manual/reviews/races/us-house-district-11.json"
@@ -47,12 +53,12 @@
   "counts": {
     "positions": 6,
     "races": 3,
-    "published": 1,
-    "public": 1,
-    "hidden": 3,
-    "rejected": 3,
+    "published": 4,
+    "public": 4,
+    "hidden": 2,
+    "rejected": 0,
     "errors": 0,
-    "issues": 5
+    "issues": 2
   },
   "races": [
     {
@@ -60,19 +66,20 @@
       "raceId": "race-california-governor",
       "reviewPath": "manual/reviews/races/california-governor.json",
       "overridePath": "manual/overrides/races/california-governor.json",
-      "status": "prepared",
+      "status": "published",
       "counts": {
         "positions": 2,
-        "public": 0,
+        "public": 1,
         "hidden": 1,
-        "rejected": 1,
-        "issues": 2,
+        "rejected": 0,
+        "issues": 1,
         "errors": 0
       },
-      "publicPositionIds": [],
+      "publicPositionIds": [
+        "pos-m004-s02-chronicle-governor-katie-porter"
+      ],
       "issueCodes": [
-        "not_requested_public",
-        "source_not_in_race"
+        "not_requested_public"
       ]
     },
     {
@@ -83,18 +90,18 @@
       "status": "published",
       "counts": {
         "positions": 3,
-        "public": 1,
-        "hidden": 2,
-        "rejected": 1,
-        "issues": 2,
+        "public": 2,
+        "hidden": 1,
+        "rejected": 0,
+        "issues": 1,
         "errors": 0
       },
       "publicPositionIds": [
-        "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational"
+        "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
+        "pos-m004-s02-growsf-state-assembly-district-17-matt-haney"
       ],
       "issueCodes": [
-        "duplicate_public_claim",
-        "source_not_in_race"
+        "duplicate_public_claim"
       ]
     },
     {
@@ -102,33 +109,22 @@
       "raceId": "race-us-house-district-11",
       "reviewPath": "manual/reviews/races/us-house-district-11.json",
       "overridePath": "manual/overrides/races/us-house-district-11.json",
-      "status": "prepared",
+      "status": "published",
       "counts": {
         "positions": 1,
-        "public": 0,
+        "public": 1,
         "hidden": 0,
-        "rejected": 1,
-        "issues": 1,
+        "rejected": 0,
+        "issues": 0,
         "errors": 0
       },
-      "publicPositionIds": [],
-      "issueCodes": [
-        "source_not_in_race"
-      ]
+      "publicPositionIds": [
+        "pos-m004-s02-growsf-us-house-district-11-scott-wiener"
+      ],
+      "issueCodes": []
     }
   ],
   "issues": [
-    {
-      "phase": "review",
-      "status": "rejected",
-      "reasonCode": "source_not_in_race",
-      "path": "pos-m004-s02-chronicle-governor-katie-porter",
-      "message": "Draft sourceId is not mapped to this race.",
-      "raceId": "race-california-governor",
-      "sourceId": "src-sf-chronicle",
-      "entityId": "ent-california-governor-katie-porter",
-      "positionId": "pos-m004-s02-chronicle-governor-katie-porter"
-    },
     {
       "phase": "review",
       "status": "hidden",
@@ -139,28 +135,6 @@
       "sourceId": "src-growsf",
       "entityId": "ent-california-governor-matt-mahan",
       "positionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden"
-    },
-    {
-      "phase": "review",
-      "status": "rejected",
-      "reasonCode": "source_not_in_race",
-      "path": "pos-m004-s02-growsf-state-assembly-district-17-matt-haney",
-      "message": "Draft sourceId is not mapped to this race.",
-      "raceId": "race-state-assembly-district-17",
-      "sourceId": "src-growsf",
-      "entityId": "ent-state-assembly-district-17-matt-haney",
-      "positionId": "pos-m004-s02-growsf-state-assembly-district-17-matt-haney"
-    },
-    {
-      "phase": "review",
-      "status": "rejected",
-      "reasonCode": "source_not_in_race",
-      "path": "pos-m004-s02-growsf-us-house-district-11-scott-wiener",
-      "message": "Draft sourceId is not mapped to this race.",
-      "raceId": "race-us-house-district-11",
-      "sourceId": "src-growsf",
-      "entityId": "ent-us-house-district-11-scott-wiener",
-      "positionId": "pos-m004-s02-growsf-us-house-district-11-scott-wiener"
     },
     {
       "phase": "review",

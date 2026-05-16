@@ -9,7 +9,7 @@
     "model": "pi-auto"
   },
   "status": "published",
-  "updatedAt": "2026-05-16T15:34:08.747Z",
+  "updatedAt": "2026-05-16T18:06:23.199Z",
   "positions": [
     {
       "id": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational",
@@ -105,11 +105,11 @@
       "sourceId": "src-growsf",
       "entityId": "ent-state-assembly-district-17-matt-haney",
       "kind": "endorse",
-      "status": "rejected",
-      "publicationStatus": "hidden",
+      "status": "verified",
+      "publicationStatus": "public",
       "label": "GrowSF recommends Matt Haney for State Assembly District 17",
       "rationale": "Exact quote is present in the M004 GrowSF captured artifact, but this source is not mapped to the public race yet, so publication must be rejected.",
-      "reviewerNotes": "bulk:rejected:source_not_in_race",
+      "reviewerNotes": "bulk:rejected:source_not_in_race\nbulk:verified:public",
       "evidenceIds": [
         "ev-m004-s02-growsf-state-assembly-district-17-matt-haney"
       ],

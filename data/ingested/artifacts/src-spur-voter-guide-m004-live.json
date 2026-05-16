@@ -6,7 +6,7 @@
   "url": "https://www.spur.org/voter-guide/2026-06",
   "status": "chunked",
   "inputKind": "html",
-  "capturedAt": "2026-05-16T15:10:53.277Z",
+  "capturedAt": "2026-05-16T15:14:19.094Z",
   "rawPath": "data/ingested/raw/src-spur-voter-guide-m004-live.html",
   "cleanPath": "data/ingested/artifacts/src-spur-voter-guide-m004-live.json",
   "chunkPath": "data/ingested/chunks/src-spur-voter-guide-m004-live.json",

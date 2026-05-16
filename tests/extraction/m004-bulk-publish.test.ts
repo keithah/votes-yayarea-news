@@ -11,7 +11,8 @@ const PUBLIC_DIR = "data/public";
 const OVERRIDES_DIR = "manual/overrides";
 const SECRET_PATTERN = /(?:sk-[A-Za-z0-9_-]+|Bearer\s+\S+|github_pat_[A-Za-z0-9_]+|ghp_[A-Za-z0-9_]+)/i;
 const PUBLIC_STATUSES = new Set(["verified", "published"]);
-const UNSAFE_REASON_CODES = new Set(["duplicate_public_claim", "not_requested_public", "source_not_in_race"]);
+const HIDDEN_UNSAFE_REASON_CODES = new Set(["duplicate_public_claim", "not_requested_public"]);
+const REPAIRABLE_REJECTED_REASON_CODES = new Set(["source_not_in_race"]);
 
 test("M004 S02 generated bulk diagnostics, overrides, and public loader agree", async () => {
   const result = await assertM004PublicationGate({ diagnosticsPath: DIAGNOSTICS_PATH, publicDir: PUBLIC_DIR, overridesDir: OVERRIDES_DIR });
@@ -101,9 +102,16 @@ async function assertM004PublicationGate(options: { diagnosticsPath: string; pub
 
   assert.ok(diagnostics.counts.published >= 1, "Diagnostics should report at least one published public position.");
   assert.ok(diagnostics.counts.hidden >= 1, "Diagnostics should report hidden unsafe records.");
-  assert.ok(diagnostics.counts.rejected >= 1, "Diagnostics should report rejected unsafe records.");
-  assert.ok(diagnostics.issues.some((issue) => issue.status === "hidden" && UNSAFE_REASON_CODES.has(issue.reasonCode)), "Expected hidden unsafe diagnostics with reason codes.");
-  assert.ok(diagnostics.issues.some((issue) => issue.status === "rejected" && UNSAFE_REASON_CODES.has(issue.reasonCode)), "Expected rejected unsafe diagnostics with reason codes.");
+  assert.ok(
+    diagnostics.issues.some((issue) => issue.status === "hidden" && HIDDEN_UNSAFE_REASON_CODES.has(issue.reasonCode)),
+    "Expected hidden duplicate/not-requested diagnostics with reason codes.",
+  );
+  if (diagnostics.counts.rejected > 0) {
+    assert.ok(
+      diagnostics.issues.some((issue) => issue.status === "rejected" && REPAIRABLE_REJECTED_REASON_CODES.has(issue.reasonCode)),
+      "Rejected diagnostics, when present, should name repairable source/race mapping gaps.",
+    );
+  }
 
   const publicData = await loadPublicReferenceData(options.publicDir);
   const overridePublicCells = new Map<string, string>();
@@ -229,8 +237,15 @@ async function createArtifactFixture(): Promise<{ root: string; overridesDir: st
   await fs.mkdir(path.dirname(diagnosticsPath), { recursive: true });
   await fs.mkdir(path.dirname(overridePath), { recursive: true });
   await fs.copyFile(DIAGNOSTICS_PATH, diagnosticsPath);
-  await fs.copyFile("manual/overrides/races/state-assembly-district-17.json", overridePath);
   const diagnostics = await readJson<BulkReviewDiagnostics>(diagnosticsPath);
+  for (const raceResult of diagnostics.races) {
+    const sourceOverridePath = path.join("manual", "overrides", "races", `${raceResult.raceSlug}.json`);
+    if (await pathExists(sourceOverridePath)) {
+      const targetOverridePath = path.join(overridesDir, "races", `${raceResult.raceSlug}.json`);
+      await fs.mkdir(path.dirname(targetOverridePath), { recursive: true });
+      await fs.copyFile(sourceOverridePath, targetOverridePath);
+    }
+  }
   diagnostics.diagnosticsPath = diagnosticsPath;
   diagnostics.checkedFiles = diagnostics.checkedFiles.map((checkedFile) => (checkedFile === DIAGNOSTICS_PATH ? diagnosticsPath : checkedFile));
   await writeJson(diagnosticsPath, diagnostics);
