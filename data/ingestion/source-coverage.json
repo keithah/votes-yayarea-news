@@ -1,12 +1,14 @@
 {
   "version": 1,
-  "description": "M002/S02 source availability ledger. Each public source appears exactly once; captured rows link only to non-sample launch manifest targets.",
+  "description": "M005/S02 public source coverage ledger. Each registered public source appears exactly once; captured rows link only to non-sample canonical manifest targets and non-captured pending rows preserve terminal acquisition shortfall diagnostics.",
   "sources": [
     {
       "sourceId": "src-ca-secretary-of-state",
       "status": "captured",
       "targetId": "fixture-california-secretary-of-state-m004-live",
       "guideUrl": "https://www.sos.ca.gov/administration/news-releases-and-advisories/2026-news-releases-and-advisories/california-secretary-state-shirley-n-weber-phd-certifies-candidate-list-june-2-2026-primary-election",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-california-secretary-of-state-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "DuckDuckGo query: California Secretary of State 2026 primary certified list candidates. HTML acquisition captures the source-owned public page because the linked certified-list PDF is outside the current HTML/text acquisition allowlist.",
       "relevantRaceSlugs": [
         "california-governor",
         "california-lieutenant-governor",
@@ -21,68 +23,73 @@
         "us-house-district-15",
         "state-assembly-district-17",
         "state-assembly-district-19"
-      ],
-      "reason": "Official public certified candidate source is captured as a deterministic non-sample M004 live fixture for offline ingestion.",
-      "notes": "Official Certified List of Candidates for the June 2, 2026 Statewide Direct Primary Election, dated 2026-03-26. Used for statewide, federal, BOE, and Assembly candidate entities only; not a recommendation source."
+      ]
     },
     {
       "sourceId": "src-sf-department-of-elections",
-      "status": "manual-only",
-      "ballotUniverseGaps": [
+      "status": "captured",
+      "targetId": "fixture-san-francisco-department-of-elections-m004-live",
+      "guideUrl": "https://www.sf.gov/reports--candidates-june-2-2026-statewide-direct-primary-election",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-san-francisco-department-of-elections-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "DuckDuckGo query: San Francisco Department of Elections June 2 2026 election candidates measures. Source-owned SF.gov candidate report selected over the calendar page.",
+      "relevantRaceSlugs": [
         "supervisor-district-2",
         "supervisor-district-4",
         "sfusd-board-of-education",
-        "superior-court-judge-seat-16",
-        "san-francisco-prop-a",
-        "san-francisco-prop-b",
-        "san-francisco-prop-c",
-        "san-francisco-prop-d"
-      ],
-      "reason": "Manual capture required until a stable public June 2026 San Francisco local candidate and measure data URL is available.",
-      "notes": "Tracked as the official local authority for San Francisco contests and measures. A confirmed June 2, 2026 local candidate/measure data URL was not located in repo evidence during T01, so affected contests remain hidden/documented until filled."
+        "superior-court-judge-seat-16"
+      ]
     },
     {
       "sourceId": "src-sf-chronicle",
       "status": "captured",
-      "reason": "M004/S02 verified a public June 2026 Chronicle endorsement artifact and exact quoted Governor recommendation.",
-      "notes": "Captured from the non-sample M004 live fixture; current public recommendation coverage is limited to verified rows published through the bulk review gate.",
       "targetId": "fixture-san-francisco-chronicle-editorial-board-m004-live",
       "guideUrl": "https://www.sfchronicle.com/projects/2026/california-primary-sf-election-endorsements/",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-san-francisco-chronicle-editorial-board-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "DuckDuckGo query: San Francisco Chronicle 2026 primary endorsements San Francisco. The endorsement page was preferred over the broader voter-guide page to stay under the capture byte limit and match the source's endorsement role.",
       "relevantRaceSlugs": [
         "california-governor"
       ]
     },
     {
       "sourceId": "src-mission-local",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 voter-guide or election coverage URL; keep source-notes-only until a usable artifact exists."
+      "status": "captured",
+      "targetId": "fixture-mission-local-m004-live",
+      "guideUrl": "https://missionlocal.org/2026/05/sf-june-election-2026-ballot/",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-mission-local-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "DuckDuckGo and Mission Local WordPress search found a source-owned public June 2, 2026 San Francisco ballot explainer. Registered as election coverage only; this task does not infer endorsement or recommendation claims."
     },
     {
       "sourceId": "src-sf-standard",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 voter-guide or election coverage URL; document as pending until public recommendations or a structured guide exists."
+      "status": "captured",
+      "targetId": "fixture-san-francisco-standard-m004-live",
+      "guideUrl": "https://sfstandard.com/2026/05/05/coveted-endorsement-sf-politics-pelosi-hasn-t-given/",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-san-francisco-standard-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Source-owned public May 2026 election coverage was found after direct voter-guide probes returned 404 and site search found no current SF Standard voter guide. Registered as election coverage only; no recommendation claims are added.",
+      "relevantRaceSlugs": [
+        "us-house-district-11"
+      ]
     },
     {
       "sourceId": "src-lwv-sf-voters-edge",
       "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "reason": "no-public-2026-guide: probed Voter's Edge June 2, 2026 San Francisco election paths, which redirected to MapLight guidance to use VOTE411; VOTE411 California/ballot pages were generic and no source-owned June 2026 San Francisco guide URL was found.",
       "notes": "pending 2026 San Francisco election guide URL; nonpartisan/informational records should not be forced into endorsement semantics."
     },
     {
       "sourceId": "src-spur",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 voter-guide URL; include for measure and policy recommendations if published."
+      "status": "captured",
+      "targetId": "fixture-spur-voter-guide-m004-live",
+      "guideUrl": "https://www.spur.org/voter-guide/2026-06",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-spur-voter-guide-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "DuckDuckGo query: SPUR voter guide June 2026 San Francisco. Source-owned June 2026 guide selected over the announcement page."
     },
     {
       "sourceId": "src-growsf",
       "status": "captured",
-      "reason": "M004/S02 verified public June 2026 GrowSF voter-guide artifacts and exact quoted recommendations for mapped races.",
-      "notes": "Captured from the non-sample M004 live fixture; the hidden Governor/Matt Mahan draft row remains unpublished because it was not requested for public coverage.",
       "targetId": "fixture-growsf-voter-guide-m004-live",
       "guideUrl": "https://growsf.org/voter-guide/",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-growsf-voter-guide-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Candidate found in public search results and probed directly; page advertises the June 2, 2026 Primary Election and GrowSF endorsements.",
       "relevantRaceSlugs": [
         "state-assembly-district-17",
         "us-house-district-11"
@@ -90,98 +97,118 @@
     },
     {
       "sourceId": "src-sf-democratic-party",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; include official Democratic Party recommendations where public."
+      "status": "captured",
+      "targetId": "fixture-san-francisco-democratic-party-m004-live",
+      "guideUrl": "https://www.sfdems.org/endorsements/june-2-2026-primary-election",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-san-francisco-democratic-party-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Candidate appeared in San Francisco Department of Elections adjacent search results and probed as a source-owned 2026 voter-guide artifact."
     },
     {
       "sourceId": "src-sf-republican-party",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; useful institutional contrast if public recommendations are available."
+      "status": "captured",
+      "targetId": "fixture-san-francisco-republican-party-m004-live",
+      "guideUrl": "https://www.sfgop.org/2026-primary-endorsements",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-san-francisco-republican-party-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Source-owned search for 2026 endorsements surfaced /2026-primary-endorsements; direct probe returned 200 with June 2, 2026 and 2026 Primary endorsement signals."
     },
     {
       "sourceId": "src-harvey-milk-lgbtq-democratic-club",
       "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "reason": "fetch-failed: probed harveymilkclub.org and www.harveymilkclub.org endorsements, voter-guide, WordPress search, and sitemap paths; public fetch failed for each, so no safe durable 2026 slate URL was registered.",
       "notes": "pending 2026 endorsement URL; include if public slate is available."
     },
     {
       "sourceId": "src-alice-b-toklas-lgbtq-democratic-club",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; include if public slate is available."
+      "status": "captured",
+      "targetId": "fixture-alice-b-toklas-lgbtq-democratic-club-m004-live",
+      "guideUrl": "https://alicebtoklas.org/2026endorsements",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-alice-b-toklas-lgbtq-democratic-club-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "The public endorsements page linked a source-owned 2026 Endorsements page, which probed successfully and includes June 2, 2026 signals."
     },
     {
       "sourceId": "src-sf-berniecrats",
       "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "reason": "fetch-failed: probed sfberniecrats.com endorsements, voter-guide, 2026-endorsements, search, and sitemap paths; each returned website-not-found/404 responses, so no safe durable 2026 slate URL was registered.",
       "notes": "pending 2026 endorsement URL; include as progressive Democratic club source if public slate is available."
     },
     {
       "sourceId": "src-united-democratic-club",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; include if public slate is available."
+      "status": "captured",
+      "targetId": "fixture-united-democratic-club-m004-live",
+      "guideUrl": "https://www.uniteddems.org/endorsements",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-united-democratic-club-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Direct probe found source-owned endorsements page with June 2026 Primary Election signals."
     },
     {
       "sourceId": "src-sf-labor-council",
       "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "reason": "no-public-2026-guide: probed /endorsements, /election-endorsements, /june-2026-endorsements, sitemap, and source-owned search for 2026 endorsements; generic search/home pages responded but exposed no durable result URL and direct endorsement paths returned 404.",
       "notes": "pending 2026 endorsement URL; primary labor umbrella source if public recommendations are available."
     },
     {
       "sourceId": "src-seiu-local-1021",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; include if public local/state recommendations are available."
+      "status": "captured",
+      "targetId": "fixture-seiu-local-1021-m004-live",
+      "guideUrl": "https://www.seiu1021.org/endorsements",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-seiu-local-1021-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Direct probe found source-owned endorsements page with an Election Endorsements: June 2, 2026 section."
     },
     {
       "sourceId": "src-united-educators-of-san-francisco",
       "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "reason": "no-public-2026-guide: probed UESF endorsement paths and WordPress search for 2026 endorsements and June 2, 2026; no source-owned current slate URL was found, and the only endorsement-specific result was an external Instagram URL.",
       "notes": "pending 2026 endorsement URL; include especially for education/local races and measures."
     },
     {
       "sourceId": "src-yimby-action-sf-yimby",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; include for housing/urbanism signal if public slate is available."
+      "status": "captured",
+      "targetId": "fixture-yimby-action-sf-yimby-m004-live",
+      "guideUrl": "https://yimbyaction.org/endorsements/2026/",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-yimby-action-sf-yimby-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Direct probes found source-owned YIMBY Action/SF YIMBY 2026 endorsement pages returning 200 with June 2026 voter-guide and endorsement signals; the year-specific YIMBY Action URL is registered."
     },
     {
       "sourceId": "src-sf-tenants-union",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 voter-guide or endorsement URL; include if public recommendations are available."
+      "status": "captured",
+      "targetId": "fixture-sf-tenants-union-m004-live",
+      "guideUrl": "https://sftu.org/endorsements/",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-sf-tenants-union-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Direct probe found source-owned 2026 Endorsements page."
     },
     {
       "sourceId": "src-housing-action-coalition",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; include if public candidate/measure recommendations are available."
+      "status": "captured",
+      "targetId": "fixture-housing-action-coalition-m004-live",
+      "guideUrl": "https://housingactioncoalition.org/news/june-2026-endorsements",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-housing-action-coalition-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "Source-owned sitemap exposed /news/june-2026-endorsements; direct probe returned 200 with June 2026 Primary Endorsements signals."
     },
     {
       "sourceId": "src-sierra-club-bay-chapter",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 endorsement URL; include for environmental recommendations if public and SF-relevant."
+      "status": "captured",
+      "targetId": "fixture-sierra-club-bay-chapter-m004-live",
+      "guideUrl": "https://www.sierraclub.org/sfbay/2026-endorsements",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-sierra-club-bay-chapter-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "The Bay Chapter endorsements page linked a source-owned 2026 endorsements page, which probed successfully."
     },
     {
       "sourceId": "src-sf-bicycle-coalition",
       "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
+      "reason": "fetch-failed: probed likely SF Bicycle Coalition 2026 voter-guide URLs, site search, and WordPress API search; all public probes returned 403, so no safe fetchable source-owned guide URL was registered.",
       "notes": "pending 2026 voter-guide or endorsement URL; include for transportation/street-safety signal if public recommendations are available."
     },
     {
       "sourceId": "src-togethersf-action",
-      "status": "pending",
-      "reason": "Pending public June 2026 guide or endorsement URL and real ingestion target.",
-      "notes": "pending 2026 voter-guide or endorsement URL; include if public recommendations are available."
+      "status": "captured",
+      "targetId": "fixture-togethersf-action-m004-live",
+      "guideUrl": "https://www.sfblueprint.org/blog/blueprint-sfs-june-2026-voter-guide",
+      "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-togethersf-action-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
+      "notes": "TogetherSF Action paths redirect to Blueprint; source-owned Blueprint search and sitemap exposed a June 2026 voter guide URL, which direct probe returned 200 with voter-guide and ballot signals."
     },
     {
       "sourceId": "src-aclu-norcal",
       "status": "pending",
-      "reason": "Pending public June 2026 guide or measure URL and real ingestion target.",
+      "reason": "no-public-2026-guide: probed ACLU NorCal voter-guide paths, search, sitemap index, page sitemap, and post sitemap; direct guide URLs returned 404 and no durable June 2026 issue-guide or recommendation page was identified.",
       "notes": "pending 2026 voter-guide or measure-guide URL; keep pending because coverage may be issue-specific."
     }
   ]

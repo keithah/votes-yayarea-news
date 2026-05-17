@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { listRaceSlugs, loadPublicRaceContext } from "../lib/data/loaders";
 import { buildHomeShareMetadata } from "../lib/share/metadata";
-import { buildRaceUiModel, type RaceUiModel } from "../lib/ui/race";
+import { loadHomePageModel, type HomePageModel, type HomeRaceModel, type HomeRaceSectionId } from "../lib/ui/home";
 
 export const dynamic = "force-static";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const races = await loadPublicRaceModels();
-  const totals = summarizeRaces(races);
-  return buildHomeShareMetadata(totals);
+  const model = await loadHomePageModel();
+  return buildHomeShareMetadata({
+    raceCount: model.totals.raceCount,
+    sourceCount: model.totals.publicSourceCount,
+    evidenceCount: model.totals.evidenceCount,
+  });
 }
 
 export default async function Home() {
-  const races = await loadPublicRaceModels();
-  const totals = summarizeRaces(races);
+  const model = await loadHomePageModel();
+  const { races, sections, totals } = model;
+
+  const consensusSourceCount = races.reduce((count, race) => count + race.consensusSourceCount, 0);
 
   return (
-    <main className="home-shell">
+    <main
+      className="home-shell"
+      data-public-source-count={totals.publicSourceCount}
+      data-reviewed-position-source-count={totals.reviewedPositionSourceCount}
+      data-consensus-source-count={consensusSourceCount}
+    >
       <section className="hero hero-grid" aria-labelledby="page-title">
         <div className="hero-copy">
           <p className="eyebrow">June 2, 2026 · San Francisco primary</p>
@@ -45,8 +54,8 @@ export default async function Home() {
               <dd>{totals.raceCount}</dd>
             </div>
             <div>
-              <dt>Reviewed sources</dt>
-              <dd>{totals.sourceCount}</dd>
+              <dt>Public sources</dt>
+              <dd>{totals.publicSourceCount}</dd>
             </div>
             <div>
               <dt>Evidence items</dt>
@@ -58,8 +67,8 @@ export default async function Home() {
             </div>
           </dl>
           <p className="panel-note">
-            Counts come from the same public race view model used by race pages, so publication
-            gating failures are visible at build time instead of hidden behind client state.
+            Counts come from the same public race view model used by race pages, so source-coverage
+            drift is visible at build time instead of hidden behind client state.
           </p>
         </aside>
       </section>
@@ -74,21 +83,7 @@ export default async function Home() {
           </p>
         </div>
 
-        {races.length > 0 ? (
-          <div className="race-grid">
-            {races.map((race) => (
-              <RaceCard key={race.race.id} race={race} />
-            ))}
-          </div>
-        ) : (
-          <div className="empty-state" role="status">
-            <p className="empty-title">No public races are published yet.</p>
-            <p>
-              The static loader succeeded, but every race is currently hidden by review or
-              publication gates. Publish a verified race to replace this state with public cards.
-            </p>
-          </div>
-        )}
+        <HomeRaceSections sections={sections} />
       </section>
 
       <section className="trust-grid" id="methodology" aria-label="Methodology and trust modules">
@@ -104,7 +99,7 @@ export default async function Home() {
           <p className="eyebrow">Reviewed-source trust</p>
           <h2>Counts before claims</h2>
           <p>
-            Every card surfaces source, evidence, and candidate or option counts so readers can distinguish a
+            Every card surfaces public source, evidence, and candidate or option counts so readers can distinguish a
             sparse public record from a rendering bug or missing publication step.
           </p>
         </article>
@@ -122,12 +117,64 @@ export default async function Home() {
   );
 }
 
-function RaceCard({ race }: { race: RaceUiModel }) {
+export function HomeRaceSections({ sections }: { sections: HomePageModel["sections"] }) {
+  return (
+    <div className="home-section-stack">
+      {sections.map((section) => (
+        <section
+          key={section.id}
+          className="home-race-section"
+          aria-labelledby={`home-section-${section.id}-title`}
+          data-home-section={section.id}
+          data-home-section-order={section.diagnostics.order}
+          data-home-section-race-count={section.races.length}
+          data-public-source-count={section.diagnostics.publicSourceCount}
+          data-reviewed-position-source-count={section.diagnostics.reviewedPositionSourceCount}
+          data-consensus-source-count={section.diagnostics.consensusSourceCount}
+          data-consensus-support-count={section.diagnostics.consensusSupportCount}
+          data-source-status-label-counts={JSON.stringify(section.diagnostics.sourceStatusLabelCounts)}
+        >
+          <div className="home-race-section-heading">
+            <p className="eyebrow">{section.id === "statewide-broader" ? "Statewide / broader" : "Local"}</p>
+            <h3 id={`home-section-${section.id}-title`}>{getHomeSectionHeading(section.id)}</h3>
+            <p>{section.deck}</p>
+          </div>
+
+          {section.races.length > 0 ? (
+            <div className="race-grid">
+              {section.races.map((race) => (
+                <RaceCard key={race.race.id} race={race} sectionId={section.id} />
+              ))}
+            </div>
+          ) : (
+            <div className="empty-state" role="status">
+              <p className="empty-title">No {getHomeSectionHeading(section.id).toLowerCase()} are published in this section yet.</p>
+              <p>
+                The static loader succeeded, but every race for this discovery section is currently hidden by review or publication gates.
+                Publish a verified race to replace this state with public cards.
+              </p>
+            </div>
+          )}
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function RaceCard({ race, sectionId }: { race: HomeRaceModel; sectionId: HomeRaceSectionId }) {
   const href = `/races/${race.race.slug}/`;
   const consensus = race.consensus.entityName ? race.consensus.label : "No public consensus yet";
 
   return (
-    <article className="race-card">
+    <article
+      className="race-card"
+      data-home-section-id={sectionId}
+      data-race-slug={race.diagnostics.raceSlug}
+      data-public-source-count={race.diagnostics.publicSourceCount}
+      data-reviewed-position-source-count={race.diagnostics.reviewedPositionSourceCount}
+      data-consensus-source-count={race.diagnostics.consensusSourceCount}
+      data-consensus-support-count={race.diagnostics.consensusSupportCount}
+    >
       <div className="race-card-topline">
         <span>{formatDate(race.race.electionDate)}</span>
         <span>{race.race.jurisdiction}</span>
@@ -138,8 +185,8 @@ function RaceCard({ race }: { race: RaceUiModel }) {
       <p className="race-consensus">{consensus}</p>
       <dl className="race-stats" aria-label={`${race.race.title} public counts`}>
         <div>
-          <dt>Sources</dt>
-          <dd>{race.sourceCount}</dd>
+          <dt>Public sources</dt>
+          <dd>{race.publicSourceCount}</dd>
         </div>
         <div>
           <dt>Evidence</dt>
@@ -147,9 +194,32 @@ function RaceCard({ race }: { race: RaceUiModel }) {
         </div>
         <div>
           <dt>Candidates</dt>
-          <dd>{race.candidates.length}</dd>
+          <dd>{race.candidateCount}</dd>
         </div>
       </dl>
+      <div className="source-label-list" aria-label={`${race.race.title} source labels`}>
+        <span>{race.countLabels.publicSources}</span>
+        <span>{race.countLabels.reviewedPositionSources}</span>
+        <span>
+          {formatCountLabel(race.consensusSupportCount, "consensus support")} from {race.countLabels.consensusSources}
+        </span>
+      </div>
+      <ul className="source-status-list" aria-label={`${race.race.title} source status labels`}>
+        {race.sourceStatusLabels.length > 0 ? (
+          race.sourceStatusLabels.map((sourceStatus) => (
+            <li
+              key={sourceStatus.status}
+              className={getSourceStatusClassName(sourceStatus.status)}
+              data-source-status={sourceStatus.status}
+              data-source-status-count={sourceStatus.count}
+            >
+              {sourceStatus.count} {sourceStatus.label}
+            </li>
+          ))
+        ) : (
+          <li className="source-status-muted">No source-status labels published</li>
+        )}
+      </ul>
       <div className="source-type-list" aria-label="Source type breakdown">
         {race.sourceTypeBreakdown.length > 0 ? (
           race.sourceTypeBreakdown.map((sourceType) => (
@@ -174,22 +244,16 @@ function RaceCard({ race }: { race: RaceUiModel }) {
   );
 }
 
-async function loadPublicRaceModels(): Promise<RaceUiModel[]> {
-  const slugs = await listRaceSlugs();
-  const contexts = await Promise.all(slugs.map((slug) => loadPublicRaceContext(slug)));
-  return contexts
-    .filter((context): context is NonNullable<typeof context> => context !== null)
-    .map((context) => buildRaceUiModel(context))
-    .sort((left, right) => left.race.title.localeCompare(right.race.title));
+function getHomeSectionHeading(sectionId: HomeRaceSectionId): string {
+  return sectionId === "statewide-broader" ? "Statewide and broader races" : "Local races";
 }
 
-function summarizeRaces(races: RaceUiModel[]) {
-  return {
-    raceCount: races.length,
-    sourceCount: races.reduce((count, race) => count + race.sourceCount, 0),
-    evidenceCount: races.reduce((count, race) => count + race.evidenceCount, 0),
-    candidateCount: races.reduce((count, race) => count + race.candidates.length, 0),
-  };
+function formatCountLabel(count: number, singular: string): string {
+  return `${count} ${count === 1 ? singular : `${singular}s`}`;
+}
+
+function getSourceStatusClassName(status: string): string {
+  return status === "reviewed-public-position" ? "source-status-positive" : "source-status-context";
 }
 
 function formatDate(value: string): string {
