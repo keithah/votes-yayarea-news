@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generatedAt": "2026-05-17T03:24:52.669Z",
+  "generatedAt": "2026-05-17T06:39:36.193Z",
   "checkedFiles": [
     "data/ingestion/source-coverage.json",
     "data/public/races/board-of-equalization-district-2.json",
@@ -25,6 +25,7 @@
     "data/public/races/us-house-district-11.json",
     "data/public/races/us-house-district-15.json",
     "data/public/sources.json",
+    "data/reviewed/m004-s02-bulk-latest.json",
     "manual/overrides/races/california-governor.json",
     "manual/overrides/races/state-assembly-district-17.json",
     "manual/overrides/races/us-house-district-11.json"
@@ -1657,8 +1658,23 @@
           "ledgerPath": "data/ingestion/source-coverage.json.sources[7]",
           "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-growsf-voter-guide-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
           "notes": "Candidate found in public search results and probed directly; page advertises the June 2, 2026 Primary Election and GrowSF endorsements.",
-          "unpublishedDiagnostics": [],
-          "unpublishedReasonCounts": {}
+          "unpublishedDiagnostics": [
+            {
+              "status": "hidden",
+              "phase": "review",
+              "reasonCode": "not_requested_public",
+              "path": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+              "message": "Draft record did not request public publication and remains hidden.",
+              "raceId": "race-california-governor",
+              "raceSlug": "california-governor",
+              "sourceId": "src-growsf",
+              "entityId": "ent-california-governor-matt-mahan",
+              "positionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden"
+            }
+          ],
+          "unpublishedReasonCounts": {
+            "not_requested_public": 1
+          }
         },
         {
           "raceId": "race-california-governor",
@@ -6579,8 +6595,23 @@
           "ledgerPath": "data/ingestion/source-coverage.json.sources[0]",
           "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-california-secretary-of-state-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
           "notes": "DuckDuckGo query: California Secretary of State 2026 primary certified list candidates. HTML acquisition captures the source-owned public page because the linked certified-list PDF is outside the current HTML/text acquisition allowlist.",
-          "unpublishedDiagnostics": [],
-          "unpublishedReasonCounts": {}
+          "unpublishedDiagnostics": [
+            {
+              "status": "hidden",
+              "phase": "review",
+              "reasonCode": "duplicate_public_claim",
+              "path": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate",
+              "message": "Duplicate public source/race/entity/kind claim classified as hidden instead of public.",
+              "raceId": "race-state-assembly-district-17",
+              "raceSlug": "state-assembly-district-17",
+              "sourceId": "src-ca-secretary-of-state",
+              "entityId": "ent-state-assembly-district-17-matt-haney",
+              "positionId": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate"
+            }
+          ],
+          "unpublishedReasonCounts": {
+            "duplicate_public_claim": 1
+          }
         },
         {
           "raceId": "race-state-assembly-district-17",
@@ -10754,8 +10785,23 @@
           "ledgerPath": "data/ingestion/source-coverage.json.sources[0]",
           "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-california-secretary-of-state-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
           "notes": "DuckDuckGo query: California Secretary of State 2026 primary certified list candidates. HTML acquisition captures the source-owned public page because the linked certified-list PDF is outside the current HTML/text acquisition allowlist.",
-          "unpublishedDiagnostics": [],
-          "unpublishedReasonCounts": {}
+          "unpublishedDiagnostics": [
+            {
+              "status": "hidden",
+              "phase": "review",
+              "reasonCode": "duplicate_public_claim",
+              "path": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate",
+              "message": "Duplicate public source/race/entity/kind claim classified as hidden instead of public.",
+              "raceId": "race-state-assembly-district-17",
+              "raceSlug": "state-assembly-district-17",
+              "sourceId": "src-ca-secretary-of-state",
+              "entityId": "ent-state-assembly-district-17-matt-haney",
+              "positionId": "pos-m004-s02-sos-state-assembly-district-17-matt-haney-informational-duplicate"
+            }
+          ],
+          "unpublishedReasonCounts": {
+            "duplicate_public_claim": 1
+          }
         },
         {
           "raceId": "race-state-assembly-district-19",
@@ -10920,8 +10966,23 @@
           "ledgerPath": "data/ingestion/source-coverage.json.sources[7]",
           "reason": "Captured source-owned public current election artifact via canonical manifest target fixture-growsf-voter-guide-m004-live; fixture is non-sample and safe for deterministic offline ingestion.",
           "notes": "Candidate found in public search results and probed directly; page advertises the June 2, 2026 Primary Election and GrowSF endorsements.",
-          "unpublishedDiagnostics": [],
-          "unpublishedReasonCounts": {}
+          "unpublishedDiagnostics": [
+            {
+              "status": "hidden",
+              "phase": "review",
+              "reasonCode": "not_requested_public",
+              "path": "pos-m004-s02-growsf-governor-matt-mahan-hidden",
+              "message": "Draft record did not request public publication and remains hidden.",
+              "raceId": "race-california-governor",
+              "raceSlug": "california-governor",
+              "sourceId": "src-growsf",
+              "entityId": "ent-california-governor-matt-mahan",
+              "positionId": "pos-m004-s02-growsf-governor-matt-mahan-hidden"
+            }
+          ],
+          "unpublishedReasonCounts": {
+            "not_requested_public": 1
+          }
         },
         {
           "raceId": "race-california-insurance-commissioner",

@@ -1,99 +1,233 @@
 {
   "schemaVersion": 1,
-  "milestone": "M004",
-  "slice": "S05",
-  "generatedBy": "scripts/record-m004-s05-launch-verification.mjs",
-  "generatedAt": "2026-05-16T21:48:46.153Z",
-  "status": "pass",
-  "origin": "https://keithah.github.io/votes-yayarea-news",
-  "artifacts": {
-    "livePages": "data/launch/m004-s05-live-pages.json",
-    "launchVerification": "data/launch/m004-s05-launch-verification.json",
-    "latest": "data/launch/latest.json"
-  },
-  "summaries": {
-    "routes": {
-      "expectedRoutes": 3,
-      "checkedRoutes": 3,
-      "missingRoutes": []
-    },
-    "counts": {
-      "markerAssertions": 49,
-      "leakageFindings": 0,
-      "bytes": 1017936
-    },
-    "phases": {
-      "origin": {
-        "status": "pass"
-      },
-      "fetch": {
-        "status": "pass",
-        "checked": 3
-      },
-      "markers": {
-        "status": "pass",
-        "checked": 49
-      },
-      "leakage": {
-        "status": "pass",
-        "checked": 33
-      },
-      "report": {
-        "status": "pass"
-      },
-      "jsonOut": {
-        "status": "pass",
-        "path": "data/launch/m004-s05-live-pages.json"
-      }
-    }
-  },
+  "slice": "S09",
+  "generatedBy": "scripts/record-s09-launch-gates.mjs",
+  "buildTimestamp": "2026-05-17T06:40:07.238Z",
+  "overallStatus": "pass",
   "checkedRoutes": [
     {
-      "route": "/races/state-assembly-district-17/",
-      "status": 200,
-      "bytes": 42579,
-      "markerAssertions": 16,
-      "leakageFindings": 0
+      "route": "/",
+      "exportPath": "out/index.html"
     },
     {
       "route": "/races/california-governor/",
-      "status": 200,
-      "bytes": 850576,
-      "markerAssertions": 18,
-      "leakageFindings": 0
+      "exportPath": "out/races/california-governor/index.html"
     },
     {
-      "route": "/races/us-house-district-11/",
-      "status": 200,
-      "bytes": 124781,
-      "markerAssertions": 15,
-      "leakageFindings": 0
+      "route": "/how-we-use-ai/",
+      "exportPath": "out/how-we-use-ai/index.html"
+    },
+    {
+      "route": "/entities/california-governor-akinyemi-agbede/",
+      "exportPath": "out/entities/california-governor-akinyemi-agbede/index.html"
+    },
+    {
+      "route": "/sources/california-secretary-of-state/",
+      "exportPath": "out/sources/california-secretary-of-state/index.html"
     }
   ],
-  "redaction": {
-    "status": "pass",
-    "checkedArtifacts": [
-      "data/launch/m004-s05-live-pages.json"
-    ],
-    "forbiddenClasses": [
-      "private workspace paths",
-      "file URLs",
-      "secret-like tokens",
-      "manual review paths"
-    ]
-  },
   "gates": {
-    "livePages": {
+    "routes": {
       "status": "pass",
-      "errors": []
+      "checked": [
+        {
+          "route": "/",
+          "exportPath": "out/index.html",
+          "status": "pass",
+          "htmlBytes": 92350,
+          "hasTitle": true,
+          "hasCanonical": true
+        },
+        {
+          "route": "/races/california-governor/",
+          "exportPath": "out/races/california-governor/index.html",
+          "status": "pass",
+          "htmlBytes": 848060,
+          "hasTitle": true,
+          "hasCanonical": true
+        },
+        {
+          "route": "/how-we-use-ai/",
+          "exportPath": "out/how-we-use-ai/index.html",
+          "status": "pass",
+          "htmlBytes": 24273,
+          "hasTitle": true,
+          "hasCanonical": true
+        },
+        {
+          "route": "/entities/california-governor-akinyemi-agbede/",
+          "exportPath": "out/entities/california-governor-akinyemi-agbede/index.html",
+          "status": "pass",
+          "htmlBytes": 24019,
+          "hasTitle": true,
+          "hasCanonical": true
+        },
+        {
+          "route": "/sources/california-secretary-of-state/",
+          "exportPath": "out/sources/california-secretary-of-state/index.html",
+          "status": "pass",
+          "htmlBytes": 342910,
+          "hasTitle": true,
+          "hasCanonical": true
+        }
+      ]
     },
-    "routeCoverage": {
+    "metadataShareStatus": {
       "status": "pass",
-      "errors": []
+      "routes": [
+        {
+          "route": "/",
+          "status": "pass",
+          "title": "pass",
+          "canonical": "pass",
+          "openGraphImage": "pass",
+          "twitterImage": "pass"
+        },
+        {
+          "route": "/races/california-governor/",
+          "status": "pass",
+          "title": "pass",
+          "canonical": "pass",
+          "openGraphImage": "pass",
+          "twitterImage": "pass"
+        },
+        {
+          "route": "/how-we-use-ai/",
+          "status": "pass",
+          "title": "pass",
+          "canonical": "pass",
+          "openGraphImage": "pass",
+          "twitterImage": "pass"
+        },
+        {
+          "route": "/entities/california-governor-akinyemi-agbede/",
+          "status": "pass",
+          "title": "pass",
+          "canonical": "pass",
+          "openGraphImage": "pass",
+          "twitterImage": "pass"
+        },
+        {
+          "route": "/sources/california-secretary-of-state/",
+          "status": "pass",
+          "title": "pass",
+          "canonical": "pass",
+          "openGraphImage": "pass",
+          "twitterImage": "pass"
+        }
+      ]
     },
-    "redaction": {
+    "analyticsEventCoverage": {
       "status": "pass",
-      "errors": []
+      "events": [
+        {
+          "eventName": "race_page_view",
+          "markerCount": 1,
+          "status": "pass"
+        },
+        {
+          "eventName": "recommendation_matrix_open",
+          "markerCount": 5,
+          "status": "pass"
+        },
+        {
+          "eventName": "receipt_drawer_open",
+          "markerCount": 124,
+          "status": "pass"
+        }
+      ]
+    },
+    "publicTrustLeakChecks": {
+      "status": "pass",
+      "checks": [
+        {
+          "id": "gsd_path",
+          "description": "No .gsd planning paths in public export.",
+          "status": "pass"
+        },
+        {
+          "id": "manual_reviews",
+          "description": "No manual review staging paths in public export.",
+          "status": "pass"
+        },
+        {
+          "id": "extraction_drafts",
+          "description": "No hidden extraction draft paths in public export.",
+          "status": "pass"
+        },
+        {
+          "id": "absolute_local_path",
+          "description": "No machine-local absolute paths in public export.",
+          "status": "pass"
+        },
+        {
+          "id": "file_url",
+          "description": "No local file URLs in public export.",
+          "status": "pass"
+        },
+        {
+          "id": "endorsement_language",
+          "description": "No product-authored directive endorsement language in public export.",
+          "status": "pass"
+        }
+      ]
+    },
+    "staticSmoke": {
+      "status": "pass",
+      "checkedRoutes": [
+        {
+          "route": "/",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/races/california-governor/",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/how-we-use-ai/",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/entities/california-governor-akinyemi-agbede/",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/sources/california-secretary-of-state/",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8"
+        }
+      ],
+      "trailingSlashChecks": [
+        {
+          "route": "/races/california-governor",
+          "status": 308,
+          "location": "/races/california-governor/"
+        },
+        {
+          "route": "/how-we-use-ai",
+          "status": 308,
+          "location": "/how-we-use-ai/"
+        },
+        {
+          "route": "/entities/california-governor-akinyemi-agbede",
+          "status": 308,
+          "location": "/entities/california-governor-akinyemi-agbede/"
+        },
+        {
+          "route": "/sources/california-secretary-of-state",
+          "status": 308,
+          "location": "/sources/california-secretary-of-state/"
+        }
+      ]
+    },
+    "manualLighthouseBrowserNotes": {
+      "status": "pending",
+      "lighthouse": "Pending manual/browser Lighthouse run against the production-like static deploy.",
+      "browser": "Pending final browser spot-check for share-card previews and representative navigation."
     }
   }
 }

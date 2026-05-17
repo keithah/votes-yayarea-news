@@ -14,7 +14,7 @@ const ROUTES = [
     metadata: {
       canonical: "https://votes.yayarea.news/",
       title: "votes.yayarea.news · San Francisco election guide",
-      description: "Static San Francisco election source tracker with 13 public races, 13 reviewed sources, and 61 evidence items.",
+      description: "Static San Francisco election source tracker with 13 public races, 17 reviewed sources, and 65 evidence items.",
     },
   },
   {
@@ -36,7 +36,7 @@ const ROUTES = [
     metadata: {
       canonical: "https://votes.yayarea.news/races/california-governor/",
       title: "California Governor source records",
-      description: "Public source tracker for California Governor: 1 sources, 61 entities, and 61 evidence items.",
+      description: "Public source tracker for California Governor: 3 sources, 61 entities, and 62 evidence items.",
     },
   },
   {
@@ -63,7 +63,7 @@ const ROUTES = [
       ["data-drilldown-kind=\"entity\"", "entity route diagnostic kind"],
       ["data-drilldown-slug=\"california-governor-akinyemi-agbede\"", "entity route diagnostic slug"],
       ["Akinyemi Agbede", "entity heading"],
-      ["Verified public recommendations", "entity public recommendations"],
+      ["Published recommendation trail", "entity public recommendation trail"],
       ["Democratic candidate listed by the California Secretary of State for California Governor", "entity public evidence quote"],
     ],
     metadata: {
@@ -81,12 +81,12 @@ const ROUTES = [
       ["data-drilldown-slug=\"california-secretary-of-state\"", "source route diagnostic slug"],
       ["California Secretary of State", "source heading"],
       ["Visit public source", "source public URL action"],
-      ["Verified public recommendations", "source public recommendations"],
+      ["Published recommendation trail", "source public recommendation trail"],
     ],
     metadata: {
       canonical: "https://votes.yayarea.news/sources/california-secretary-of-state/",
       title: "California Secretary of State public source trail",
-      description: "California Secretary of State public source trail across 1 races: 61 tracked source records and 61 evidence items.",
+      description: "California Secretary of State public source trail across 2 races: 62 tracked source records and 62 evidence items.",
     },
   },
 ];
